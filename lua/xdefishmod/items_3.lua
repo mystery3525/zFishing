@@ -1,116 +1,127 @@
 if CLIENT then local langs = {}
 	langs[ "zh-CN" ] = {
-		[ "it_camera" ] = "照相机", [ "dit_camera" ] = "",
-        [ "it_ammo" ] = "弹药盒", [ "dit_ammo" ] = "诡异的是在水中浸泡了这么久的子弹还能使用.",
-		[ "it_ammocan1" ] = "弹药箱", [ "dit_ammocan1" ] = "很坚固的弹药箱,但是不建议使用热兵器打开.",
-		[ "it_ammocan2" ] = "武器堆", [ "dit_ammocan2" ] = "很坚固的一堆武器箱,也不建议使用热兵器打开.",
-		[ "it_firearm1" ] = "生锈的枪", [ "dit_firearm1" ] = "老旧的枪支,很容易走火.",
-		[ "it_firearm2" ] = "枪", [ "dit_firearm2" ] = "崭新出厂.",
-        [ "it_grenade" ] = "破片手雷", [ "dit_grenade" ] = "",
-        [ "it_flashbang" ] = "闪光弹", [ "dit_flashbang" ] = "",
-        [ "it_launcher" ] = "火箭发射器", [ "dit_launcher" ] = "",
-		[ "it_bait2" ] = "进阶鱼饵盒", [ "dit_bait2" ] = "盒子里装了3个罕见鱼饵,打碎以开启.",
-		[ "it_bait3" ] = "高级鱼饵盒", [ "dit_bait3" ] = "盒子里装了3个稀有鱼饵,打碎以开启.",
-		[ "it_crate2" ] = "大板条箱", [ "dit_crate2" ] = "箱子里面装了更多东西,打碎以开启.",
-		[ "it_crate3" ] = "补给箱", [ "dit_crate3" ] = "装有大量补给.",
-		[ "it_car" ] = "汽车", [ "dit_car" ] = "你要觉得还能开你可以试试.",
-		[ "it_bread1" ] = "糊面包", [ "dit_bread1" ] = "致癌警告.",
-		[ "it_bread2" ] = "面包", [ "dit_bread2" ] = "请勿传送.",
-		[ "cr_bread" ] = "面包怪", [ "dcr_bread" ] = "说了不要传送诶我去.",
-		[ "it_pumpkin1" ] = "南瓜", [ "dit_pumpkin1" ] = "普通的南瓜.",
-		[ "it_pumpkin2" ] = "大南瓜", [ "dit_pumpkin2" ] = "不普通的南瓜.",
-		[ "it_pumpki" ] = "南瓜块", [ "dit_pumpki" ] = "",
-		[ "it_mush1" ] = "蘑菇", [ "dit_mush1" ] = "",
-		[ "it_mush2" ] = "毒蘑菇", [ "dit_mush2" ] = "",
-		[ "it_pmetal" ] = "奇异金属片", [ "dit_pmetal" ] = "赛博垃圾.",
-		[ "it_pradio" ] = "收音机", [ "dit_pradio" ] = "无休止地播放着同一个旋律.",
-		[ "it_pcube" ] = "同伴方块", [ "dit_pcube" ] = "一个普通的方块,可以用火焰伤害摧毁.",
-		[ "it_pcore" ] = "情感核心", [ "dit_pcore" ] = "有个性的话痨球.",
-		[ "it_pturre1" ] = "炮台", [ "dit_pturre1" ] = "友好的炮台,会攻击生物(包括鸟).",
-		[ "it_pturre2" ] = "受损炮台", [ "dit_pturre2" ] = "友好的炮台,会攻击生物(包括鸟),有几率自毁.",
-		[ "it_cmetal" ] = "奇异金属片", [ "dit_cmetal" ] = "赛博垃圾.",
-		[ "it_ccore" ] = "不稳定的能量核心", [ "dit_ccore" ] = "",
-		[ "it_chopper" ] = "跳雷", [ "dit_chopper" ] = "不对劲.",
-		[ "it_chealth" ] = "补血器", [ "dit_chealth" ] = "花费200鱼币回复全部血量.",
-		[ "it_carmor" ] = "补甲器", [ "dit_carmor" ] = "花费100鱼币回复全部护甲.",
-		[ "it_csuper" ] = "超级补充器", [ "dit_csuper" ] = "花费150鱼币回复全部血量和护甲.",
-		[ "it_cturret" ] = "炮台", [ "dit_cturret" ] = "友好的炮台,会攻击生物(包括鸟).",
-		[ "it_cscanner" ] = "僚机", [ "dit_cscanner" ] = "会围着目标疯狂拍照.",
-		[ "it_cthumper" ] = "撞击器", [ "dit_cthumper" ] = "吵.",
-		[ "it_gballoon" ] = "气球", [ "dit_gballoon" ] = "",
-		[ "it_gballoox" ] = "气球盒", [ "dit_gballoox" ] = "",
-		[ "it_gfood" ] = "垃圾食品", [ "dit_gfood" ] = "咋不行.",
-		[ "it_cheli" ] = "破损的直升机", [ "dit_cheli" ] = "来自某人的奇怪想法.",
-		[ "it_water" ] = "水瓶", [ "dit_water" ] = "",
-		[ "it_shovel" ] = "铲子", [ "dit_shovel" ] = "",
-		[ "it_pot" ] = "炼金锅", [ "dit_pot" ] = "放进一些物品来得到等价或低价的物品.",
-		[ "it_rainbowbar" ] = "彩虹锭", [ "dit_rainbowbar" ] = "<color=0,0,255>☆</color><color=255,0,255>☆</color><color=0,255,0>☆</color><color=255,255,0>☆</color><color=255,0,0>☆</color><color=255,255,255>☆</color>.",
-		[ "it_junku" ] = "反回收垃圾桶", [ "dit_junku" ] = "会把一切物品变成垃圾,不客气不客气.",
-		[ "it_exp1" ] = "基础经验书", [ "dit_exp1" ] = "获得40经验.\n超过等级需要的经验会被忽略.",
-		[ "it_exp2" ] = "进阶经验书", [ "dit_exp2" ] = "获得160经验.\n注意超过等级需要的经验会被忽略.",
-		[ "it_exp3" ] = "高级经验书", [ "dit_exp3" ] = "获得400经验.\n注意超过等级需要的经验会被忽略.",
-		[ "it_exp4" ] = "至尊经验书", [ "dit_exp4" ] = "直接提升一级.\n注意超过等级需要的经验会被忽略.",
+		[ "it_camera" ] 	= "照相机", [ "dit_camera" ] 		= "",
+		[ "it_ammo" ] 		= "弹药盒", [ "dit_ammo" ] 		= "诡异的是在水中浸泡了这么久的子弹还能使用.",
+		[ "it_ammocan1" ] 	= "弹药箱", [ "dit_ammocan1" ] 		= "很坚固的弹药箱,但是不建议使用热兵器打开.",
+		[ "it_ammocan2" ] 	= "武器堆", [ "dit_ammocan2" ] 		= "很坚固的一堆武器箱,也不建议使用热兵器打开.",
+		[ "it_firearm1" ] 	= "生锈的枪", [ "dit_firearm1" ] 	= "老旧的枪支,很容易走火.",
+		[ "it_firearm2" ] 	= "枪", [ "dit_firearm2" ] 		= "崭新出厂.",
+		[ "it_grenade" ] 	= "破片手雷", [ "dit_grenade" ] 		= "",
+		[ "it_flashbang" ] 	= "闪光弹", [ "dit_flashbang" ] 		= "",
+		[ "it_launcher" ] 	= "火箭发射器", [ "dit_launcher" ] 	= "",
+		[ "it_bait2" ] 		= "进阶鱼饵盒", [ "dit_bait2" ] 		= "盒子里装了3个罕见鱼饵,打碎以开启.",
+		[ "it_bait3" ] 		= "高级鱼饵盒", [ "dit_bait3" ] 		= "盒子里装了3个稀有鱼饵,打碎以开启.",
+		[ "it_crate2" ] 	= "大板条箱", [ "dit_crate2" ] 		= "箱子里面装了更多东西,打碎以开启.",
+		[ "it_crate3" ] 	= "补给箱", [ "dit_crate3" ] 		= "装有大量补给.",
+		[ "it_car" ] 		= "汽车", [ "dit_car" ] 		= "你要觉得还能开你可以试试.",
+		[ "it_bread1" ] 	= "糊面包", [ "dit_bread1" ] 		= "致癌警告.",
+		[ "it_bread2" ] 	= "面包", [ "dit_bread2" ] 		= "请勿传送.",
+		[ "cr_bread" ] 		= "面包怪", [ "dcr_bread" ] 		= "说了不要传送诶我去.",
+		[ "it_pumpkin1" ] 	= "南瓜", [ "dit_pumpkin1" ] 		= "普通的南瓜.",
+		[ "it_pumpkin2" ] 	= "大南瓜", [ "dit_pumpkin2" ] 		= "不普通的南瓜.",
+		[ "it_pumpki" ] 	= "南瓜块", [ "dit_pumpki" ] 		= "",
+		[ "it_mush1" ] 		= "蘑菇", [ "dit_mush1" ] 		= "",
+		[ "it_mush2" ] 		= "毒蘑菇", [ "dit_mush2" ] 		= "",
+		[ "it_pmetal" ] 	= "奇异金属片", [ "dit_pmetal" ] 	= "赛博垃圾.",
+		[ "it_pradio" ] 	= "收音机", [ "dit_pradio" ] 		= "无休止地播放着同一个旋律.",
+		[ "it_pcube" ] 		= "同伴方块", [ "dit_pcube" ] 		= "一个普通的方块,可以用火焰伤害摧毁.",
+		[ "it_pcore" ] 		= "情感核心", [ "dit_pcore" ] 		= "有个性的话痨球.",
+		[ "it_pturre1" ] 	= "炮台", [ "dit_pturre1" ] 		= "友好的炮台,会攻击生物(包括鸟).",
+		[ "it_pturre2" ] 	= "受损炮台", [ "dit_pturre2" ] 		= "友好的炮台,会攻击生物(包括鸟),有几率自毁.",
+		[ "it_cmetal" ] 	= "奇异金属片", [ "dit_cmetal" ] 	= "赛博垃圾.",
+		[ "it_ccore" ] 		= "不稳定的能量核心", [ "dit_ccore" ] 	= "",
+		[ "it_chopper" ] 	= "跳雷", [ "dit_chopper" ] 		= "不对劲.",
+		[ "it_chealth" ] 	= "补血器", [ "dit_chealth" ] 		= "花费200鱼币回复全部血量.",
+		[ "it_carmor" ] 	= "补甲器", [ "dit_carmor" ] 		= "花费100鱼币回复全部护甲.",
+		[ "it_csuper" ] 	= "超级补充器", [ "dit_csuper" ] 	= "花费150鱼币回复全部血量和护甲.",
+		[ "it_cturret" ] 	= "炮台", [ "dit_cturret" ] 		= "友好的炮台,会攻击生物(包括鸟).",
+		[ "it_cscanner" ] 	= "僚机", [ "dit_cscanner" ] 		= "会围着目标疯狂拍照.",
+		[ "it_cthumper" ] 	= "撞击器", [ "dit_cthumper" ] 		= "吵.",
+		[ "it_gballoon" ] 	= "气球", [ "dit_gballoon" ] 		= "",
+		[ "it_gballoox" ] 	= "气球盒", [ "dit_gballoox" ] 		= "",
+		[ "it_gfood" ] 		= "垃圾食品", [ "dit_gfood" ] 		= "咋不行.",
+		[ "it_cheli" ] 		= "破损的直升机", [ "dit_cheli" ] 	= "来自某人的奇怪想法.",
+		[ "it_water" ] 		= "水瓶", [ "dit_water" ] 		= "",
+		[ "it_shovel" ] 	= "铲子", [ "dit_shovel" ] 		= "",
+		[ "it_pot" ] 		= "炼金锅", [ "dit_pot" ] 		= "放进一些物品来得到等价或低价的物品.",
+		[ "it_rainbowbar" ] 	= "彩虹锭", [ "dit_rainbowbar" ] 	= "<color=0,0,255>☆</color><color=255,0,255>☆</color><color=0,255,0>☆</color><color=255,255,0>☆</color><color=255,0,0>☆</color><color=255,255,255>☆</color>.",
+		[ "it_junku" ] 		= "反回收垃圾桶", [ "dit_junku" ] 	= "会把一切物品变成垃圾,不客气不客气.",
+		[ "it_exp1" ] 		= "基础经验书", [ "dit_exp1" ] 		= "获得40经验.\n超过等级需要的经验会被忽略.",
+		[ "it_exp2" ] 		= "进阶经验书", [ "dit_exp2" ] 		= "获得160经验.\n注意超过等级需要的经验会被忽略.",
+		[ "it_exp3" ] 		= "高级经验书", [ "dit_exp3" ] 		= "获得400经验.\n注意超过等级需要的经验会被忽略.",
+		[ "it_exp4" ] 		= "至尊经验书", [ "dit_exp4" ] 		= "直接提升一级.\n注意超过等级需要的经验会被忽略.",
 	}
+	
 	langs[ "en" ] = {
-		[ "it_camera" ] = "Camera", [ "dit_camera" ] = "",
-        [ "it_ammo" ] = "Ammo", [ "dit_ammo" ] = "A box of random ammo.",
-		[ "it_ammocan1" ] = "Ammo Box", [ "dit_ammocan1" ] = "Secure ammo box, keep it away from fire.",
-		[ "it_ammocan2" ] = "Weapon Stash", [ "dit_ammocan2" ] = "Secure weapon boxes, extremely hard to open.",
-		[ "it_firearm1" ] = "Rusty Gun", [ "dit_firearm1" ] = "Will go off easily.",
-		[ "it_firearm2" ] = "Gun", [ "dit_firearm2" ] = "Still good as new.",
-        [ "it_grenade" ] = "Frag Grenade", [ "dit_grenade" ] = "",
-        [ "it_flashbang" ] = "Flashbang", [ "dit_flashbang" ] = "",
-        [ "it_launcher" ] = "Rocket Launcher", [ "dit_launcher" ] = "",
-		[ "it_bait2" ] = "Improved Bait Box", [ "dit_bait2" ] = "Contains 3 random uncommon baits. Break to open.",
-		[ "it_bait3" ] = "Advanced Bait Box", [ "dit_bait3" ] = "Contains 3 random rare baits. Break to open.",
-		[ "it_crate2" ] = "Big Crate", [ "dit_crate2" ] = "There are more things in this crate. Break to open.",
-		[ "it_crate3" ] = "Supply Crate", [ "dit_crate3" ] = "Contains some supplies.",
-		[ "it_car" ] = "Car", [ "dit_car" ] = "Is it still driveable? Let's find out ...",
-		[ "it_bread1" ] = "Burnt Bread", [ "dit_bread1" ] = "Caner warning.",
-		[ "it_bread2" ] = "Bread", [ "dit_bread2" ] = "Do not teleport.",
-		[ "cr_bread" ] = "Bread Monster", [ "dcr_bread" ] = "I told you DO NOT TELEPORT.",
-		[ "it_pumpkin1" ] = "Pumpkin", [ "dit_pumpkin1" ] = "Common pumpkin.",
-		[ "it_pumpkin2" ] = "Big Pumpkin", [ "dit_pumpkin2" ] = "Uncommon pumpkin.",
-		[ "it_pumpki" ] = "Pumpkin Chunk", [ "dit_pumpki" ] = "",
-		[ "it_mush1" ] = "Mushroom", [ "dit_mush1" ] = "",
-		[ "it_mush2" ] = "Poisonous Mushroom", [ "dit_mush2" ] = "",
-		[ "it_pmetal" ] = "Strange Metal Plate", [ "dit_pmetal" ] = "Cyberuseless.",
-		[ "it_pradio" ] = "Radio", [ "dit_pradio" ] = "Tirelessly playing the same music.",
-		[ "it_pcube" ] = "Companion Cube", [ "dit_pcube" ] = "An ordinary cube, can be destroyed with fire.",
-		[ "it_pcore" ] = "Personality Core", [ "dit_pcore" ] = "Talkactive core buddy.",
-		[ "it_pturre1" ] = "Turret", [ "dit_pturre1" ] = "Friendly turret that attacks creatures( including birds ).",
-		[ "it_pturre2" ] = "Broken Turret", [ "dit_pturre2" ] = "Friendly turret that attacks creatures( including birds ). Quite broken and unstable.",
-		[ "it_cmetal" ] = "Strange Metal Plate", [ "dit_cmetal" ] = "Cyberuseless.",
-		[ "it_ccore" ] = "Unstable Power Core", [ "dit_ccore" ] = "",
-		[ "it_chopper" ] = "Hopper Mine", [ "dit_chopper" ] = "Something isn't right.",
-		[ "it_chealth" ] = "Health Charger", [ "dit_chealth" ] = "Spend 200 to refill your health.",
-		[ "it_carmor" ] = "Suit Charger", [ "dit_carmor" ] = "Spend 100 to refill your armor.",
-		[ "it_csuper" ] = "Super Charger", [ "dit_csuper" ] = "Spend 150 to refill your health and armor.",
-		[ "it_cturret" ] = "Turret", [ "dit_cturret" ] = "Friendly turret that attacks creatures( including birds ).",
-		[ "it_cscanner" ] = "Scanner", [ "dit_cscanner" ] = "Will fly around its target and take LOTS of pictures.",
-		[ "it_cthumper" ] = "Thumper", [ "dit_cthumper" ] = "Noisy.",
-		[ "it_gballoon" ] = "Balloon", [ "dit_gballoon" ] = "",
-		[ "it_gballoox" ] = "Balloon Box", [ "dit_gballoox" ] = "",
-		[ "it_gfood" ] = "Junk Food", [ "dit_gfood" ] = "Why not?",
-		[ "it_cheli" ] = "Broken Helicopter", [ "dit_cheli" ] = "From my friend's strange idea.",
-		[ "it_water" ] = "Water Bottle", [ "dit_water" ] = "",
-		[ "it_shovel" ] = "Shovel", [ "dit_shovel" ] = "",
-		[ "it_pot" ] = "Alchemist's Pot", [ "dit_pot" ] = "Put in some items to get a mineral.",
-		[ "it_rainbowbar" ] = "Rainbow Ingot", [ "dit_rainbowbar" ] = "<color=0,0,255>☆</color><color=255,0,255>☆</color><color=0,255,0>☆</color><color=255,255,0>☆</color><color=255,0,0>☆</color><color=255,255,255>☆</color>.",
-		[ "it_junku" ] = "Unrecycle Bin", [ "dit_junku" ] = "Turns everything into junks. Ur welcome.",
-		[ "it_exp1" ] = "Basic Book", [ "dit_exp1" ] = "Gives the user 40 EXPs.\nEXPs beyond level requirements will be ignored.\nCannot be used when the user's level is above 100.",
-		[ "it_exp2" ] = "Improved Book", [ "dit_exp2" ] = "Gives the user 160 EXPs.\nEXPs beyond level requirements will be ignored.\nCannot be used when the user's level is above 100.",
-		[ "it_exp3" ] = "Advanced Book", [ "dit_exp3" ] = "Gives the user 400 EXPs.\nEXPs beyond level requirements will be ignored.\nCannot be used when the user's level is above 100.",
-		[ "it_exp4" ] = "Mega Book", [ "dit_exp4" ] = "Level up the user.\nEXPs beyond level requirements will be ignored",
+		[ "it_camera" ] 	= "Camera", [ "dit_camera" ] 			= "",
+		[ "it_ammo" ] 		= "Ammo", [ "dit_ammo" ] 			= "A box of random ammo.",
+		[ "it_ammocan1" ] 	= "Ammo Box", [ "dit_ammocan1" ] 		= "Secure ammo box, keep it away from fire.",
+		[ "it_ammocan2" ] 	= "Weapon Stash", [ "dit_ammocan2" ] 		= "Secure weapon boxes, extremely hard to open.",
+		[ "it_firearm1" ] 	= "Rusty Gun", [ "dit_firearm1" ] 		= "Will go off easily.",
+		[ "it_firearm2" ] 	= "Gun", [ "dit_firearm2" ] 			= "Still good as new.",
+		[ "it_grenade" ] 	= "Frag Grenade", [ "dit_grenade" ] 		= "",
+		[ "it_flashbang" ] 	= "Flashbang", [ "dit_flashbang" ] 		= "",
+		[ "it_launcher" ] 	= "Rocket Launcher", [ "dit_launcher" ] 	= "",
+		[ "it_bait2" ] 		= "Improved Bait Box", [ "dit_bait2" ] 		= "Contains 3 random uncommon baits. Break to open.",
+		[ "it_bait3" ] 		= "Advanced Bait Box", [ "dit_bait3" ] 		= "Contains 3 random rare baits. Break to open.",
+		[ "it_crate2" ] 	= "Big Crate", [ "dit_crate2" ] 		= "There are more things in this crate. Break to open.",
+		[ "it_crate3" ] 	= "Supply Crate", [ "dit_crate3" ] 		= "Contains some supplies.",
+		[ "it_car" ] 		= "Car", [ "dit_car" ] 				= "Is it still driveable? Let's find out ...",
+		[ "it_bread1" ] 	= "Burnt Bread", [ "dit_bread1" ] 		= "Caner warning.",
+		[ "it_bread2" ] 	= "Bread", [ "dit_bread2" ] 			= "Do not teleport.",
+		[ "cr_bread" ] 		= "Bread Monster", [ "dcr_bread" ] 		= "I told you DO NOT TELEPORT.",
+		[ "it_pumpkin1" ] 	= "Pumpkin", [ "dit_pumpkin1" ] 		= "Common pumpkin.",
+		[ "it_pumpkin2" ] 	= "Big Pumpkin", [ "dit_pumpkin2" ] 		= "Uncommon pumpkin.",
+		[ "it_pumpki" ] 	= "Pumpkin Chunk", [ "dit_pumpki" ] 		= "",
+		[ "it_mush1" ] 		= "Mushroom", [ "dit_mush1" ] 			= "",
+		[ "it_mush2" ] 		= "Poisonous Mushroom", [ "dit_mush2" ] 	= "",
+		[ "it_pmetal" ] 	= "Strange Metal Plate", [ "dit_pmetal" ] 	= "Cyberuseless.",
+		[ "it_pradio" ] 	= "Radio", [ "dit_pradio" ] 			= "Tirelessly playing the same music.",
+		[ "it_pcube" ] 		= "Companion Cube", [ "dit_pcube" ] 		= "An ordinary cube, can be destroyed with fire.",
+		[ "it_pcore" ] 		= "Personality Core", [ "dit_pcore" ] 		= "Talkactive core buddy.",
+		[ "it_pturre1" ] 	= "Turret", [ "dit_pturre1" ] 			= "Friendly turret that attacks creatures( including birds ).",
+		[ "it_pturre2" ] 	= "Broken Turret", [ "dit_pturre2" ] 		= "Friendly turret that attacks creatures( including birds ). Quite broken and unstable.",
+		[ "it_cmetal" ] 	= "Strange Metal Plate", [ "dit_cmetal" ] 	= "Cyberuseless.",
+		[ "it_ccore" ] 		= "Unstable Power Core", [ "dit_ccore" ] 	= "",
+		[ "it_chopper" ] 	= "Hopper Mine", [ "dit_chopper" ] 		= "Something isn't right.",
+		[ "it_chealth" ] 	= "Health Charger", [ "dit_chealth" ] 		= "Spend 200 to refill your health.",
+		[ "it_carmor" ] 	= "Suit Charger", [ "dit_carmor" ] 		= "Spend 100 to refill your armor.",
+		[ "it_csuper" ] 	= "Super Charger", [ "dit_csuper" ] 		= "Spend 150 to refill your health and armor.",
+		[ "it_cturret" ] 	= "Turret", [ "dit_cturret" ] 			= "Friendly turret that attacks creatures( including birds ).",
+		[ "it_cscanner" ] 	= "Scanner", [ "dit_cscanner" ] 		= "Will fly around its target and take LOTS of pictures.",
+		[ "it_cthumper" ] 	= "Thumper", [ "dit_cthumper" ] 		= "Noisy.",
+		[ "it_gballoon" ] 	= "Balloon", [ "dit_gballoon" ] 		= "",
+		[ "it_gballoox" ] 	= "Balloon Box", [ "dit_gballoox" ] 		= "",
+		[ "it_gfood" ] 		= "Junk Food", [ "dit_gfood" ] 			= "Why not?",
+		[ "it_cheli" ] 		= "Broken Helicopter", [ "dit_cheli" ] 		= "From my friend's strange idea.",
+		[ "it_water" ] 		= "Water Bottle", [ "dit_water" ] 		= "",
+		[ "it_shovel" ] 	= "Shovel", [ "dit_shovel" ] 			= "",
+		[ "it_pot" ] 		= "Alchemist's Pot", [ "dit_pot" ] 		= "Put in some items to get a mineral.",
+		[ "it_rainbowbar" ] 	= "Rainbow Ingot", [ "dit_rainbowbar" ] 	= "<color=0,0,255>☆</color><color=255,0,255>☆</color><color=0,255,0>☆</color><color=255,255,0>☆</color><color=255,0,0>☆</color><color=255,255,255>☆</color>.",
+		[ "it_junku" ] 		= "Unrecycle Bin", [ "dit_junku" ] 		= "Turns everything into junks. Ur welcome.",
+		[ "it_exp1" ] 		= "Basic Book", [ "dit_exp1" ] 			= "Gives the user 40 EXPs.\nEXPs beyond level requirements will be ignored.\nCannot be used when the user's level is above 100.",
+		[ "it_exp2" ] 		= "Improved Book", [ "dit_exp2" ] 		= "Gives the user 160 EXPs.\nEXPs beyond level requirements will be ignored.\nCannot be used when the user's level is above 100.",
+		[ "it_exp3" ] 		= "Advanced Book", [ "dit_exp3" ] 		= "Gives the user 400 EXPs.\nEXPs beyond level requirements will be ignored.\nCannot be used when the user's level is above 100.",
+		[ "it_exp4" ] 		= "Mega Book", [ "dit_exp4" ] 			= "Level up the user.\nEXPs beyond level requirements will be ignored",
 	}
+	
 	local ln = GetConVar( "gmod_language" ):GetString()  local lg = "en"
 	if ln != nil and istable( langs[ ln ] ) then lg = GetConVar( "gmod_language" ):GetString() end
 	for holder, text in pairs( langs[ lg ] ) do language.Add( "xdefm."..holder, text ) end
 end local Mat = Material( "sprites/light_glow02_add" ) Mat:SetInt( "$ignorez", 1 ) 
 
 if true then local it = "it_camera"
-	local ITEM = { Name = "#xdefm."..it, Type = "Useless", Model = "models/maxofs2d/camera.mdl"
-	, Helper = "#xdefm.d"..it, Rarity = 3, Price = 500, PhysSound = "weapon.ImpactHard", TickRate = 0.1, HelperUse = "xdefm.U2" }
+	local ITEM = {
+		Name = "#xdefm."..it,
+		Type = "Useless",
+		Model = "models/maxofs2d/camera.mdl",
+		Helper = "#xdefm.d"..it,
+		Rarity = 3,
+		Price = 500,
+		PhysSound = "weapon.ImpactHard",
+		TickRate = 0.1,
+		HelperUse = "xdefm.U2"
+	}
 	function ITEM:OnInit( self ) self.xdefm_NextFire = 0 end
 	function ITEM:OnUse( self, ply ) if self.xdefm_NextFire > CurTime() or !ply:IsPlayer() then return false end if ply:KeyDown( IN_SPEED ) then return true end
 		self.xdefm_NextFire = CurTime() +0.5  self:SetNWBool( "XDEFM_PT", true ) self:EmitSound( "NPC_CScanner.TakePhoto" )
@@ -128,10 +139,22 @@ if true then local it = "it_camera"
 	end
 	xdefm_ItemRegister( it, ITEM )
 end
+
 if true then local it = "it_ammo"
-	local ITEM = { Name = "#xdefm."..it, Type = "Useless", Model = { "models/Items/BoxBuckshot.mdl", "models/Items/BoxMRounds.mdl", "models/Items/BoxSRounds.mdl",
-	"models/Items/357ammo.mdl", "models/Items/combine_rifle_cartridge01.mdl" }, HelperUse = "xdefm.U2", Helper = "#xdefm.d"..it, Rarity = 2, Price = 250,
-	CantCook = true, PhysSound = "weapon.ImpactHard", TickRate = 0.1, CantCook = true }
+	local ITEM = {
+		Name = "#xdefm."..it,
+		Type = "Useless",
+		Model = { "models/Items/BoxBuckshot.mdl", "models/Items/BoxMRounds.mdl", "models/Items/BoxSRounds.mdl",
+				"models/Items/357ammo.mdl", "models/Items/combine_rifle_cartridge01.mdl" },
+		HelperUse = "xdefm.U2",
+		Helper = "#xdefm.d"..it,
+		Rarity = 2,
+		Price = 250,
+		CantCook = true,
+		PhysSound = "weapon.ImpactHard",
+		TickRate = 0.1,
+		CantCook = true
+	}
 	local tb = {
 		[ "models/items/boxbuckshot.mdl" ] = { "Weapon_Shotgun.NPC_Single", 7, 8, "Buckshot", 200 },
 		[ "models/items/boxmrounds.mdl" ] = { "Weapon_SMG1.NPC_Single", 1, 4, "SMG1", 450 },
@@ -178,9 +201,17 @@ if true then local it = "it_ammo"
 	end
 	xdefm_ItemRegister( it, ITEM )
 end
+
 if true then local it = "it_ammocan1"
-	local ITEM = { Name = "#xdefm."..it, Type = "Useless", Model = "models/props/de_prodigy/ammo_can_02.mdl",
-	Helper = "#xdefm.d"..it, Rarity = 3, Price = 750, PhysSound = "Metal_Box.ImpactSoft" }
+	local ITEM = {
+		Name = "#xdefm."..it,
+		Type = "Useless",
+		Model = "models/props/de_prodigy/ammo_can_02.mdl",
+		Helper = "#xdefm.d"..it,
+		Rarity = 3,
+		Price = 750,
+		PhysSound = "Metal_Box.ImpactSoft"
+	}
 	function ITEM:OnInit( self ) self:SetMaxHealth( 100 ) self:SetHealth( self:GetMaxHealth() ) self.xdefm_Killed = false end
 	function ITEM:OnDamaged( self, dmg ) if self:Health() <= 0 or self.xdefm_Killed then return end
 		if ( dmg:IsBulletDamage() or dmg:IsExplosionDamage() or dmg:IsDamageType( DMG_BURN ) or dmg:IsDamageType( DMG_SLOWBURN ) ) then dmg:ScaleDamage( 5 ) self:Ignite( 3600 ) end
@@ -198,9 +229,21 @@ if true then local it = "it_ammocan1"
 	end
 	xdefm_ItemRegister( it, ITEM )
 end
+
 if true then local it = "it_ammocan2"
-	local ITEM = { Name = "#xdefm."..it, Type = "Useless", Model = { "models/props/de_prodigy/ammo_can_01.mdl", "models/props/de_prodigy/ammo_can_03.mdl" }, Carryable = false,
-	Helper = "#xdefm.d"..it, Rarity = 4, Price = 2500, PhysSound = "Metal_Box.ImpactHard", Carryable = false }
+	local ITEM = {
+		Name = "#xdefm."..it,
+		Type = "Useless",
+		Model = {
+			"models/props/de_prodigy/ammo_can_01.mdl", "models/props/de_prodigy/ammo_can_03.mdl"
+			},
+		Carryable = false,
+		Helper = "#xdefm.d"..it,
+		Rarity = 4,
+		Price = 2500,
+		PhysSound = "Metal_Box.ImpactHard",
+		Carryable = false
+	}
 	function ITEM:OnInit( self ) self:SetMaxHealth( 250 ) self:SetHealth( self:GetMaxHealth() ) self.xdefm_Killed = false end
 	function ITEM:OnDamaged( self, dmg ) if self:Health() <= 0 or self.xdefm_Killed then return end
 		if ( dmg:IsBulletDamage() or dmg:IsExplosionDamage() or dmg:IsDamageType( DMG_BURN ) or dmg:IsDamageType( DMG_SLOWBURN ) ) then dmg:ScaleDamage( 5 ) self:Ignite( 3600 ) end
@@ -217,14 +260,29 @@ if true then local it = "it_ammocan2"
 	end
 	xdefm_ItemRegister( it, ITEM )
 end
+
 if true then local it = "it_firearm1"
-	local ITEM = { Name = "#xdefm."..it, Type = "Useless", Model = { "models/weapons/w_pist_deagle.mdl", "models/weapons/w_mach_m249para.mdl",
-		"models/weapons/w_shot_xm1014.mdl", "models/weapons/w_shot_m3super90.mdl",
-		"models/weapons/w_smg_mp5.mdl", "models/weapons/w_smg_p90.mdl", "models/weapons/w_smg_ump45.mdl",
-		"models/weapons/w_rif_ak47.mdl", "models/weapons/w_rif_m4a1.mdl", "models/weapons/w_rif_sg552.mdl", "models/weapons/w_rif_aug.mdl",
-		"models/weapons/w_pist_usp.mdl", "models/weapons/w_pist_fiveseven.mdl", "models/weapons/w_pist_glock18.mdl",
-		"models/weapons/w_snip_scout.mdl", "models/weapons/w_snip_awp.mdl", "models/weapons/w_snip_g3sg1.mdl", "models/weapons/w_snip_sg550.mdl"
-	}, Helper = "#xdefm.d"..it, Rarity = 2, Price = 400, PhysSound = "weapon.ImpactHard", TickRate = 0.01, HelperUse = "xdefm.U2" }
+	local ITEM = {
+		Name = "#xdefm."..it,
+		Type = "Useless",
+		Model = { 
+			"models/weapons/w_pist_deagle.mdl", "models/weapons/w_mach_m249para.mdl",
+			"models/weapons/w_shot_xm1014.mdl", "models/weapons/w_shot_m3super90.mdl",
+			"models/weapons/w_smg_mp5.mdl", "models/weapons/w_smg_p90.mdl",
+			"models/weapons/w_smg_ump45.mdl", "models/weapons/w_rif_ak47.mdl",
+			"models/weapons/w_rif_m4a1.mdl", "models/weapons/w_rif_sg552.mdl", 
+			"models/weapons/w_rif_aug.mdl", "models/weapons/w_pist_usp.mdl",
+			"models/weapons/w_pist_fiveseven.mdl", "models/weapons/w_pist_glock18.mdl",
+			"models/weapons/w_snip_scout.mdl", "models/weapons/w_snip_awp.mdl",
+			"models/weapons/w_snip_g3sg1.mdl", "models/weapons/w_snip_sg550.mdl"
+			},
+		Helper = "#xdefm.d"..it,
+		Rarity = 2,
+		Price = 400,
+		PhysSound = "weapon.ImpactHard",
+		TickRate = 0.01,
+		HelperUse = "xdefm.U2"
+	}
 	ITEM.Constants = { Broken = true }
 	local tb = {
 		[ "models/weapons/w_shot_xm1014.mdl" ] = { ")weapons/xm1014/xm1014-1.wav", 6, 8, 0.5 },
@@ -276,20 +334,47 @@ if true then local it = "it_firearm1"
 	function ITEM:OnRemove( self ) if self.xdefm_Snd then self.xdefm_Snd:Stop() self.xdefm_Snd = nil end end
 	xdefm_ItemRegister( it, ITEM )
 end
+
 if true then local it = "it_firearm2"
-	local ITEM = { Name = "#xdefm."..it, Type = "Useless", Model = { "models/weapons/w_pist_deagle.mdl", "models/weapons/w_mach_m249para.mdl",
-		"models/weapons/w_shot_xm1014.mdl", "models/weapons/w_shot_m3super90.mdl",
-		"models/weapons/w_smg_mp5.mdl", "models/weapons/w_smg_p90.mdl", "models/weapons/w_smg_ump45.mdl",
-		"models/weapons/w_rif_ak47.mdl", "models/weapons/w_rif_m4a1.mdl", "models/weapons/w_rif_sg552.mdl", "models/weapons/w_rif_aug.mdl",
-		"models/weapons/w_pist_usp.mdl", "models/weapons/w_pist_fiveseven.mdl", "models/weapons/w_pist_glock18.mdl",
-		"models/weapons/w_snip_scout.mdl", "models/weapons/w_snip_awp.mdl", "models/weapons/w_snip_g3sg1.mdl", "models/weapons/w_snip_sg550.mdl"
-	}, Helper = "#xdefm.d"..it, Rarity = 3, Price = 800, PhysSound = "weapon.ImpactHard", TickRate = 0.01, HelperUse = "xdefm.U2" }
+	local ITEM = {
+		Name = "#xdefm."..it,
+		Type = "Useless",
+		Model = { 
+			"models/weapons/w_pist_deagle.mdl", "models/weapons/w_mach_m249para.mdl",
+			"models/weapons/w_shot_xm1014.mdl", "models/weapons/w_shot_m3super90.mdl",
+			"models/weapons/w_smg_mp5.mdl", "models/weapons/w_smg_p90.mdl",
+			"models/weapons/w_smg_ump45.mdl", "models/weapons/w_rif_ak47.mdl",
+			"models/weapons/w_rif_m4a1.mdl", "models/weapons/w_rif_sg552.mdl", 
+			"models/weapons/w_rif_aug.mdl", "models/weapons/w_pist_usp.mdl",
+			"models/weapons/w_pist_fiveseven.mdl", "models/weapons/w_pist_glock18.mdl",
+			"models/weapons/w_snip_scout.mdl", "models/weapons/w_snip_awp.mdl", 
+			"models/weapons/w_snip_g3sg1.mdl", "models/weapons/w_snip_sg550.mdl"
+			},
+		Helper = "#xdefm.d"..it,
+		Rarity = 3,
+		Price = 800,
+		PhysSound = "weapon.ImpactHard",
+		TickRate = 0.01,
+		HelperUse = "xdefm.U2"
+	}
 	ITEM.Constants = { Broken = false }
 	xdefm_ItemBased( "it_firearm1", it, ITEM )
 end
+
 if true then local it = "it_grenade"
-	local ITEM = { Name = "#xdefm."..it, Type = "Useless", Model = { "models/weapons/w_eq_fraggrenade.mdl", "models/Items/grenadeAmmo.mdl" },
-	Helper = "#xdefm.d"..it, Rarity = 2, Price = 300, PhysSound = "weapon.ImpactHard", TickRate = 1, HelperUse = "xdefm.U2" }
+	local ITEM = {
+		Name = "#xdefm."..it,
+		Type = "Useless",
+		Model = {
+			"models/weapons/w_eq_fraggrenade.mdl", "models/Items/grenadeAmmo.mdl"
+			},
+		Helper = "#xdefm.d"..it,
+		Rarity = 2,
+		Price = 300,
+		PhysSound = "weapon.ImpactHard",
+		TickRate = 1,
+		HelperUse = "xdefm.U2"
+	}
 	function ITEM:OnInit( self ) self.xdefm_Trigger = 0  self.xdefm_Killed = false end
 	function ITEM:OnCaught( self ) if self.xdefm_Trigger > 0 or self.xdefm_Killed then return end
 		self:EmitSound( "weapons/pinpull.wav" ) self.xdefm_Trigger = CurTime() +5  self:SetNWBool( "XDEFMod_PP", true )
@@ -321,9 +406,19 @@ if true then local it = "it_grenade"
 	end
 	xdefm_ItemRegister( it, ITEM )
 end
+
 if true then local it = "it_flashbang"
-	local ITEM = { Name = "#xdefm."..it, Type = "Useless", Model = "models/weapons/w_eq_flashbang.mdl",
-	Helper = "#xdefm.d"..it, Rarity = 2, Price = 250, PhysSound = "weapon.ImpactHard", TickRate = 1, HelperUse = "xdefm.U2" }
+	local ITEM = {
+		Name = "#xdefm."..it,
+		Type = "Useless",
+		Model = "models/weapons/w_eq_flashbang.mdl",
+		Helper = "#xdefm.d"..it,
+		Rarity = 2,
+		Price = 250,
+		PhysSound = "weapon.ImpactHard",
+		TickRate = 1,
+		HelperUse = "xdefm.U2"
+	}
 	function ITEM:OnInit( self ) self.xdefm_Trigger = 0  self.xdefm_Killed = false end
 	function ITEM:OnCaught( self ) if self.xdefm_Trigger > 0 or self.xdefm_Killed then return end
 		self:EmitSound( "weapons/pinpull.wav" ) self.xdefm_Trigger = CurTime() +5  self:SetNWBool( "XDEFMod_PP", true )
@@ -352,9 +447,19 @@ if true then local it = "it_flashbang"
 	end
 	xdefm_ItemRegister( it, ITEM )
 end
+
 if true then local it = "it_launcher"
-	local ITEM = { Name = "#xdefm."..it, Type = "Useless", Model = "models/weapons/w_physics.mdl",
-	Helper = "#xdefm.d"..it, Rarity = 5, Price = 4500, PhysSound = "weapon.ImpactHard", TickRate = 0.1, HelperUse = "xdefm.U2" }
+	local ITEM = {
+		Name = "#xdefm."..it,
+		Type = "Useless",
+		Model = "models/weapons/w_physics.mdl",
+		Helper = "#xdefm.d"..it,
+		Rarity = 5,
+		Price = 4500,
+		PhysSound = "weapon.ImpactHard",
+		TickRate = 0.1,
+		HelperUse = "xdefm.U2"
+	}
 	function ITEM:OnInit( self ) self.xdefm_NextFire = 0  self:SetUseType( CONTINUOUS_USE ) end
 	function ITEM:OnUse( self, ply ) if self.xdefm_NextFire > CurTime() or !ply:IsPlayer() then return false end if ply:KeyDown( IN_SPEED ) then return true end
 		local att = self:GetAttachment( 1 ) if !att then return false end local rok = ents.Create( "rpg_missile" )
@@ -370,10 +475,25 @@ if true then local it = "it_launcher"
 	end
 	xdefm_ItemRegister( it, ITEM )
 end
+
 if true then local it = "it_car"
-	local ITEM = { Name = "#xdefm."..it, Type = "Useless", Model = { "models/props_vehicles/car003a_physics.mdl", "models/props_vehicles/car003b_physics.mdl",
-	"models/props_vehicles/car002b_physics.mdl", "models/props_vehicles/car004a_physics.mdl", "models/props_vehicles/car004b_physics.mdl", "models/props_vehicles/car005a_physics.mdl",
-	"models/props_vehicles/car005b_physics.mdl" }, Helper = "#xdefm.d"..it, Rarity = 4, Price = 1280, Carryable = false, PhysSound = "MetalVehicle.ImpactSoft", TickRate = 0.1, HelperUse = "xdefm.U2" }
+	local ITEM = {
+		Name = "#xdefm."..it,
+		Type = "Useless",
+		Model = {
+			"models/props_vehicles/car003a_physics.mdl", "models/props_vehicles/car003b_physics.mdl",
+			"models/props_vehicles/car002b_physics.mdl", "models/props_vehicles/car004a_physics.mdl",
+			"models/props_vehicles/car004b_physics.mdl", "models/props_vehicles/car005a_physics.mdl",
+			"models/props_vehicles/car005b_physics.mdl"
+			},
+		Helper = "#xdefm.d"..it,
+		Rarity = 4,
+		Price = 1280,
+		Carryable = false,
+		PhysSound = "MetalVehicle.ImpactSoft",
+		TickRate = 0.1,
+		HelperUse = "xdefm.U2"
+	}
 	function ITEM:OnInit( self ) self.xdefm_NextRun = 0  self.xdefm_Killed = false
 	self.xdefm_Snd = nil  self:SetMaxHealth( 400 ) self:SetHealth( self:GetMaxHealth() ) end
 	function ITEM:OnReady( self ) self:GetPhysicsObject():SetMass( self:GetPhysicsObject():GetMass()*0.01 ) end
@@ -412,9 +532,19 @@ if true then local it = "it_car"
 	function ITEM:OnRemove( self ) if self.xdefm_Snd then self.xdefm_Snd:Stop() self.xdefm_Snd = nil end end
 	xdefm_ItemRegister( it, ITEM )
 end
+
 if true then local it = "it_bread1"
-	local ITEM = { Name = "#xdefm."..it, Type = "Useless", Model = "models/weapons/c_models/c_bread/c_bread_burnt.mdl",
-	Helper = "#xdefm.d"..it, Rarity = 1, Price = 60, PhysSound = "Flesh.ImpactSoft", HelperUse = "xdefm.U2", CantCook = true }
+	local ITEM = {
+		Name = "#xdefm."..it,
+		Type = "Useless",
+		Model = "models/weapons/c_models/c_bread/c_bread_burnt.mdl",
+		Helper = "#xdefm.d"..it,
+		Rarity = 1,
+		Price = 60,
+		PhysSound = "Flesh.ImpactSoft",
+		HelperUse = "xdefm.U2",
+		CantCook = true
+	}
 	function ITEM:OnInit( self ) self.xdefm_Used = false end
 	function ITEM:OnUse( self, ent ) if self.xdefm_Used then return end if ent:Health() >= ent:GetMaxHealth() then return true end
 		if ent:KeyDown( IN_SPEED ) then return true end ent:SetHealth( math.min( ent:GetMaxHealth(), ent:Health() +math.random( 2, 10 ) ) )
@@ -422,11 +552,23 @@ if true then local it = "it_bread1"
 	end
 	xdefm_ItemRegister( it, ITEM )
 end
+
 if true then local it = "it_bread2"
-	local ITEM = { Name = "#xdefm."..it, Type = "Useless", Model = { "models/weapons/c_models/c_bread/c_bread_cinnamon.mdl",
-	"models/weapons/c_models/c_bread/c_bread_cornbread.mdl", "models/weapons/c_models/c_bread/c_bread_crumpet.mdl", "models/weapons/c_models/c_bread/c_bread_plainloaf.mdl",
-	"models/weapons/c_models/c_bread/c_bread_pretzel.mdl", "models/weapons/c_models/c_bread/c_bread_ration.mdl", "models/weapons/c_models/c_bread/c_bread_russianblack.mdl" },
-	Helper = "#xdefm.d"..it, Rarity = 2, Price = 250, PhysSound = "Flesh.ImpactSoft", HelperUse = "xdefm.U2" }
+	local ITEM = {
+		Name = "#xdefm."..it,
+		Type = "Useless",
+		Model = {
+			"models/weapons/c_models/c_bread/c_bread_cinnamon.mdl", "models/weapons/c_models/c_bread/c_bread_cornbread.mdl",
+			"models/weapons/c_models/c_bread/c_bread_crumpet.mdl", "models/weapons/c_models/c_bread/c_bread_plainloaf.mdl",
+			"models/weapons/c_models/c_bread/c_bread_pretzel.mdl", "models/weapons/c_models/c_bread/c_bread_ration.mdl",
+			"models/weapons/c_models/c_bread/c_bread_russianblack.mdl"
+			},
+		Helper = "#xdefm.d"..it,
+		Rarity = 2,
+		Price = 250,
+		PhysSound = "Flesh.ImpactSoft",
+		HelperUse = "xdefm.U2"
+	}
 	function ITEM:OnInit( self ) self.xdefm_Used = false end
 	function ITEM:OnUse( self, ent ) if self.xdefm_Used then return end if ent:Health() >= ent:GetMaxHealth() then return true end
 		if ent:KeyDown( IN_SPEED ) then return true end local met = xdefm_CookMeter( self:GetFMod_DT() )
@@ -435,6 +577,7 @@ if true then local it = "it_bread2"
 	end
 	xdefm_ItemRegister( it, ITEM )
 end
+
 if true then local it = "cr_bread"
 	sound.Add( { name = "xdefm.BreadAlert", channel = CHAN_VOICE, volume = 1, level = 75, pitch = 100,
 	sound = { "weapons/breadmonster/sapper/bm_sapper_scream_01.wav", "weapons/breadmonster/sapper/bm_sapper_scream_02.wav" } } )
