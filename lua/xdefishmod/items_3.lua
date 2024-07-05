@@ -332,7 +332,7 @@ items.it_firearm2 = {
 		HelperUse = "xdefm.U2"
 	}
 	items.it_firearm2.Constants = { Broken = false }
-	xdefm_ItemBased( "it_firearm1", it, items.it_firearm2 )
+	xdefm_ItemBased( "it_firearm1", items.it_firearm2, items.it_firearm2 )
 
 items.it_grenade = {
 		Type = "Uncommon",
