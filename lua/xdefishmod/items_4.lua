@@ -1,107 +1,107 @@
 if CLIENT then local langs = {}
 	langs[ "zh-CN" ] = {
-		[ "it_slot" ] = "老虎机", [ "dit_slot" ] = "我第一个写的脚本实体就是像这样子的老虎机,我会把这段记忆保存在这里.\n花费1000鱼币玩一次.",
-		[ "it_gballoom" ] = "气球机", [ "dit_gballoom" ] = "花费100鱼币吹一个气球.",
-		[ "it_atm" ] = "ATM机", [ "dit_atm" ] = "放入的鱼币每一分钟增长1%. 最高一分钟10000. Shift+E取钱.",
-		[ "it_refill" ] = "恢复包", [ "dit_refill" ] = "回满你的血量和护甲. 可以复活生物.",
-		[ "it_fridge" ] = "冰箱", [ "dit_fridge" ] = "打碎以开启.",
-		[ "it_supply" ] = "补给箱", [ "dit_supply" ] = "购买一些武器弹药.",
-		[ "it_egg" ] = "卵", [ "dit_egg" ] = "砸烂之后生成一只鸟.",
-		[ "cr_knight" ] = "棋子", [ "dcr_knight" ] = "没事它是无害的.",
-		[ "it_tungstenbar" ] = "钨锭", [ "dit_tungstenbar" ] = "一块钨.",
-		[ "it_clocked" ] = "联合军锁", [ "dit_clocked" ] = "一张地图总有一个被这玩意儿锁住的门.",
-		[ "it_coin2" ] = "稀有银币", [ "dit_coin2" ] = "银币闪烁着不寻常的光.",
-		[ "it_treasure" ] = "宝藏箱", [ "dit_treasure" ] = "装有一些宝物.",
-		[ "cr_pigeon" ] = "鸽子", [ "dcr_pigeon" ] = "友好的鸽子.",
-		[ "it_expr" ] = "报纸", [ "dit_expr" ] = "获得少量经验.",
-		[ "it_exps" ] = "报纸捆", [ "dit_exps" ] = "",
-		[ "it_chemical" ] = "化学药剂", [ "dit_chemical" ] = "",
-		[ "it_antibird" ] = "静电球", [ "dit_antibird" ] = "消灭一只海鸥后破碎.",
-		[ "it_printer" ] = "打印机", [ "dit_printer" ] = "放入一瓶化学试剂和一卷纸合成一张报纸.",
-		[ "it_server" ] = "研究电脑", [ "dit_server" ] = "每20秒生成一点经验值,最高300.",
-		[ "it_miner" ] = "鱼币矿机", [ "dit_miner" ] = "每2秒生成一点鱼币,最高10000.",
-		[ "it_tesla" ] = "电击塔", [ "dit_tesla" ] = "放入电池可以自动攻击海鸥.",
-		[ "it_cooler" ] = "饮水机", [ "dit_cooler" ] = "购买纯净水.",
-		[ "it_ejunk" ] = "电子垃圾", [ "dit_ejunk" ] = "全都被水泡坏了.",
-		[ "it_jumppad" ] = "跳板", [ "dit_jumppad" ] = "踩上去能跳的很高.",
-		[ "it_flower" ] = "花朵", [ "dit_flower" ] = "散发着令人愉悦的味道.",
-		[ "it_stove4" ] = "豪华炉灶", [ "dit_stove4" ] = "炉灶烘烤过的物品可以增值. 可以调整火力.",
-		[ "it_stove5" ] = "智能炉灶", [ "dit_stove5" ] = "炉灶烘烤过的物品可以增值. 能检测物品烘烤程度并自动关闭.",
-		[ "it_microwave" ] = "微波炉", [ "dit_microwave" ] = "缓慢,但是很安全.",
-		[ "it_metal2" ] = "金属片", [ "dit_metal2" ] = "",
-		[ "it_wood2" ] = "木板", [ "dit_wood2" ] = "",
-		[ "it_glass2" ] = "玻璃板", [ "dit_glass2" ] = "",
-		[ "it_stone2" ] = "水泥袋", [ "dit_stone2" ] = "",
-		[ "it_glass3" ] = "钢化玻璃板", [ "dit_glass3" ] = "",
-		[ "it_plastic" ] = "塑料板", [ "dit_plastic" ] = "",
-		[ "it_bag1" ] = "任务奖励 LV1", [ "dit_bag1" ] = "按E打开.",
-		[ "it_bag2" ] = "任务奖励 LV2", [ "dit_bag2" ] = "按E打开.",
-		[ "it_bag3" ] = "任务奖励 LV3", [ "dit_bag3" ] = "按E打开.",
-		[ "it_bag4" ] = "任务奖励 LV4", [ "dit_bag4" ] = "按E打开.",
-		[ "it_cage" ] = "蟹笼", [ "dit_cage" ] = "放入鱼饵沉入水底来捕捉生物. 可能会被鱼挤爆.",
-		[ "it_auto" ] = "自动钓鱼机™", [ "dit_auto" ] = "将机器放入水中可以自动钓鱼. 别忘了放鱼饵.",
-		[ "it_propane" ] = "燃气瓶", [ "dit_propane" ] = "严禁烟火.",
-		[ "it_ore" ] = "废矿石", [ "dit_ore" ] = "",
-		[ "it_recipe1" ] = "初级图纸堆", [ "dit_recipe1" ] = "装有2张普通图纸,打碎以开启.",
-		[ "it_recipe2" ] = "进阶图纸堆", [ "dit_recipe2" ] = "装有2张罕见图纸,打碎以开启.",
-		[ "it_recipe3" ] = "高级图纸堆", [ "dit_recipe3" ] = "装有2张稀有图纸,打碎以开启.",
-		[ "it_bait4" ] = "大师鱼饵盒", [ "dit_bait4" ] = "盒子里装了3个史诗鱼饵,打碎以开启.",
-		[ "it_potato" ] = "洋芋", [ "dit_potato" ] = "",
-		[ "it_furnace1" ] = "石熔炉", [ "dit_furnace1" ] = "简单的矿石冶炼.",
-		[ "it_pipebomb" ] = "土质炸药", [ "dit_pipebomb" ] = "丢进水里有几率炸出死鱼.",
-		[ "it_mine2" ] = "水雷", [ "dit_mine2" ] = "崭新出厂. 触碰物品后爆炸.",
+		[ "it_slot" ] 		= "老虎机", [ "dit_slot" ] 		= "我第一个写的脚本实体就是像这样子的老虎机,我会把这段记忆保存在这里.\n花费1000鱼币玩一次.",
+		[ "it_gballoom" ] 	= "气球机", [ "dit_gballoom" ] 		= "花费100鱼币吹一个气球.",
+		[ "it_atm" ] 		= "ATM机", [ "dit_atm" ] 		= "放入的鱼币每一分钟增长1%. 最高一分钟10000. Shift+E取钱.",
+		[ "it_refill" ] 	= "恢复包", [ "dit_refill" ] 		= "回满你的血量和护甲. 可以复活生物.",
+		[ "it_fridge" ] 	= "冰箱", [ "dit_fridge" ] 		= "打碎以开启.",
+		[ "it_supply" ] 	= "补给箱", [ "dit_supply" ] 		= "购买一些武器弹药.",
+		[ "it_egg" ] 		= "卵", [ "dit_egg" ] 			= "砸烂之后生成一只鸟.",
+		[ "cr_knight" ] 	= "棋子", [ "dcr_knight" ] 		= "没事它是无害的.",
+		[ "it_tungstenbar" ] 	= "钨锭", [ "dit_tungstenbar" ] 	= "一块钨.",
+		[ "it_clocked" ] 	= "联合军锁", [ "dit_clocked" ] 		= "一张地图总有一个被这玩意儿锁住的门.",
+		[ "it_coin2" ] 		= "稀有银币", [ "dit_coin2" ] 		= "银币闪烁着不寻常的光.",
+		[ "it_treasure" ] 	= "宝藏箱", [ "dit_treasure" ] 		= "装有一些宝物.",
+		[ "cr_pigeon" ] 	= "鸽子", [ "dcr_pigeon" ] 		= "友好的鸽子.",
+		[ "it_expr" ] 		= "报纸", [ "dit_expr" ] 		= "获得少量经验.",
+		[ "it_exps" ] 		= "报纸捆", [ "dit_exps" ] 		= "",
+		[ "it_chemical" ] 	= "化学药剂", [ "dit_chemical" ] 	= "",
+		[ "it_antibird" ] 	= "静电球", [ "dit_antibird" ] 		= "消灭一只海鸥后破碎.",
+		[ "it_printer" ] 	= "打印机", [ "dit_printer" ] 		= "放入一瓶化学试剂和一卷纸合成一张报纸.",
+		[ "it_server" ] 	= "研究电脑", [ "dit_server" ] 		= "每20秒生成一点经验值,最高300.",
+		[ "it_miner" ] 		= "鱼币矿机", [ "dit_miner" ] 		= "每2秒生成一点鱼币,最高10000.",
+		[ "it_tesla" ] 		= "电击塔", [ "dit_tesla" ] 		= "放入电池可以自动攻击海鸥.",
+		[ "it_cooler" ] 	= "饮水机", [ "dit_cooler" ] 		= "购买纯净水.",
+		[ "it_ejunk" ] 		= "电子垃圾", [ "dit_ejunk" ] 		= "全都被水泡坏了.",
+		[ "it_jumppad" ] 	= "跳板", [ "dit_jumppad" ] 		= "踩上去能跳的很高.",
+		[ "it_flower" ] 	= "花朵", [ "dit_flower" ] 		= "散发着令人愉悦的味道.",
+		[ "it_stove4" ] 	= "豪华炉灶", [ "dit_stove4" ] 		= "炉灶烘烤过的物品可以增值. 可以调整火力.",
+		[ "it_stove5" ] 	= "智能炉灶", [ "dit_stove5" ] 		= "炉灶烘烤过的物品可以增值. 能检测物品烘烤程度并自动关闭.",
+		[ "it_microwave" ] 	= "微波炉", [ "dit_microwave" ] 	= "缓慢,但是很安全.",
+		[ "it_metal2" ] 	= "金属片", [ "dit_metal2" ] 		= "",
+		[ "it_wood2" ] 		= "木板", [ "dit_wood2" ] 		= "",
+		[ "it_glass2" ] 	= "玻璃板", [ "dit_glass2" ] 		= "",
+		[ "it_stone2" ] 	= "水泥袋", [ "dit_stone2" ] 		= "",
+		[ "it_glass3" ] 	= "钢化玻璃板", [ "dit_glass3" ] 	= "",
+		[ "it_plastic" ] 	= "塑料板", [ "dit_plastic" ] 		= "",
+		[ "it_bag1" ] 		= "任务奖励 LV1", [ "dit_bag1" ] 	= "按E打开.",
+		[ "it_bag2" ] 		= "任务奖励 LV2", [ "dit_bag2" ] 	= "按E打开.",
+		[ "it_bag3" ] 		= "任务奖励 LV3", [ "dit_bag3" ] 	= "按E打开.",
+		[ "it_bag4" ] 		= "任务奖励 LV4", [ "dit_bag4" ] 	= "按E打开.",
+		[ "it_cage" ] 		= "蟹笼", [ "dit_cage" ] 		= "放入鱼饵沉入水底来捕捉生物. 可能会被鱼挤爆.",
+		[ "it_auto" ] 		= "自动钓鱼机™", [ "dit_auto" ] 		= "将机器放入水中可以自动钓鱼. 别忘了放鱼饵.",
+		[ "it_propane" ] 	= "燃气瓶", [ "dit_propane" ] 		= "严禁烟火.",
+		[ "it_ore" ] 		= "废矿石", [ "dit_ore" ] 		= "",
+		[ "it_recipe1" ] 	= "初级图纸堆", [ "dit_recipe1" ] 	= "装有2张普通图纸,打碎以开启.",
+		[ "it_recipe2" ] 	= "进阶图纸堆", [ "dit_recipe2" ] 	= "装有2张罕见图纸,打碎以开启.",
+		[ "it_recipe3" ] 	= "高级图纸堆", [ "dit_recipe3" ] 	= "装有2张稀有图纸,打碎以开启.",
+		[ "it_bait4" ] 		= "大师鱼饵盒", [ "dit_bait4" ] 		= "盒子里装了3个史诗鱼饵,打碎以开启.",
+		[ "it_potato" ] 	= "洋芋", [ "dit_potato" ] 		= "",
+		[ "it_furnace1" ] 	= "石熔炉", [ "dit_furnace1" ] 		= "简单的矿石冶炼.",
+		[ "it_pipebomb" ] 	= "土质炸药", [ "dit_pipebomb" ] 	= "丢进水里有几率炸出死鱼.",
+		[ "it_mine2" ] 		= "水雷", [ "dit_mine2" ] 		= "崭新出厂. 触碰物品后爆炸.",
 	}
 	langs[ "en" ] = {
-		[ "it_slot" ] = "Slot Machine", [ "dit_slot" ] = "Since my first scripted entity is a slot machine like this, I decided to keep the memories here.\nSpend 1000 to play once.",
-		[ "it_gballoom" ] = "Balloon Machine", [ "dit_gballoom" ] = "Spend 100 for a balloon.",
-		[ "it_atm" ] = "ATM", [ "dit_atm" ] = "The money you put in grows by 1% every minute. Up to 10000. Withdraw by pressing Shift+E.",
-		[ "it_refill" ] = "Refill Kit", [ "dit_refill" ] = "Fulfill your health and armor. Can also revive creatures.",
-		[ "it_fridge" ] = "Fridge", [ "dit_fridge" ] = "Break to open.",
-		[ "it_supply" ] = "Supply Crate", [ "dit_supply" ] = "Buy some weapons and ammo.",
-		[ "it_egg" ] = "Egg", [ "dit_egg" ] = "Spawn a bird on break.",
-		[ "cr_knight" ] = "Knight", [ "dcr_knight" ] = "Don't worry it's harmless.",
-		[ "it_tungstenbar" ] = "Tungsten Ingot", [ "dit_tungstenbar" ] = "A bar of tungsten.",
-		[ "it_clocked" ] = "Lock", [ "dit_clocked" ] = "An campaign map always has a door locked by this thing.",
-		[ "it_coin2" ] = "Rare Coin", [ "dit_coin2" ] = "It shone with an unusual light.",
-		[ "it_treasure" ] = "Treasure Chest", [ "dit_treasure" ] = "Contains booty.",
-		[ "cr_pigeon" ] = "Pigeon", [ "dcr_pigeon" ] = "Friendly pet pigeon.",
-		[ "it_expr" ] = "Newspaper", [ "dit_expr" ] = "Gain small amount of exps.",
-		[ "it_exps" ] = "Newspaper Bundle", [ "dit_exps" ] = "",
-		[ "it_chemical" ] = "Chemicals", [ "dit_chemical" ] = "",
-		[ "it_antibird" ] = "Tesla Orb", [ "dit_antibird" ] = "Prevent bird attack once and break.",
-		[ "it_printer" ] = "Printer", [ "dit_printer" ] = "Insert 1 bottled chemicals and 1 paper roll to craft a piece of newspaper.",
-		[ "it_server" ] = "Research Server", [ "dit_server" ] = "Generate 1 exp every 20 seconds, up to 300.",
-		[ "it_miner" ] = "FishCoin Miner", [ "dit_miner" ] = "Generate 1 money every 2 seconds, up to 10000.",
-		[ "it_tesla" ] = "Tesla Tower", [ "dit_tesla" ] = "Insert batteries to attack birds.",
-		[ "it_cooler" ] = "Water Cooler", [ "dit_cooler" ] = "Buy some bottled water.",
-		[ "it_ejunk" ] = "E-Junk", [ "dit_ejunk" ] = "It's all soaked in water.",
-		[ "it_jumppad" ] = "Jump Pad", [ "dit_jumppad" ] = "Launch you to the sky on touch.",
-		[ "it_flower" ] = "Flower", [ "dit_flower" ] = "Give off a pleasant smell.",
-		[ "it_stove4" ] = "Deluxe Stove", [ "dit_stove4" ] = "Cooked items can increase in value. Has 3 fire modes.",
-		[ "it_stove5" ] = "Technology Stove", [ "dit_stove5" ] = "Cooked items can increase in value. Can detect baking degree and shut down automatically.",
-		[ "it_microwave" ] = "Microwave", [ "dit_microwave" ] = "Slow but safe.",
-		[ "it_metal2" ] = "Metal Sheet", [ "dit_metal2" ] = "",
-		[ "it_wood2" ] = "Wooden Board", [ "dit_wood2" ] = "",
-		[ "it_glass2" ] = "Glass Plate", [ "dit_glass2" ] = "",
-		[ "it_stone2" ] = "Concrete Bags", [ "dit_stone2" ] = "",
-		[ "it_glass3" ] = "Tempered Glass Plate", [ "dit_glass3" ] = "",
-		[ "it_plastic" ] = "Plastic Plate", [ "dit_plastic" ] = "",
-		[ "it_bag1" ] = "Quest Reward LV1", [ "dit_bag1" ] = "Press E to open.",
-		[ "it_bag2" ] = "Quest Reward LV2", [ "dit_bag2" ] = "Press E to open.",
-		[ "it_bag3" ] = "Quest Reward LV3", [ "dit_bag3" ] = "Press E to open.",
-		[ "it_bag4" ] = "Quest Reward LV4", [ "dit_bag4" ] = "Press E to open.",
-		[ "it_cage" ] = "Crab Cage", [ "dit_cage" ] = "Insert baits and sink it to the bottom to catch creatures. May break when it's full.",
-		[ "it_auto" ] = "Auto Fishing™", [ "dit_auto" ] = "Submerge it in water to fish automatically. Can also insert baits.",
-		[ "it_propane" ] = "Propane Tank", [ "dit_propane" ] = "No smoking.",
-		[ "it_ore" ] = "Metal Ore", [ "dit_ore" ] = "",
-		[ "it_recipe1" ] = "Basic Recipe Bundle", [ "dit_recipe1" ] = "Contains 2 random common recipes. Break to open.",
-		[ "it_recipe2" ] = "Improved Recipe Bundle", [ "dit_recipe2" ] = "Contains 2 random uncommon recipes. Break to open.",
-		[ "it_recipe3" ] = "Advanced Recipe Bundle", [ "dit_recipe3" ] = "Contains 2 random rare recipes. Break to open.",
-		[ "it_bait4" ] = "Master Bait Box", [ "dit_bait4" ] = "Contains 3 random epic baits. Break to open.",
-		[ "it_potato" ] = "Potato", [ "dit_potato" ] = "",
-		[ "it_furnace1" ] = "Stone Furnace", [ "dit_furnace1" ] = "Basic ore smelting.",
-		[ "it_pipebomb" ] = "Pipe Bomb", [ "dit_pipebomb" ] = "May catch fishes randomly when thrown into water.",
-		[ "it_mine2" ] = "Naval Mine", [ "dit_mine2" ] = "Good as new. Detonate after touching props.",
+		[ "it_slot" ] 		= "Slot Machine", [ "dit_slot" ] 		= "Since my first scripted entity is a slot machine like this, I decided to keep the memories here.\nSpend 1000 to play once.",
+		[ "it_gballoom" ] 	= "Balloon Machine", [ "dit_gballoom" ] 	= "Spend 100 for a balloon.",
+		[ "it_atm" ] 		= "ATM", [ "dit_atm" ] 				= "The money you put in grows by 1% every minute. Up to 10000. Withdraw by pressing Shift+E.",
+		[ "it_refill" ] 	= "Refill Kit", [ "dit_refill" ] 		= "Fulfill your health and armor. Can also revive creatures.",
+		[ "it_fridge" ] 	= "Fridge", [ "dit_fridge" ] 			= "Break to open.",
+		[ "it_supply" ] 	= "Supply Crate", [ "dit_supply" ] 		= "Buy some weapons and ammo.",
+		[ "it_egg" ] 		= "Egg", [ "dit_egg" ] 				= "Spawn a bird on break.",
+		[ "cr_knight" ] 	= "Knight", [ "dcr_knight" ] 			= "Don't worry it's harmless.",
+		[ "it_tungstenbar" ] 	= "Tungsten Ingot", [ "dit_tungstenbar" ] 	= "A bar of tungsten.",
+		[ "it_clocked" ] 	= "Lock", [ "dit_clocked" ] 			= "An campaign map always has a door locked by this thing.",
+		[ "it_coin2" ] 		= "Rare Coin", [ "dit_coin2" ] 			= "It shone with an unusual light.",
+		[ "it_treasure" ] 	= "Treasure Chest", [ "dit_treasure" ] 		= "Contains booty.",
+		[ "cr_pigeon" ] 	= "Pigeon", [ "dcr_pigeon" ] 			= "Friendly pet pigeon.",
+		[ "it_expr" ] 		= "Newspaper", [ "dit_expr" ] 			= "Gain small amount of exps.",
+		[ "it_exps" ] 		= "Newspaper Bundle", [ "dit_exps" ] 		= "",
+		[ "it_chemical" ] 	= "Chemicals", [ "dit_chemical" ] 		= "",
+		[ "it_antibird" ] 	= "Tesla Orb", [ "dit_antibird" ] 		= "Prevent bird attack once and break.",
+		[ "it_printer" ] 	= "Printer", [ "dit_printer" ] 			= "Insert 1 bottled chemicals and 1 paper roll to craft a piece of newspaper.",
+		[ "it_server" ] 	= "Research Server", [ "dit_server" ] 		= "Generate 1 exp every 20 seconds, up to 300.",
+		[ "it_miner" ] 		= "FishCoin Miner", [ "dit_miner" ] 		= "Generate 1 money every 2 seconds, up to 10000.",
+		[ "it_tesla" ] 		= "Tesla Tower", [ "dit_tesla" ] 		= "Insert batteries to attack birds.",
+		[ "it_cooler" ] 	= "Water Cooler", [ "dit_cooler" ] 		= "Buy some bottled water.",
+		[ "it_ejunk" ] 		= "E-Junk", [ "dit_ejunk" ] 			= "It's all soaked in water.",
+		[ "it_jumppad" ] 	= "Jump Pad", [ "dit_jumppad" ] 		= "Launch you to the sky on touch.",
+		[ "it_flower" ] 	= "Flower", [ "dit_flower" ] 			= "Give off a pleasant smell.",
+		[ "it_stove4" ] 	= "Deluxe Stove", [ "dit_stove4" ] 		= "Cooked items can increase in value. Has 3 fire modes.",
+		[ "it_stove5" ] 	= "Technology Stove", [ "dit_stove5" ] 		= "Cooked items can increase in value. Can detect baking degree and shut down automatically.",
+		[ "it_microwave" ] 	= "Microwave", [ "dit_microwave" ] 		= "Slow but safe.",
+		[ "it_metal2" ] 	= "Metal Sheet", [ "dit_metal2" ] 		= "",
+		[ "it_wood2" ] 		= "Wooden Board", [ "dit_wood2" ] 		= "",
+		[ "it_glass2" ] 	= "Glass Plate", [ "dit_glass2" ] 		= "",
+		[ "it_stone2" ] 	= "Concrete Bags", [ "dit_stone2" ] 		= "",
+		[ "it_glass3" ] 	= "Tempered Glass Plate", [ "dit_glass3" ] 	= "",
+		[ "it_plastic" ] 	= "Plastic Plate", [ "dit_plastic" ] 		= "",
+		[ "it_bag1" ] 		= "Quest Reward LV1", [ "dit_bag1" ] 		= "Press E to open.",
+		[ "it_bag2" ] 		= "Quest Reward LV2", [ "dit_bag2" ] 		= "Press E to open.",
+		[ "it_bag3" ] 		= "Quest Reward LV3", [ "dit_bag3" ] 		= "Press E to open.",
+		[ "it_bag4" ] 		= "Quest Reward LV4", [ "dit_bag4" ] 		= "Press E to open.",
+		[ "it_cage" ] 		= "Crab Cage", [ "dit_cage" ] 			= "Insert baits and sink it to the bottom to catch creatures. May break when it's full.",
+		[ "it_auto" ] 		= "Auto Fishing™", [ "dit_auto" ] 		= "Submerge it in water to fish automatically. Can also insert baits.",
+		[ "it_propane" ] 	= "Propane Tank", [ "dit_propane" ] 		= "No smoking.",
+		[ "it_ore" ] 		= "Metal Ore", [ "dit_ore" ] 			= "",
+		[ "it_recipe1" ] 	= "Basic Recipe Bundle", [ "dit_recipe1" ] 	= "Contains 2 random common recipes. Break to open.",
+		[ "it_recipe2" ] 	= "Improved Recipe Bundle", [ "dit_recipe2" ] 	= "Contains 2 random uncommon recipes. Break to open.",
+		[ "it_recipe3" ] 	= "Advanced Recipe Bundle", [ "dit_recipe3" ] 	= "Contains 2 random rare recipes. Break to open.",
+		[ "it_bait4" ] 		= "Master Bait Box", [ "dit_bait4" ] 		= "Contains 3 random epic baits. Break to open.",
+		[ "it_potato" ] 	= "Potato", [ "dit_potato" ] 			= "",
+		[ "it_furnace1" ] 	= "Stone Furnace", [ "dit_furnace1" ] 		= "Basic ore smelting.",
+		[ "it_pipebomb" ] 	= "Pipe Bomb", [ "dit_pipebomb" ] 		= "May catch fishes randomly when thrown into water.",
+		[ "it_mine2" ] 		= "Naval Mine", [ "dit_mine2" ] 		= "Good as new. Detonate after touching props.",
 	}
 	local ln = GetConVar( "gmod_language" ):GetString()  local lg = "en"
 	if ln != nil and istable( langs[ ln ] ) then lg = GetConVar( "gmod_language" ):GetString() end
@@ -109,9 +109,17 @@ if CLIENT then local langs = {}
 end local Mat = Material( "sprites/light_glow02_add" ) Mat:SetInt( "$ignorez", 1 )
 local Ma2 = Material( "particle/particle_glow_04" )
 
+
 if true then local it = "it_slot"
-	local ITEM = { Name = "#xdefm."..it, Type = "Useless", Model = "models/props_c17/cashregister01a.mdl",
-	Helper = "#xdefm.d"..it, Rarity = 5, Price = 2333, PhysSound = "Metal_Box.ImpactSoft" }
+	local ITEM = {
+		Name = "#xdefm."..it,
+		Type = "Useless",
+		Model = "models/props_c17/cashregister01a.mdl",
+		Helper = "#xdefm.d"..it,
+		Rarity = 5,
+		Price = 2333,
+		PhysSound = "Metal_Box.ImpactSoft"
+	}
 	function ITEM:OnInit( self ) self.xdefm_Cool = 0 end
 	function ITEM:OnUse( self, usr ) if self.xdefm_Cool > CurTime() then return false end
 		if usr:KeyDown( IN_SPEED ) then return true end local pro = usr.xdefm_Profile  self.xdefm_Cool = CurTime() +1
@@ -124,9 +132,19 @@ if true then local it = "it_slot"
 	end
 	xdefm_ItemRegister( it, ITEM )
 end
+
+
 if true then local it = "it_gballoom"
-	local ITEM = { Name = "#xdefm."..it, Type = "Useless", Model = "models/maxofs2d/thruster_projector.mdl",
-	Helper = "#xdefm.d"..it, Rarity = 4, Price = 1080, PhysSound = "Metal_Box.ImpactSoft", TickRate = 0.01 }
+	local ITEM = {
+		Name = "#xdefm."..it,
+		Type = "Useless",
+		Model = "models/maxofs2d/thruster_projector.mdl",
+		Helper = "#xdefm.d"..it,
+		Rarity = 4,
+		Price = 1080,
+		PhysSound = "Metal_Box.ImpactSoft",
+		TickRate = 0.01
+	}
 	function ITEM:OnInit( self ) self.xdefm_Cool = 0 end
 	function ITEM:OnUse( self, usr ) if self.xdefm_Cool > CurTime() then return false end
 		if usr:KeyDown( IN_SPEED ) then return true end local pro = usr.xdefm_Profile  self.xdefm_Cool = CurTime() +1
@@ -139,10 +157,30 @@ if true then local it = "it_gballoom"
 	function ITEM:OnThink( self ) self:SetColor( HSVToColor( ( CurTime()*50 ), 1, 1 ) ) end
 	xdefm_ItemRegister( it, ITEM )
 end
+
+
 if true then local it = "it_atm"
-	local tb = {[200]="it_dollar",[500]="it_coin",[850]="it_silverbar",[2400]="it_goldbar",[4000]="it_platinumbar",[10000]="it_rainbowbar"}
-	local ITEM = { Name = "#xdefm."..it, Type = "Useless", Model = "models/props_unique/atm01.mdl", Helper = "#xdefm.d"..it,
-	Rarity = 4, Price = 1500, PhysSound = "Metal_Box.ImpactSoft", TickRate = 1, HelperUse = "xdefm.U2", Carryable = false, TickRate = 1 }
+	local tb = {
+			[200]="it_dollar",
+			[500]="it_coin",
+			[850]="it_silverbar",
+			[2400]="it_goldbar",
+			[4000]="it_platinumbar",
+			[10000]="it_rainbowbar"
+			}
+	local ITEM = {
+		Name = "#xdefm."..it,
+		Type = "Useless",
+		Model = "models/props_unique/atm01.mdl",
+		Helper = "#xdefm.d"..it,
+		Rarity = 4,
+		Price = 1500,
+		PhysSound = "Metal_Box.ImpactSoft",
+		TickRate = 1,
+		HelperUse = "xdefm.U2",
+		Carryable = false,
+		TickRate = 1
+	}
 	function ITEM:OnInit( self ) self:SetNWInt( "XDEFM_MN", 0 )  self.xdefm_Cool = 0  self.xdefm_Delay = 0 end
 	function ITEM:OnReady( self ) self:PhysWake() self:GetPhysicsObject():SetMass( 100 ) end
 	function ITEM:OnUse( self, usr ) if self.xdefm_Cool > CurTime() then return false end
@@ -182,9 +220,19 @@ if true then local it = "it_atm"
 	end
 	xdefm_ItemRegister( it, ITEM )
 end
+
+
 if true then local it = "it_refill"
-	local ITEM = { Name = "#xdefm."..it, Type = "Useless", Model = "models/Items/car_battery01.mdl", HelperUse = "xdefm.U2"
-	, Helper = "#xdefm.d"..it, Rarity = 3, Price = 400, PhysSound = "Plastic_Box.ImpactSoft" }
+	local ITEM = {
+		Name = "#xdefm."..it,
+		Type = "Useless",
+		Model = "models/Items/car_battery01.mdl",
+		HelperUse = "xdefm.U2",
+		Helper = "#xdefm.d"..it,
+		Rarity = 3,
+		Price = 400,
+		PhysSound = "Plastic_Box.ImpactSoft"
+	}
 	function ITEM:OnInit( self ) self.xdefm_Used = false end
 	function ITEM:OnUse( self, ent ) if self.xdefm_Used then return end if ent:Health() >= ent:GetMaxHealth() and ent:Armor() >= ent:GetMaxArmor() then return true end
 		if ent:KeyDown( IN_SPEED ) then return true end ent:SetHealth( ent:GetMaxHealth() ) ent:SetArmor( ent:GetMaxArmor(), ent:Health() +100 )
@@ -203,9 +251,19 @@ if true then local it = "it_refill"
 	end
 	xdefm_ItemRegister( it, ITEM )
 end
+
+
 if true then local it = "it_fridge"
-	local ITEM = { Name = "#xdefm."..it, Type = "Useless", Model = "models/props_c17/FurnitureFridge001a.mdl",
-	Helper = "#xdefm.d"..it, Rarity = 3, Price = 500, PhysSound = "SolidMetal.ImpactSoft", Carryable = false }
+	local ITEM = {
+		Name = "#xdefm."..it,
+		Type = "Useless",
+		Model = "models/props_c17/FurnitureFridge001a.mdl",
+		Helper = "#xdefm.d"..it,
+		Rarity = 3,
+		Price = 500,
+		PhysSound = "SolidMetal.ImpactSoft",
+		Carryable = false
+	}
 	function ITEM:OnInit( self ) self:SetMaxHealth( 100 ) self:SetHealth( self:GetMaxHealth() ) self.xdefm_Killed = false end
 	function ITEM:OnReady( self ) self:PhysWake() self:GetPhysicsObject():SetMass( 100 ) end
 	function ITEM:OnDamaged( self, dmg ) if self:Health() <= 0 or dmg:GetDamage() <= 0 or self.xdefm_Killed then return false end
@@ -216,9 +274,23 @@ if true then local it = "it_fridge"
 	end
 	xdefm_ItemRegister( it, ITEM )
 end
+
+
 if true then local it = "it_supply"
-	local ITEM = { Name = "#xdefm."..it, Type = "Struct", Model = "models/Items/ammocrate_smg1.mdl", Carryable = false, StartSound = "AmmoCrate.Open", ExitSound = "AmmoCrate.Close",
-	Helper = "#xdefm.d"..it, Rarity = 4, Price = 2000, PhysSound = "Metal_Box.ImpactHard", TickRate = 0.1, SType = 3 }
+	local ITEM = {
+		Name = "#xdefm."..it,
+		Type = "Structure",
+		Model = "models/Items/ammocrate_smg1.mdl",
+		Carryable = false,
+		StartSound = "AmmoCrate.Open",
+		ExitSound = "AmmoCrate.Close",
+		Helper = "#xdefm.d"..it,
+		Rarity = 4,
+		Price = 2000,
+		PhysSound = "Metal_Box.ImpactHard",
+		TickRate = 0.1,
+		SType = 3
+	}
 	ITEM.Shop = { [ "it_ammocan1" ] = { 3000, 25 }, [ "it_ammo" ] = { 1250, 25 }, [ "it_grenade" ] = { 1500, 25 }, [ "it_flashbang" ] = { 1250, 25 } }
 	function ITEM:OnInit( self ) self:SetAutomaticFrameAdvance( true ) self:SetBodygroup( 1, 1 ) self.xdefm_Cool = 0  self.xdefm_Anim = 0 end
 	function ITEM:OnReady( self ) self:PhysWake() self:GetPhysicsObject():SetMass( 100 ) end
@@ -228,9 +300,19 @@ if true then local it = "it_supply"
 	end
 	xdefm_ItemRegister( it, ITEM )
 end
+
+
 if true then local it = "it_egg"
-	local ITEM = { Name = "#xdefm."..it, Type = "Useless", Model = "models/props_phx/misc/egg.mdl",
-	Helper = "#xdefm.d"..it, Rarity = 2, Price = 250, PhysSound = "Grenade.ImpactSoft", HelperUse = "xdefm.U2" }
+	local ITEM = {
+		Name = "#xdefm."..it,
+		Type = "Useless",
+		Model = "models/props_phx/misc/egg.mdl",
+		Helper = "#xdefm.d"..it,
+		Rarity = 2,
+		Price = 250,
+		PhysSound = "Grenade.ImpactSoft",
+		HelperUse = "xdefm.U2"
+	}
 	function ITEM:OnInit( self ) self.xdefm_Thrown = 0 end
 	function ITEM:OnDrop( self, ent, typ ) if !typ or self.xdefm_Thrown > 0 then return end
 		self:EmitSound( "Zombie.AttackMiss" )
@@ -250,9 +332,23 @@ if true then local it = "it_egg"
 	end
 	xdefm_ItemRegister( it, ITEM )
 end
+
+
 if true then local it = "cr_knight"
-	local ITEM = { Name = "#xdefm."..it, Type = "Creature", Model = { "models/props_phx/games/chess/white_knight.mdl",
-	"models/props_phx/games/chess/black_knight.mdl" }, Helper = "#xdefm.d"..it, Rarity = 3, Price = 768, TickRate = 0.1, MinSize = 1, MaxSize = 1.4 }
+	local ITEM = {
+		Name = "#xdefm."..it,
+		Type = "Creature",
+		Model = {
+			"models/props_phx/games/chess/white_knight.mdl",
+			"models/props_phx/games/chess/black_knight.mdl"
+			},
+		Helper = "#xdefm.d"..it,
+		Rarity = 3,
+		Price = 768,
+		TickRate = 0.1,
+		MinSize = 1,
+		MaxSize = 1.4
+	}
 	function ITEM:OnInit( self ) self:SetMaxHealth( 128 ) self:SetHealth( self:GetMaxHealth() )
 		self:PhysicsInit( SOLID_VPHYSICS ) self:SetCollisionGroup( COLLISION_GROUP_NPC )
 		self.ShadowParams = {}  self.xdefm_Killed = false  self.xdefm_Target = nil  self.xdefm_Snd = nil
@@ -313,16 +409,37 @@ if true then local it = "cr_knight"
 	function ITEM:OnRemove( self ) if self.xdefm_Snd then self.xdefm_Snd:Stop()  self.xdefm_Snd = nil end end
 	xdefm_ItemRegister( it, ITEM )
 end
+
+
 if true then local it = "it_tungstenbar"
-	local ITEM = { Name = "#xdefm."..it, Type = "Useless", Model = "models/xdeedited/ingot_tungsten.mdl",
-	Helper = "#xdefm.d"..it, Rarity = 3, Price = 500, PhysSound = "GlassBottle.ImpactHard", TickRate = 0.1 }
+	local ITEM = {
+		Name = "#xdefm."..it,
+		Type = "Useless",
+		Model = "models/xdeedited/ingot_tungsten.mdl",
+		Helper = "#xdefm.d"..it,
+		Rarity = 3,
+		Price = 500,
+		PhysSound = "GlassBottle.ImpactHard",
+		TickRate = 0.1
+	}
 	function ITEM:OnInit( self ) self:SetColor( Color( 79, 69, 42 ) ) end
 	function ITEM:OnReady( self ) self:GetPhysicsObject():SetMass( 150 ) end
 	xdefm_ItemRegister( it, ITEM )
 end
+
+
 if true then local it = "it_clocked"
-	local ITEM = { Name = "#xdefm."..it, Type = "Useless", Model = "models/props_combine/combine_lock01.mdl", TickRate = 0.1,
-	Helper = "#xdefm.d"..it, Rarity = 2, Price = 300, Carryable = false, PhysSound = "SolidMetal.ImpactSoft" }
+	local ITEM = {
+		Name = "#xdefm."..it,
+		Type = "Useless",
+		Model = "models/props_combine/combine_lock01.mdl",
+		TickRate = 0.1,
+		Helper = "#xdefm.d"..it,
+		Rarity = 2,
+		Price = 300,
+		Carryable = false,
+		PhysSound = "SolidMetal.ImpactSoft"
+	}
 	function ITEM:OnUse( self, ent ) if ent:KeyDown( IN_SPEED ) then return true end self:EmitSound( "combine.door_lock" ) return false end
 	function ITEM:OnRemove( self ) for k, v in pairs( self:GetChildren() ) do v:Remove() end end
 	function ITEM:OnDraw( self )
@@ -331,9 +448,18 @@ if true then local it = "it_clocked"
 	end
 	xdefm_ItemRegister( it, ITEM )
 end
+
+
 if true then local it = "it_coin2"
-	local ITEM = { Name = "#xdefm."..it, Type = "Useless", Model = "models/money/silvcoin.mdl",
-	Helper = "#xdefm.d"..it, Rarity = 4, Price = 1500, PhysSound = "Chain.ImpactHard" }
+	local ITEM = {
+		Name = "#xdefm."..it,
+		Type = "Useless",
+		Model = "models/money/silvcoin.mdl",
+		Helper = "#xdefm.d"..it,
+		Rarity = 4,
+		Price = 1500,
+		PhysSound = "Chain.ImpactHard"
+	}
 	function ITEM:OnInit( self ) self:SetColor( Color( 155, 255, 255 ) ) end
 	function ITEM:OnDraw( self )
 		render.SetMaterial( Mat ) local siz = 15 +math.sin( CurTime()*5 )*1
@@ -364,9 +490,20 @@ if true then local it = "it_coin2"
 	end
 	xdefm_ItemRegister( it, ITEM )
 end
+
+
 if true then local it = "it_expr"
-	local ITEM = { Name = "#xdefm."..it, Type = "Useless", Model = "models/props_c17/paper01.mdl", KillInWater = true,
-	Helper = "#xdefm.d"..it, Rarity = 2, Price = 0, PhysSound = "Cardboard.ImpactSoft", HelperUse = "xdefm.U2" }
+	local ITEM = {
+		Name = "#xdefm."..it,
+		Type = "Useless",
+		Model = "models/props_c17/paper01.mdl",
+		KillInWater = true,
+		Helper = "#xdefm.d"..it,
+		Rarity = 2,
+		Price = 0,
+		PhysSound = "Cardboard.ImpactSoft",
+		HelperUse = "xdefm.U2"
+	}
 	function ITEM:OnInit( self ) self.xdefm_Killed = false end
 	function ITEM:OnUse( self, ent ) if self.xdefm_Killed then return end
 		if ent:KeyDown( IN_SPEED ) then return true end local pro = ent.xdefm_Profile
@@ -376,9 +513,21 @@ if true then local it = "it_expr"
 	end
 	xdefm_ItemRegister( it, ITEM )
 end
+
+
 if true then local it = "it_exps"
-	local ITEM = { Name = "#xdefm."..it, Type = "Useless", Model = "models/props_junk/garbage_newspaper001a.mdl", KillInWater = true,
-	Helper = "#xdefm.d"..it, Rarity = 3, Price = 400, PhysSound = "Cardboard.ImpactSoft", HelperUse = "xdefm.U2", Carryable = false }
+	local ITEM = {
+		Name = "#xdefm."..it,
+		Type = "Useless",
+		Model = "models/props_junk/garbage_newspaper001a.mdl",
+		KillInWater = true,
+		Helper = "#xdefm.d"..it,
+		Rarity = 3,
+		Price = 400,
+		PhysSound = "Cardboard.ImpactSoft",
+		HelperUse = "xdefm.U2",
+		Carryable = false
+	}
 	function ITEM:OnInit( self ) self.xdefm_Papers = math.random( 3, 5 )  self.xdefm_MPapers = self.xdefm_Papers end
 	function ITEM:OnStore( self ) return self.xdefm_MPapers >= self.xdefm_Papers end
 	function ITEM:OnUse( self, ent ) if self.xdefm_Papers <= 0 then return end
@@ -392,9 +541,19 @@ if true then local it = "it_exps"
 	end
 	xdefm_ItemRegister( it, ITEM )
 end
+
+
 if true then local it = "it_chemical"
-	local ITEM = { Name = "#xdefm."..it, Type = "Useless", Model = "models/props_lab/jar01b.mdl", KillInWater = true,
-	Helper = "#xdefm.d"..it, Rarity = 2, Price = 100, PhysSound = "Plastic_Barrel.ImpactSoft" }
+	local ITEM = {
+		Name = "#xdefm."..it,
+		Type = "Useless",
+		Model = "models/props_lab/jar01b.mdl",
+		KillInWater = true,
+		Helper = "#xdefm.d"..it,
+		Rarity = 2,
+		Price = 100,
+		PhysSound = "Plastic_Barrel.ImpactSoft"
+	}
 	function ITEM:OnDrop( self, ent, typ ) if !typ or self.xdefm_Thrown > 0 then return end
 		self:EmitSound( "Zombie.AttackMiss" )
 		self:SetAngles( Angle( ent:EyeAngles().pitch, ent:EyeAngles().yaw, 0 ) )
@@ -414,6 +573,8 @@ if true then local it = "it_chemical"
 	end
 	xdefm_ItemRegister( it, ITEM )
 end
+
+
 if true then local it = "it_antibird"
 	local ITEM = { Name = "#xdefm."..it, Type = "Useless", Model = "models/maxofs2d/hover_rings.mdl",
 	Helper = "#xdefm.d"..it, Rarity = 3, Price = 500, PhysSound = "Glass.ImpactHard", TickRate = 0.25 }
