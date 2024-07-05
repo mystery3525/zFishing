@@ -329,10 +329,10 @@ items.it_firearm2 = {
 		Price = 800,
 		PhysSound = "weapon.ImpactHard",
 		TickRate = 0.01,
-		HelperUse = "xdefm.U2"
+		HelperUse = "xdefm.U2",
+		Based = "it_firearm1"
 	}
 	items.it_firearm2.Constants = { Broken = false }
-	xdefm_ItemBased( "it_firearm1", items.it_firearm2, items.it_firearm2 )
 
 items.it_grenade = {
 		Type = "Uncommon",
@@ -912,9 +912,9 @@ items.it_pturre2 = {
 		Rarity = 3,
 		Price = 1250,
 		PhysSound = "SolidMetal.ImpactSoft",
+		Based = "it_pturre1"
 	}
 	items.it_pturre2.Constants = { [ "Broken" ] = true }
-	xdefm_ItemBased( "it_pturre1", it, items.it_pturre2 )
 
 items.it_bait2 = {
 		Type = "Uncommon",
@@ -1751,7 +1751,7 @@ items.it_exp1 = {
 		end
 		self.xdefm_Killed = true  
 		xdefm_BroadEffect( "xdefm_present", { Origin = self:WorldSpaceCenter() } )
-		local exp = self.Constants.Amount
+		local exp = self.xdefm_T2.Constants.Amount
 		xdefm_AddNote( ent, "xdefm.GetEXP&: "..exp, "buttons/bell1.wav", "medal_gold_1", 5 )
 		self:Remove() xdefm_GiveExp( ent, exp ) return false
 	end
@@ -1762,10 +1762,10 @@ items.it_exp2 = {
 		Rarity = 3,
 		Price = 0,
 		PhysSound = "Cardboard.ImpactSoft",
-		HelperUse = "xdefm.U2"
+		HelperUse = "xdefm.U2",
+		Based = "it_exp1"
 	}
 	items.it_exp2.Constants = { Amount = 160 }
-	xdefm_ItemBased( "it_exp1", it, items.it_exp2 )
 
 items.it_exp3 = {
 		Type = "Legendary",
@@ -1773,10 +1773,10 @@ items.it_exp3 = {
 		Rarity = 4,
 		Price = 0,
 		PhysSound = "Cardboard.ImpactSoft",
-		HelperUse = "xdefm.U2"
+		HelperUse = "xdefm.U2",
+		Based = "it_exp1"
 	}
 	items.it_exp3.Constants = { Amount = 400 }
-	xdefm_ItemBased( "it_exp1", it, items.it_exp3 )
 
 items.it_exp4 = {
 		Type = "Exotic",
@@ -1784,13 +1784,18 @@ items.it_exp4 = {
 		Rarity = 5,
 		Price = 0,
 		PhysSound = "Cardboard.ImpactSoft",
-		HelperUse = "xdefm.U2"
+		HelperUse = "xdefm.U2",
+		Based = "it_exp1"
 	}
 	items.it_exp4.Constants = { Amount = 9999 }
-	xdefm_ItemBased( "it_exp1", it, items.it_exp4 )
 
 for i, v in pairs(items) do -- simple as that!
 	v.Name   = "#xdefm."  .. i
 	v.Helper = "#xdefm.d" .. i
+	if v.Based ~= nil and isstring( v.Based ) then
+		for b, k in pairs(items[v.Based]) do -- items[v.Based] must be in the same file as it is local
+			v[b] = v[b] or k
+		end
+	end
 	xdefm_ItemRegister( i, v )
 end

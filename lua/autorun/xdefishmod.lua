@@ -1693,11 +1693,11 @@ if SERVER then --服务端
 	end
 
 	hook.Add( "PhysgunPickup", "xdefm_NoTool", function( ply, ent )
-		
 		if ent.xdefm_NoTool then return false end
-		local aa, bb = xdefm_ItemGet( ent:GetFMod_DT() )
-		if ent:GetClass() == "xdefm_base" and bb.CanPhysgun and xdefm_NadAllow( ply, ent) then return true end
-		if ent:GetClass() == "xdefm_base" then return false end
+		if ent:GetClass() == "xdefm_base" then
+			local aa, bb = xdefm_ItemGet( ent:GetFMod_DT() )
+			return bb.CanPhysgun and xdefm_NadAllow( ply, ent )
+		end
 	end )
 	hook.Add( "CanProperty", "xdefm_NoTool", function( ply, property, ent )
 		if ent.xdefm_NoTool then return false end
@@ -3735,7 +3735,6 @@ end end end
 		return true
 	end
 	function xdefm_ItemBased( bas, nam, dat )
-		if istable( name ) and isstring(name.Name) then name = name.Name end
 		if !isstring( nam ) or nam == "" or nam == "_" or !istable( dat ) or string.find( nam, "|" ) != nil or string.find( nam, "&" ) != nil then return false end
 		local aa, bb = xdefm_ItemGet( bas )
 		if !istable( bb ) then return false end

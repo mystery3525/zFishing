@@ -300,7 +300,8 @@ items.cr_crow = {
 		Type = "Creature",
 		Model = "models/crow.mdl",
 		Price = 800,
-		Rarity = 3
+		Rarity = 3,
+		Based = "cr_seagull"
 	}
 	items.cr_crow.Constants = {
 		Speed = 1024,
@@ -326,12 +327,12 @@ items.cr_crow = {
 			pitch = math.random( 115, 125 ),
 			sound = { "npc/crow/pain1.wav", "npc/crow/pain2.wav" } 
 		} )
-	xdefm_ItemBased( "cr_seagull", it, items.cr_crow )
 
 items.cr_seagull2 = {
 		Model = "models/seagull.mdl",
 		Price = 5000,
-		Rarity = 5
+		Rarity = 5,
+		Based = "cr_seagull"
 	}
 	items.cr_seagull2.Constants = { 
 		Speed = 8192,
@@ -415,7 +416,6 @@ items.cr_seagull2 = {
 			end
 		end
 	end
-	xdefm_ItemBased( "cr_seagull", it, items.cr_seagull2 )
 
 items.it_vault = {
 		Type = "Exotic",
@@ -1639,8 +1639,13 @@ items.it_monitor = {
 		end
 	end
 
-for i, v in pairs(items) do -- simple as that!
-	v.Name   = "#xdefm."  .. i
-	v.Helper = "#xdefm.d" .. i
-	xdefm_ItemRegister( i, v )
-end
+	for i, v in pairs(items) do -- simple as that!
+		v.Name   = "#xdefm."  .. i
+		v.Helper = "#xdefm.d" .. i
+		if v.Based ~= nil and isstring( v.Based ) then
+			for b, k in pairs(items[v.Based]) do -- items[v.Based] must be in the same file as it is local
+				v[b] = v[b] or k
+			end
+		end
+		xdefm_ItemRegister( i, v )
+	end

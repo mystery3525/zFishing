@@ -777,21 +777,21 @@ items.cr_crab2 = {
 Type = "Creature",
 Model = { "models/headcrab.mdl" },
 Rarity = 2,
-Price = 100, TickRate = 0.1, MinSize = 0.6, MaxSize = 1.4 }
+Price = 100, TickRate = 0.1, MinSize = 0.6, MaxSize = 1.4,
+Based = "cr_crab" }
 items.cr_crab2.Constants = { Health = 20, Force = 125, PainSnd = "NPC_HeadCrab.Pain", DieSnd = "NPC_HeadCrab.Die", JumpSnd = "NPC_Headcrab.Attack",
 	FlyAct = "Drown", IdleAct = "Idle01", Damage = 25, DamageType = DMG_CLUB, AtkSnd = "NPC_FastHeadcrab.Bite", JumpFreq = 5, LPos = Vector( 0, 0, 8 ), LDis = 20 }
-	xdefm_ItemBased( "cr_crab", it, items.cr_crab2 )
 
 
 items.cr_crab3 = {
 Type = "Creature",
 Model = { "models/headcrabblack.mdl" },
 Rarity = 3,
-Price = 300, TickRate = 0.1, MinSize = 0.6, MaxSize = 1.4 
+Price = 300, TickRate = 0.1, MinSize = 0.6, MaxSize = 1.4 ,
+Based = "cr_crab"
 }
 items.cr_crab3.Constants = { Health = 30, Force = 150, PainSnd = "NPC_BlackHeadcrab.Pain", DieSnd = "NPC_BlackHeadcrab.Die", JumpSnd = "NPC_BlackHeadcrab.Talk",
 	FlyAct = "Drown", IdleAct = "Idle01", Damage = 50, DamageType = DMG_POISON, AtkSnd = "NPC_BlackHeadcrab.Bite", JumpFreq = 30, LPos = Vector( 0, 0, 8 ), LDis = 20 }
-	xdefm_ItemBased( "cr_crab", it, items.cr_crab3 )
 
 
 items.cr_gnome = {
@@ -800,7 +800,8 @@ items.cr_gnome = {
 	Rarity = 2,
 	Price = 250,
 	TickRate = 0.1,
-	MinSize = 0.8, MaxSize = 1.4
+	MinSize = 0.8, MaxSize = 1.4,
+	Based = "cr_crab"
 }
 	sound.Add( { name = "xdefm.GnomeDie", channel = CHAN_VOICE, volume = 1, level = 75, pitch = 200, sound = "*vo/ravenholm/monk_death07.wav" } )
 	sound.Add( { name = "xdefm.GnomePain", channel = CHAN_VOICE, volume = 1, level = 75, pitch = 200,
@@ -817,7 +818,6 @@ items.cr_gnome = {
 	)
 	items.cr_gnome.Constants = { Health = 200, Force = 100, PainSnd = "xdefm.GnomePain", DieSnd = "xdefm.GnomeDie", JumpSnd = "xdefm.GnomeLaugh",
 	FlyAct = "idle", IdleAct = "idle", Damage = 10, DamageType = DMG_CLUB, AtkSnd = "Flesh.ImpactHard", JumpFreq = 5, LPos = Vector( 0, 0, 0 ), LDis = 5 }
-	xdefm_ItemBased( "cr_crab", it, items.cr_gnome )
 
 
 items.it_campfire = {
@@ -1226,39 +1226,36 @@ PhysSound = "Watermelon.Impact" }
 items.cr_gold = {
      Model = "models/props/de_inferno/goldfish.mdl",
 Price = 60,
-Rarity = 1,}
+Rarity = 1,
+Based = "cr_fish"}
 	items.cr_gold.Constants = { SpdPos = 28, SpdAng = 100, MoveDist = 512, Health = 10, Mass = 24, AngInv = 0,
 	PhysSound = "Watermelon.Impact" }
-	xdefm_ItemBased( "cr_fish", it, items.cr_gold )
 
 
 items.cr_fish2 = {
      Model = { "models/tmp_mod/island_fish_001.mdl", "models/tmp_mod/island_fish_002.mdl", "models/tmp_mod/island_fish_003.mdl" },
 	Price = 84,
-Rarity = 2,}
+Rarity = 2,
+Based = "cr_fish"}
 	items.cr_fish2.Constants = { SpdPos = 32, SpdAng = 100, MoveDist = 512, Health = 15, Mass = 48, AngInv = 2,
 	PhysSound = "Watermelon.Impact" }
-	xdefm_ItemBased( "cr_fish", it, items.cr_fish2 )
 
 
 items.cr_perch = {
      Model = "models/fish/perch/perch.mdl",
 Price = 256,
-Rarity = 3,}
+Rarity = 3,
+Based = "cr_fish"}
 	items.cr_perch.Constants = { SpdPos = 48, SpdAng = 100, MoveDist = 768, Health = 30, Mass = 64, AngInv = 1,
 PhysSound = "Watermelon.Impact" 
 }
-	xdefm_ItemBased( "cr_fish", it, items.cr_perch )
-
-	items.cr_perch.Constants = { SpdPos = 48, SpdAng = 100, MoveDist = 768, Health = 30, Mass = 64, AngInv = 1,
-	PhysSound = "Watermelon.Impact" }
-	xdefm_ItemBased( "cr_fish", it, items.cr_perch )
 
 
 items.cr_perch2 = {
      Model = "models/fish/perch/perch.mdl",
 Price = 2500,
-Rarity = 4,}
+Rarity = 4,
+Based = "cr_fish"}
 	items.cr_perch2 .Constants = { SpdPos = 64, SpdAng = 500, MoveDist = 1024, Health = 50, Mass = 100, AngInv = 1,
 	PhysSound = "Watermelon.Impact" }
 	function items.cr_perch2 :OnInit( self ) self:SetMaxHealth( self.xdefm_T2.Constants.Health ) self:SetHealth( self:GetMaxHealth() ) self:SetCollisionGroup( COLLISION_GROUP_NPC )
@@ -1270,7 +1267,6 @@ Rarity = 4,}
         render.DrawSprite( self:WorldSpaceCenter() +self:GetForward()*6, siz, siz, col )
         render.DrawSprite( self:WorldSpaceCenter() -self:GetForward()*6, siz, siz, col )
 	end
-	xdefm_ItemBased( "cr_fish", it, items.cr_perch2  )
 
 
 items.cr_cute = {
@@ -1494,8 +1490,13 @@ PhysSound = "PhxMetal.ImpactSoft" }
 
 
 
-for i, v in pairs(items) do -- simple as that!
-	v.Name   = "#xdefm."  .. i
-	v.Helper = "#xdefm.d" .. i
-	xdefm_ItemRegister( i, v )
-end
+	for i, v in pairs(items) do -- simple as that!
+		v.Name   = "#xdefm."  .. i
+		v.Helper = "#xdefm.d" .. i
+		if v.Based ~= nil and isstring( v.Based ) then
+			for b, k in pairs(items[v.Based]) do -- items[v.Based] must be in the same file as it is local
+				v[b] = v[b] or k
+			end
+		end
+		xdefm_ItemRegister( i, v )
+	end
