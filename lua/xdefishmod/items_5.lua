@@ -83,7 +83,7 @@ items.it_bone = { Type = "Useless", Model = { "models/gibs/hgibs_spine.mdl", "mo
 	Rarity = 1, Price = 10, PhysSound = "Body.ImpactSoft" }
 
 items.it_rainbow = { Type = "Useless", Model = "models/oc_diving/diamond.mdl",
-	Helper = "#xdefm.d"..it, Rarity = 5, Price = 100000, PhysSound = "Weapon_StunStick.Melee_HitWorld", TickRate = 0.01 }
+	Rarity = 5, Price = 100000, PhysSound = "Weapon_StunStick.Melee_HitWorld", TickRate = 0.01 }
 	local Mat = Material( "effects/blueflare1" )
 	function items.it_rainbow:OnThink( self ) self:SetColor( HSVToColor( ( CurTime()*100 ), 1, 1 ) ) end
 	function items.it_rainbow:OnDraw( self ) render.SetMaterial( Mat ) local siz, col = 36 +math.sin( CurTime()*2 )*8, self:GetColor()
@@ -130,10 +130,10 @@ items.it_rainbow = { Type = "Useless", Model = "models/oc_diving/diamond.mdl",
 	end
 
 items.it_error = { Type = "Useless", Model = "models/hunter/blocks/cube025x025x025.mdl",
-	Helper = "#xdefm.d"..it, Rarity = 1, Price = 20000, PhysSound = "citadel.br_no", Carryable = true, CantCook = true }
+	Rarity = 1, Price = 20000, PhysSound = "citadel.br_no", Carryable = true, CantCook = true }
 
 items.it_crafting1 = { Type = "Struct", Model = "models/props_forest/table_shed.mdl", StartSound = "DoorHandles.Locked2", ExitSound = "DoorSound.DefaultLocked",
-	Helper = "#xdefm.d"..it, Rarity = 3, Price = 1000, PhysSound = "Wood.ImpactHard", Carryable = false, SType = 2, HelperUse = "xdefm.U3" }
+	Rarity = 3, Price = 1000, PhysSound = "Wood.ImpactHard", Carryable = false, SType = 2, HelperUse = "xdefm.U3" }
     items.it_crafting1.Crafts = {
 		"it_wood&it_wood&it_wood&it_wood2",
 		"it_metal&it_metal&it_metal&it_metal2",
@@ -166,7 +166,7 @@ items.it_crafting1 = { Type = "Struct", Model = "models/props_forest/table_shed.
     }
 
 items.it_crafting2 = { Type = "Struct", Model = "models/props_waterfront/tattoo_table.mdl", StartSound = "DoorHandles.Unlocked2", ExitSound = "Doors.FullClose1",
-	Helper = "#xdefm.d"..it, Rarity = 4, Price = 2500, PhysSound = "Metal_Box.ImpactHard", Carryable = false, SType = 2, HelperUse = "xdefm.U3" }
+	Rarity = 4, Price = 2500, PhysSound = "Metal_Box.ImpactHard", Carryable = false, SType = 2, HelperUse = "xdefm.U3" }
     items.it_crafting2.Crafts = {
 		"it_wood2&it_wood2&it_wood2&it_wood3",
 		"it_brick&it_brick&it_brick&it_brick&it_stone2",
@@ -197,11 +197,11 @@ items.it_crafting2 = { Type = "Struct", Model = "models/props_waterfront/tattoo_
     }
 
 items.it_storage1 = { Type = "Struct", Model = "models/props_junk/wood_crate001a.mdl", Amount = 6, StartSound = "AmmoCrate.Open", ExitSound = "AmmoCrate.Close",
-	Helper = "#xdefm.d"..it, Rarity = 3, Price = 1000, PhysSound = "Wood.ImpactHard", Carryable = false, SType = 1, HelperUse = "xdefm.U3" }
+	Rarity = 3, Price = 1000, PhysSound = "Wood.ImpactHard", Carryable = false, SType = 1, HelperUse = "xdefm.U3" }
 	function items.it_storage1:OnInit( self ) self:SetSkin( 1 ) end
 
 items.it_storage2 = { Type = "Struct", Model = "models/props_junk/wood_crate002a.mdl", Amount = 30, StartSound = "AmmoCrate.Open", ExitSound = "AmmoCrate.Close",
-	Helper = "#xdefm.d"..it, Rarity = 4, Price = 4500, PhysSound = "Wood.ImpactHard", Carryable = false, SType = 1, HelperUse = "xdefm.U3" }
+	Rarity = 4, Price = 4500, PhysSound = "Wood.ImpactHard", Carryable = false, SType = 1, HelperUse = "xdefm.U3" }
 	function items.it_storage2:OnInit( self ) self:SetSkin( 1 ) end
 
 items.it_furnace2 = { Type = "Struct", Model = "models/props/cs_militia/furnace01.mdl", StartSound = "Metal_Barrel.ImpactSoft", ExitSound = "Metal_Barrel.ImpactHard",
@@ -298,8 +298,8 @@ items.it_pshop = { Type = "Struct", Model = "models/props_lab/teleplatform.mdl",
 	end
 
 items.it_bouncy = { Type = "Useless", Model = "models/maxofs2d/hover_classic.mdl",
-	Helper = "#xdefm.d"..it, Rarity = 2, Price = 180, PhysSound = "Rubber_Tire.ImpactHard" }
-	function items.it_bouncy:OnInit( self ) end function ITEM:OnReady( self ) self:GetPhysicsObject():SetMaterial( "metal_bouncy" ) end
+	Rarity = 2, Price = 180, PhysSound = "Rubber_Tire.ImpactHard" }
+	function items.it_bouncy:OnInit( self ) end function items.it_bouncy:OnReady( self ) self:GetPhysicsObject():SetMaterial( "metal_bouncy" ) end
 	function items.it_bouncy:OnCollide( self, dat ) local phy = self:GetPhysicsObject()
 		local LastSpeed = math.max( dat.OurOldVelocity:Length(), dat.Speed )
 		local NewVelocity = phy:GetVelocity():GetNormalized()
@@ -312,7 +312,7 @@ items.it_bouncy = { Type = "Useless", Model = "models/maxofs2d/hover_classic.mdl
 			ef:SetScale( 1 ) ef:SetMagnitude( 1 ) util.Effect( "GlassImpact", ef )
 		end
 	end
-end
+
 
 for i, v in pairs(items) do -- simple as that!
 	v.Name   = "#xdefm."  .. i
