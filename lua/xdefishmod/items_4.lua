@@ -565,7 +565,7 @@ items.it_treasure = { Type = "Useless", Model = "models/props/cs_militia/footloc
 	
 items.it_cooler = { Type = "Struct", Model = "models/props_interiors/water_cooler.mdl", 
 	Rarity = 3, Price = 1000, Carryable = false, TickRate = 1, PhysSound = "Plastic_Box.ImpactHard", HelperUse = "xdefm.U3", SType = 3, StartSound = "Buttons.snd1", ExitSound = "NPC.ButtonLatchUnlocked2" }
-	ITEM.Shop = { [ "it_water" ] = { 400, 0 } }
+	items.it_cooler.Shop = { [ "it_water" ] = { 400, 0 } }
 	
 items.it_ejunk = { Type = "Useless", Model = { "models/props_lab/harddrive01.mdl", "models/props_lab/harddrive02.mdl", "models/props_lab/monitor01a.mdl",
 	"models/props_lab/monitor01b.mdl", "models/props_lab/monitor02.mdl", "models/props_c17/computer01_keyboard.mdl"}
@@ -951,7 +951,7 @@ items.it_microwave = { Type = "Useless", Model = "models/props/cs_office/microwa
 			self.xdefm_Snd:Play()  self.xdefm_Item = ent:GetFMod_DT()  self:SetNWBool( "FMod_On", true )
 		end
 	end
-	function ITEM:OnDraw( self ) local pos = self:WorldSpaceCenter() +self:GetUp()*10
+	function items.it_microwave:OnDraw( self ) local pos = self:WorldSpaceCenter() +self:GetUp()*10
 		local txt = tostring( math.ceil( self:GetNWFloat( "FMod_PR" ) ) ).."%"
 		local col = 255 -math.Clamp( self:GetNWFloat( "FMod_PR" )/100, 0, 1 )*255
 		surface.SetFont( "HudHintTextLarge" )  local xx, yy = surface.GetTextSize( txt )
@@ -1065,7 +1065,7 @@ items.it_cage = { Type = "Struct", Model = "models/lostcoast/props_wasteland/cra
 				return false
 			end
 		end
-		if typ == -1 then ITEM:C_DummySet( self ) end
+		if typ == -1 then items.it_cage:C_DummySet( self ) end
 	end
 	function items.it_cage:OnThink( self ) if self.xdefm_Delay > CurTime() or self.xdefm_Bait == "_" then return end
 		if self:WaterLevel() < 3 then return end local tr = util.QuickTrace( self:GetPos(), -Vector( 0, 0, 15 ), self )  if !tr.HitWorld then return end
@@ -1082,7 +1082,7 @@ items.it_cage = { Type = "Struct", Model = "models/lostcoast/props_wasteland/cra
 		for k, v in pairs( self.xdefm_T3 ) do if isstring( v ) and v == "_" then ful = false  self.xdefm_T3[ k ] = ite
 		for k, v in pairs( player.GetHumans() ) do if v.xdefm_Struct and v.xdefm_Struct == self then xdefm_UpdateMenu( v, 3, { [ k ] = ite } ) end end break end end
 		if !ful then
-			self:EmitSound( "ChainLink.ImpactSoft" ) ITEM:C_DummySet( self )
+			self:EmitSound( "ChainLink.ImpactSoft" ) items.it_cage:C_DummySet( self )
 		else if math.random( 1, 5 ) == 1 then
 				self:EmitSound( "Breakable.Metal" )
 				xdefm_BreakEffect( self, 3 ) 
@@ -1181,7 +1181,7 @@ items.it_recipe1 = { Type = "Useless", Model = "models/props_junk/garbage_newspa
 	Rarity = 2, Price = 300, PhysSound = "Cardboard.ImpactHard" }
 	function items.it_recipe1:OnInit( self ) self:SetMaxHealth( 20 ) self:SetHealth( self:GetMaxHealth() ) self:SetCollisionGroup( COLLISION_GROUP_NONE ) self.xdefm_Killed = false end
 	function items.it_recipe1:OnReady( self ) self:GetPhysicsObject():SetMass( 100 ) end
-	function Iitems.it_recipe1TEM:OnDamaged( self, dmg ) if self:Health() <= 0 or dmg:GetDamage() <= 0 or self.xdefm_Killed then return false end
+	function items.it_recipe1:OnDamaged( self, dmg ) if self:Health() <= 0 or dmg:GetDamage() <= 0 or self.xdefm_Killed then return false end
 		self:SetHealth( math.max( 0, self:Health() -dmg:GetDamage() ) ) self:EmitSound( "Cardboard.Break" )
 		if self:Health() <= 0 then self.xdefm_Killed = true
 		local lt = {["re_basic"]=1,["re_tool1"]=1,["re_bait1"]=1,["re_misc"]=1}
@@ -1288,7 +1288,7 @@ items.it_propane = { Type = "Useless", Model = "models/props_junk/propane_tank00
 	
 items.it_furnace1 = { Type = "Struct", Model = "models/props/de_inferno/clayoven.mdl", 
 	Rarity = 2, Price = 600, Carryable = false, PhysSound = "Concrete.ImpactHard", HelperUse = "xdefm.U3", SType = 2, StartSound = "Concrete.ImpactSoft", ExitSound = "Concrete.ImpactHard" }
-	tems.it_furnace1.Crafts = {
+	items.it_furnace1.Crafts = {
 		"it_wood&it_wood&it_wood&it_coal",
 		"it_ore&it_ore&it_coal&it_copperbar",
 		"it_metal&it_metal&it_coal&it_metal2",
@@ -1321,7 +1321,7 @@ items.it_pipebomb = { Type = "Useless", Model = "models/w_models/weapons/w_eq_pi
 	function items.it_pipebomb:OnInit( self ) self.xdefm_Killed = false  self.xdefm_Timer = 0  self.xdefm_Snd = nil end
 	function items.it_pipebomb:OnThink( self ) if self.xdefm_Timer <= 0 or self.xdefm_Killed then return end self.xdefm_Timer = self.xdefm_Timer +0.1
 		if self.xdefm_Snd != nil then self.xdefm_Snd:ChangePitch( 100 +math.Clamp( self.xdefm_Timer, 0, 10 )*10, 0 ) end
-		if self.xdefm_Timer > 10 then ITEM:C_Explode( self ) else local att = self:GetAttachment( 1 )  if !att then return end
+		if self.xdefm_Timer > 10 then items.it_pipebomb:C_Explode( self ) else local att = self:GetAttachment( 1 )  if !att then return end
 			local ef = EffectData() ef:SetOrigin( att.Pos ) ef:SetEntity( self ) ef:SetRadius( 2 )
 			ef:SetScale( 1 ) ef:SetMagnitude( 2 ) ef:SetAttachment( 1 ) util.Effect( "ElectricSpark", ef )
 		end
