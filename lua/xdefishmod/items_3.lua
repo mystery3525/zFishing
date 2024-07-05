@@ -110,21 +110,19 @@ if CLIENT then local langs = {}
 	for holder, text in pairs( langs[ lg ] ) do language.Add( "xdefm."..holder, text ) end
 end local Mat = Material( "sprites/light_glow02_add" ) Mat:SetInt( "$ignorez", 1 ) 
 
+local items = {}
 
-if true then local it = "it_camera"
-	local ITEM = {
-		Name = "#xdefm."..it,
+items.it_camera = {
 		Type = "Rare",
 		Model = "models/maxofs2d/camera.mdl",
-		Helper = "#xdefm.d"..it,
 		Rarity = 3,
 		Price = 500,
 		PhysSound = "weapon.ImpactHard",
 		TickRate = 0.1,
 		HelperUse = "xdefm.U2"
 	}
-	function ITEM:OnInit( self ) self.xdefm_NextFire = 0 end
-	function ITEM:OnUse( self, ply ) if self.xdefm_NextFire > CurTime() or !ply:IsPlayer() then return false end if ply:KeyDown( IN_SPEED ) then return true end
+	function items.it_camera:OnInit( self ) self.xdefm_NextFire = 0 end
+	function items.it_camera:OnUse( self, ply ) if self.xdefm_NextFire > CurTime() or !ply:IsPlayer() then return false end if ply:KeyDown( IN_SPEED ) then return true end
 		self.xdefm_NextFire = CurTime() +0.5  self:SetNWBool( "XDEFM_PT", true ) self:EmitSound( "NPC_CScanner.TakePhoto" )
 		local lit = ents.Create( "light_dynamic" )  lit:SetPos( self:WorldSpaceCenter() ) lit:SetAngles( self:GetAngles() )
 		lit:SetKeyValue( "_light", "255 255 255 255" )
@@ -134,24 +132,20 @@ if true then local it = "it_camera"
 		lit:Fire( "TurnOn" ) SafeRemoveEntityDelayed( lit, 0.2 )
 		timer.Simple( 0.2, function() if IsValid( self ) then self:SetNWBool( "XDEFM_PT", false ) end end ) return false
 	end
-	function ITEM:OnDraw( self )
+	function items.it_camera:OnDraw( self )
 		render.SetMaterial( Mat ) local siz = self:GetNWBool( "XDEFM_PT" ) and 40 or 0
 		render.DrawSprite( self:WorldSpaceCenter(), siz, siz, Color( 255, 255, 255, 255 ) )
 	end
-	xdefm_ItemRegister( it, ITEM )
 end
 
 
-if true then local it = "it_ammo"
-	local ITEM = {
-		Name = "#xdefm."..it,
+items.it_ammo = {
 		Type = "Uncommon",
 		Model = {
 			"models/Items/BoxBuckshot.mdl", "models/Items/BoxMRounds.mdl", "models/Items/BoxSRounds.mdl",
 			"models/Items/357ammo.mdl", "models/Items/combine_rifle_cartridge01.mdl"
 			},
 		HelperUse = "xdefm.U2",
-		Helper = "#xdefm.d"..it,
 		Rarity = 2,
 		Price = 250,
 		PhysSound = "weapon.ImpactHard",
@@ -165,9 +159,9 @@ if true then local it = "it_ammo"
 		[ "models/items/357ammo.mdl" ] = { "Weapon_357.Single", 1, 40, "357", 60 },
 		[ "models/items/combine_rifle_cartridge01.mdl" ] = { "Weapon_AR2.NPC_Single", 1, 8, "Ar2", 300 }
 	}
-	function ITEM:OnInit( self ) self:SetMaxHealth( 60 ) self:SetHealth( self:GetMaxHealth() ) self.xdefm_Killed = false  self.xdefm_NextShot = 0 end
-	function ITEM:OnStore( self ) if self.xdefm_Killed or self:IsOnFire() then return false end end
-	function ITEM:OnDamaged( self, dmg ) if self.xdefm_Killed or ( !dmg:IsBulletDamage() and !dmg:IsExplosionDamage() and !dmg:IsDamageType( DMG_BURN ) and !dmg:IsDamageType( DMG_SLOWBURN ) ) then return end
+	function items.it_ammo:OnInit( self ) self:SetMaxHealth( 60 ) self:SetHealth( self:GetMaxHealth() ) self.xdefm_Killed = false  self.xdefm_NextShot = 0 end
+	function items.it_ammo:OnStore( self ) if self.xdefm_Killed or self:IsOnFire() then return false end end
+	function items.it_ammo:OnDamaged( self, dmg ) if self.xdefm_Killed or ( !dmg:IsBulletDamage() and !dmg:IsExplosionDamage() and !dmg:IsDamageType( DMG_BURN ) and !dmg:IsDamageType( DMG_SLOWBURN ) ) then return end
 		if !self:IsOnFire() then self:Ignite( 360 ) end self:SetHealth( math.max( 0, self:Health() -dmg:GetDamage() ) )
 		if self:Health() <= 0 then self.xdefm_Killed = true
 			local ef = EffectData()  ef:SetStart( self:WorldSpaceCenter() )
@@ -186,13 +180,13 @@ if true then local it = "it_ammo"
 			xdefm_BreakEffect( self, 3 ) self:Remove()
 		end
 	end
-	function ITEM:OnUse( self, ply ) if self:IsOnFire() or self.xdefm_Killed then return end
+	function items.it_ammo:OnUse( self, ply ) if self:IsOnFire() or self.xdefm_Killed then return end
 		if ply:KeyDown( IN_SPEED ) then return true end
 		local tab = tb[ string.lower( self:GetModel() ) ]  if istable( tab ) then self:EmitSound( "AmmoCrate.Close" )
 			ply:GiveAmmo( tab[ 5 ], tab[ 4 ] ) self.xdefm_Killed = true  self:Remove() return false
 		end
 	end
-	function ITEM:OnThink( self ) if self.xdefm_Killed or !self:IsOnFire() or self.xdefm_NextShot > CurTime() then return end
+	function items.it_ammo:OnThink( self ) if self.xdefm_Killed or !self:IsOnFire() or self.xdefm_NextShot > CurTime() then return end
 		self.xdefm_NextShot = CurTime() +math.Rand( 0.1, 0.5 )  local tab = tb[ string.lower( self:GetModel() ) ]  if !istable( tab ) then return end
 		local bullet = {}  bullet.Num = tab[ 2 ]  bullet.Src = self:WorldSpaceCenter()
 		bullet.Dir = VectorRand():GetNormal()  bullet.Spread = Vector( 0.05, 0.05, 0 )  bullet.Force = tab[ 3 ]*100
@@ -202,22 +196,18 @@ if true then local it = "it_ammo"
 		ef:SetScale( 3 ) ef:SetMagnitude( 2 ) ef:SetAngles( bullet.Dir:Angle() ) ef:SetNormal( bullet.Dir )  util.Effect( "ElectricSpark", ef )
 		self:FireBullets( bullet ) self:EmitSound( tab[ 1 ] ) self:GetPhysicsObject():AddVelocity( VectorRand():GetNormalized()*math.random( 50, 250 ) )
 	end
-	xdefm_ItemRegister( it, ITEM )
 end
 
 
-if true then local it = "it_ammocan1"
-	local ITEM = {
-		Name = "#xdefm."..it,
+items.it_ammocan1 = {
 		Type = "Rare",
 		Model = "models/props/de_prodigy/ammo_can_02.mdl",
-		Helper = "#xdefm.d"..it,
 		Rarity = 3,
 		Price = 750,
 		PhysSound = "Metal_Box.ImpactSoft"
 	}
-	function ITEM:OnInit( self ) self:SetMaxHealth( 100 ) self:SetHealth( self:GetMaxHealth() ) self.xdefm_Killed = false end
-	function ITEM:OnDamaged( self, dmg ) if self:Health() <= 0 or self.xdefm_Killed then return end
+	function items.it_ammocan1:OnInit( self ) self:SetMaxHealth( 100 ) self:SetHealth( self:GetMaxHealth() ) self.xdefm_Killed = false end
+	function items.it_ammocan1:OnDamaged( self, dmg ) if self:Health() <= 0 or self.xdefm_Killed then return end
 		if ( dmg:IsBulletDamage() or dmg:IsExplosionDamage() or dmg:IsDamageType( DMG_BURN ) or dmg:IsDamageType( DMG_SLOWBURN ) ) then dmg:ScaleDamage( 5 ) self:Ignite( 3600 ) end
 		self:SetHealth( math.max( 0, self:Health() -dmg:GetDamage() ) ) self:EmitSound( "Breakable.Metal" )
 		if self:Health() <= 0 then self.xdefm_Killed = true
@@ -231,24 +221,20 @@ if true then local it = "it_ammocan1"
 			end
 		xdefm_BreakEffect( self, 3 ) self:SetNotSolid( true ) SafeRemoveEntityDelayed( self, 0.1 ) end return true
 	end
-	xdefm_ItemRegister( it, ITEM )
 end
 
 
-if true then local it = "it_ammocan2"
-	local ITEM = {
-		Name = "#xdefm."..it,
+items.it_ammocan2 = {
 		Type = "Legendary",
 		Model = {
 			"models/props/de_prodigy/ammo_can_01.mdl", "models/props/de_prodigy/ammo_can_03.mdl"
 			},
-		Helper = "#xdefm.d"..it,
 		Rarity = 4,
 		Price = 2500,
 		PhysSound = "Metal_Box.ImpactHard",
 	}
-	function ITEM:OnInit( self ) self:SetMaxHealth( 250 ) self:SetHealth( self:GetMaxHealth() ) self.xdefm_Killed = false end
-	function ITEM:OnDamaged( self, dmg ) if self:Health() <= 0 or self.xdefm_Killed then return end
+	function items.it_ammocan2:OnInit( self ) self:SetMaxHealth( 250 ) self:SetHealth( self:GetMaxHealth() ) self.xdefm_Killed = false end
+	function items.it_ammocan2:OnDamaged( self, dmg ) if self:Health() <= 0 or self.xdefm_Killed then return end
 		if ( dmg:IsBulletDamage() or dmg:IsExplosionDamage() or dmg:IsDamageType( DMG_BURN ) or dmg:IsDamageType( DMG_SLOWBURN ) ) then dmg:ScaleDamage( 5 ) self:Ignite( 3600 ) end
 		self:SetHealth( math.max( 0, self:Health() -dmg:GetDamage() ) ) self:EmitSound( "Breakable.Metal" )
 		if self:Health() <= 0 then self.xdefm_Killed = true
@@ -261,13 +247,10 @@ if true then local it = "it_ammocan2"
 			end
 		xdefm_BreakEffect( self, 3 ) self:SetNotSolid( true ) SafeRemoveEntityDelayed( self, 0.1 ) end return true
 	end
-	xdefm_ItemRegister( it, ITEM )
 end
 
 
-if true then local it = "it_firearm1"
-	local ITEM = {
-		Name = "#xdefm."..it,
+items.it_firearm1 = {
 		Type = "Uncommon",
 		Model = { 
 			"models/weapons/w_pist_deagle.mdl", "models/weapons/w_mach_m249para.mdl",
@@ -280,14 +263,13 @@ if true then local it = "it_firearm1"
 			"models/weapons/w_snip_scout.mdl", "models/weapons/w_snip_awp.mdl",
 			"models/weapons/w_snip_g3sg1.mdl", "models/weapons/w_snip_sg550.mdl"
 			},
-		Helper = "#xdefm.d"..it,
 		Rarity = 2,
 		Price = 400,
 		PhysSound = "weapon.ImpactHard",
 		TickRate = 0.01,
 		HelperUse = "xdefm.U2"
 	}
-	ITEM.Constants = { Broken = true }
+	items.it_firearm1.Constants = { Broken = true }
 	local tb = {
 		[ "models/weapons/w_shot_xm1014.mdl" ] = { ")weapons/xm1014/xm1014-1.wav", 6, 8, 0.5 },
 		[ "models/weapons/w_shot_m3super90.mdl" ] = { ")weapons/m3/m3-1.wav", 6, 8, 1 },
@@ -308,10 +290,10 @@ if true then local it = "it_firearm1"
 		[ "models/weapons/w_snip_g3sg1.mdl" ] = { ")weapons/g3sg1/g3sg1-1.wav", 1, 60, 0.25 },
 		[ "models/weapons/w_snip_sg550.mdl" ] = { ")weapons/sg550/sg550-1.wav", 1, 50, 0.25 },
 	}
-	function ITEM:OnInit( self ) self.xdefm_NextFire = 0  if self.xdefm_T2.Constants.Broken then self:SetColor( Color( 255, 255, 200 ) ) end
+	function items.it_firearm1:OnInit( self ) self.xdefm_NextFire = 0  if self.xdefm_T2.Constants.Broken then self:SetColor( Color( 255, 255, 200 ) ) end
 		self:SetUseType( CONTINUOUS_USE ) self.xdefm_Snd = nil
 	end
-	function ITEM:OnUse( self, ply ) if self.xdefm_NextFire > CurTime() or !ply:IsPlayer() then return false end if ply:KeyDown( IN_SPEED ) then return true end
+	function items.it_firearm1:OnUse( self, ply ) if self.xdefm_NextFire > CurTime() or !ply:IsPlayer() then return false end if ply:KeyDown( IN_SPEED ) then return true end
 		local tab = tb[ string.lower( self:GetModel() ) ]  if !istable( tab ) or !self:GetAttachment( 1 ) then return false end self.xdefm_NextFire = CurTime() +tab[ 4 ]*( bro and 1.5 or 1 )
 		local bro = self.xdefm_T2.Constants.Broken  if math.random( 1, 3 ) == 1 and bro then self:EmitSound( "Weapon_Pistol.Empty" ) return false end
 		timer.Simple( 0.01, function() if !IsValid( self ) then return end self:ResetSequence( "attack_player" ) self:SetPlaybackRate( 1 )
@@ -322,7 +304,7 @@ if true then local it = "it_firearm1"
 		if self.xdefm_Snd then self.xdefm_Snd:Stop() self.xdefm_Snd = nil end self.xdefm_Snd = CreateSound( self, Sound( tab[ 1 ] ) ) self.xdefm_Snd:Play()
 		self:GetPhysicsObject():AddVelocity( VectorRand():GetNormal()*50 -self:GetForward()*math.random( 150, 300 ) ) end ) return false
 	end
-	function ITEM:OnCollide( self, phy ) if self.xdefm_NextFire > CurTime() or !self.xdefm_T2.Constants.Broken then return end
+	function items.it_firearm1:OnCollide( self, phy ) if self.xdefm_NextFire > CurTime() or !self.xdefm_T2.Constants.Broken then return end
 		if self:IsPlayerHolding() or constraint.FindConstraint( self, "Weld" ) or !self:GetPhysicsObject():IsMotionEnabled() then return end
 		if phy.Speed >= 60 and phy.DeltaTime > 0.2 and math.random( 1, 2 ) == 1 then
 			local tab = tb[ string.lower( self:GetModel() ) ]  if !istable( tab ) or !self:GetAttachment( 1 ) then return end
@@ -335,14 +317,11 @@ if true then local it = "it_firearm1"
 			self:FireBullets( bullet ) self:GetPhysicsObject():AddVelocity( VectorRand():GetNormal()*50 -self:GetForward()*math.random( 150, 300 ) )
 		end
 	end
-	function ITEM:OnRemove( self ) if self.xdefm_Snd then self.xdefm_Snd:Stop() self.xdefm_Snd = nil end end
-	xdefm_ItemRegister( it, ITEM )
+	function items.it_firearm1:OnRemove( self ) if self.xdefm_Snd then self.xdefm_Snd:Stop() self.xdefm_Snd = nil end end
 end
 
 
-if true then local it = "it_firearm2"
-	local ITEM = {
-		Name = "#xdefm."..it,
+items.it_firearm2 = {
 		Type = "Rare",
 		Model = { 
 			"models/weapons/w_pist_deagle.mdl", "models/weapons/w_mach_m249para.mdl",
@@ -355,42 +334,38 @@ if true then local it = "it_firearm2"
 			"models/weapons/w_snip_scout.mdl", "models/weapons/w_snip_awp.mdl", 
 			"models/weapons/w_snip_g3sg1.mdl", "models/weapons/w_snip_sg550.mdl"
 			},
-		Helper = "#xdefm.d"..it,
 		Rarity = 3,
 		Price = 800,
 		PhysSound = "weapon.ImpactHard",
 		TickRate = 0.01,
 		HelperUse = "xdefm.U2"
 	}
-	ITEM.Constants = { Broken = false }
-	xdefm_ItemBased( "it_firearm1", it, ITEM )
+	items.it_firearm2.Constants = { Broken = false }
+	xdefm_ItemBased( "it_firearm1", it, items.it_firearm2 )
 end
 
 
-if true then local it = "it_grenade"
-	local ITEM = {
-		Name = "#xdefm."..it,
+items.it_grenade = {
 		Type = "Uncommon",
 		Model = {
 			"models/weapons/w_eq_fraggrenade.mdl", "models/Items/grenadeAmmo.mdl"
 			},
-		Helper = "#xdefm.d"..it,
 		Rarity = 2,
 		Price = 300,
 		PhysSound = "weapon.ImpactHard",
 		TickRate = 1,
 		HelperUse = "xdefm.U2"
 	}
-	function ITEM:OnInit( self ) self.xdefm_Trigger = 0  self.xdefm_Killed = false end
-	function ITEM:OnCaught( self ) if self.xdefm_Trigger > 0 or self.xdefm_Killed then return end
+	function items.it_grenade:OnInit( self ) self.xdefm_Trigger = 0  self.xdefm_Killed = false end
+	function items.it_grenade:OnCaught( self ) if self.xdefm_Trigger > 0 or self.xdefm_Killed then return end
 		self:EmitSound( "weapons/pinpull.wav" ) self.xdefm_Trigger = CurTime() +5  self:SetNWBool( "XDEFMod_PP", true )
 	end
-	function ITEM:OnUse( self, ply ) if ply:KeyDown( IN_SPEED ) then return true end
+	function items.it_grenade:OnUse( self, ply ) if ply:KeyDown( IN_SPEED ) then return true end
 		if self.xdefm_Trigger > 0 or self.xdefm_Killed then return true end
 		self:EmitSound( "weapons/pinpull.wav" ) self.xdefm_Trigger = CurTime() +5  self:SetNWBool( "XDEFMod_PP", true )
 		return false
 	end
-	function ITEM:OnThink( self ) if self.xdefm_Killed or self.xdefm_Trigger <= 0 or self.xdefm_Trigger > CurTime() then return end
+	function items.it_grenade:OnThink( self ) if self.xdefm_Killed or self.xdefm_Trigger <= 0 or self.xdefm_Trigger > CurTime() then return end
         self.xdefm_Killed = true local ef = EffectData()
 		ef:SetStart( self:WorldSpaceCenter() ) ef:SetOrigin( self:WorldSpaceCenter() )
 		ef:SetScale( 10 ) util.Effect( "Explosion", ef )
@@ -404,38 +379,34 @@ if true then local it = "it_grenade"
 		dmg:SetDamagePosition( self:WorldSpaceCenter() ) dmg:SetDamageForce( Vector( 0, 0, 1 ) ) dmg:SetAttacker( self:GetFMod_OW() )
 		dmg:SetInflictor( self ) util.BlastDamageInfo( dmg, self:WorldSpaceCenter(), 128 ) self:EmitSound( "NPC_SScanner.Gib" ) SafeRemoveEntity( self )
 	end
-	function ITEM:OnDraw( self )
+	function items.it_grenade:OnDraw( self )
 		if self:GetNWBool( "XDEFMod_PP" ) then
 			render.SetMaterial( Mat ) local siz = 15 +math.sin( CurTime()*20 )*15
 			render.DrawSprite( self:WorldSpaceCenter(), siz, siz, Color( 255, 0, 0, 255 ) )
 		end
 	end
-	xdefm_ItemRegister( it, ITEM )
 end
 
 
-if true then local it = "it_flashbang"
-	local ITEM = {
-		Name = "#xdefm."..it,
+items.it_flashbang = {
 		Type = "Uncommon",
 		Model = "models/weapons/w_eq_flashbang.mdl",
-		Helper = "#xdefm.d"..it,
 		Rarity = 2,
 		Price = 250,
 		PhysSound = "weapon.ImpactHard",
 		TickRate = 1,
 		HelperUse = "xdefm.U2"
 	}
-	function ITEM:OnInit( self ) self.xdefm_Trigger = 0  self.xdefm_Killed = false end
-	function ITEM:OnCaught( self ) if self.xdefm_Trigger > 0 or self.xdefm_Killed then return end
+	function items.it_flashbang:OnInit( self ) self.xdefm_Trigger = 0  self.xdefm_Killed = false end
+	function items.it_flashbang:OnCaught( self ) if self.xdefm_Trigger > 0 or self.xdefm_Killed then return end
 		self:EmitSound( "weapons/pinpull.wav" ) self.xdefm_Trigger = CurTime() +5  self:SetNWBool( "XDEFMod_PP", true )
 	end
-	function ITEM:OnUse( self, ply ) if ply:KeyDown( IN_SPEED ) then return true end
+	function items.it_flashbang:OnUse( self, ply ) if ply:KeyDown( IN_SPEED ) then return true end
 		if self.xdefm_Trigger > 0 or self.xdefm_Killed then return true end
 		self:EmitSound( "weapons/pinpull.wav" ) self.xdefm_Trigger = CurTime() +5  self:SetNWBool( "XDEFMod_PP", true )
 		return false
 	end
-	function ITEM:OnThink( self ) if self.xdefm_Killed or self.xdefm_Trigger <= 0 or self.xdefm_Trigger > CurTime() then return end
+	function items.it_flashbang:OnThink( self ) if self.xdefm_Killed or self.xdefm_Trigger <= 0 or self.xdefm_Trigger > CurTime() then return end
         self.xdefm_Killed = true local ef = EffectData()
 		ef:SetStart( self:WorldSpaceCenter() ) ef:SetOrigin( self:WorldSpaceCenter() )
 		ef:SetScale( 2 ) ef:SetMagnitude( 1 ) ef:SetRadius( 2 ) util.Effect( "cball_explode", ef )
@@ -446,48 +417,41 @@ if true then local it = "it_flashbang"
 			if v:IsNPC() then v:ClearSchedule() elseif v:IsPlayer() then v:ScreenFade( SCREENFADE.IN, Color( 255, 255, 255 ), 4, 1 ) end
 		end util.ScreenShake( self:WorldSpaceCenter(), 100, 100, 2, 256 ) self:EmitSound( "Flashbang.Explode" ) SafeRemoveEntity( self )
 	end
-	function ITEM:OnDraw( self )
+	function items.it_flashbang:OnDraw( self )
 		if self:GetNWBool( "XDEFMod_PP" ) then
 			render.SetMaterial( Mat ) local siz = 15 +math.sin( CurTime()*20 )*15
 			render.DrawSprite( self:WorldSpaceCenter(), siz, siz, Color( 255, 255, 0, 255 ) )
 		end
 	end
-	xdefm_ItemRegister( it, ITEM )
 end
 
 
-if true then local it = "it_launcher"
-	local ITEM = {
-		Name = "#xdefm."..it,
+items.it_launcher = {
 		Type = "Exotic",
 		Model = "models/weapons/w_physics.mdl",
-		Helper = "#xdefm.d"..it,
 		Rarity = 5,
 		Price = 4500,
 		PhysSound = "weapon.ImpactHard",
 		TickRate = 0.1,
 		HelperUse = "xdefm.U2"
 	}
-	function ITEM:OnInit( self ) self.xdefm_NextFire = 0  self:SetUseType( CONTINUOUS_USE ) end
-	function ITEM:OnUse( self, ply ) if self.xdefm_NextFire > CurTime() or !ply:IsPlayer() then return false end if ply:KeyDown( IN_SPEED ) then return true end
+	function items.it_launcher:OnInit( self ) self.xdefm_NextFire = 0  self:SetUseType( CONTINUOUS_USE ) end
+	function items.it_launcher:OnUse( self, ply ) if self.xdefm_NextFire > CurTime() or !ply:IsPlayer() then return false end if ply:KeyDown( IN_SPEED ) then return true end
 		local att = self:GetAttachment( 1 ) if !att then return false end local rok = ents.Create( "rpg_missile" )
 		rok:SetPos( att.Pos +self:EyeAngles():Forward()*16 ) rok:SetAngles( att.Ang ) rok:SetOwner( self )
 		rok:Spawn() rok:Activate() rok:SetVelocity( self:EyeAngles():Forward()*1000 ) rok:SetGravity( 0 ) rok:SetSaveValue( "m_flDamage", 100 )
 		rok:SetNWBool( "XDEFM_HO", true ) self:EmitSound( "weapons/stinger_fire1.wav" ) self.xdefm_NextFire = CurTime() +2
 		self:GetPhysicsObject():AddVelocity( VectorRand():GetNormal()*25 -self:GetForward()*math.random( 200, 400 ) ) return false
 	end
-	function ITEM:OnThink( self )
+	function items.it_launcher:OnThink( self )
 		if self.xdefm_NextFire > 0 and self.xdefm_NextFire <= CurTime() then
 			self:EmitSound( "Weapon_Shotgun.Empty" ) self.xdefm_NextFire = 0
 		end
 	end
-	xdefm_ItemRegister( it, ITEM )
 end
 
 
-if true then local it = "it_car"
-	local ITEM = {
-		Name = "#xdefm."..it,
+items.it_car = {
 		Type = "Legendary",
 		Model = {
 			"models/props_vehicles/car003a_physics.mdl", "models/props_vehicles/car003b_physics.mdl",
@@ -495,22 +459,21 @@ if true then local it = "it_car"
 			"models/props_vehicles/car004b_physics.mdl", "models/props_vehicles/car005a_physics.mdl",
 			"models/props_vehicles/car005b_physics.mdl"
 			},
-		Helper = "#xdefm.d"..it,
 		Rarity = 4,
 		Price = 1280,
 		PhysSound = "MetalVehicle.ImpactSoft",
 		TickRate = 0.1,
 		HelperUse = "xdefm.U2"
 	}
-	function ITEM:OnInit( self ) self.xdefm_NextRun = 0  self.xdefm_Killed = false
+	function items.it_car:OnInit( self ) self.xdefm_NextRun = 0  self.xdefm_Killed = false
 	self.xdefm_Snd = nil  self:SetMaxHealth( 400 ) self:SetHealth( self:GetMaxHealth() ) end
-	function ITEM:OnReady( self ) self:GetPhysicsObject():SetMass( self:GetPhysicsObject():GetMass()*0.01 ) end
-	function ITEM:OnUse( self, ply ) if self.xdefm_Killed or self.xdefm_NextRun > 0 then return false end
+	function items.it_car:OnReady( self ) self:GetPhysicsObject():SetMass( self:GetPhysicsObject():GetMass()*0.01 ) end
+	function items.it_car:OnUse( self, ply ) if self.xdefm_Killed or self.xdefm_NextRun > 0 then return false end
 		if self.xdefm_Snd then self.xdefm_Snd:Stop() self.xdefm_Snd = nil end
 		self.xdefm_Snd = CreateSound( self, Sound( "ATV_turbo_on" ) )  self.xdefm_Snd:Play()
 		self.xdefm_NextRun = CurTime() +math.Rand( 1, 5 )  return false
 	end
-	function ITEM:OnThink( self ) if self.xdefm_Killed then return end
+	function items.it_car:OnThink( self ) if self.xdefm_Killed then return end
 		if self.xdefm_NextRun > 0 and self.xdefm_NextRun <= CurTime() then self.xdefm_NextRun = 0
 			if self.xdefm_Snd then self.xdefm_Snd:Stop() self.xdefm_Snd = nil end self:EmitSound( "ATV_engine_stop" )
 		elseif self.xdefm_NextRun > 0 then local vel = ( self:GetAngles():Forward()*600 )
@@ -518,7 +481,7 @@ if true then local it = "it_car"
 			self:GetPhysicsObject():AddAngleVelocity( Vector( 0, 0, math.sin( CurTime()*math.random( 2, 6 ) )*300 ) )
 		end
 	end
-	function ITEM:OnCollide( self, dat, phy ) if self.xdefm_Killed then return end local ent = dat.HitEntity
+	function items.it_car:OnCollide( self, dat, phy ) if self.xdefm_Killed then return end local ent = dat.HitEntity
 		if self.xdefm_NextRun > 0 and dat.Speed >= 60 and dat.DeltaTime >= 0.2 then
 			ent:EmitSound( "MetalVent.ImpactHard" ) local dmg = DamageInfo()
 			dmg:SetDamage( 25 ) dmg:SetAttacker( self:GetFMod_OW() ) dmg:SetInflictor( self )
@@ -526,7 +489,7 @@ if true then local it = "it_car"
 			ent:TakeDamageInfo( dmg ) self:TakeDamageInfo( dmg ) if dat.Speed >= 900 then self.xdefm_NextRun = 0.1 end
 		end
 	end
-	function ITEM:OnDamaged( self, dmg ) if self:Health() <= 0 or dmg:GetDamage() <= 0 or self.xdefm_Killed then return false end
+	function items.it_car:OnDamaged( self, dmg ) if self:Health() <= 0 or dmg:GetDamage() <= 0 or self.xdefm_Killed then return false end
 		self:SetHealth( math.max( 0, self:Health() -dmg:GetDamage() ) ) self:StopSound( "Breakable.Metal" ) self:EmitSound( "Breakable.Metal" )
 		if self:Health() <= 0 then self.xdefm_Killed = true
 		local ef = EffectData() ef:SetStart( self:WorldSpaceCenter() ) ef:SetOrigin( self:WorldSpaceCenter() )
@@ -537,35 +500,28 @@ if true then local it = "it_car"
 		local lt = {["it_scrap"]=200,["it_copperbar"]=60,["it_leadbar"]=10,["it_steelbar"]=10} for i=1, math.random( 4, 6 ) do xdefm_LootDrop( lt, self ) end
 		xdefm_BreakEffect( self, 3 ) self:SetNotSolid( true ) SafeRemoveEntityDelayed( self, 0.1 ) end return true
 	end
-	function ITEM:OnRemove( self ) if self.xdefm_Snd then self.xdefm_Snd:Stop() self.xdefm_Snd = nil end end
-	xdefm_ItemRegister( it, ITEM )
+	function items.it_car:OnRemove( self ) if self.xdefm_Snd then self.xdefm_Snd:Stop() self.xdefm_Snd = nil end end
 end
 
 
-if true then local it = "it_bread1"
-	local ITEM = {
-		Name = "#xdefm."..it,
+items.it_bread1 = {
 		Type = "Common",
 		Model = "models/weapons/c_models/c_bread/c_bread_burnt.mdl",
-		Helper = "#xdefm.d"..it,
 		Rarity = 1,
 		Price = 60,
 		PhysSound = "Flesh.ImpactSoft",
 		HelperUse = "xdefm.U2",
 		CantCook = true
 	}
-	function ITEM:OnInit( self ) self.xdefm_Used = false end
-	function ITEM:OnUse( self, ent ) if self.xdefm_Used then return end if ent:Health() >= ent:GetMaxHealth() then return true end
+	function items.it_bread1:OnInit( self ) self.xdefm_Used = false end
+	function items.it_bread1:OnUse( self, ent ) if self.xdefm_Used then return end if ent:Health() >= ent:GetMaxHealth() then return true end
 		if ent:KeyDown( IN_SPEED ) then return true end ent:SetHealth( math.min( ent:GetMaxHealth(), ent:Health() +math.random( 2, 10 ) ) )
 		ent:EmitSound( "NPC_Barnacle.FinalBite" ) self:Remove() self.xdefm_Used = true return false
 	end
-	xdefm_ItemRegister( it, ITEM )
 end
 
 
-if true then local it = "it_bread2"
-	local ITEM = {
-		Name = "#xdefm."..it,
+items.it_bread2 = {
 		Type = "Uncommon",
 		Model = {
 			"models/weapons/c_models/c_bread/c_bread_cinnamon.mdl", "models/weapons/c_models/c_bread/c_bread_cornbread.mdl",
@@ -573,24 +529,31 @@ if true then local it = "it_bread2"
 			"models/weapons/c_models/c_bread/c_bread_pretzel.mdl", "models/weapons/c_models/c_bread/c_bread_ration.mdl",
 			"models/weapons/c_models/c_bread/c_bread_russianblack.mdl"
 			},
-		Helper = "#xdefm.d"..it,
 		Rarity = 2,
 		Price = 250,
 		PhysSound = "Flesh.ImpactSoft",
 		HelperUse = "xdefm.U2"
 	}
-	function ITEM:OnInit( self ) self.xdefm_Used = false end
-	function ITEM:OnUse( self, ent ) if self.xdefm_Used then return end if ent:Health() >= ent:GetMaxHealth() then return true end
+	function items.it_bread2:OnInit( self ) self.xdefm_Used = false end
+	function items.it_bread2:OnUse( self, ent ) if self.xdefm_Used then return end if ent:Health() >= ent:GetMaxHealth() then return true end
 		if ent:KeyDown( IN_SPEED ) then return true end local met = xdefm_CookMeter( self:GetFMod_DT() )
 		if met >= 0 then ent:SetHealth( math.min( ent:GetMaxHealth(), ent:Health() +math.ceil( math.random( 5, 20 )*( 1 +met ) ) ) ) end
 		ent:EmitSound( "NPC_Barnacle.FinalBite" ) self:Remove() self.xdefm_Used = true return false
 	end
-	xdefm_ItemRegister( it, ITEM )
 end
 
 
-if true then local it = "cr_bread"
-	sound.Add( {
+items.cr_bread = {
+		Type = "Creature",
+		Model = "models/weapons/w_models/w_breadmonster/w_breadmonster.mdl",
+		Rarity = 3,
+		Price = 500,
+		TickRate = 0.1,
+		MinSize = 1,
+		MaxSize = 2
+		}
+
+		sound.Add( {
 		name = "xdefm.BreadAlert",
 		channel = CHAN_VOICE,
 		volume = 1, level = 75, pitch = 100,
@@ -612,23 +575,12 @@ if true then local it = "cr_bread"
 			"weapons/breadmonster/throwable/bm_throwable_attack_09.wav", "weapons/breadmonster/throwable/bm_throwable_attack_10.wav"
 			}
 			} )
-	local ITEM = {
-		Name = "#xdefm."..it,
-		Type = "Creature",
-		Model = "models/weapons/w_models/w_breadmonster/w_breadmonster.mdl",
-		Helper = "#xdefm.d"..it,
-		Rarity = 3,
-		Price = 500,
-		TickRate = 0.1,
-		MinSize = 1,
-		MaxSize = 2
-		}
-	function ITEM:OnReady( self ) self:StartMotionController() self:SetTrigger( true ) self:GetPhysicsObject():SetMass( 75 ) end
-	function ITEM:OnInit( self ) self:SetMaxHealth( 100 ) self:SetHealth( self:GetMaxHealth() ) self.ShadowParams = {}
+	function items.cr_bread:OnReady( self ) self:StartMotionController() self:SetTrigger( true ) self:GetPhysicsObject():SetMass( 75 ) end
+	function items.cr_bread:OnInit( self ) self:SetMaxHealth( 100 ) self:SetHealth( self:GetMaxHealth() ) self.ShadowParams = {}
 		self:SetAutomaticFrameAdvance( true ) self:SetBloodColor( BLOOD_COLOR_RED ) self.ShadowParams = {}  self.xdefm_Atk = 0
 		self.xdefm_Killed = false  self.xdefm_AtkD = 0  self.xdefm_AtkT = nil  self:SetCollisionGroup( COLLISION_GROUP_WORLD )
 	end
-	function ITEM:OnThink( self ) if self.xdefm_Killed then return end
+	function items.cr_bread:OnThink( self ) if self.xdefm_Killed then return end
 		if self.xdefm_AtkD <= CurTime() and !IsValid( self.xdefm_AtkT ) then self.xdefm_AtkD = CurTime() +1  local tas = {}
 			for k, v in pairs( ents.FindInSphere( self:GetPos(), 2048 ) ) do if v == self then continue end
 				if ( !v:IsNPC() and !v:IsPlayer() and v:GetClass() != "xdefm_base" )
@@ -644,7 +596,7 @@ if true then local it = "cr_bread"
 			if tr.Hit then self.xdefm_AtkT = nil  self.xdefm_NT = 0 end end
 		end
 	end
-	function ITEM:OnTouch( self, ent, typ ) if typ == -1 or self.xdefm_Killed or self.xdefm_Atk > CurTime() then return end self.xdefm_Atk = CurTime() +0.25
+	function items.cr_bread:OnTouch( self, ent, typ ) if typ == -1 or self.xdefm_Killed or self.xdefm_Atk > CurTime() then return end self.xdefm_Atk = CurTime() +0.25
 		if ent:Health() <= 0 or ( !ent:IsPlayer() and !ent:IsNPC() and ent:GetClass() != "xdefm_base" ) then return end
 		local vel = ( self:WorldSpaceCenter() - ent:WorldSpaceCenter() ):GetNormalized()
 		local dmg = DamageInfo() dmg:SetDamage( 5 ) dmg:SetAttacker( self:GetFMod_OW() )
@@ -653,14 +605,14 @@ if true then local it = "cr_bread"
 		ent:SetVelocity( vel*-400 )
 		if IsValid( ent:GetPhysicsObject() ) then ent:GetPhysicsObject():SetVelocity( vel*-300 ) end
 	end
-	function ITEM:OnPlayerDrop( self, own ) self:SetHealth( 0 ) self:SetColor( Color( 255, 155, 155 ) )
+	function items.cr_bread:OnPlayerDrop( self, own ) self:SetHealth( 0 ) self:SetColor( Color( 255, 155, 155 ) )
 	self:SetCollisionGroup( COLLISION_GROUP_NPC ) self.xdefm_Killed = true end
-	function ITEM:OnDamaged( self, dmg ) if self.xdefm_Killed then return end
+	function items.cr_bread:OnDamaged( self, dmg ) if self.xdefm_Killed then return end
 		self:SetHealth( math.max( 0, self:Health() -dmg:GetDamage() ) )
 		if self:Health() <= 0 then self:SetColor( Color( 255, 155, 155 ) ) self:SetCollisionGroup( COLLISION_GROUP_NPC )
 		self:EmitSound( "NPC_BlackHeadcrab.Die" ) self.xdefm_Killed = true self:SetPlaybackRate( 0 ) end
 	end
-	function ITEM:OnPhysSimulate( self, phy, del ) if self.xdefm_Killed then return end
+	function items.cr_bread:OnPhysSimulate( self, phy, del ) if self.xdefm_Killed then return end
 		if self:GetCollisionGroup() != COLLISION_GROUP_WORLD then self:SetCollisionGroup( COLLISION_GROUP_WORLD ) end
 		if self:GetPlaybackRate() != 1 then self:SetPlaybackRate( 1 ) end
 		if self:IsPlayerHolding() or constraint.FindConstraint( self, "Weld" ) or !self:GetPhysicsObject():IsMotionEnabled() then return end
@@ -678,89 +630,74 @@ if true then local it = "cr_bread"
 		self.ShadowParams.deltatime = deltatime
 		phy:ComputeShadowControl( self.ShadowParams )
 	end
-	xdefm_ItemRegister( it, ITEM )
 end
 
 
-if true then local it = "it_pumpkin1"
-	local ITEM = {
-		Name = "#xdefm."..it,
+items.it_pumpkin1 = {
 		Type = "Uncommon",
 		Model = "models/props_outland/pumpkin01.mdl",
-		Helper = "#xdefm.d"..it,
 		Rarity = 2,
 		Price = 100,
 		PhysSound = "Watermelon.Impact",
 		HelperUse = "xdefm.U2"
 	}
-	function ITEM:OnInit( self ) self:SetMaxHealth( 50 ) self:SetHealth( self:GetMaxHealth() ) self.xdefm_Killed = false end
-	function ITEM:OnDamaged( self, dmg ) if self.xdefm_Killed then return end self:EmitSound( "Watermelon.BulletImpact" )
+	function items.it_pumpkin1:OnInit( self ) self:SetMaxHealth( 50 ) self:SetHealth( self:GetMaxHealth() ) self.xdefm_Killed = false end
+	function items.it_pumpkin1:OnDamaged( self, dmg ) if self.xdefm_Killed then return end self:EmitSound( "Watermelon.BulletImpact" )
 		self:SetHealth( math.max( 0, self:Health() -dmg:GetDamage() ) ) if self:Health() <= 0 then self.xdefm_Killed = true
 			self:Remove() local lt = {["it_pumpki"]=1} for i=1, 5 do xdefm_LootDrop( lt, self ) end
 		end
 	end
-	function ITEM:OnUse( self, ent ) if self.xdefm_Used then return end if ent:Health() >= ent:GetMaxHealth() then return true end
+	function items.it_pumpkin1:OnUse( self, ent ) if self.xdefm_Used then return end if ent:Health() >= ent:GetMaxHealth() then return true end
 		if ent:KeyDown( IN_SPEED ) then return true end local met = xdefm_CookMeter( self:GetFMod_DT() )
 		if met >= 0 then ent:SetHealth( math.min( ent:GetMaxHealth(), ent:Health() +math.ceil( 50*( 1 +met ) ) ) ) end
 		ent:EmitSound( "NPC_Barnacle.FinalBite" ) self:Remove() self.xdefm_Used = true return false
 	end
-	xdefm_ItemRegister( it, ITEM )
 end
 
 
-if true then local it = "it_pumpkin2"
-	local ITEM = {
-		Name = "#xdefm."..it,
+items.it_pumpkin2 = {
 		Type = "Rare",
 		Model = "models/props_outland/pumpkin01_explosive.mdl",
-		Helper = "#xdefm.d"..it,
 		Rarity = 3,
 		Price = 300,
 		PhysSound = "Watermelon.Impact",
 		HelperUse = "xdefm.U2"
 	}
-	function ITEM:OnInit( self ) self:SetMaxHealth( 100 ) self:SetHealth( self:GetMaxHealth() ) self.xdefm_Killed = false end
-	function ITEM:OnDamaged( self, dmg ) if self.xdefm_Killed then return end self:EmitSound( "Watermelon.BulletImpact" )
+	function items.it_pumpkin2:OnInit( self ) self:SetMaxHealth( 100 ) self:SetHealth( self:GetMaxHealth() ) self.xdefm_Killed = false end
+	function items.it_pumpkin2:OnDamaged( self, dmg ) if self.xdefm_Killed then return end self:EmitSound( "Watermelon.BulletImpact" )
 		self:SetHealth( math.max( 0, self:Health() -dmg:GetDamage() ) ) if self:Health() <= 0 then self.xdefm_Killed = true
 			self:Remove() local lt = {["it_pumpki"]=1} for i=1, 10 do xdefm_LootDrop( lt, self ) end
 		end
 	end
-	function ITEM:OnUse( self, ent ) if self.xdefm_Used then return end if ent:Health() >= ent:GetMaxHealth() then return true end
+	function items.it_pumpkin2:OnUse( self, ent ) if self.xdefm_Used then return end if ent:Health() >= ent:GetMaxHealth() then return true end
 		if ent:KeyDown( IN_SPEED ) then return true end local met = xdefm_CookMeter( self:GetFMod_DT() )
 		if met >= 0 then ent:SetHealth( math.min( ent:GetMaxHealth(), ent:Health() +math.ceil( 150*( 1 +met ) ) ) ) end
 		ent:EmitSound( "NPC_Barnacle.FinalBite" ) self:Remove() self.xdefm_Used = true return false
 	end
-	xdefm_ItemRegister( it, ITEM )
 end
 
 
-if true then local it = "it_pumpki"
-	local ITEM = {
-		Name = "#xdefm."..it,
+items.it_pumpki = {
 		Type = "Common",
 		Model = {
 			"models/props_outland/pumpkin01_chunk01a.mdl", "models/props_outland/pumpkin01_chunk01b.mdl",
 			"models/props_outland/pumpkin01_chunk02a.mdl"
 			},
-		Helper = "#xdefm.d"..it,
 		Rarity = 1,
 		PhysSound = "Watermelon.Impact",
 		Price = 20,
 		HelperUse = "xdefm.U2"
 	}
-	function ITEM:OnInit( self ) self.xdefm_Used = false self:SetCollisionGroup( COLLISION_GROUP_WEAPON ) end
-	function ITEM:OnUse( self, ent ) if self.xdefm_Used then return end if ent:Health() >= ent:GetMaxHealth() then return true end
+	function items.it_pumpki:OnInit( self ) self.xdefm_Used = false self:SetCollisionGroup( COLLISION_GROUP_WEAPON ) end
+	function items.it_pumpki:OnUse( self, ent ) if self.xdefm_Used then return end if ent:Health() >= ent:GetMaxHealth() then return true end
 		if ent:KeyDown( IN_SPEED ) then return true end local met = xdefm_CookMeter( self:GetFMod_DT() )
 		if met >= 0 then ent:SetHealth( math.min( ent:GetMaxHealth(), ent:Health() +math.ceil( 10*( 1 +met ) ) ) ) end
 		ent:EmitSound( "NPC_Barnacle.FinalBite" ) self:Remove() self.xdefm_Used = true return false
 	end
-	xdefm_ItemRegister( it, ITEM )
 end
 
 
-if true then local it = "it_pmetal"
-	local ITEM = {
-		Name = "#xdefm."..it,
+items.it_pmetal = {
 		Type = "Rare",
 		Model = {
 			"models/npcs/turret/turret_fx_break_gib2.mdl", "models/npcs/turret/turret_fx_break_gib12.mdl",
@@ -768,61 +705,52 @@ if true then local it = "it_pmetal"
 			"models/npcs/turret/turret_fx_break_gib20.mdl", "models/npcs/turret/turret_fx_break_gib21.mdl",
 			"models/npcs/turret/turret_fx_break_gib22.mdl"
 			},
-		Helper = "#xdefm.d"..it,
 		Rarity = 3,
 		Price = 825,
 		PhysSound = "EpicMetal.ImpactSoft"
 	}
-	xdefm_ItemRegister( it, ITEM )
 end
 
 
-if true then local it = "it_pcube"
-	local ITEM = {
-		Name = "#xdefm."..it,
+items.it_pcube = {
 		Type = "Rare",
 		Model = "models/props/metal_box_fx_fizzler.mdl",
-		Helper = "#xdefm.d"..it,
 		Rarity = 3,
 		Price = 450,
 		PhysSound = "Metal_Box.ImpactHard"
 	}
-	function ITEM:OnInit( self ) self:SetMaxHealth( 200 ) self:SetHealth( self:GetMaxHealth() ) self:SetSkin( math.random( 0, 2 ) ) self.xdefm_Killed = false end
-	function ITEM:OnDamaged( self, dmg ) if dmg:GetDamage() <= 0 or self.xdefm_Killed or ( !dmg:IsDamageType( DMG_DISSOLVE ) and !dmg:IsDamageType( DMG_BURN ) and !dmg:IsDamageType( DMG_SLOWBURN ) ) then return true end
+	function items.it_pcube:OnInit( self ) self:SetMaxHealth( 200 ) self:SetHealth( self:GetMaxHealth() ) self:SetSkin( math.random( 0, 2 ) ) self.xdefm_Killed = false end
+	function items.it_pcube:OnDamaged( self, dmg ) if dmg:GetDamage() <= 0 or self.xdefm_Killed or ( !dmg:IsDamageType( DMG_DISSOLVE ) and !dmg:IsDamageType( DMG_BURN ) and !dmg:IsDamageType( DMG_SLOWBURN ) ) then return true end
 		if !self:IsOnFire() then self:Ignite( math.random( 360 ) ) end
 		self:SetHealth( math.max( 0, self:Health() -dmg:GetDamage() ) ) self:StopSound( "Metal_Box.Strain" ) self:StopSound( "Metal_Box.Break" )
 		if self:Health() > 0 then self:EmitSound( "Metal_Box.Strain" ) else self.xdefm_Killed = true  self:EmitSound( "Metal_Box.Break" )
 		local lt = {["it_scrap"]=1} for i=1, math.random( 4, 6 ) do xdefm_LootDrop( lt, self ) end
 		xdefm_BreakEffect( self, 3 ) self:SetNotSolid( true ) SafeRemoveEntityDelayed( self, 0.1 ) end return true
 	end
-	xdefm_ItemRegister( it, ITEM )
 end
 
 
-if true then local it = "it_pradio"
-	local so = Sound( "ambient/music/looping_radio_mix.wav" )
-	local ITEM = {
-		Name = "#xdefm."..it,
+items.it_pradio = {
 		Type = "Rare",
 		Model = "models/props/radio_reference.mdl",
-		Helper = "#xdefm.d"..it,
 		Rarity = 3,
 		Price = 1000,
 		PhysSound = "Metal_Box.ImpactSoft",
 		TickRate = 0.1,
 		HelperUse = "xdefm.U2"
 	}
-	function ITEM:OnInit( self ) self.xdefm_Snd = CreateSound( self, so )
+		local so = Sound( "ambient/music/looping_radio_mix.wav" )
+	function items.it_pradio:OnInit( self ) self.xdefm_Snd = CreateSound( self, so )
 		self.xdefm_Snd:Play()  self.xdefm_BrokenDelay = 0  self.xdefm_TurnOn = true
 		self.xdefm_NextChange = CurTime() +math.Rand( 2, 10 )  self.xdefm_Broken = false
 	end
-	function ITEM:OnUse( self, ent ) if ent:KeyDown( IN_SPEED ) then return true end
+	function items.it_pradio:OnUse( self, ent ) if ent:KeyDown( IN_SPEED ) then return true end
 		if ent:IsPlayer() then self.xdefm_BrokenDelay = CurTime() +1  self.xdefm_TurnOn = !self.xdefm_TurnOn
 		if self.xdefm_Snd then self.xdefm_Snd:Stop()  self.xdefm_Snd = nil end
 		self.xdefm_NextChange = CurTime() +math.Rand( 2, 10 )  self.xdefm_Broken = false
 		self:StopSound( "eli_lab.al_buttonmash" ) self:EmitSound( "eli_lab.al_buttonmash" ) return false end
 	end
-	function ITEM:OnThink( self ) if self.xdefm_Broken then return end
+	function items.it_pradio:OnThink( self ) if self.xdefm_Broken then return end
 		if self.xdefm_TurnOn and self.xdefm_Snd and !self.xdefm_Snd:IsPlaying() then self.xdefm_Snd:Play() end
 		if self.xdefm_TurnOn and !self.xdefm_Snd then self.xdefm_Snd = CreateSound( self, so )
 		self.xdefm_Snd:ChangePitch( 100, 0 ) self.xdefm_Snd:Play() end
@@ -832,27 +760,23 @@ if true then local it = "it_pradio"
 			end
 		end
 	end
-	function ITEM:OnDamaged( self ) if self.xdefm_Broken or !self.xdefm_TurnOn then return end
+	function items.it_pradio:OnDamaged( self ) if self.xdefm_Broken or !self.xdefm_TurnOn then return end
 		self:StopSound( "DoSpark" ) self:EmitSound( "DoSpark" )
 		local ef = EffectData() ef:SetOrigin( self:WorldSpaceCenter() ) ef:SetEntity( self ) ef:SetRadius( 5 )
 		ef:SetScale( 5 ) ef:SetMagnitude( 2 ) util.Effect( "ElectricSpark", ef )
 		self.xdefm_BrokenDelay = CurTime() +1  self.xdefm_Broken = true
 		if self.xdefm_Snd then self.xdefm_Snd:ChangeVolume( 0, 2 ) self.xdefm_Snd:ChangePitch( 60, 2 ) end
 	end
-	function ITEM:OnCollide( self, dat ) if self.xdefm_Broken or !self.xdefm_TurnOn then return end
+	function items.it_pradio:OnCollide( self, dat ) if self.xdefm_Broken or !self.xdefm_TurnOn then return end
 		if dat.Speed >= 300 and dat.DeltaTime > 0.2 then self:TakeDamage( 1 ) end
 	end
-	function ITEM:OnRemove( self ) if self.xdefm_Snd then self.xdefm_Snd:Stop()  self.xdefm_Snd = nil end end
-	xdefm_ItemRegister( it, ITEM )
+	function items.it_pradio:OnRemove( self ) if self.xdefm_Snd then self.xdefm_Snd:Stop()  self.xdefm_Snd = nil end end
 end
 
 
-if true then local it = "it_pcore"
-	local ITEM = {
-		Name = "#xdefm."..it,
+items.it_pcore = {
 		Type = "Exotic",
 		Model = "models/xdeedited/personality_sphere_skins.mdl",
-		Helper = "#xdefm.d"..it,
 		Rarity = 5,
 		Price = 7500,
 		PhysSound = "MetalGrate.ImpactSoft",
@@ -874,11 +798,11 @@ if true then local it = "it_pcore"
 			{"12",5},{"13",4},{"14",6},{"15",6},{"16",5},{"17",4},{"18",4},{"19",8},{"20",11},{"21",6},{"22",6},{"23",11},
 			{"24",11},{"25",3},{"26",8},{"27",7},{"28",9},{"29",11},{"30",3} }
 	}
-	function ITEM:OnInit( self ) self.xdefm_NextSpeak = CurTime() +math.Rand( 1, 10 )  self.xdefm_Type = math.random( 0, 3 )
+	function items.it_pcore:OnInit( self ) self.xdefm_NextSpeak = CurTime() +math.Rand( 1, 10 )  self.xdefm_Type = math.random( 0, 3 )
 		self:SetAutomaticFrameAdvance( true ) self:ResetSequence( ani[ self.xdefm_Type +1 ] ) self:SetPlaybackRate( 1 ) 
 		self:SetSkin( self.xdefm_Type ) self.xdefm_Voice = nil  self.xdefm_VTime = CurTime() +1  self.xdefm_AnimD = 0
 	end
-	function ITEM:OnThink( self ) if self:GetSkin() != self.xdefm_Type then self:SetSkin( self.xdefm_Type ) end
+	function items.it_pcore:OnThink( self ) if self:GetSkin() != self.xdefm_Type then self:SetSkin( self.xdefm_Type ) end
 		if self.xdefm_AnimD and self:GetCycle() == 1 then
 			self:ResetSequence( spe[ self.xdefm_Type +1 ] ) self:SetPlaybackRate( 1 ) end
 		if self.xdefm_AnimD < CurTime() and self:GetSequenceName( self:GetSequence() ) != ani[ self.xdefm_Type +1 ] then
@@ -895,40 +819,36 @@ if true then local it = "it_pcore"
 			self.xdefm_Voice = CreateSound( self, Sound( pat ) )  self.xdefm_Voice:Play()  self.xdefm_VTime = CurTime() +del +1
 		end
 	end
-	function ITEM:OnRemove( self ) if self.xdefm_Voice then self.xdefm_Voice:Stop()  self.xdefm_Voice = nil end end
-	xdefm_ItemRegister( it, ITEM )
+	function items.it_pcore:OnRemove( self ) if self.xdefm_Voice then self.xdefm_Voice:Stop()  self.xdefm_Voice = nil end end
 end
 
 
-if true then local it = "it_pturre1"
-	local ITEM = {
-		Name = "#xdefm."..it,
+items.it_pturre1 = {
 		Type = "Legendary",
 		Model = "models/props/turret_01.mdl",
 		TickRate = 0.04,
-		Helper = "#xdefm.d"..it,
 		Rarity = 4,
 		Price = 2250,
 		PhysSound = "SolidMetal.ImpactSoft",
 	}
-	ITEM.Constants = { [ "Broken" ] = false }
+	items.it_pturre1.Constants = { [ "Broken" ] = false }
 	local so = {"npc/turret/different_turret01.wav",
 		"npc/turret/sp_sabotage_factory_good_pass01.wav",
 		"npc/turret/sp_sabotage_factory_template01.wav" }
-	function ITEM:OnInit( self ) self.xdefm_NextSnd = CurTime() +1  self.xdefm_Detect = CurTime() +1
+	function items.it_pturre1:OnInit( self ) self.xdefm_NextSnd = CurTime() +1  self.xdefm_Detect = CurTime() +1
 		self:SetAutomaticFrameAdvance( true ) self:ResetSequence( "idle" ) self:SetPlaybackRate( 1 )
 		self.xdefm_Alive = true  self.ShadowParams = {}  self.xdefm_Target = nil
 		self.xdefm_Find = 0  self.xdefm_NextFire = 0  self.xdefm_BreakIn = 0  self.xdefm_Cool = 0
 		self:SetNWFloat( "XDEFM_Pit", 0 )  self:SetNWFloat( "XDEFM_Yaw", 0 )  self.xdefm_Broken = self.xdefm_T2.Constants.Broken
 		self:SetSkin( self.xdefm_Broken and 1 or 0 )
 	end
-	function ITEM:OnUse( self, ent )
+	function items.it_pturre1:OnUse( self, ent )
 		if self:IsPlayerHolding() or constraint.FindConstraint( self, "Weld" ) or !self:GetPhysicsObject():IsMotionEnabled() then return end
 		self:SetAngles( Angle( 0, self:GetAngles().yaw, 0 ) )
 	end
-	function ITEM:OnStore( self ) if self.xdefm_Broken and self.xdefm_BreakIn > 0 then return false end end
-	function ITEM:OnReady( self ) self:GetPhysicsObject():SetMass( 100 ) end
-	function ITEM:OnThink( self ) local seq, pit = self:GetSequenceName( self:GetSequence() ), math.abs( self:GetAngles().roll )
+	function items.it_pturre1:OnStore( self ) if self.xdefm_Broken and self.xdefm_BreakIn > 0 then return false end end
+	function items.it_pturre1:OnReady( self ) self:GetPhysicsObject():SetMass( 100 ) end
+	function items.it_pturre1:OnThink( self ) local seq, pit = self:GetSequenceName( self:GetSequence() ), math.abs( self:GetAngles().roll )
 		if !isnumber( self.xdefm_BreakIn ) then self.xdefm_BreakIn = 0 end
 		if self.xdefm_BreakIn > 0 and self.xdefm_BreakIn <= CurTime() then
 			xdefm_BreakEffect( self, 3 ) self:EmitSound( "Breakable.Metal" ) self:Remove()
@@ -1010,7 +930,7 @@ if true then local it = "it_pturre1"
 			self.xdefm_NextSnd = CurTime() +1
 		end
 	end local Ma1 = Material( "effects/laser_citadel1" )  local Ma2 = Material( "sprites/physg_glow1" )
-	function ITEM:OnDraw( self ) self:DrawModel() local act = self:GetSequenceName( self:GetSequence() )
+	function items.it_pturre1:OnDraw( self ) self:DrawModel() local act = self:GetSequenceName( self:GetSequence() )
 		if !isnumber( self.xdefm_LasP ) then self.xdefm_LasP = 0 else self.xdefm_LasP = Lerp( 0.1, self.xdefm_LasP, self:GetNWFloat( "XDEFM_Pit" ) ) end
 		if !isnumber( self.xdefm_LasY ) then self.xdefm_LasY = 0 else self.xdefm_LasY = Lerp( 0.1, self.xdefm_LasY, self:GetNWFloat( "XDEFM_Yaw" ) ) end
 		if ( act == "deploy" or act == "fire" or act == "fire2" ) then
@@ -1023,81 +943,66 @@ if true then local it = "it_pturre1"
 			if tr.Hit then render.SetMaterial( Ma2 ) render.DrawSprite( tr.HitPos, 15, 15, col ) end
 		end
 	end
-	xdefm_ItemRegister( it, ITEM )
 end
 
 
-if true then local it = "it_pturre2"
-	local ITEM = {
-		Name = "#xdefm."..it,
+items.it_pturre2 = {
 		Type = "Rare",
 		Model = "models/props/turret_01.mdl",
 		TickRate = 0.04,
-		Helper = "#xdefm.d"..it,
 		Rarity = 3,
 		Price = 1250,
 		PhysSound = "SolidMetal.ImpactSoft",
 	}
-	ITEM.Constants = { [ "Broken" ] = true }
+	items.it_pturre2.Constants = { [ "Broken" ] = true }
 	xdefm_ItemBased( "it_pturre1", it, ITEM )
 end
 
 
-if true then local it = "it_bait2"
-	local ITEM = {
-		Name = "#xdefm."..it,
+items.it_bait2 = {
 		Type = "Uncommon",
 		Model = "models/props_junk/cardboard_box001a.mdl",
-		Helper = "#xdefm.d"..it,
 		Rarity = 2,
 		Price = 600,
 		PhysSound = "Cardboard.ImpactHard"
 	}
-	function ITEM:OnInit( self ) self:SetMaxHealth( 50 ) self:SetHealth( self:GetMaxHealth() ) self:SetCollisionGroup( COLLISION_GROUP_NONE ) self.xdefm_Killed = false end
-	function ITEM:OnReady( self ) self:GetPhysicsObject():SetMass( 100 ) end
-	function ITEM:OnDamaged( self, dmg ) if self:Health() <= 0 or dmg:GetDamage() <= 0 or self.xdefm_Killed then return false end
+	function items.it_bait2:OnInit( self ) self:SetMaxHealth( 50 ) self:SetHealth( self:GetMaxHealth() ) self:SetCollisionGroup( COLLISION_GROUP_NONE ) self.xdefm_Killed = false end
+	function items.it_bait2:OnReady( self ) self:GetPhysicsObject():SetMass( 100 ) end
+	function items.it_bait2:OnDamaged( self, dmg ) if self:Health() <= 0 or dmg:GetDamage() <= 0 or self.xdefm_Killed then return false end
 		self:SetHealth( math.max( 0, self:Health() -dmg:GetDamage() ) ) self:EmitSound( "Cardboard.Break" )
 		if self:Health() <= 0 then self.xdefm_Killed = true
 		local lt = {["ba_skull"]=5,["ba_bread"]=5,["ba_box"]=5,["ba_fish"]=5,["ba_pickaxe"]=5,["ba_teddy"]=2,["ba_bomb"]=2}
 		for i=1, 3 do xdefm_LootDrop( lt, self ) end self:SetNotSolid( true ) SafeRemoveEntityDelayed( self, 0.1 ) end return true
 	end
-	xdefm_ItemRegister( it, ITEM )
 end
 
 
-if true then local it = "it_bait3"
-	local ITEM = {
-		Name = "#xdefm."..it,
+items.it_bait3 = {
 		Type = "Rare",
 		Model = "models/props_junk/cardboard_box002a.mdl",
-		Helper = "#xdefm.d"..it,
 		Rarity = 3,
 		Price = 1200,
 		PhysSound = "Cardboard.ImpactHard"
 	}
-	function ITEM:OnInit( self ) self:SetMaxHealth( 60 ) self:SetHealth( self:GetMaxHealth() ) self:SetCollisionGroup( COLLISION_GROUP_NONE ) self.xdefm_Killed = false end
-	function ITEM:OnReady( self ) self:GetPhysicsObject():SetMass( 100 ) end
-	function ITEM:OnDamaged( self, dmg ) if self:Health() <= 0 or dmg:GetDamage() <= 0 or self.xdefm_Killed then return false end
+	function items.it_bait3:OnInit( self ) self:SetMaxHealth( 60 ) self:SetHealth( self:GetMaxHealth() ) self:SetCollisionGroup( COLLISION_GROUP_NONE ) self.xdefm_Killed = false end
+	function items.it_bait3:OnReady( self ) self:GetPhysicsObject():SetMass( 100 ) end
+	function items.it_bait3:OnDamaged( self, dmg ) if self:Health() <= 0 or dmg:GetDamage() <= 0 or self.xdefm_Killed then return false end
 		self:SetHealth( math.max( 0, self:Health() -dmg:GetDamage() ) ) self:EmitSound( "Cardboard.Break" )
 		if self:Health() <= 0 then self.xdefm_Killed = true
 		local lt = {["ba_teddy"]=25,["ba_bomb"]=25,["ba_meat"]=25,["ba_c4"]=25,["ba_drill"]=25,["ba_combine"]=2,["ba_portal"]=2,["ba_gmod"]=1}
 		for i=1, 3 do xdefm_LootDrop( lt, self ) end self:SetNotSolid( true ) SafeRemoveEntityDelayed( self, 0.1 ) end return true
 	end
-	xdefm_ItemRegister( it, ITEM )
 end
 
 
-if true then local it = "it_crate2"
-	local ITEM = {
-		Name = "#xdefm."..it,
+items.it_crate2 = {
 		Type = "Rare",
 		Model = "models/props_junk/wood_crate002a.mdl",
-		Helper = "#xdefm.d"..it,
 		Rarity = 3,
 		Price = 450
 	}
-	function ITEM:OnInit( self ) self:SetMaxHealth( 120 ) self:SetHealth( self:GetMaxHealth() ) self.xdefm_Killed = false end
-	function ITEM:OnDamaged( self, dmg ) if self:Health() <= 0 or dmg:GetDamage() <= 0 or self.xdefm_Killed then return false end
+	function items.it_crate2:OnInit( self ) self:SetMaxHealth( 120 ) self:SetHealth( self:GetMaxHealth() ) self.xdefm_Killed = false end
+	function items.it_crate2:OnDamaged( self, dmg ) if self:Health() <= 0 or dmg:GetDamage() <= 0 or self.xdefm_Killed then return false end
 		self:SetHealth( math.max( 0, self:Health() -dmg:GetDamage() ) ) self:EmitSound( "Wood.Break" )
 		if self:Health() <= 0 then self.xdefm_Killed = true
 		local lt = {["it_health"]=75,["it_steelbar"]=50,["it_copperbar"]=50,["it_grenade"]=50,["it_leadbar"]=50,
@@ -1105,44 +1010,36 @@ if true then local it = "it_crate2"
 		for i=1, math.random( 8, 16 ) do xdefm_LootDrop( lt, self ) end
 		xdefm_BreakEffect( self, 1 ) self:SetNotSolid( true ) SafeRemoveEntityDelayed( self, 0.1 ) end return true
 	end
-	xdefm_ItemRegister( it, ITEM )
 end
 
 
-if true then local it = "it_mush1"
-	local ITEM = {
-		Name = "#xdefm."..it,
+items.it_mush1 = {
 		Type = "Common",
 		Model = "models/props_collectables/mushrooms.mdl",
-		Helper = "#xdefm.d"..it,
 		Rarity = 1,
 		Price = 45,
 		PhysSound = "Watermelon.BulletImpact",
 		HelperUse = "xdefm.U2"
 	}
-	function ITEM:OnInit( self ) self.xdefm_Used = false end
-	function ITEM:OnUse( self, ent ) if self.xdefm_Used then return end if ent:Health() >= ent:GetMaxHealth() then return true end
+	function items.it_mush1:OnInit( self ) self.xdefm_Used = false end
+	function items.it_mush1:OnUse( self, ent ) if self.xdefm_Used then return end if ent:Health() >= ent:GetMaxHealth() then return true end
 		if ent:KeyDown( IN_SPEED ) then return true end local met = xdefm_CookMeter( self:GetFMod_DT() )
 		if met >= 0 then ent:SetHealth( math.min( ent:GetMaxHealth(), ent:Health() +math.ceil( 20*( 1 +met ) ) ) ) end
 		ent:EmitSound( "NPC_Barnacle.FinalBite" ) self:Remove() self.xdefm_Used = true return false
 	end
-	xdefm_ItemRegister( it, ITEM )
 end
 
 
-if true then local it = "it_mush2"
-	local ITEM = {
-		Name = "#xdefm."..it,
+items.it_mush2 = {
 		Type = "Common",
 		Model = "models/props_collectables/mushrooms_glowing.mdl",
-		Helper = "#xdefm.d"..it,
 		Rarity = 1,
 		Price = 135,
 		PhysSound = "Watermelon.BulletImpact",
 		HelperUse = "xdefm.U2"
 	}
-	function ITEM:OnInit( self ) self.xdefm_Used = false end
-	function ITEM:OnUse( self, ent ) if self.xdefm_Used then return end
+	function items.it_mush2:OnInit( self ) self.xdefm_Used = false end
+	function items.it_mush2:OnUse( self, ent ) if self.xdefm_Used then return end
 		if ent:KeyDown( IN_SPEED ) then return true end local met = xdefm_CookMeter( self:GetFMod_DT() )
 		if met >= 0 then local dmg = DamageInfo() dmg:SetDamage( 50*( 1 +met ) ) dmg:SetAttacker( self:GetFMod_OW() )
 			dmg:SetInflictor( self ) dmg:SetDamageType( DMG_POISON ) dmg:SetDamageForce( VectorRand():GetNormal()*1000 )
@@ -1150,7 +1047,7 @@ if true then local it = "it_mush2"
 		end
 		ent:EmitSound( "NPC_Barnacle.FinalBite" ) self:Remove() self.xdefm_Used = true return false
 	end
-	function ITEM:OnCollide( self, dat )
+	function items.it_mush2:OnCollide( self, dat )
 		if dat.Speed >= 60 and dat.DeltaTime > 0.2 then local ent = dat.HitEntity self:EmitSound( "Watermelon.Impact" )
 		if ent:IsPlayer() or ent:IsNPC() then
 			local dmg = DamageInfo() dmg:SetDamage( 5 ) dmg:SetAttacker( self:GetFMod_OW() )
@@ -1159,63 +1056,51 @@ if true then local it = "it_mush2"
 			dmg:SetDamagePosition( ent:WorldSpaceCenter() ) ent:TakeDamageInfo( dmg )
 		end end
 	end
-	xdefm_ItemRegister( it, ITEM )
 end
 
 
-if true then local it = "it_crate3"
-	local ITEM = {
-		Name = "#xdefm."..it,
+items.it_crate3 = {
 		Type = "Rare",
 		Model = "models/Items/item_item_crate.mdl",
-		Helper = "#xdefm.d"..it,
 		Rarity = 3,
 		Price = 500
 	}
-	function ITEM:OnInit( self ) self:SetMaxHealth( 50 ) self:SetHealth( self:GetMaxHealth() ) self.xdefm_Killed = false end
-	function ITEM:OnDamaged( self, dmg ) if self:Health() <= 0 or dmg:GetDamage() <= 0 or self.xdefm_Killed then return false end
+	function items.it_crate3:OnInit( self ) self:SetMaxHealth( 50 ) self:SetHealth( self:GetMaxHealth() ) self.xdefm_Killed = false end
+	function items.it_crate3:OnDamaged( self, dmg ) if self:Health() <= 0 or dmg:GetDamage() <= 0 or self.xdefm_Killed then return false end
 		self:SetHealth( math.max( 0, self:Health() -dmg:GetDamage() ) ) self:EmitSound( "Wood.Break" )
 		if self:Health() <= 0 then self.xdefm_Killed = true
 		local lt = {["it_health"]=50,["it_armor"]=50,["it_ammo"]=100,["it_rpg"]=25}
 		for i=1, math.random( 4, 6 ) do xdefm_LootDrop( lt, self ) end
 		xdefm_BreakEffect( self, 1 ) self:SetNotSolid( true ) SafeRemoveEntityDelayed( self, 0.1 ) end return true
 	end
-	xdefm_ItemRegister( it, ITEM )
 end
 
 
-if true then local it = "it_cmetal"
-	local ITEM = {
-		Name = "#xdefm."..it,
+items.it_cmetal = {
 		Type = "Rare",
 		Model = {
 			"models/combine_turrets/floor_turret_gib1.mdl", "models/combine_turrets/floor_turret_gib2.mdl",
 			"models/combine_turrets/floor_turret_gib3.mdl", "models/combine_turrets/floor_turret_gib4.mdl",
 			"models/combine_turrets/floor_turret_gib5.mdl"
 			},
-		Helper = "#xdefm.d"..it,
 		Rarity = 3,
 		Price = 750,
 		PhysSound = "EpicMetal.ImpactSoft"
 	}
-	xdefm_ItemRegister( it, ITEM )
 end
 
 
-if true then local it = "it_ccore"
-	local ITEM = {
-		Name = "#xdefm."..it,
+items.it_ccore = {
 		Type = "Rare",
 		Model = "models/items/combine_rifle_ammo01.mdl",
-		Helper = "#xdefm.d"..it,
 		Rarity = 3,
 		Price = 999,
 		TickRate = 0.1,
 		PhysSound = "PhxMetal.ImpactSoft"
 	}
-	function ITEM:OnInit( self ) self.xdefm_NextShock = CurTime() +1 self.xdefm_NextHit = 0 self.xdefm_NextBlast = 0 end
-	function ITEM:OnReady( self ) self:SetTrigger( true ) end
-	function ITEM:OnThink( self ) if self.xdefm_NextShock > CurTime() then return end self.xdefm_NextShock = CurTime() + math.Rand( 1, 2 )
+	function items.it_ccore:OnInit( self ) self.xdefm_NextShock = CurTime() +1 self.xdefm_NextHit = 0 self.xdefm_NextBlast = 0 end
+	function items.it_ccore:OnReady( self ) self:SetTrigger( true ) end
+	function items.it_ccore:OnThink( self ) if self.xdefm_NextShock > CurTime() then return end self.xdefm_NextShock = CurTime() + math.Rand( 1, 2 )
 		if self:WaterLevel() >= 3 then return end if self.xdefm_NextBlast < 20 then local ef = EffectData()  ef:SetEntity( self ) ef:SetOrigin( self:WorldSpaceCenter() )
 		ef:SetScale( 1 ) ef:SetMagnitude( 1 ) ef:SetRadius( 1 ) util.Effect( "TeslaHitBoxes", ef )
 		ef = EffectData()  ef:SetEntity( self ) ef:SetOrigin( self:WorldSpaceCenter() )
@@ -1235,40 +1120,36 @@ if true then local it = "it_ccore"
 			util.BlastDamageInfo( dmg, self:WorldSpaceCenter(), 400 ) self:GetPhysicsObject():AddVelocity( Vector( 0, 0, 128 ) )
 		end
 	end
-	function ITEM:OnTouch( self, ent ) if self.xdefm_NextHit > CurTime() then return end self.xdefm_NextHit = CurTime() +0.5
+	function items.it_ccore:OnTouch( self, ent ) if self.xdefm_NextHit > CurTime() then return end self.xdefm_NextHit = CurTime() +0.5
 		if ent:IsPlayer() or ent:IsNPC() then self:EmitSound( "Weapon_StunStick.Melee_Hit" )
 		local dmg = DamageInfo() dmg:SetDamage( 5 ) dmg:SetDamageType( bit.bor( DMG_DISSOLVE, DMG_SHOCK ) )
 		dmg:SetDamagePosition( ent:WorldSpaceCenter() ) dmg:SetDamageForce( ( ent:GetPos() -self:GetPos() ):GetNormalized()*10000 ) dmg:SetAttacker( self:GetFMod_OW() )
 		dmg:SetInflictor( self ) ent:TakeDamageInfo( dmg ) local ef = EffectData()  ef:SetEntity( ent ) end
 	end
-	xdefm_ItemRegister( it, ITEM )
 end
 
 
-if true then local it = "it_cturret"
-	local ITEM = {
-		Name = "#xdefm."..it,
+items.it_cturret = {
 		Type = "Legendary",
 		Model = "models/Combine_turrets/Floor_turret.mdl",
 		TickRate = 0.04,
-		Helper = "#xdefm.d"..it,
 		Rarity = 4,
 		Price = 1800,
 		PhysSound = "SolidMetal.ImpactSoft",
 	}
-	function ITEM:OnInit( self ) self.xdefm_NextSnd = CurTime() +1  self.xdefm_Detect = CurTime() +1
+	function items.it_cturret:OnInit( self ) self.xdefm_NextSnd = CurTime() +1  self.xdefm_Detect = CurTime() +1
 		self:SetAutomaticFrameAdvance( true ) self:ResetSequence( "idle" ) self:SetPlaybackRate( 1 )
 		self.xdefm_Alive = true  self.ShadowParams = {}  self.xdefm_Target = nil
 		self.xdefm_Find = 0  self.xdefm_NextFire = 0  self.xdefm_Cool = 0
 		self:SetNWFloat( "XDEFM_Pit", 0 )  self:SetNWFloat( "XDEFM_Yaw", 0 )
 		self:SetSkin( self.xdefm_Broken and 1 or 0 )
 	end
-	function ITEM:OnUse( self, ent )
+	function items.it_cturret:OnUse( self, ent )
 		if self:IsPlayerHolding() or constraint.FindConstraint( self, "Weld" ) or !self:GetPhysicsObject():IsMotionEnabled() then return end
 		self:SetAngles( Angle( 0, self:GetAngles().yaw, 0 ) )
 	end
-	function ITEM:OnReady( self ) self:GetPhysicsObject():SetMass( 100 ) end
-	function ITEM:OnThink( self ) local seq, pit = self:GetSequenceName( self:GetSequence() ), math.abs( self:GetAngles().roll )
+	function items.it_cturret:OnReady( self ) self:GetPhysicsObject():SetMass( 100 ) end
+	function items.it_cturret:OnThink( self ) local seq, pit = self:GetSequenceName( self:GetSequence() ), math.abs( self:GetAngles().roll )
 		if self.xdefm_Detect <= CurTime() then self.xdefm_Detect = CurTime() +0.2
 			if pit > 45 then if self.xdefm_Alive then self.xdefm_Alive = false
 					if self.xdefm_NextSnd <= CurTime() then self.xdefm_NextSnd = CurTime() +math.Rand( 4.1, 6 )  self.xdefm_Detect = CurTime()
@@ -1338,7 +1219,7 @@ if true then local it = "it_cturret"
 			end
 		end
 	end local Ma1 = Material( "effects/laser_citadel1" )  local Ma2 = Material( "sprites/physg_glow1" )
-	function ITEM:OnDraw( self ) self:DrawModel() local act = self:GetSequenceName( self:GetSequence() )
+	function items.it_cturret:OnDraw( self ) self:DrawModel() local act = self:GetSequenceName( self:GetSequence() )
 		if !isnumber( self.xdefm_LasP ) then self.xdefm_LasP = 0 else self.xdefm_LasP = Lerp( 0.1, self.xdefm_LasP, self:GetNWFloat( "XDEFM_Pit" ) ) end
 		if !isnumber( self.xdefm_LasY ) then self.xdefm_LasY = 0 else self.xdefm_LasY = Lerp( 0.1, self.xdefm_LasY, self:GetNWFloat( "XDEFM_Yaw" ) ) end
 		if ( act == "deploy" or act == "fire" or act == "fire2" ) then
@@ -1351,25 +1232,21 @@ if true then local it = "it_cturret"
 			if tr.Hit then render.SetMaterial( Ma2 ) render.DrawSprite( tr.HitPos, 15, 15, col ) end
 		end
 	end
-	xdefm_ItemRegister( it, ITEM )
 end
 
 
-if true then local it = "it_chopper"
-	local ITEM = {
-		Name = "#xdefm."..it,
+items.it_chopper = {
 		Type = "Rare",
 		Model = "models/props_combine/combine_mine01.mdl",
 		TickRate = 0.1,
-		Helper = "#xdefm.d"..it,
 		Rarity = 3,
 		Price = 200,
 		PhysSound = "EpicMetal.ImpactSoft",
 	}
-	function ITEM:OnInit( self ) self:SetPoseParameter( "blenditates", 65 ) self:SetAutomaticFrameAdvance( true )
+	function items.it_chopper:OnInit( self ) self:SetPoseParameter( "blenditates", 65 ) self:SetAutomaticFrameAdvance( true )
 		self.xdefm_Killed = false  self.xdefm_Cool = 0  self:SetTrigger( true )
 	end
-	function ITEM:OnThink( self ) if self.xdefm_Killed or self.xdefm_Cool > CurTime()
+	function items.it_chopper:OnThink( self ) if self.xdefm_Killed or self.xdefm_Cool > CurTime()
 		or self:GetPhysicsObject():IsMotionEnabled() then return end local tas = {}
 		for k, v in pairs( ents.FindInSphere( self:GetPos(), 512 ) ) do if v == self then continue end
 			if ( !v:IsNPC() and !v:IsPlayer() ) or !isstring( v:GetModel() ) or !util.IsValidModel( v:GetModel() ) or v:Health() <= 0 then continue end table.insert( tas, v )
@@ -1382,7 +1259,7 @@ if true then local it = "it_chopper"
 			end
 		end
 	end
-	function ITEM:OnTouch( self, ent ) if self.xdefm_Killed then return end
+	function items.it_chopper:OnTouch( self, ent ) if self.xdefm_Killed then return end
 		if ent:IsPlayer() or ent:IsNPC() then
 			xdefm_BroadEffect( "Explosion", { Flags = 0, Origin = self:GetPos(), Scale = 1, Radius = 1, Magnitude = 1 } )
 			local dmg = DamageInfo() dmg:SetDamage( 200 ) dmg:SetDamageType( bit.bor( DMG_DISSOLVE ) )
@@ -1391,7 +1268,7 @@ if true then local it = "it_chopper"
 			self:EmitSound( "NPC_CScanner.Die" ) SafeRemoveEntity( self ) self.xdefm_Killed = true
 		end
 	end
-	function ITEM:OnCollide( self, dat, phy ) if self.xdefm_Killed then return end
+	function items.it_chopper:OnCollide( self, dat, phy ) if self.xdefm_Killed then return end
 		if self:IsPlayerHolding() or constraint.FindConstraint( self, "Weld" ) or !self:GetPhysicsObject():IsMotionEnabled() then return end
 		local pit = math.abs( dat.HitNormal:Angle().pitch )
 		if self.xdefm_Cool <= CurTime() and dat.HitEntity == Entity( 0 ) and pit <= 90 and pit > 0 then
@@ -1402,115 +1279,99 @@ if true then local it = "it_chopper"
 			end ) self.xdefm_Cool = CurTime() +1
 		end
 	end
-	function ITEM:OnDraw( self )
+	function items.it_chopper:OnDraw( self )
 		render.SetMaterial( Mat ) local siz = 30 +math.sin( CurTime()*5 )*5
 		render.DrawSprite( self:GetPos() +self:EyeAngles():Up()*8, siz, siz, Color( 255, 0, 0, 255 ) )
 	end
-	xdefm_ItemRegister( it, ITEM )
 end
 
 
-if true then local it = "it_chealth"
-	local ITEM = {
-		Name = "#xdefm."..it,
+items.it_chealth = {
 		Type = "Uncommon",
 		Model = "models/props_combine/health_charger001.mdl",
 		HelperUse = "xdefm.U2",
-		Helper = "#xdefm.d"..it,
 		Rarity = 2,
 		Price = 175,
 		PhysSound = "EpicMetal.ImpactSoft",
 		TickRate = 0.1,
 	}
-	function ITEM:OnInit( self ) self.xdefm_Cool = CurTime() +1  self:SetAutomaticFrameAdvance( true ) self:ResetSequence( "idle" ) self:SetPlaybackRate( 0 ) end
-	function ITEM:OnReady( self ) self:GetPhysicsObject():SetMass( self:GetPhysicsObject():GetMass()*0.5 ) end
-	function ITEM:OnUse( self, usr ) if self.xdefm_Cool > CurTime() then return false end
+	function items.it_chealth:OnInit( self ) self.xdefm_Cool = CurTime() +1  self:SetAutomaticFrameAdvance( true ) self:ResetSequence( "idle" ) self:SetPlaybackRate( 0 ) end
+	function items.it_chealth:OnReady( self ) self:GetPhysicsObject():SetMass( self:GetPhysicsObject():GetMass()*0.5 ) end
+	function items.it_chealth:OnUse( self, usr ) if self.xdefm_Cool > CurTime() then return false end
 		if usr:KeyDown( IN_SPEED ) then return true end local pro = usr.xdefm_Profile  self.xdefm_Cool = CurTime() +1
 		if !istable( pro ) or !isnumber( pro.Money ) or pro.Money < 200 or usr:Health() >= usr:GetMaxHealth() then self:EmitSound( "WallHealth.Deny" ) return false end
 		self:ResetSequence( "idle" ) self:SetPlaybackRate( 1 ) usr:SetHealth( usr:GetMaxHealth() ) self:EmitSound( "WallHealth.Start" )
 		usr.xdefm_Profile.Money = pro.Money -200  xdefm_ProfileUpdate( usr ) return false end
-	function ITEM:OnThink( self ) if self.xdefm_Cool > 0 and self.xdefm_Cool <= CurTime() then
+	function items.it_chealth:OnThink( self ) if self.xdefm_Cool > 0 and self.xdefm_Cool <= CurTime() then
 		self.xdefm_Cool = 0  self:ResetSequence( "idle" ) self:SetPlaybackRate( 0 )
 	end end
-	xdefm_ItemRegister( it, ITEM )
 end
 
 
-if true then local it = "it_carmor"
-	local ITEM = {
-		Name = "#xdefm."..it,
+items.it_carmor = {
 		Type = "Uncommon",
 		Model = "models/props_combine/suit_charger001.mdl",
 		HelperUse = "xdefm.U2",
-		Helper = "#xdefm.d"..it,
 		Rarity = 2,
 		Price = 150,
 		PhysSound = "EpicMetal.ImpactSoft",
 		TickRate = 0.1,
 	}
-	function ITEM:OnInit( self ) self.xdefm_Cool = CurTime() +1  self:SetAutomaticFrameAdvance( true ) self:ResetSequence( "idle" ) self:SetPlaybackRate( 0 ) end
-	function ITEM:OnReady( self ) self:GetPhysicsObject():SetMass( self:GetPhysicsObject():GetMass()*0.5 ) end
-	function ITEM:OnUse( self, usr ) if self.xdefm_Cool > CurTime() then return false end
+	function items.it_carmor:OnInit( self ) self.xdefm_Cool = CurTime() +1  self:SetAutomaticFrameAdvance( true ) self:ResetSequence( "idle" ) self:SetPlaybackRate( 0 ) end
+	function items.it_carmor:OnReady( self ) self:GetPhysicsObject():SetMass( self:GetPhysicsObject():GetMass()*0.5 ) end
+	function items.it_carmor:OnUse( self, usr ) if self.xdefm_Cool > CurTime() then return false end
 		if usr:KeyDown( IN_SPEED ) then return true end local pro = usr.xdefm_Profile  self.xdefm_Cool = CurTime() +1
 		if !istable( pro ) or !isnumber( pro.Money ) or pro.Money < 100 or usr:Armor() >= usr:GetMaxArmor() then self:EmitSound( "SuitRecharge.Deny" ) return false end
 		self:ResetSequence( "idle" ) self:SetPlaybackRate( 1 ) usr:SetArmor( usr:GetMaxArmor() ) self:EmitSound( "SuitRecharge.Start" )
 		usr.xdefm_Profile.Money = pro.Money -100  xdefm_ProfileUpdate( usr ) return false end
-	function ITEM:OnThink( self ) if self.xdefm_Cool > 0 and self.xdefm_Cool <= CurTime() then
+	function items.it_carmor:OnThink( self ) if self.xdefm_Cool > 0 and self.xdefm_Cool <= CurTime() then
 		self.xdefm_Cool = 0  self:ResetSequence( "idle" ) self:SetPlaybackRate( 0 )
 	end end
-	xdefm_ItemRegister( it, ITEM )
 end
 
 
-if true then local it = "it_csuper"
-	local ITEM = {
-		Name = "#xdefm."..it,
+items.it_csuper = {
 		Type = "Rare",
 		Model = "models/props_combine/suit_charger001.mdl",
 		HelperUse = "xdefm.U2",
-		Helper = "#xdefm.d"..it,
 		Rarity = 3,
 		Price = 800,
 		PhysSound = "EpicMetal.ImpactSoft",
 		TickRate = 0.1,
 	}
-	function ITEM:OnInit( self ) self.xdefm_Cool = CurTime() +1  self:SetAutomaticFrameAdvance( true ) self:ResetSequence( "idle" ) self:SetPlaybackRate( 0 ) end
-	function ITEM:OnUse( self, usr ) if self.xdefm_Cool > CurTime() then return false end
+	function items.it_csuper:OnInit( self ) self.xdefm_Cool = CurTime() +1  self:SetAutomaticFrameAdvance( true ) self:ResetSequence( "idle" ) self:SetPlaybackRate( 0 ) end
+	function items.it_csuper:OnUse( self, usr ) if self.xdefm_Cool > CurTime() then return false end
 		if usr:KeyDown( IN_SPEED ) then return true end local pro = usr.xdefm_Profile  self.xdefm_Cool = CurTime() +1
 		if !istable( pro ) or !isnumber( pro.Money ) or pro.Money < 150 or ( usr:Armor() >= usr:GetMaxArmor() and usr:Health() >= usr:GetMaxHealth() ) then self:EmitSound( "TriggerSuperArmor.DoneCharging" ) return false end
 		self:ResetSequence( "idle" ) self:SetPlaybackRate( 1 ) usr:SetArmor( usr:GetMaxArmor()*2 )
 		self:EmitSound( "TriggerSuperArmor.StartCharging" ) usr:SetHealth( usr:GetMaxHealth() )
 		usr.xdefm_Profile.Money = pro.Money -150  xdefm_ProfileUpdate( usr ) return false end
-	function ITEM:OnThink( self ) if self.xdefm_Cool > 0 and self.xdefm_Cool <= CurTime() then
+	function items.it_csuper:OnThink( self ) if self.xdefm_Cool > 0 and self.xdefm_Cool <= CurTime() then
 		self.xdefm_Cool = 0  self:ResetSequence( "idle" ) self:SetPlaybackRate( 0 )
 	end end
-	xdefm_ItemRegister( it, ITEM )
 end
 
 
-if true then local it = "it_cscanner"
-	local ITEM = {
-		Name = "#xdefm."..it,
+items.it_cscanner = {
 		Type = "Creature",
 		Model = "models/Combine_Scanner.mdl",
-		Helper = "#xdefm.d"..it,
 		Rarity = 4,
 		Price = 1200,
 		TickRate = 0.1,
 		MinSize = 0.8,
 		MaxSize = 1.2
 	}
-	function ITEM:OnInit( self ) self:SetMaxHealth( 200 ) self:SetHealth( self:GetMaxHealth() )
+	function items.it_cscanner:OnInit( self ) self:SetMaxHealth( 200 ) self:SetHealth( self:GetMaxHealth() )
 		self:PhysicsInitBox( self:OBBMins()/3, self:OBBMaxs()/3 ) self:SetAutomaticFrameAdvance( true )
 		self:SetCollisionGroup( COLLISION_GROUP_NPC ) self:GetPhysicsObject():SetMaterial( "metal" ) self:ResetSequence( "inspect"..math.random( 1, 2 ) ) self:SetPlaybackRate( 1 )
 		self.ShadowParams = {}  self.xdefm_Killed = false  self.xdefm_Target = nil  self.xdefm_NextSnd = 0  self.xdefm_NextPic = 0
 		self.xdefm_NT = 0  self.xdefm_TPos = nil self:StartMotionController() self.xdefm_NextFind = 0  return true
 	end
-	function ITEM:OnUse( self ) if self:Health() > 0 then return false end end
-	function ITEM:OnReady( self ) self:StartMotionController() self:PhysWake() self:GetPhysicsObject():SetMass( 100 )
+	function items.it_cscanner:OnUse( self ) if self:Health() > 0 then return false end end
+	function items.it_cscanner:OnReady( self ) self:StartMotionController() self:PhysWake() self:GetPhysicsObject():SetMass( 100 )
 		if !self.xdefm_Killed then self:EmitSound( "NPC_CScanner.Alert" ) end self:SetTrigger( true )
 	end
-	function ITEM:OnThink( self ) if self.xdefm_Killed then return end local seq = self:GetSequenceName( self:GetSequence() )
+	function items.it_cscanner:OnThink( self ) if self.xdefm_Killed then return end local seq = self:GetSequenceName( self:GetSequence() )
 		if math.random( 1, 40 ) == 1 and self.xdefm_NextSnd <= CurTime() then
 			self.xdefm_NextSnd = CurTime() +math.Rand( 2, 4 )  self:EmitSound( "NPC_CScanner.Idle" )
 		end if self:GetPlaybackRate() != 1 then self:SetPlaybackRate( 1 ) end
@@ -1549,7 +1410,7 @@ if true then local it = "it_cscanner"
 			end
 		end
 	end
-	function ITEM:OnDamaged( self, dmg ) if self.xdefm_Killed then return end self:EmitSound( "NPC_CScanner.Pain" )
+	function items.it_cscanner:OnDamaged( self, dmg ) if self.xdefm_Killed then return end self:EmitSound( "NPC_CScanner.Pain" )
 		self:SetHealth( math.max( 0, self:Health() -dmg:GetDamage() ) )
 		if self:Health() <= 0 then self.xdefm_Killed = true  self:EmitSound( "NPC_CScanner.Die" )
 		local ef = EffectData() ef:SetStart( self:WorldSpaceCenter() )
@@ -1559,7 +1420,7 @@ if true then local it = "it_cscanner"
 		dmg:SetDamagePosition( self:WorldSpaceCenter() ) dmg:SetDamageForce( Vector( 0, 0, 1 ) ) dmg:SetAttacker( self:GetFMod_OW() )
 		dmg:SetInflictor( self ) util.BlastDamageInfo( dmg, self:WorldSpaceCenter(), 128 ) xdefm_BreakEffect( self, 3 ) SafeRemoveEntityDelayed( self, 0.1 ) end
 	end
-	function ITEM:OnPhysSimulate( self, phy, del ) if self.xdefm_Killed or constraint.FindConstraint( self, "Weld" ) then return end phy:Wake()
+	function items.it_cscanner:OnPhysSimulate( self, phy, del ) if self.xdefm_Killed or constraint.FindConstraint( self, "Weld" ) then return end phy:Wake()
 		local pos = self:GetPos()  if self.xdefm_NT <= CurTime() then
 			if !IsValid( self.xdefm_Target ) and ( !isvector( self.xdefm_TPos ) or pos:Distance( self.xdefm_TPos ) <= 25 or math.random( 1, 5 ) == 1 ) then
 				local vel = VectorRand():GetNormalized()*math.Rand( 512, -512 ) vel.z = vel.z/4
@@ -1591,37 +1452,33 @@ if true then local it = "it_cscanner"
 		self.ShadowParams.deltatime = deltatime
 		if isvector( self.xdefm_TPos ) then phy:ComputeShadowControl( self.ShadowParams ) end
 	end
-	function ITEM:OnDraw( self )
+	function items.it_cscanner:OnDraw( self )
 		local att = self:GetAttachment( 1 ) if !att then return end
 		render.SetMaterial( Mat ) local siz = self:GetNWBool( "XDEFM_PT" ) and 60 or 20
 		render.DrawSprite( att.Pos, siz, siz, Color( 255, 255, 255, 255 ) )
 	end
-	xdefm_ItemRegister( it, ITEM )
 end
 
 
-if true then local it = "it_cheli"
-	local ITEM = {
-		Name = "#xdefm."..it,
+items.it_cheli = {
 		Type = "Legendary",
 		Model = "models/gibs/helicopter_brokenpiece_06_body.mdl",
 		HelperUse = "xdefm.U2",
-		Helper = "#xdefm.d"..it,
 		Rarity = 4,
 		Price = 1800,
 		PhysSound = "MetalVehicle.ImpactSoft",
 		TickRate = 0.01,
 		HelperUse = "xdefm.U2"
 	}
-	function ITEM:OnInit( self ) self.xdefm_NextRun = 0  self.xdefm_Killed = false
+	function items.it_cheli:OnInit( self ) self.xdefm_NextRun = 0  self.xdefm_Killed = false
 	self.xdefm_Snd = nil  self:SetMaxHealth( 800 ) self:SetHealth( self:GetMaxHealth() ) end
-	function ITEM:OnUse( self, ply ) if self.xdefm_Killed or self.xdefm_NextRun > 0 then return false end
+	function items.it_cheli:OnUse( self, ply ) if self.xdefm_Killed or self.xdefm_NextRun > 0 then return false end
 		if self.xdefm_Snd then self.xdefm_Snd:Stop() self.xdefm_Snd = nil end
 		self.xdefm_Snd = CreateSound( self, Sound( "NPC_AttackHelicopter.Rotors" ) )  self.xdefm_Snd:Play() self.xdefm_Snd:ChangePitch( 200, 3 )
 		self.xdefm_NextRun = CurTime() +math.Rand( 3, 6 )  return false
 	end
-	function ITEM:OnReady( self ) self:GetPhysicsObject():SetMass( self:GetPhysicsObject():GetMass()*0.05 ) end
-	function ITEM:OnThink( self ) if self.xdefm_Killed then return end
+	function items.it_cheli:OnReady( self ) self:GetPhysicsObject():SetMass( self:GetPhysicsObject():GetMass()*0.05 ) end
+	function items.it_cheli:OnThink( self ) if self.xdefm_Killed then return end
 		if self.xdefm_NextRun > 0 and self.xdefm_NextRun <= CurTime() then self.xdefm_NextRun = 0
 			if self.xdefm_Snd then self.xdefm_Snd:Stop() self.xdefm_Snd = nil end self:EmitSound( "apc_engine_stop" )
 		elseif self.xdefm_NextRun > 0 then
@@ -1629,7 +1486,7 @@ if true then local it = "it_cheli"
 			self:SetAngles( Angle( 0, self:GetAngles().yaw +30, 0 ) )
 		end
 	end
-	function ITEM:OnDamaged( self, dmg ) if self:Health() <= 0 or dmg:GetDamage() <= 0 or self.xdefm_Killed then return false end
+	function items.it_cheli:OnDamaged( self, dmg ) if self:Health() <= 0 or dmg:GetDamage() <= 0 or self.xdefm_Killed then return false end
 		self:SetHealth( math.max( 0, self:Health() -dmg:GetDamage() ) ) self:StopSound( "Breakable.Metal" ) self:EmitSound( "Breakable.Metal" )
 		if self:Health() <= 0 then self.xdefm_Killed = true
 		local ef = EffectData() ef:SetStart( self:WorldSpaceCenter() ) ef:SetOrigin( self:WorldSpaceCenter() )
@@ -1641,25 +1498,21 @@ if true then local it = "it_cheli"
 		xdefm_BreakEffect( self, 3 ) self:SetNotSolid( true ) SafeRemoveEntityDelayed( self, 0.1 ) end return true
 	end
 	function ITEM:OnRemove( self ) if self.xdefm_Snd then self.xdefm_Snd:Stop() self.xdefm_Snd = nil end end
-	xdefm_ItemRegister( it, ITEM )
 end
 
 
-if true then local it = "it_cthumper"
-	local ITEM = {
-		Name = "#xdefm."..it,
+items.it_cthumper = {
 		Type = "Exotic",
 		Model = "models/props_combine/combinethumper002.mdl",
 		HelperUse = "xdefm.U2",
-		Helper = "#xdefm.d"..it,
 		Rarity = 5,
 		Price = 5000,
 		PhysSound = "EpicMetal.ImpactSoft",
 		TickRate = 0.1
 	}
-	function ITEM:OnInit( self ) self.xdefm_Cool = CurTime() +0.5 self:SetAutomaticFrameAdvance( true ) self:ResetSequence( "idle" ) self:SetPlaybackRate( 1 ) end
-	function ITEM:OnReady( self ) self:GetPhysicsObject():SetMass( 60 ) end
-	function ITEM:OnThink( self ) local cyc = self:GetCycle()
+	function items.it_cthumper:OnInit( self ) self.xdefm_Cool = CurTime() +0.5 self:SetAutomaticFrameAdvance( true ) self:ResetSequence( "idle" ) self:SetPlaybackRate( 1 ) end
+	function items.it_cthumper:OnReady( self ) self:GetPhysicsObject():SetMass( 60 ) end
+	function items.it_cthumper:OnThink( self ) local cyc = self:GetCycle()
 		if cyc >= 0.95 and self.xdefm_Cool <= CurTime() then self.xdefm_Cool = CurTime() +0.5
 			self:EmitSound( "coast.thumper_hit" ) util.ScreenShake( self:WorldSpaceCenter(), 50, 50, 1, 512 )
 			for i=1, 5 do local phy = ents.Create( "env_physexplosion" ) phy:SetPos( self:WorldSpaceCenter() ) phy:SetKeyValue( "SpawnFlags", 1 + 2 + 4 )
@@ -1671,39 +1524,35 @@ if true then local it = "it_cthumper"
 			end
 		end
 	end
-	xdefm_ItemRegister( it, ITEM )
 end
 
 
-if true then local it = "it_gballoon"
-	local ITEM = {
-		Name = "#xdefm."..it,
+items.it_gballoon = {
 		Type = "Common",
 		Model = {
 			"models/balloons/balloon_classicheart.mdl", "models/balloons/balloon_dog.mdl",
 			"models/balloons/balloon_star.mdl", "models/maxofs2d/balloon_classic.mdl",
 			"models/maxofs2d/balloon_gman.mdl", "models/maxofs2d/balloon_mossman.mdl"
 			},
-		Helper = "#xdefm.d"..it,
 		Rarity = 1,
 		Price = 100,
 		PhysSound = "Plastic_Barrel.ImpactSoft",
 		TickRate = 1,
 		CantCook = true
 	}
-	function ITEM:OnInit( self ) self:PhysicsInit( SOLID_VPHYSICS ) self.xdefm_Killed = false  self.xdefm_Gas = 0  self.xdefm_Yaw = math.random( 0, 360 )
+	function items.it_gballoon:OnInit( self ) self:PhysicsInit( SOLID_VPHYSICS ) self.xdefm_Killed = false  self.xdefm_Gas = 0  self.xdefm_Yaw = math.random( 0, 360 )
 		self.ShadowParams = {}  self:StartMotionController() self.xdefm_Snd = nil
 		if self:GetModel() == "models/maxofs2d/balloon_classic.mdl" then self:SetSkin( math.random( 0, 3 ) ) end
 		self:SetColor( Color( math.random( 0, 255 ), math.random( 0, 255 ), math.random( 0, 255 ) ) ) return true
 	end
-	function ITEM:OnUse( self, ent ) if self.xdefm_Killed or self.xdefm_Gas > 0 then return false end
+	function items.it_gballoon:OnUse( self, ent ) if self.xdefm_Killed or self.xdefm_Gas > 0 then return false end
 		if ent:KeyDown( IN_SPEED ) then return true end
 		self:SetModelScale( 0.01, 1 )  self.xdefm_Gas = CurTime() +1
 		self.xdefm_Snd = CreateSound( self, Sound( "ambient/gas/steam2.wav" ) )
 		self.xdefm_Snd:Play() self.xdefm_Snd:ChangePitch( 200, 0 ) self.xdefm_Snd:ChangePitch( 255, 1 )
 		self.xdefm_Snd:ChangeVolume( 0, 1 ) return false
 	end
-	function ITEM:OnThink( self ) if self.xdefm_Killed then return end
+	function items.it_gballoon:OnThink( self ) if self.xdefm_Killed then return end
 		local tr = util.TraceLine( {
 			start = self:GetPos(),
 			endpos = self:GetPos() +Vector( 0, 0, 32 ),
@@ -1712,8 +1561,8 @@ if true then local it = "it_gballoon"
 		} )
 		if tr.HitSky or ( self.xdefm_Gas > 0 and self.xdefm_Gas <= CurTime() ) then self:TakeDamage( 10 ) end
 	end
-	function ITEM:OnReady( self ) self:GetPhysicsObject():SetMass( 1 ) self:GetPhysicsObject():SetMaterial( "paper" ) end
-	function ITEM:OnPhysSimulate( self, phy, del ) if self.xdefm_Killed or constraint.FindConstraint( self, "Weld" ) then return end phy:Wake()
+	function items.it_gballoon:OnReady( self ) self:GetPhysicsObject():SetMass( 1 ) self:GetPhysicsObject():SetMaterial( "paper" ) end
+	function items.it_gballoon:OnPhysSimulate( self, phy, del ) if self.xdefm_Killed or constraint.FindConstraint( self, "Weld" ) then return end phy:Wake()
 		if self:IsPlayerHolding() or !phy:IsMotionEnabled() then return end if self.xdefm_Gas > 0 and self.xdefm_Gas <= CurTime() then self:TakeDamage( 1 ) end
 		self.ShadowParams.pos = self:GetPos() +Vector( 0, 0, 1 ) + ( self.xdefm_Gas > 0 and VectorRand():GetNormal()*128 or Vector( 0, 0, 0 ) )
 		self.ShadowParams.angle = self.xdefm_Gas > 0 and VectorRand():GetNormal():Angle() or Angle( 0, self.xdefm_Yaw, 0 )
@@ -1726,7 +1575,7 @@ if true then local it = "it_gballoon"
 		self.ShadowParams.deltatime = deltatime
 		phy:ComputeShadowControl( self.ShadowParams )
 	end
-	function ITEM:OnDamaged( self, dmg ) if dmg:GetDamage() <= 0 or self.xdefm_Killed then return end self.xdefm_Killed = true
+	function items.it_gballoon:OnDamaged( self, dmg ) if dmg:GetDamage() <= 0 or self.xdefm_Killed then return end self.xdefm_Killed = true
 		if dmg:IsDamageType( DMG_BURN ) or dmg:IsDamageType( DMG_SLOWBURN ) or dmg:IsDamageType( DMG_BLAST ) then
 			local ef = EffectData() ef:SetOrigin( self:WorldSpaceCenter() ) ef:SetScale( 1 ) util.Effect( "HelicopterMegaBomb", ef )
 			local dmg = DamageInfo() dmg:SetDamage( 64 ) dmg:SetDamageType( DMG_BURN )
@@ -1735,80 +1584,68 @@ if true then local it = "it_gballoon"
 		end SafeRemoveEntity( self ) local col = self:GetColor()
 		local ef = EffectData() ef:SetOrigin( self:GetPos() ) ef:SetStart( Vector( col.r, col.g, col.b ) ) util.Effect( "balloon_pop", ef )
 	end
-	function ITEM:OnRemove( self ) if self.xdefm_Snd then self.xdefm_Snd:Stop() self.xdefm_Snd = nil end end
-	xdefm_ItemRegister( it, ITEM )
+	function items.it_gballoon:OnRemove( self ) if self.xdefm_Snd then self.xdefm_Snd:Stop() self.xdefm_Snd = nil end end
 end
 
 
-if true then local it = "it_gballoox"
-	local ITEM = {
-		Name = "#xdefm."..it,
+items.it_gballoox = {
 		Type = "Uncommon",
 		Model = "models/maxofs2d/cube_tool.mdl",
-		Helper = "#xdefm.d"..it,
 		Rarity = 2,
 		Price = 500,
 		PhysSound = "Cardboard.ImpactHard",
 		CantCook = true
 	}
-	function ITEM:OnInit( self ) self.xdefm_Killed = false end
-	function ITEM:OnDamaged( self, dmg ) if dmg:GetDamage() <= 0 or self.xdefm_Killed then return end self.xdefm_Killed = true
+	function items.it_gballoox:OnInit( self ) self.xdefm_Killed = false end
+	function items.it_gballoox:OnDamaged( self, dmg ) if dmg:GetDamage() <= 0 or self.xdefm_Killed then return end self.xdefm_Killed = true
 		for i=1, math.random( 4, 6 ) do xdefm_LootDrop( {["it_gballoon"]=1}, self ) end
 		self:EmitSound( "Cardboard.Break" ) SafeRemoveEntity( self )
 		local ef = EffectData() ef:SetOrigin( self:GetPos() ) ef:SetStart( Vector( 255, 255, 155 ) ) util.Effect( "balloon_pop", ef )
 	end
-	xdefm_ItemRegister( it, ITEM )
 end
 
 
-if true then local it = "it_gfood"
-	local ITEM = {
-		Name = "#xdefm."..it,
+items.it_gfood = {
 		Type = "Uncommon",
 		Model = {
 			"models/food/burger.mdl", "models/food/hotdog.mdl",
 			"models/noesis/donut.mdl"
 			},
-		Helper = "#xdefm.d"..it,
 		Rarity = 2,
 		Price = 300,
 		PhysSound = "Bounce.Flesh",
 		HelperUse = "xdefm.U2"
 	}
-	function ITEM:OnInit( self ) self.xdefm_Used = false end
-	function ITEM:OnUse( self, ent ) if self.xdefm_Used then return end if ent:Health() >= ent:GetMaxHealth() then return true end
+	function items.it_gfood:OnInit( self ) self.xdefm_Used = false end
+	function items.it_gfood:OnUse( self, ent ) if self.xdefm_Used then return end if ent:Health() >= ent:GetMaxHealth() then return true end
 		if ent:KeyDown( IN_SPEED ) then return true end local met = xdefm_CookMeter( self:GetFMod_DT() )
 		if met >= 0 then ent:SetHealth( math.min( ent:GetMaxHealth(), ent:Health() +math.ceil( math.random( 8, 40 )*( 1 +met ) ) ) ) end
 		ent:EmitSound( "NPC_Barnacle.FinalBite" ) self:Remove() self.xdefm_Used = true return false
 	end
-	xdefm_ItemRegister( it, ITEM )
 end
 
 
-if true then local it = "it_water"
-	local ITEM = {
-		Name = "#xdefm."..it,
+items.it_water = {
 		Type = "Common",
 		Model = {
 			"models/props_junk/garbage_glassbottle001a.mdl", "models/props_junk/glassjug01.mdl",
 			"models/props_junk/garbage_glassbottle003a.mdl", "models/props_junk/GlassBottle01a.mdl",
 			"models/props_junk/garbage_glassbottle002a.mdl"
 			},
-		Helper = "#xdefm.d"..it,
 		Rarity = 1,
 		Price = 80,
 		PhysSound = "GlassBottle.ImpactHard",
 		CantCook = true
 	}
-	function ITEM:OnDrop( self, ent, typ ) if !typ or self.xdefm_Thrown > 0 then return end
+	function items.it_water:OnDrop( self, ent, typ ) if !typ or self.xdefm_Thrown > 0 then return end
 		self:EmitSound( "Zombie.AttackMiss" )
 		self:SetAngles( Angle( ent:EyeAngles().pitch, ent:EyeAngles().yaw, 0 ) )
 		self:GetPhysicsObject():SetVelocity( ent:EyeAngles():Forward()*1000 )
 		self:GetPhysicsObject():AddAngleVelocity( Vector( 0, 10, 0 )*150 ) xdefm_NoTool( self )
 		self:SetCollisionGroup( COLLISION_GROUP_NONE ) self.xdefm_Thrown = 1  SafeRemoveEntityDelayed( self, 30 )
 	end
-	function ITEM:OnInit( self ) self.xdefm_Thrown = 0 self:SetColor( Color( 128, 128, 128 ) ) end
-	function ITEM:OnCollide( self, dat )
+	function items.it_water:OnInit( self ) self.xdefm_Thrown = 0 self:SetColor( Color( 128, 128, 128 ) ) end
+	function items.it_water:OnCollide( self, dat )
 		if dat.Speed >= 60 and dat.DeltaTime > 0.2 and math.random( 1, 2 ) == 1 then
 			self:EmitSound( "ambient/water/drip"..math.random( 1, 4 )..".wav", 75, 100 )
 		end
@@ -1823,22 +1660,18 @@ if true then local it = "it_water"
 			end
 		end
 	end
-	xdefm_ItemRegister( it, ITEM )
 end
 
 
-if true then local it = "it_shovel"
-	local ITEM = {
-		Name = "#xdefm."..it,
+items.it_shovel = {
 		Type = "Uncommon",
 		Model = "models/props_junk/Shovel01a.mdl",
-		Helper = "#xdefm.d"..it,
 		Rarity = 2,
 		Price = 170,
 		PhysSound = "Metal_Box.ImpactSoft"
 	}
-	function ITEM:OnUse( self, ply ) return true end
-	function ITEM:OnCollide( self, dat )
+	function items.it_shovel:OnUse( self, ply ) return true end
+	function items.it_shovel:OnCollide( self, dat )
 		if dat.Speed >= 120 and dat.DeltaTime > 0.25 and self:IsPlayerHolding() then local ent = dat.HitEntity
 			if IsValid( ent ) and !ent:IsWorld() and util.IsValidModel( ent:GetModel() ) and ent != self:GetFMod_LU() then
 				local dmg = DamageInfo()  dmg:SetDamagePosition( dat.HitPos ) dmg:SetDamageForce( dat.HitNormal*1000 )
@@ -1847,39 +1680,12 @@ if true then local it = "it_shovel"
 			end
 		end
 	end
-	xdefm_ItemRegister( it, ITEM )
 end
 
 
-if true then local it = "it_pot"
-	local tb = {
-			[8]="it_stone",
-			[30]="it_coal",
-			[100]="it_copperbar",
-			[200]="it_oreblue",
-			[225]="it_leadbar",
-			[300]="it_steelbar",
-			[450]="it_orepurple"
-			[850]="it_silverbar",
-			[900]="it_gemblue",
-			[1200]="it_orered",
-			[1400]="it_gempurple",
-			[2400]="it_goldbar",
-			[2500]="it_orewhite",
-			[2700]="it_gemgreen",
-			[3600]="it_gemred",
-			[4000]="it_platinumbar",
-			[6000]="it_gemwhite",
-			[10000]="it_rainbowbar",
-			[100000]="it_rainbow",
-			[200000]="it_error",
-			[250000]="it_exp4"
-			}
-	local ITEM = {
-		Name = "#xdefm."..it,
+items.it_pot = {
 		Type = "Exotic",
 		Model = "models/props_c17/metalPot001a.mdl",
-		Helper = "#xdefm.d"..it,
 		Rarity = 5,
 		Price = 3000,
 		PhysSound = "Metal_Box.ImpactSoft",
@@ -1887,13 +1693,36 @@ if true then local it = "it_pot"
 		CantCook = true,
 		HelperUse = "xdefm.U2"
 	}
-	function ITEM:OnInit( self ) self.xdefm_Price = 0  self.xdefm_Process = 0  self.xdefm_Cool = 0  self.xdefm_Snd = nil end
-	function ITEM:OnUse( self, ent ) if ent:KeyDown( IN_SPEED ) then return true end if self.xdefm_Process > 0 or self.xdefm_Cool > CurTime() then return false end
+	local tb = {
+		[8]="it_stone",
+		[30]="it_coal",
+		[100]="it_copperbar",
+		[200]="it_oreblue",
+		[225]="it_leadbar",
+		[300]="it_steelbar",
+		[450]="it_orepurple"
+		[850]="it_silverbar",
+		[900]="it_gemblue",
+		[1200]="it_orered",
+		[1400]="it_gempurple",
+		[2400]="it_goldbar",
+		[2500]="it_orewhite",
+		[2700]="it_gemgreen",
+		[3600]="it_gemred",
+		[4000]="it_platinumbar",
+		[6000]="it_gemwhite",
+		[10000]="it_rainbowbar",
+		[100000]="it_rainbow",
+		[200000]="it_error",
+		[250000]="it_exp4"
+		}
+	function items.it_pot:OnInit( self ) self.xdefm_Price = 0  self.xdefm_Process = 0  self.xdefm_Cool = 0  self.xdefm_Snd = nil end
+	function items.it_pot:OnUse( self, ent ) if ent:KeyDown( IN_SPEED ) then return true end if self.xdefm_Process > 0 or self.xdefm_Cool > CurTime() then return false end
 		self.xdefm_Cool = CurTime() +0.5  if self.xdefm_Price <= 0 then self:EmitSound( "Metal_Barrel.BulletImpact" ) return false end
 		self.xdefm_Process = CurTime() +5  self.xdefm_Snd = CreateSound( self, Sound( "ambient/gas/steam_loop1.wav" ) ) self:SetAngles( Angle( 0, self:GetAngles().yaw, 0 ) )
 		self.xdefm_Snd:Play() self.xdefm_Snd:ChangePitch( 155, 0 ) self.xdefm_Snd:ChangeVolume( 0.5, 0 ) self:SetNWBool( "XDEFM_EF", true ) return false
 	end
-	function ITEM:OnThink( self ) if self.xdefm_Process <= 0 then return end
+	function items.it_pot:OnThink( self ) if self.xdefm_Process <= 0 then return end
 		if self.xdefm_Process <= CurTime() then self.xdefm_Process = 0  if self.xdefm_Snd then self.xdefm_Snd:Stop() self.xdefm_Snd = nil end
 			self:EmitSound( "Metal_Barrel.ImpactSoft" ) self:SetNWBool( "XDEFM_EF", false ) local ite = "_"
 			for k, v in SortedPairs( tb ) do if k > self.xdefm_Price then break else ite = v end
@@ -1901,7 +1730,7 @@ if true then local it = "it_pot"
 			self.xdefm_Price = 0
 		end
 	end
-	function ITEM:OnTouch( self, ent, typ ) if typ != 1 or self.xdefm_Process > 0 or self.xdefm_Cool > CurTime() or self.xdefm_Price >= 100000 then return end self.xdefm_Cool = CurTime() +0.5
+	function items.it_pot:OnTouch( self, ent, typ ) if typ != 1 or self.xdefm_Process > 0 or self.xdefm_Cool > CurTime() or self.xdefm_Price >= 100000 then return end self.xdefm_Cool = CurTime() +0.5
 		if ent:GetClass() == "xdefm_base" and ent:IsPlayerHolding() and xdefm_CookMeter( ent ) == 0 then
 			if xdefm_GetClass( ent ) == "it_pot" then return end
 			local aa, bb = xdefm_ItemGet( ent ) if !istable( bb ) or bb.Type == "Bait" or ent.xdefm_Trashed then return end local prc = xdefm_GetPrice( ent:GetFMod_DT() )
@@ -1909,8 +1738,8 @@ if true then local it = "it_pot"
 			ent.xdefm_Trashed = true  ent:Remove()
 		end
 	end
-	function ITEM:OnRemove( self ) if self.xdefm_Snd then self.xdefm_Snd:Stop() self.xdefm_Snd = nil end end
-	function ITEM:OnDraw( self )
+	function items.it_pot:OnRemove( self ) if self.xdefm_Snd then self.xdefm_Snd:Stop() self.xdefm_Snd = nil end end
+	function items.it_pot:OnDraw( self )
 		if !self.Emitter or !IsValid( self.Emitter ) then
 			self.Emitter = ParticleEmitter( self:WorldSpaceCenter() )
 			self:CallOnRemove( "XDEEmitter", function( self ) if self.Emitter then self.Emitter:Finish() end end )
@@ -1937,23 +1766,19 @@ if true then local it = "it_pot"
 			end
 		end
 	end
-	xdefm_ItemRegister( it, ITEM )
 end
 
 
-if true then local it = "it_rainbowbar"
-	local ITEM = {
-		Name = "#xdefm."..it,
+items.it_rainbowbar = {
 		Type = "Exotic",
 		Model = "models/xdeedited/ingot_platinum.mdl",
-		Helper = "#xdefm.d"..it,
 		Rarity = 5,
 		Price = 10000,
 		PhysSound = "GlassBottle.ImpactHard",
 		TickRate = 0.01
 	}
-	function ITEM:OnThink( self ) self:SetColor( HSVToColor( ( CurTime()*100 ), 1, 1 ) ) end
-	function ITEM:OnDraw( self ) render.SetMaterial( Mat ) local siz, col = 30 +math.sin( CurTime()*2 )*2, self:GetColor()
+	function items.it_rainbowbar:OnThink( self ) self:SetColor( HSVToColor( ( CurTime()*100 ), 1, 1 ) ) end
+	function items.it_rainbowbar:OnDraw( self ) render.SetMaterial( Mat ) local siz, col = 30 +math.sin( CurTime()*2 )*2, self:GetColor()
 		render.DrawSprite( self:WorldSpaceCenter(), siz, siz, col )
         render.DrawSprite( self:WorldSpaceCenter() +self:GetForward()*6, siz, siz, col )
         render.DrawSprite( self:WorldSpaceCenter() -self:GetForward()*6, siz, siz, col )
@@ -1981,26 +1806,22 @@ if true then local it = "it_rainbowbar"
 			end
 		end
 	end
-	xdefm_ItemRegister( it, ITEM )
 end
 
 
-if true then local it = "it_junku"
-	local ITEM = {
-		Name = "#xdefm."..it,
+items.it_junku = {
 		Type = "Structure",
 		Model = "models/props_junk/TrashBin01a.mdl",
 		Amount = 12,
 		StartSound = "AmmoCrate.Open",
 		ExitSound = "AmmoCrate.Close",
-		Helper = "#xdefm.d"..it,
 		Rarity = 3,
 		Price = 666,
 		PhysSound = "Plastic_Barrel.ImpactHard",
 		SType = 1,
 		HelperUse = "xdefm.U3"
 	}
-	function ITEM:OnInteract( self, ent, typ )
+	function items.it_junku:OnInteract( self, ent, typ )
 		if typ == -1 then local yes = false
 			for k, v in pairs( self.xdefm_T3 ) do
 				if isstring( v ) and v != "_" and xdefm_GetClass( v ) != "it_junk" then
@@ -2014,24 +1835,20 @@ if true then local it = "it_junku"
 			end
 		end
 	end
-	xdefm_ItemRegister( it, ITEM )
 end
 
 
-if true then local it = "it_exp1"
-	local ITEM = {
-		Name = "#xdefm."..it,
+items.it_exp1 = {
 		Type = "Uncommon",
 		Model = "models/props_lab/bindergreen.mdl",
-		Helper = "#xdefm.d"..it,
 		Rarity = 2,
 		Price = 0,
 		PhysSound = "Cardboard.ImpactSoft",
 		HelperUse = "xdefm.U2"
 	}
-	ITEM.Constants = { Amount = 40 }
-	function ITEM:OnInit( self ) self.xdefm_Killed = false end
-	function ITEM:OnUse( self, ent ) if self.xdefm_Killed then return end
+	items.it_exp1.Constants = { Amount = 40 }
+	function items.it_exp1:OnInit( self ) self.xdefm_Killed = false end
+	function items.it_exp1:OnUse( self, ent ) if self.xdefm_Killed then return end
 		if ent:KeyDown( IN_SPEED ) then return true end local pro = ent.xdefm_Profile
 		if !istable( pro ) or !isnumber( pro.Level ) then self:EmitSound( "Buttons.snd10" ) return false end
 		self.xdefm_Killed = true  xdefm_BroadEffect( "xdefm_present", { Origin = self:WorldSpaceCenter() } )
@@ -2039,53 +1856,49 @@ if true then local it = "it_exp1"
 		xdefm_AddNote( ent, "xdefm.GetEXP&: "..exp, "buttons/bell1.wav", "medal_gold_1", 5 )
 		self:Remove() xdefm_GiveExp( ent, exp ) return false
 	end
-	xdefm_ItemRegister( it, ITEM )
 end
 
 
-if true then local it = "it_exp2"
-	local ITEM = {
-		Name = "#xdefm."..it,
+items.it_exp2 = {
 		Type = "Rare",
 		Model = "models/props_lab/binderblue.mdl",
-		Helper = "#xdefm.d"..it,
 		Rarity = 3,
 		Price = 0,
 		PhysSound = "Cardboard.ImpactSoft",
 		HelperUse = "xdefm.U2"
 	}
-	ITEM.Constants = { Amount = 160 }
-	xdefm_ItemBased( "it_exp1", it, ITEM )
+	items.it_exp2.Constants = { Amount = 160 }
+	xdefm_ItemBased( "it_exp1", it, items.it_exp2 )
 end
 
 
-if true then local it = "it_exp3"
-	local ITEM = {
-		Name = "#xdefm."..it,
+items.it_exp3 = {
 		Type = "Legendary",
 		Model = "models/props_lab/binderredlabel.mdl",
-		Helper = "#xdefm.d"..it,
 		Rarity = 4,
 		Price = 0,
 		PhysSound = "Cardboard.ImpactSoft",
 		HelperUse = "xdefm.U2"
 	}
-	ITEM.Constants = { Amount = 400 }
-	xdefm_ItemBased( "it_exp1", it, ITEM )
+	items.it_exp3.Constants = { Amount = 400 }
+	xdefm_ItemBased( "it_exp1", it, items.it_exp3 )
 end
 
 
-if true then local it = "it_exp4"
-	local ITEM = {
-		Name = "#xdefm."..it,
+items.it_exp4 = {
 		Type = "Exotic",
 		Model = "models/props_lab/bindergraylabel01a.mdl",
-		Helper = "#xdefm.d"..it,
 		Rarity = 5,
 		Price = 0,
 		PhysSound = "Cardboard.ImpactSoft",
 		HelperUse = "xdefm.U2"
 	}
-	ITEM.Constants = { Amount = 9999 }
-	xdefm_ItemBased( "it_exp1", it, ITEM )
+	items.it_exp4.Constants = { Amount = 9999 }
+	xdefm_ItemBased( "it_exp1", it, items.it_exp4 )
+end
+
+for i, v in pairs(items) do -- simple as that!
+	v.Name   = "#xdefm."  .. i
+	v.Helper = "#xdefm.d" .. i
+	xdefm_ItemRegister( i, v )
 end
