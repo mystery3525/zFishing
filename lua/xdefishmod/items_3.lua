@@ -1743,10 +1743,15 @@ items.it_exp1 = {
 	items.it_exp1.Constants = { Amount = 40 }
 	function items.it_exp1:OnInit( self ) self.xdefm_Killed = false end
 	function items.it_exp1:OnUse( self, ent ) if self.xdefm_Killed then return end
-		if ent:KeyDown( IN_SPEED ) then return true end local pro = ent.xdefm_Profile
-		if !istable( pro ) or !isnumber( pro.Level ) then self:EmitSound( "Buttons.snd10" ) return false end
-		self.xdefm_Killed = true  xdefm_BroadEffect( "xdefm_present", { Origin = self:WorldSpaceCenter() } )
-		local exp = self.xdefm_T2.Constants.Amount
+		if ent:KeyDown( IN_SPEED ) then return true end 
+		local pro = ent.xdefm_Profile
+		if !istable( pro ) or !isnumber( pro.Level ) then 
+			self:EmitSound( "Buttons.snd10" ) 
+			return false 
+		end
+		self.xdefm_Killed = true  
+		xdefm_BroadEffect( "xdefm_present", { Origin = self:WorldSpaceCenter() } )
+		local exp = self.Constants.Amount
 		xdefm_AddNote( ent, "xdefm.GetEXP&: "..exp, "buttons/bell1.wav", "medal_gold_1", 5 )
 		self:Remove() xdefm_GiveExp( ent, exp ) return false
 	end
