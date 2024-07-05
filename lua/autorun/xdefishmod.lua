@@ -3419,7 +3419,7 @@ elseif typ == 8 then -- 图鉴
 			if !pan.T_Rars[ tab.Rarity ] or pan.T_Rars[ tab.Rarity ] != true then continue end
 			local slo = xdefm_SlotBox( 0, 0, 100, 100, 0, nil, xdefm.miscs.Icons[ tab.Type ], true )
 			if slo then slo:F_SetupItem( ite[ i ] ) pa2:Add( slo )
-				function slo:DoClick() if !ply:IsAdmin() then return end local it = cls
+				--[[function slo:DoClick() if !ply:IsAdmin() then return end local it = cls
 					if tab.Type == "Food" then it = it.."|"..tab.BestCook
 					elseif tab.Type == "Creature" then it = it.."|"..tab.MaxSize
 					elseif tab.Type == "Recipe" then it = it.."|"..tab.Durability end
@@ -3432,7 +3432,7 @@ elseif typ == 8 then -- 图鉴
 					elseif tab.Type == "Recipe" then it = it.."|"..tab.Durability end
 					surface.PlaySound( "garrysmod/ui_return.wav" )
 					RunConsoleCommand( "xdefmod_give", it )
-				end
+				end]]
 			end
 		end local cvar = {}
 		for k, v in pairs( Typs ) do table.insert( cvar, pan.T_Typs[ v ] == true and 1 or 0 ) end
