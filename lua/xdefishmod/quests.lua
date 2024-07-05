@@ -1,7 +1,7 @@
 if CLIENT then return end
 
 local quests = {
-    0  = {
+    [0]  = {
         reward = "it_bag1",
         "it_wood2&it_metal2",
         "it_glass2&it_brick",
@@ -25,7 +25,7 @@ local quests = {
         "it_health&it_armor",
         "cr_seagull",
     },
-    15 = {
+    [15] = {
         reward = "it_bag2",
         "it_wood2&it_metal2&it_glass2&it_stone2",
         "it_metal2&it_metal2&it_plastic&it_plastic",
@@ -49,7 +49,7 @@ local quests = {
         "it_egg&it_egg",
         "cr_crow",
     },
-    30 = {
+    [30] = {
         reward = "it_bag3",
         "it_crate1&it_crate2&it_crate",
         "it_present&it_present&it_present&it_present",
@@ -73,7 +73,7 @@ local quests = {
         "it_exp2",
         "cr_crow&cr_seagull&cr_pigeon",
     },
-    50 = {
+    [50] = {
         reward = "it_bag4",
         "it_bait3&it_bait3&it_exp",
         "it_coin2&it_coin2&it_coin2&it_coin2",

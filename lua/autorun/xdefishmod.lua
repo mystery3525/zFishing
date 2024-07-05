@@ -2,6 +2,9 @@
 	Fishing Mod by LemonCola3424(XDE).
 	DO NOT REUPLOAD/MODIFY/COPY WITHOUT AUTHORS' PERMISSION.
 	和蔼！任何邪恶，终将绳之以法！
+
+	Fork by Flof and Autumn
+
 --]]
 
 local SVConvars = bit.bor( FCVAR_ARCHIVE, FCVAR_NOTIFY, FCVAR_REPLICATED, FCVAR_LUA_SERVER )
@@ -18,7 +21,7 @@ CreateConVar( "xdefmod_qsttime", "10", SVConvars, "", 0 )
 CreateConVar( "xdefmod_lbdelay", "10", SVConvars, "", 0 )
 CreateConVar( "xdefmod_nomorehook", "0", SVConvars, "", 0, 1 )
 CreateConVar( "xdefmod_darkrp", "0.05", SVConvars, "", 0.01, 10 )
-CreateConVar( "sbox_maxxdefmod_items", "30", SVConvars )
+CreateConVar( "sbox_maxxdefmod_items", "60", SVConvars )
 
 CreateClientConVar( "xdefmod_tagdist", "256", true, false, "", -1 )
 CreateClientConVar( "xdefmod_sonar", "1", true, false, "", 0, 1 )
@@ -3419,7 +3422,7 @@ elseif typ == 8 then -- 图鉴
 			if !pan.T_Rars[ tab.Rarity ] or pan.T_Rars[ tab.Rarity ] != true then continue end
 			local slo = xdefm_SlotBox( 0, 0, 100, 100, 0, nil, xdefm.miscs.Icons[ tab.Type ], true )
 			if slo then slo:F_SetupItem( ite[ i ] ) pa2:Add( slo )
-				--[[function slo:DoClick() if !ply:IsAdmin() then return end local it = cls
+				function slo:DoClick() if !ply:IsAdmin() then return end local it = cls -- functions in charge of spawning items
 					if tab.Type == "Food" then it = it.."|"..tab.BestCook
 					elseif tab.Type == "Creature" then it = it.."|"..tab.MaxSize
 					elseif tab.Type == "Recipe" then it = it.."|"..tab.Durability end
@@ -3432,7 +3435,7 @@ elseif typ == 8 then -- 图鉴
 					elseif tab.Type == "Recipe" then it = it.."|"..tab.Durability end
 					surface.PlaySound( "garrysmod/ui_return.wav" )
 					RunConsoleCommand( "xdefmod_give", it )
-				end]]
+				end
 			end
 		end local cvar = {}
 		for k, v in pairs( Typs ) do table.insert( cvar, pan.T_Typs[ v ] == true and 1 or 0 ) end
