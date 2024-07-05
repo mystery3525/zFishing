@@ -43,7 +43,7 @@ if CLIENT then local langs = {}
 end
 
 if true then local it = "re_toolbox"
-	local ITEM = { Name = "#xdefm."..it, Type = "Recipe", Model = "models/static/nmrih_tool_box_01.mdl", Helper = "#xdefm.d"..it, Rarity = 2, Durability = 10,
+	local ITEM = { Name = "#xdefm."..it, Type = "Recipe", Model = "models/props_c17/suitcase001a.mdl", Helper = "#xdefm.d"..it, Rarity = 2, Durability = 10,
     PhysSound = "SolidMetal.ImpactSoft", Price = 1000 }
     ITEM.Crafts = {
 		"it_part&it_stone2&it_stone2&it_stone2&it_furnace1",
