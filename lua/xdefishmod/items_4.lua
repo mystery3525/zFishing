@@ -877,7 +877,7 @@ if true then local it = "it_flower"
 end
 if true then local it = "it_stove4"
 	local ITEM = { Name = "#xdefm."..it, Type = "Useless", Model = "models/props_wasteland/kitchen_stove001a.mdl", Helper = "#xdefm.d"..it,
-	Rarity = 4, Price = 2000, Carryable = false, HelperUse = "xdefm.U4", TickRate = 1, PhysSound = "Metal_Barrel.ImpactHard", CantCook = true }
+	Rarity = 4, Price = 2000, Carryable = false, HelperUse = "xdefm.U4", TickRate = 1, PhysSound = "Metal_Barrel.ImpactHard", CantCook = true, CanPhysgun = true}
 	function ITEM:OnInit( self )  self.xdefm_Enabled = 0  self.xdefm_Spots = {}  self.xdefm_Pressed = 0  self.xdefm_Level = 0
 	end
 	function ITEM:OnReady( self ) self:GetPhysicsObject():SetMass( math.ceil( self:GetPhysicsObject():GetMass()*0.1 ) ) end

@@ -1693,10 +1693,10 @@ if SERVER then --服务端
 	end
 
 	hook.Add( "PhysgunPickup", "xdefm_NoTool", function( ply, ent )
-
-		local aa, bb = xdefm_ItemGet( ent )
-		if bb.CanPhysgun and xdefm_NadAllow( ply, ent) then return true
+		
 		if ent.xdefm_NoTool then return false end
+		local aa, bb = xdefm_ItemGet( ent:GetFMod_DT() )
+		if ent:GetClass() == "xdefm_base" and bb.CanPhysgun and xdefm_NadAllow( ply, ent) then return true end
 		if ent:GetClass() == "xdefm_base" then return false end
 	end )
 	hook.Add( "CanProperty", "xdefm_NoTool", function( ply, property, ent )
