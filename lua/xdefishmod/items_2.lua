@@ -123,7 +123,6 @@ items.it_junk = {
 		KillInWater = true,
 		PhysSound = "Plastic_Barrel.ImpactSoft"
 	}
-end
 
 items.it_scrap = {
 		Type = "Common",
@@ -133,7 +132,7 @@ items.it_scrap = {
 		Price = 20,
 		PhysSound = "Metal_Box.ImpactSoft"
 	}
-end
+
 items.it_rpg = {
 		Type = "Uncommon",
 		Model = "models/weapons/w_missile_closed.mdl",
@@ -168,7 +167,6 @@ items.it_rpg = {
 	function items.it_rpg :OnCollide( self, dat, phy ) if self.xdefm_TimerExp > CurTime() or self.xdefm_Killed then return end
 		self:TakeDamage( 10 )
 	end
-end
 
 items.cr_seagull = {
 		Type = "Creature",
@@ -297,14 +295,12 @@ items.cr_seagull = {
 		self.ShadowParams.deltatime = deltatime
 		if isvector( self.xdefm_TPos ) then phy:ComputeShadowControl( self.ShadowParams ) end
 	end
-end
 
 items.cr_crow = {
 		Type = "Creature",
 		Model = "models/crow.mdl",
 		Price = 800,
-		Rarity = 3,
-		Helper = "#xdefm.d"..it
+		Rarity = 3
 	}
 	items.cr_crow.Constants = {
 		Speed = 1024,
@@ -331,13 +327,11 @@ items.cr_crow = {
 			sound = { "npc/crow/pain1.wav", "npc/crow/pain2.wav" } 
 		} )
 	xdefm_ItemBased( "cr_seagull", it, items.cr_crow )
-end
 
 items.cr_seagull2 = {
 		Model = "models/seagull.mdl",
 		Price = 5000,
-		Rarity = 5,
-		Helper = "#xdefm.d"..it
+		Rarity = 5
 	}
 	items.cr_seagull2.Constants = { 
 		Speed = 8192,
@@ -422,7 +416,6 @@ items.cr_seagull2 = {
 		end
 	end
 	xdefm_ItemBased( "cr_seagull", it, items.cr_seagull2 )
-end
 
 items.it_vault = {
 		Type = "Exotic",
@@ -441,7 +434,6 @@ items.it_vault = {
 		for i=1, math.random( 4, 6 ) do xdefm_LootDrop( lt, self ) end
 		xdefm_BreakEffect( self, 3 ) self:SetNotSolid( true ) SafeRemoveEntityDelayed( self, 0.1 ) end return true
 	end
-end
 
 items.it_pottery = {
 		Type = "Common",
@@ -453,7 +445,6 @@ items.it_pottery = {
 		Price = 50,
 		PhysSound = "Tile.BulletImpact"
 	}
-end
 
 items.it_potter1 = {
 		Type = "Uncommon",
@@ -474,7 +465,6 @@ items.it_potter1 = {
 	function items.it_potter1:OnCollide( self, dat ) if self.xdefm_Killed then return end
 		if dat.Speed >= 300 and dat.DeltaTime > 0.2 then self:TakeDamage( 1 ) end
 	end
-end
 
 items.it_potter2 = {
 		Type = "Rare",
@@ -494,7 +484,6 @@ items.it_potter2 = {
 	function items.it_potter2:OnCollide( self, dat ) if self.xdefm_Killed then return end
 		if dat.Speed >= 450 and dat.DeltaTime > 0.2 then self:TakeDamage( 1 ) end
 	end
-end
 
 items.it_potter3 = {
 		Type = "Legendary",
@@ -513,7 +502,6 @@ items.it_potter3 = {
 	function items.it_potter3:OnCollide( self, dat ) if self.xdefm_Killed then return end
 		if dat.Speed >= 600 and dat.DeltaTime > 0.2 then self:TakeDamage( 1 ) end
 	end
-end
 
 items.it_coal = {
 		Type = "Common",
@@ -522,7 +510,6 @@ items.it_coal = {
 		Price = 30,
 		PhysSound = "Concrete.ImpactHard"
 	}
-end
 
 items.it_copperbar = {
 		Type = "Uncommon",
@@ -531,7 +518,6 @@ items.it_copperbar = {
 		Price = 100,
 		PhysSound = "GlassBottle.ImpactHard"
 	}
-end
 
 items.it_leadbar = {
 		Type = "Uncommon",
@@ -540,7 +526,6 @@ items.it_leadbar = {
 		Price = 225,
 		PhysSound = "GlassBottle.ImpactHard"
 	}
-end
 
 items.it_steelbar = {
 		Type = "Uncommon",
@@ -549,7 +534,6 @@ items.it_steelbar = {
 		Price = 300,
 		PhysSound = "GlassBottle.ImpactHard"
 	}
-end
 
 items.it_silverbar = {
 		Type = "Rare",
@@ -563,7 +547,6 @@ items.it_silverbar = {
        		render.DrawSprite( self:WorldSpaceCenter() +self:GetForward()*6, siz, siz, col )
         	render.DrawSprite( self:WorldSpaceCenter() -self:GetForward()*6, siz, siz, col )
 	end
-end
 
 items.it_goldbar = {
 		Type = "Legendary",
@@ -577,7 +560,6 @@ items.it_goldbar = {
        		render.DrawSprite( self:WorldSpaceCenter() +self:GetForward()*6, siz, siz, col )
         	render.DrawSprite( self:WorldSpaceCenter() -self:GetForward()*6, siz, siz, col )
 	end
-end
 
 items.it_platinumbar = {
 		Type = "Exotic",
@@ -613,7 +595,6 @@ items.it_platinumbar = {
 			end
 		end
 	end
-end
 
 items.it_oreblue = {
 		Type = "Uncommon",
@@ -627,7 +608,6 @@ items.it_oreblue = {
 		render.SetMaterial( Mat ) local siz = 30
 		render.DrawSprite( self:WorldSpaceCenter(), siz, siz, Color( 0, 0, 255, 255 ) )
 	end
-end
 
 items.it_orepurple = {
 		Type = "Uncommon",
@@ -641,7 +621,6 @@ items.it_orepurple = {
 		render.SetMaterial( Mat ) local siz = 30
 		render.DrawSprite( self:WorldSpaceCenter(), siz, siz, Color( 255, 0, 255, 255 ) )
 	end
-end
 
 items.it_oregreen = {
 		Type = "Rare",
@@ -655,7 +634,6 @@ items.it_oregreen = {
 		render.SetMaterial( Mat ) local siz = 30
 		render.DrawSprite( self:WorldSpaceCenter(), siz, siz, Color( 0, 255, 0, 255 ) )
 	end
-end
 
 items.it_orered = {
 		Type = "Rare",
@@ -669,7 +647,6 @@ items.it_orered = {
 		render.SetMaterial( Mat ) local siz = 30
 		render.DrawSprite( self:WorldSpaceCenter(), siz, siz, Color( 255, 0, 0, 255 ) )
 	end
-end
 
 items.it_orewhite = {
 		Type = "Legendary",
@@ -683,7 +660,6 @@ items.it_orewhite = {
 		render.SetMaterial( Mat ) local siz = 30
 		render.DrawSprite( self:WorldSpaceCenter(), siz, siz, Color( 255, 255, 255, 255 ) )
 	end
-end
 
 items.it_gemblue = {
 		Type = "Rare",
@@ -698,7 +674,6 @@ items.it_gemblue = {
 		render.SetMaterial( Mat ) local siz = 30 +math.sin( CurTime()*5 )*5
 		render.DrawSprite( self:WorldSpaceCenter(), siz, siz, Color( 0, 0, 255, 255 ) )
 	end
-end
 
 items.it_gempurple = {
 		Type = "Rare",
@@ -713,7 +688,6 @@ items.it_gempurple = {
 		render.SetMaterial( Mat ) local siz = 30 +math.sin( CurTime()*5 )*5
 		render.DrawSprite( self:WorldSpaceCenter(), siz, siz, Color( 255, 0, 255, 255 ) )
 	end
-end
 
 items.it_gemgreen = {
 		Type = "Legendary",
@@ -752,7 +726,6 @@ items.it_gemgreen = {
 			end
 		end
 	end
-end
 
 items.it_gemred = {
 		Type = "Legendary",
@@ -790,7 +763,6 @@ items.it_gemred = {
 			end
 		end
 	end
-end
 
 items.it_gemwhite = {
 		Type = "Exotic",
@@ -829,7 +801,6 @@ items.it_gemwhite = {
 			end
 		end
 	end
-end
 
 items.it_crowbar = {
 		Type = "Common",
@@ -848,7 +819,6 @@ items.it_crowbar = {
 			end
 		end
 	end
-end
 
 items.it_stunstick = {
 		Type = "Uncommon",
@@ -870,7 +840,6 @@ items.it_stunstick = {
 			ef:SetScale( 1 ) ef:SetMagnitude( 1 ) ef:SetRadius( 1 ) util.Effect( "StunstickImpact", ef )
 		end
 	end
-end
 
 items.it_guitar = {
 		Type = "Rare",
@@ -910,7 +879,6 @@ items.it_guitar = {
 			end
 		end
 	end
-end
 
 items.it_hatchet = {
 		Type = "Uncommon",
@@ -929,7 +897,6 @@ items.it_hatchet = {
 			end
 		end
 	end
-end
 
 items.it_gnome = {
 		Type = "Common",
@@ -949,7 +916,6 @@ items.it_gnome = {
 		ite:GetPhysicsObject():SetVelocity( VectorRand():GetNormal()*50 +Vector( 0, 0, 250 ) ) ite.xdefm_Jump = CurTime() +2 end
 		end return true
 	end
-end
 
 items.it_grinder = {
 		Type = "Rare",
@@ -980,7 +946,6 @@ items.it_grinder = {
 	end
 	function items.it_grinder:OnThink( self ) if self.xdefm_Toggle then self:GetPhysicsObject():AddVelocity( VectorRand():GetNormalized()*50 ) end end
 	function items.it_grinder:OnRemove( self ) if self.xdefm_Snd then self.xdefm_Snd:Stop() self.xdefm_Snd = nil end end
-end
 
 items.it_bugs = {
 		Type = "Uncommon",
@@ -1037,7 +1002,6 @@ items.it_bugs = {
 		end
 	end
 	function items.it_bugs:OnRemove( self ) if self.xdefm_Snd then self.xdefm_Snd:Stop() self.xdefm_Snd = nil end end
-end
 
 items.it_defib = {
 		Type = "Legendary",
@@ -1059,7 +1023,6 @@ items.it_defib = {
 			end
 		end
 	end
-end
 
 items.it_vending = {
 		Type = "Structure",
@@ -1078,7 +1041,6 @@ items.it_vending = {
 		[ "it_health" ] = { 500, 5 },
 		[ "it_armor" ] 	= { 400, 5 }
 	}
-end
 
 items.it_soda = {
 		Type = "Common",
@@ -1126,7 +1088,6 @@ items.it_soda = {
 			end
 		end
 	end
-end
 
 items.it_rock = {
 		Type = "Rare",
@@ -1156,7 +1117,6 @@ items.it_rock = {
 		for i=1, math.random( 3, 6 ) do xdefm_LootDrop( lt, self ) end
 		xdefm_BreakEffect( self, 4 ) self:SetNotSolid( true ) SafeRemoveEntityDelayed( self, 0.1 ) end return true
 	end
-end
 
 items.it_crate1 = {
 		Type = "Rare",
@@ -1184,7 +1144,6 @@ items.it_crate1 = {
 		for i=1, math.random( 4, 8 ) do xdefm_LootDrop( lt, self ) end
 		xdefm_BreakEffect( self, 1 ) self:SetNotSolid( true ) SafeRemoveEntityDelayed( self, 0.1 ) end return true
 	end
-end
 
 items.it_bait1 = {
 		Type = "Common",
@@ -1209,7 +1168,6 @@ items.it_bait1 = {
 			}
 		for i=1, 3 do xdefm_LootDrop( lt, self ) end self:SetNotSolid( true ) SafeRemoveEntityDelayed( self, 0.1 ) end return true
 	end
-end
 
 items.cr_baby = {
 		Type = "Creature",
@@ -1273,7 +1231,6 @@ items.cr_baby = {
 		self.ShadowParams.deltatime = deltatime
 		phy:ComputeShadowControl( self.ShadowParams )
 	end
-end
 
 items.cr_saw = {
 		Type = "Creature",
@@ -1344,7 +1301,6 @@ items.cr_saw = {
 			end
 		end
 	end
-end
 
 items.it_cosmogram = {
 		Type = "Legendary",
@@ -1423,7 +1379,6 @@ items.it_cosmogram = {
 			end
 		end
 	end
-end
 
 items.it_figurine = {
 		Type = "Rare",
@@ -1491,7 +1446,6 @@ items.it_figurine = {
 		self.ShadowParams.deltatime = deltatime
 		phy:ComputeShadowControl( self.ShadowParams )
 	end
-end
 
 items.it_torch = {
 		Type = "Rare",
@@ -1543,7 +1497,6 @@ items.it_torch = {
 			end
 		end
 	end
-end
 
 items.it_bust = {
 		Type = "Exotic",
@@ -1609,7 +1562,6 @@ items.it_bust = {
 			end
 		end
 	end
-end
 
 items.cr_melon = {
 		Type = "Creature",
@@ -1640,7 +1592,6 @@ items.cr_melon = {
 			SafeRemoveEntity( self )
 		end
 	end
-end
 
 items.it_junkx = {
 		Type = "Uncommon",
@@ -1659,7 +1610,6 @@ items.it_junkx = {
 		for i=1, math.random( 3, 5 ) do xdefm_LootDrop( lt, self ) end
 		xdefm_BreakEffect( self, 3 ) self:SetNotSolid( true ) SafeRemoveEntityDelayed( self, 0.1 ) end return true
 	end
-end
 
 items.it_monitor = {
 		Type = "Uncommon",
@@ -1688,7 +1638,6 @@ items.it_monitor = {
 			end
 		end
 	end
-end
 
 for i, v in pairs(items) do -- simple as that!
 	v.Name   = "#xdefm."  .. i

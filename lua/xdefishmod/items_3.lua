@@ -137,8 +137,6 @@ items.it_camera = {
 		render.SetMaterial( Mat ) local siz = self:GetNWBool( "XDEFM_PT" ) and 40 or 0
 		render.DrawSprite( self:WorldSpaceCenter(), siz, siz, Color( 255, 255, 255, 255 ) )
 	end
-end
-
 
 items.it_ammo = {
 		Type = "Uncommon",
@@ -197,8 +195,6 @@ items.it_ammo = {
 		ef:SetScale( 3 ) ef:SetMagnitude( 2 ) ef:SetAngles( bullet.Dir:Angle() ) ef:SetNormal( bullet.Dir )  util.Effect( "ElectricSpark", ef )
 		self:FireBullets( bullet ) self:EmitSound( tab[ 1 ] ) self:GetPhysicsObject():AddVelocity( VectorRand():GetNormalized()*math.random( 50, 250 ) )
 	end
-end
-
 
 items.it_ammocan1 = {
 		Type = "Rare",
@@ -222,8 +218,6 @@ items.it_ammocan1 = {
 			end
 		xdefm_BreakEffect( self, 3 ) self:SetNotSolid( true ) SafeRemoveEntityDelayed( self, 0.1 ) end return true
 	end
-end
-
 
 items.it_ammocan2 = {
 		Type = "Legendary",
@@ -248,8 +242,6 @@ items.it_ammocan2 = {
 			end
 		xdefm_BreakEffect( self, 3 ) self:SetNotSolid( true ) SafeRemoveEntityDelayed( self, 0.1 ) end return true
 	end
-end
-
 
 items.it_firearm1 = {
 		Type = "Uncommon",
@@ -319,8 +311,6 @@ items.it_firearm1 = {
 		end
 	end
 	function items.it_firearm1:OnRemove( self ) if self.xdefm_Snd then self.xdefm_Snd:Stop() self.xdefm_Snd = nil end end
-end
-
 
 items.it_firearm2 = {
 		Type = "Rare",
@@ -343,8 +333,6 @@ items.it_firearm2 = {
 	}
 	items.it_firearm2.Constants = { Broken = false }
 	xdefm_ItemBased( "it_firearm1", it, items.it_firearm2 )
-end
-
 
 items.it_grenade = {
 		Type = "Uncommon",
@@ -386,8 +374,6 @@ items.it_grenade = {
 			render.DrawSprite( self:WorldSpaceCenter(), siz, siz, Color( 255, 0, 0, 255 ) )
 		end
 	end
-end
-
 
 items.it_flashbang = {
 		Type = "Uncommon",
@@ -424,8 +410,6 @@ items.it_flashbang = {
 			render.DrawSprite( self:WorldSpaceCenter(), siz, siz, Color( 255, 255, 0, 255 ) )
 		end
 	end
-end
-
 
 items.it_launcher = {
 		Type = "Exotic",
@@ -449,8 +433,6 @@ items.it_launcher = {
 			self:EmitSound( "Weapon_Shotgun.Empty" ) self.xdefm_NextFire = 0
 		end
 	end
-end
-
 
 items.it_car = {
 		Type = "Legendary",
@@ -502,8 +484,6 @@ items.it_car = {
 		xdefm_BreakEffect( self, 3 ) self:SetNotSolid( true ) SafeRemoveEntityDelayed( self, 0.1 ) end return true
 	end
 	function items.it_car:OnRemove( self ) if self.xdefm_Snd then self.xdefm_Snd:Stop() self.xdefm_Snd = nil end end
-end
-
 
 items.it_bread1 = {
 		Type = "Common",
@@ -519,8 +499,6 @@ items.it_bread1 = {
 		if ent:KeyDown( IN_SPEED ) then return true end ent:SetHealth( math.min( ent:GetMaxHealth(), ent:Health() +math.random( 2, 10 ) ) )
 		ent:EmitSound( "NPC_Barnacle.FinalBite" ) self:Remove() self.xdefm_Used = true return false
 	end
-end
-
 
 items.it_bread2 = {
 		Type = "Uncommon",
@@ -541,8 +519,6 @@ items.it_bread2 = {
 		if met >= 0 then ent:SetHealth( math.min( ent:GetMaxHealth(), ent:Health() +math.ceil( math.random( 5, 20 )*( 1 +met ) ) ) ) end
 		ent:EmitSound( "NPC_Barnacle.FinalBite" ) self:Remove() self.xdefm_Used = true return false
 	end
-end
-
 
 items.cr_bread = {
 		Type = "Creature",
@@ -631,8 +607,6 @@ items.cr_bread = {
 		self.ShadowParams.deltatime = deltatime
 		phy:ComputeShadowControl( self.ShadowParams )
 	end
-end
-
 
 items.it_pumpkin1 = {
 		Type = "Uncommon",
@@ -653,8 +627,6 @@ items.it_pumpkin1 = {
 		if met >= 0 then ent:SetHealth( math.min( ent:GetMaxHealth(), ent:Health() +math.ceil( 50*( 1 +met ) ) ) ) end
 		ent:EmitSound( "NPC_Barnacle.FinalBite" ) self:Remove() self.xdefm_Used = true return false
 	end
-end
-
 
 items.it_pumpkin2 = {
 		Type = "Rare",
@@ -675,8 +647,6 @@ items.it_pumpkin2 = {
 		if met >= 0 then ent:SetHealth( math.min( ent:GetMaxHealth(), ent:Health() +math.ceil( 150*( 1 +met ) ) ) ) end
 		ent:EmitSound( "NPC_Barnacle.FinalBite" ) self:Remove() self.xdefm_Used = true return false
 	end
-end
-
 
 items.it_pumpki = {
 		Type = "Common",
@@ -695,8 +665,6 @@ items.it_pumpki = {
 		if met >= 0 then ent:SetHealth( math.min( ent:GetMaxHealth(), ent:Health() +math.ceil( 10*( 1 +met ) ) ) ) end
 		ent:EmitSound( "NPC_Barnacle.FinalBite" ) self:Remove() self.xdefm_Used = true return false
 	end
-end
-
 
 items.it_pmetal = {
 		Type = "Rare",
@@ -710,8 +678,6 @@ items.it_pmetal = {
 		Price = 825,
 		PhysSound = "EpicMetal.ImpactSoft"
 	}
-end
-
 
 items.it_pcube = {
 		Type = "Rare",
@@ -728,8 +694,6 @@ items.it_pcube = {
 		local lt = {["it_scrap"]=1} for i=1, math.random( 4, 6 ) do xdefm_LootDrop( lt, self ) end
 		xdefm_BreakEffect( self, 3 ) self:SetNotSolid( true ) SafeRemoveEntityDelayed( self, 0.1 ) end return true
 	end
-end
-
 
 items.it_pradio = {
 		Type = "Rare",
@@ -772,8 +736,6 @@ items.it_pradio = {
 		if dat.Speed >= 300 and dat.DeltaTime > 0.2 then self:TakeDamage( 1 ) end
 	end
 	function items.it_pradio:OnRemove( self ) if self.xdefm_Snd then self.xdefm_Snd:Stop()  self.xdefm_Snd = nil end end
-end
-
 
 items.it_pcore = {
 		Type = "Exotic",
@@ -821,8 +783,6 @@ items.it_pcore = {
 		end
 	end
 	function items.it_pcore:OnRemove( self ) if self.xdefm_Voice then self.xdefm_Voice:Stop()  self.xdefm_Voice = nil end end
-end
-
 
 items.it_pturre1 = {
 		Type = "Legendary",
@@ -944,8 +904,6 @@ items.it_pturre1 = {
 			if tr.Hit then render.SetMaterial( Ma2 ) render.DrawSprite( tr.HitPos, 15, 15, col ) end
 		end
 	end
-end
-
 
 items.it_pturre2 = {
 		Type = "Rare",
@@ -956,9 +914,7 @@ items.it_pturre2 = {
 		PhysSound = "SolidMetal.ImpactSoft",
 	}
 	items.it_pturre2.Constants = { [ "Broken" ] = true }
-	xdefm_ItemBased( "it_pturre1", it, ITEM )
-end
-
+	xdefm_ItemBased( "it_pturre1", it, items.it_pturre2 )
 
 items.it_bait2 = {
 		Type = "Uncommon",
@@ -975,8 +931,6 @@ items.it_bait2 = {
 		local lt = {["ba_skull"]=5,["ba_bread"]=5,["ba_box"]=5,["ba_fish"]=5,["ba_pickaxe"]=5,["ba_teddy"]=2,["ba_bomb"]=2}
 		for i=1, 3 do xdefm_LootDrop( lt, self ) end self:SetNotSolid( true ) SafeRemoveEntityDelayed( self, 0.1 ) end return true
 	end
-end
-
 
 items.it_bait3 = {
 		Type = "Rare",
@@ -993,8 +947,6 @@ items.it_bait3 = {
 		local lt = {["ba_teddy"]=25,["ba_bomb"]=25,["ba_meat"]=25,["ba_c4"]=25,["ba_drill"]=25,["ba_combine"]=2,["ba_portal"]=2,["ba_gmod"]=1}
 		for i=1, 3 do xdefm_LootDrop( lt, self ) end self:SetNotSolid( true ) SafeRemoveEntityDelayed( self, 0.1 ) end return true
 	end
-end
-
 
 items.it_crate2 = {
 		Type = "Rare",
@@ -1011,8 +963,6 @@ items.it_crate2 = {
 		for i=1, math.random( 8, 16 ) do xdefm_LootDrop( lt, self ) end
 		xdefm_BreakEffect( self, 1 ) self:SetNotSolid( true ) SafeRemoveEntityDelayed( self, 0.1 ) end return true
 	end
-end
-
 
 items.it_mush1 = {
 		Type = "Common",
@@ -1028,8 +978,6 @@ items.it_mush1 = {
 		if met >= 0 then ent:SetHealth( math.min( ent:GetMaxHealth(), ent:Health() +math.ceil( 20*( 1 +met ) ) ) ) end
 		ent:EmitSound( "NPC_Barnacle.FinalBite" ) self:Remove() self.xdefm_Used = true return false
 	end
-end
-
 
 items.it_mush2 = {
 		Type = "Common",
@@ -1057,8 +1005,6 @@ items.it_mush2 = {
 			dmg:SetDamagePosition( ent:WorldSpaceCenter() ) ent:TakeDamageInfo( dmg )
 		end end
 	end
-end
-
 
 items.it_crate3 = {
 		Type = "Rare",
@@ -1074,8 +1020,6 @@ items.it_crate3 = {
 		for i=1, math.random( 4, 6 ) do xdefm_LootDrop( lt, self ) end
 		xdefm_BreakEffect( self, 1 ) self:SetNotSolid( true ) SafeRemoveEntityDelayed( self, 0.1 ) end return true
 	end
-end
-
 
 items.it_cmetal = {
 		Type = "Rare",
@@ -1088,8 +1032,6 @@ items.it_cmetal = {
 		Price = 750,
 		PhysSound = "EpicMetal.ImpactSoft"
 	}
-end
-
 
 items.it_ccore = {
 		Type = "Rare",
@@ -1127,8 +1069,6 @@ items.it_ccore = {
 		dmg:SetDamagePosition( ent:WorldSpaceCenter() ) dmg:SetDamageForce( ( ent:GetPos() -self:GetPos() ):GetNormalized()*10000 ) dmg:SetAttacker( self:GetFMod_OW() )
 		dmg:SetInflictor( self ) ent:TakeDamageInfo( dmg ) local ef = EffectData()  ef:SetEntity( ent ) end
 	end
-end
-
 
 items.it_cturret = {
 		Type = "Legendary",
@@ -1233,8 +1173,6 @@ items.it_cturret = {
 			if tr.Hit then render.SetMaterial( Ma2 ) render.DrawSprite( tr.HitPos, 15, 15, col ) end
 		end
 	end
-end
-
 
 items.it_chopper = {
 		Type = "Rare",
@@ -1284,8 +1222,6 @@ items.it_chopper = {
 		render.SetMaterial( Mat ) local siz = 30 +math.sin( CurTime()*5 )*5
 		render.DrawSprite( self:GetPos() +self:EyeAngles():Up()*8, siz, siz, Color( 255, 0, 0, 255 ) )
 	end
-end
-
 
 items.it_chealth = {
 		Type = "Uncommon",
@@ -1306,8 +1242,6 @@ items.it_chealth = {
 	function items.it_chealth:OnThink( self ) if self.xdefm_Cool > 0 and self.xdefm_Cool <= CurTime() then
 		self.xdefm_Cool = 0  self:ResetSequence( "idle" ) self:SetPlaybackRate( 0 )
 	end end
-end
-
 
 items.it_carmor = {
 		Type = "Uncommon",
@@ -1328,8 +1262,6 @@ items.it_carmor = {
 	function items.it_carmor:OnThink( self ) if self.xdefm_Cool > 0 and self.xdefm_Cool <= CurTime() then
 		self.xdefm_Cool = 0  self:ResetSequence( "idle" ) self:SetPlaybackRate( 0 )
 	end end
-end
-
 
 items.it_csuper = {
 		Type = "Rare",
@@ -1350,8 +1282,6 @@ items.it_csuper = {
 	function items.it_csuper:OnThink( self ) if self.xdefm_Cool > 0 and self.xdefm_Cool <= CurTime() then
 		self.xdefm_Cool = 0  self:ResetSequence( "idle" ) self:SetPlaybackRate( 0 )
 	end end
-end
-
 
 items.it_cscanner = {
 		Type = "Creature",
@@ -1458,8 +1388,6 @@ items.it_cscanner = {
 		render.SetMaterial( Mat ) local siz = self:GetNWBool( "XDEFM_PT" ) and 60 or 20
 		render.DrawSprite( att.Pos, siz, siz, Color( 255, 255, 255, 255 ) )
 	end
-end
-
 
 items.it_cheli = {
 		Type = "Legendary",
@@ -1498,9 +1426,7 @@ items.it_cheli = {
 		local lt = {["it_cmetal"]=1} for i=1, math.random( 4, 6 ) do xdefm_LootDrop( lt, self ) end
 		xdefm_BreakEffect( self, 3 ) self:SetNotSolid( true ) SafeRemoveEntityDelayed( self, 0.1 ) end return true
 	end
-	function ITEM:OnRemove( self ) if self.xdefm_Snd then self.xdefm_Snd:Stop() self.xdefm_Snd = nil end end
-end
-
+	function items.it_cheli:OnRemove( self ) if self.xdefm_Snd then self.xdefm_Snd:Stop() self.xdefm_Snd = nil end end
 
 items.it_cthumper = {
 		Type = "Exotic",
@@ -1525,8 +1451,6 @@ items.it_cthumper = {
 			end
 		end
 	end
-end
-
 
 items.it_gballoon = {
 		Type = "Common",
@@ -1586,8 +1510,6 @@ items.it_gballoon = {
 		local ef = EffectData() ef:SetOrigin( self:GetPos() ) ef:SetStart( Vector( col.r, col.g, col.b ) ) util.Effect( "balloon_pop", ef )
 	end
 	function items.it_gballoon:OnRemove( self ) if self.xdefm_Snd then self.xdefm_Snd:Stop() self.xdefm_Snd = nil end end
-end
-
 
 items.it_gballoox = {
 		Type = "Uncommon",
@@ -1603,8 +1525,6 @@ items.it_gballoox = {
 		self:EmitSound( "Cardboard.Break" ) SafeRemoveEntity( self )
 		local ef = EffectData() ef:SetOrigin( self:GetPos() ) ef:SetStart( Vector( 255, 255, 155 ) ) util.Effect( "balloon_pop", ef )
 	end
-end
-
 
 items.it_gfood = {
 		Type = "Uncommon",
@@ -1623,8 +1543,6 @@ items.it_gfood = {
 		if met >= 0 then ent:SetHealth( math.min( ent:GetMaxHealth(), ent:Health() +math.ceil( math.random( 8, 40 )*( 1 +met ) ) ) ) end
 		ent:EmitSound( "NPC_Barnacle.FinalBite" ) self:Remove() self.xdefm_Used = true return false
 	end
-end
-
 
 items.it_water = {
 		Type = "Common",
@@ -1661,8 +1579,6 @@ items.it_water = {
 			end
 		end
 	end
-end
-
 
 items.it_shovel = {
 		Type = "Uncommon",
@@ -1681,8 +1597,6 @@ items.it_shovel = {
 			end
 		end
 	end
-end
-
 
 items.it_pot = {
 		Type = "Exotic",
@@ -1695,28 +1609,13 @@ items.it_pot = {
 		HelperUse = "xdefm.U2"
 	}
 	local tb = {
-		[8]="it_stone",
-		[30]="it_coal",
-		[100]="it_copperbar",
-		[200]="it_oreblue",
-		[225]="it_leadbar",
-		[300]="it_steelbar",
-		[450]="it_orepurple"
-		[850]="it_silverbar",
-		[900]="it_gemblue",
-		[1200]="it_orered",
-		[1400]="it_gempurple",
-		[2400]="it_goldbar",
-		[2500]="it_orewhite",
-		[2700]="it_gemgreen",
-		[3600]="it_gemred",
-		[4000]="it_platinumbar",
-		[6000]="it_gemwhite",
-		[10000]="it_rainbowbar",
-		[100000]="it_rainbow",
-		[200000]="it_error",
+		[8]="it_stone",      [30]="it_coal",         [100]="it_copperbar",  [200]="it_oreblue",
+		[225]="it_leadbar",  [300]="it_steelbar",    [450]="it_orepurple",  [850]="it_silverbar",
+		[900]="it_gemblue",	 [1200]="it_orered",     [1400]="it_gempurple", [2400]="it_goldbar",
+		[2500]="it_orewhite",[2700]="it_gemgreen",   [3600]="it_gemred",    [4000]="it_platinumbar",
+		[6000]="it_gemwhite",[10000]="it_rainbowbar",[100000]="it_rainbow", [200000]="it_error",
 		[250000]="it_exp4"
-		}
+	}
 	function items.it_pot:OnInit( self ) self.xdefm_Price = 0  self.xdefm_Process = 0  self.xdefm_Cool = 0  self.xdefm_Snd = nil end
 	function items.it_pot:OnUse( self, ent ) if ent:KeyDown( IN_SPEED ) then return true end if self.xdefm_Process > 0 or self.xdefm_Cool > CurTime() then return false end
 		self.xdefm_Cool = CurTime() +0.5  if self.xdefm_Price <= 0 then self:EmitSound( "Metal_Barrel.BulletImpact" ) return false end
@@ -1767,8 +1666,6 @@ items.it_pot = {
 			end
 		end
 	end
-end
-
 
 items.it_rainbowbar = {
 		Type = "Exotic",
@@ -1807,8 +1704,6 @@ items.it_rainbowbar = {
 			end
 		end
 	end
-end
-
 
 items.it_junku = {
 		Type = "Structure",
@@ -1836,8 +1731,6 @@ items.it_junku = {
 			end
 		end
 	end
-end
-
 
 items.it_exp1 = {
 		Type = "Uncommon",
@@ -1857,8 +1750,6 @@ items.it_exp1 = {
 		xdefm_AddNote( ent, "xdefm.GetEXP&: "..exp, "buttons/bell1.wav", "medal_gold_1", 5 )
 		self:Remove() xdefm_GiveExp( ent, exp ) return false
 	end
-end
-
 
 items.it_exp2 = {
 		Type = "Rare",
@@ -1870,8 +1761,6 @@ items.it_exp2 = {
 	}
 	items.it_exp2.Constants = { Amount = 160 }
 	xdefm_ItemBased( "it_exp1", it, items.it_exp2 )
-end
-
 
 items.it_exp3 = {
 		Type = "Legendary",
@@ -1883,8 +1772,6 @@ items.it_exp3 = {
 	}
 	items.it_exp3.Constants = { Amount = 400 }
 	xdefm_ItemBased( "it_exp1", it, items.it_exp3 )
-end
-
 
 items.it_exp4 = {
 		Type = "Exotic",
@@ -1896,7 +1783,6 @@ items.it_exp4 = {
 	}
 	items.it_exp4.Constants = { Amount = 9999 }
 	xdefm_ItemBased( "it_exp1", it, items.it_exp4 )
-end
 
 for i, v in pairs(items) do -- simple as that!
 	v.Name   = "#xdefm."  .. i
