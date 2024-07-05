@@ -113,10 +113,13 @@ end local Mat = Material( "sprites/light_glow02_add" ) Mat:SetInt( "$ignorez", 1
 local items = {}
 
 items.it_wood = {	
+<<<<<<< Updated upstream
 	Name = "#xdefm.it_wood"
 	Type = "Common", 
+=======
+	Type = "Useless", 
+>>>>>>> Stashed changes
 	Model = { "models/gibs/wood_gib01a.mdl", "models/gibs/wood_gib01b.mdl", "models/Gibs/wood_gib01c.mdl", "models/gibs/wood_gib01d.mdl" },
-	Helper = "#xdefm.dit_wood", 
 	Rarity = 1, 
 	Price = 6, 
 	KillInWater = true, 
@@ -124,10 +127,13 @@ items.it_wood = {
 }
 
 items.it_stone = {
+<<<<<<< Updated upstream
 	Name = "xdefm.it_stone"
 	Type = "Common", 
+=======
+	Type = "Useless", 
+>>>>>>> Stashed changes
 	Model = "models/props_junk/rock001a.mdl", 
-	Helper = "#xdefm.dit_stone"
 	Rarity = 1, 
 	Price = 8, 
 	KillInWater = true, 
@@ -138,7 +144,6 @@ items.it_metal = {
 	Name = "#xdefm.it_metal", 
 	Type = "Common", 
 	Model = { "models/gibs/metal_gib1.mdl", "models/gibs/metal_gib2.mdl", "models/gibs/metal_gib3.mdl", "models/gibs/metal_gib4.mdl", "models/gibs/metal_gib5.mdl" }, 
-	Helper = "#xdefm.dit_metal",
 	Rarity = 1, 
 	Price = 15, 
 	KillInWater = true, 
@@ -146,12 +151,19 @@ items.it_metal = {
 }
 
 items.it_glass = {
+<<<<<<< Updated upstream
 	Name = "xdefm.it_glass" 
 	Type = "Common", 
 	Model = { "models/props_junk/garbage_glassbottle001a_chunk04.mdl", "models/props_junk/garbage_glassbottle001a_chunk02.mdl", "models/props_junk/garbage_glassbottle001a_chunk03.mdl", "models/props_junk/garbage_glassbottle001a_chunk01.mdl",
 			"models/props_junk/garbage_glassbottle003a_chunk01.mdl", "models/props_junk/garbage_glassbottle003a_chunk02.mdl", "models/props_junk/garbage_glassbottle003a_chunk03.mdl",
 			"models/props_junk/glassjug01_chunk01.mdl", "models/props_junk/glassjug01_chunk02.mdl", "models/props_junk/glassjug01_chunk03.mdl" }, 
 	Helper = "#xdefm.dit_glass", 
+=======
+	Type = "Useless", 
+	Model = { "models/props_junk/garbage_glassbottle001a_chunk04.mdl", "models/props_junk/garbage_glassbottle001a_chunk02.mdl", "models/props_junk/garbage_glassbottle001a_chunk03.mdl", "models/props_junk/garbage_glassbottle001a_chunk01.mdl",
+			  "models/props_junk/garbage_glassbottle003a_chunk01.mdl", "models/props_junk/garbage_glassbottle003a_chunk02.mdl", "models/props_junk/garbage_glassbottle003a_chunk03.mdl",
+		      "models/props_junk/glassjug01_chunk01.mdl", "models/props_junk/glassjug01_chunk02.mdl", "models/props_junk/glassjug01_chunk03.mdl" }, 
+>>>>>>> Stashed changes
 	Rarity = 1,
 	Price = 10, 
 	KillInWater = true, 
@@ -159,10 +171,16 @@ items.it_glass = {
 }
 
 items.it_junks = {
+<<<<<<< Updated upstream
     	Name = "xdefm.it_junks"
 	Type = "Common",
 	Model = "models/props_junk/trashcluster01a_corner.mdl",
 	Helper = "#xdefm.dit_junks",
+=======
+	Type = "Useless",
+	Model = "models/props_junk/trashcluster01a_corner.mdl"
+	,
+>>>>>>> Stashed changes
 	Rarity = 1,
 	Price = 60,
 	Carryable = false,
@@ -182,10 +200,13 @@ items.it_junks = {
 
 
 items.it_shoe = {
+<<<<<<< Updated upstream
     	Name = "xdefm.it_shoe"
 	Type = "Uncommon",
+=======
+	Type = "Useless",
+>>>>>>> Stashed changes
 	Model = "models/props_junk/shoe001a.mdl",
-	Helper = "#xdefm.d",
 	Rarity = 2,
 	Price = 30, 
 	TickRate = 1 
@@ -256,10 +277,13 @@ items.it_shoe = {
 
 
 items.it_mine1 = {
+<<<<<<< Updated upstream
     	Name = "xdefm.it_mine1"
 	Type = "Uncommon",
+=======
+	Type = "Useless",
+>>>>>>> Stashed changes
 	Model = "models/roller.mdl",
-	Helper = "#xdefm.dit_mine1",
 	Rarity = 2,
 	Price = 75,
 	TickRate = 0.1,
@@ -285,11 +309,14 @@ items.it_mine1 = {
 
 
 items.it_hula = {
+<<<<<<< Updated upstream
     	Name = "xdefm.it_hula"
 	Type = "Uncommon",
+=======
+	Type = "Useless",
+>>>>>>> Stashed changes
 	Model = "models/props_lab/huladoll.mdl",
 	HelperUse = "xdefm.U2",
-	Helper = "#xdefm.d",
 	Rarity = 2,
 	Price = 60,
 	TickRate = 0.01,
@@ -308,10 +335,13 @@ items.it_hula = {
 
 
 items.it_cactus = {
+<<<<<<< Updated upstream
     	Name = "xdefm.it_cactus"
 	Type = "Uncommon",
+=======
+	Type = "Useless",
+>>>>>>> Stashed changes
 	Model = "models/props_lab/cactus.mdl",
-	Helper = "#xdefm.dit_cactus",
 	Rarity = 2,
 	Price = 50,
 	PhysSound = "Sand.BulletImpact" 
@@ -330,6 +360,7 @@ items.it_cactus = {
 	end
 
 
+<<<<<<< Updated upstream
 items.it_combine = {
 	local ac = { "deathpose_back", "deathpose_front", "deathpose_left", "deathpose_right", "flinchbig", "flinchgut",
 			"flinchhead", "flinchleft", "flinchright", "flinchsmall", "signal_advance", "signal_forward", 
@@ -342,6 +373,20 @@ items.it_combine = {
 	Price = 1,
 	PhysSound = "MetalVehicle.ImpactSoft" 
 }
+=======
+
+items.it_combine = {
+	local ac = { "deathpose_back", "deathpose_front", "deathpose_left", "deathpose_right", "flinchbig", "flinchgut",
+	"flinchhead", "flinchleft", "flinchright", "flinchsmall", "signal_advance", "signal_forward", "signal_group", "signal_halt",
+	"signal_left", "signal_right", "signal_takecover", "reload" }
+	
+	Type = "Useless",
+	Model = "models/Combine_Soldier.mdl", TickRate = 0.1,
+	Rarity = 1,
+	Price = 0,
+	KillInWater = true,
+	PhysSound = "MetalVehicle.ImpactSoft" }
+>>>>>>> Stashed changes
 	local Mat = Material( "sprites/light_glow02_add" ) Mat:SetInt( "$ignorez", 1 )
 	function ITEM:OnInit( self ) self.xdefm_Killed = false  self:SetAutomaticFrameAdvance( true )
 		self.xdefm_Act = 0  self.xdefm_ActNext = 0  self.xdefm_Boom = 0
@@ -393,6 +438,7 @@ items.it_combine = {
 
 
 items.it_brick = {
+<<<<<<< Updated upstream
     	Name = "xdefm."
 	Type = "Uncommon",
 	Model = "models/props_debris/concrete_cynderblock001.mdl",
@@ -401,6 +447,14 @@ items.it_brick = {
 	Price = 50,
 	PhysSound = "Concrete.ImpactHard" 
 }
+=======
+    
+	Type = "Useless",
+	Model = "models/props_debris/concrete_cynderblock001.mdl",
+	Rarity = 2,
+	Price = 50,
+	PhysSound = "Concrete.ImpactHard" }
+>>>>>>> Stashed changes
 	function ITEM:OnInit( self ) self.xdefm_Thrown = 0 end
 	function ITEM:OnReady( self ) self:GetPhysicsObject():SetMass( 25 ) end
 	function ITEM:OnStore( self, ent ) if self.xdefm_Thrown > 0 then return false end end
@@ -430,6 +484,7 @@ items.it_brick = {
 
 
 items.it_health = {
+<<<<<<< Updated upstream
     	Name = "xdefm."
 	Type = "Uncommon",
 	Model = "models/Items/HealthKit.mdl",
@@ -439,6 +494,15 @@ items.it_health = {
 	Price = 100,
 	PhysSound = "Plastic_Box.ImpactSoft"
 }
+=======
+    
+	Type = "Useless",
+	Model = "models/Items/HealthKit.mdl",
+	HelperUse = "xdefm.U2",
+	Rarity = 2,
+	Price = 100,
+	PhysSound = "Plastic_Box.ImpactSoft" }
+>>>>>>> Stashed changes
 	function ITEM:OnInit( self ) self.xdefm_Used = false end
 	function ITEM:OnUse( self, ent ) if self.xdefm_Used then return end if ent:Health() >= ent:GetMaxHealth() then return true end
 		if ent:KeyDown( IN_SPEED ) then return true end ent:SetHealth( math.min( ent:GetMaxHealth(), ent:Health() +100 ) )
@@ -458,6 +522,7 @@ items.it_health = {
 	
 
 items.it_armor = {
+<<<<<<< Updated upstream
     	Name = "xdefm."
 	Type = "Uncommon",
 	Model = "models/items/battery.mdl",
@@ -467,6 +532,16 @@ items.it_armor = {
 	Price = 80,
 	PhysSound = "Plastic_Box.ImpactSoft"
 }
+=======
+    
+	Type = "Useless",
+	Model = "models/items/battery.mdl",
+	HelperUse = "xdefm.U2"
+	,
+	Rarity = 2,
+	Price = 80,
+	PhysSound = "Plastic_Box.ImpactSoft" }
+>>>>>>> Stashed changes
 	function ITEM:OnInit( self ) self.xdefm_Used = false end
 	function ITEM:OnUse( self, ent ) if self.xdefm_Used then return end if ent:Armor() >= ent:GetMaxArmor() then return true end
 		if ent:KeyDown( IN_SPEED ) then return true end ent:SetArmor( math.min( ent:GetMaxArmor(), ent:Armor() +100 ) )
@@ -475,6 +550,7 @@ items.it_armor = {
 
 
 items.it_paper = {
+<<<<<<< Updated upstream
     	Name = "xdefm."
 	Type = "Common",
 	Model = "models/props/cs_office/paper_towels.mdl",
@@ -505,10 +581,39 @@ items.it_coin = {
 	Rarity = 2,
 	Price = 500,
 	PhysSound = "Chain.ImpactHard"
+=======
+    
+	Type = "Useless",
+	Model = "models/props/cs_office/paper_towels.mdl",
+	Rarity = 1,
+	Price = 15,
+	KillInWater = true,
+	PhysSound = "Cardboard.ImpactHard" }
+	
+}
+	items.it_dollar = {
+    
+	Type = "Useless",
+	Model = "models/props/cs_assault/money.mdl",
+	Rarity = 1,
+	Price = 200,
+	PhysSound = "Sand.BulletImpact" 
+}
+	
+items.it_coin = {
+    
+Type = "Useless",
+Model = "models/money/silvcoin.mdl",
+Rarity = 2,
+Price = 500,
+PhysSound = "Chain.ImpactHard" }
+	
+>>>>>>> Stashed changes
 }
 	
 
 items.it_register = {
+<<<<<<< Updated upstream
     	Name = "xdefm."
 	Type = "Rare",
 	Model = "models/props_c17/cashregister01a.mdl",
@@ -517,6 +622,14 @@ items.it_register = {
 	Price = 400,
 	PhysSound = "SolidMetal.ImpactSoft"
 }
+=======
+    
+Type = "Useless",
+Model = "models/props_c17/cashregister01a.mdl",
+Rarity = 3,
+Price = 400,
+PhysSound = "SolidMetal.ImpactSoft" }
+>>>>>>> Stashed changes
 	function ITEM:OnInit( self ) self:SetMaxHealth( 50 ) self:SetHealth( self:GetMaxHealth() ) self.xdefm_Killed = false end
 	function ITEM:OnDamaged( self, dmg ) if self:Health() <= 0 or dmg:GetDamage() <= 0 or self.xdefm_Killed then return false end
 		self:SetHealth( math.max( 0, self:Health() -dmg:GetDamage() ) ) self:EmitSound( "Breakable.Metal" )
@@ -527,6 +640,7 @@ items.it_register = {
 	
 
 items.it_pallet = {
+<<<<<<< Updated upstream
     	Name = "xdefm."
 	Type = "Legendary",
 	Model = "models/props/cs_assault/moneypallet.mdl",
@@ -536,10 +650,20 @@ items.it_pallet = {
 	Carryable = false,
 	PhysSound = "Wood_Crate.ImpactHard"
 }
+=======
+    
+Type = "Useless",
+Model = "models/props/cs_assault/moneypallet.mdl",
+Rarity = 4,
+Price = 5000,
+Carryable = false,
+PhysSound = "Wood_Crate.ImpactHard" }
+>>>>>>> Stashed changes
 	function ITEM:OnReady( self ) self:GetPhysicsObject():SetMaterial( "wood" ) self:GetPhysicsObject():SetBuoyancyRatio( 5 ) end
 	
 
 items.cr_dollar = {
+<<<<<<< Updated upstream
     	Name = "xdefm."
 	Type = "Creature",
 	Model = "models/props_collectables/money_wad.mdl",
@@ -549,6 +673,14 @@ items.cr_dollar = {
 	TickRate = 1,
 	MinSize = 0.8, MaxSize = 1.4
 }
+=======
+    
+Type = "Creature",
+Model = "models/props_collectables/money_wad.mdl"
+	,
+Rarity = 2,
+Price = 750, TickRate = 1, MinSize = 0.8, MaxSize = 1.4 }
+>>>>>>> Stashed changes
 	function ITEM:OnInit( self ) self:SetMaxHealth( 25 ) self:SetHealth( self:GetMaxHealth() )
 		self:SetBloodColor( BLOOD_COLOR_RED ) self:PhysicsInit( SOLID_VPHYSICS )
 		self:GetPhysicsObject():SetMaterial( "flesh" ) self:SetCollisionGroup( COLLISION_GROUP_NPC )
@@ -624,6 +756,7 @@ items.cr_dollar = {
 	
 
 items.it_present = {
+<<<<<<< Updated upstream
     	Name = "xdefm."
 	Type = "Rare",
 	Model = { "models/effects/bday_gib01.mdl", "models/effects/bday_gib02.mdl",
@@ -634,6 +767,16 @@ items.it_present = {
 	PhysSound = "Cardboard.ImpactSoft",
 	HelperUse = "xdefm.U2"
 }
+=======
+    
+Type = "Useless",
+Model = { "models/effects/bday_gib01.mdl", "models/effects/bday_gib02.mdl",
+	"models/effects/bday_gib03.mdl", "models/effects/bday_gib04.mdl" },
+Rarity = 3,
+Price = 200,
+PhysSound = "Cardboard.ImpactSoft",
+HelperUse = "xdefm.U2" }
+>>>>>>> Stashed changes
 	if CLIENT then -- xdefm_present
 		local EFFECT = {}
 		function EFFECT:Init( data ) local pos = data:GetOrigin()  self.Emitter = ParticleEmitter( pos )
@@ -680,6 +823,7 @@ items.it_present = {
 	
 
 items.it_rottenmeat = {
+<<<<<<< Updated upstream
     	Name = "xdefm."
 	Type = "Common",
 	Model = { "models/Gibs/HGIBS_rib.mdl", "models/Gibs/HGIBS_scapula.mdl",
@@ -690,6 +834,18 @@ items.it_rottenmeat = {
 	Price = 10,
 	PhysSound = "Flesh_Bloody.ImpactHard", TickRate = 1
 }
+=======
+    
+Type = "Useless",
+Model = { "models/Gibs/HGIBS_rib.mdl", "models/Gibs/HGIBS_scapula.mdl",
+	"models/Gibs/HGIBS_spine.mdl", "models/gibs/antlion_gib_medium_1.mdl", "models/gibs/antlion_gib_medium_2.mdl", "models/gibs/antlion_gib_small_2.mdl",
+	"models/gibs/antlion_gib_small_1.mdl", "models/gibs/antlion_gib_medium_3.mdl" }
+	,
+",
+Rarity = 1,
+Price = 10,
+PhysSound = "Flesh_Bloody.ImpactHard", TickRate = 1 }
+>>>>>>> Stashed changes
 	function ITEM:OnInit( self ) self:SetMaterial( "models/flesh" ) self:SetColor( Color( 255, 255, 0 ) ) self.xdefm_Kill = CurTime() +60 end
 	function ITEM:OnThink( self ) if self.xdefm_Kill > CurTime() then return end
 		xdefm_BroadEffect( "BloodImpact", { Flags = 0, Origin = self:GetPos(), Scale = 1, Radius = 1, Magnitude = 1 } )
@@ -698,6 +854,7 @@ items.it_rottenmeat = {
 	
 
 items.it_corpse = {
+<<<<<<< Updated upstream
     	Name = "xdefm."
 	Type = "Uncommon",
 	Model = { "models/Zombie/Fast.mdl", "models/Zombie/Classic.mdl",
@@ -708,6 +865,18 @@ items.it_corpse = {
 	Price = 500,
 	PhysSound = "Flesh.ImpactSoft"
 }
+=======
+    
+Type = "Useless",
+Model = { "models/Zombie/Fast.mdl", "models/Zombie/Classic.mdl",
+	"models/Zombie/Poison.mdl", "models/Humans/corpse1.mdl", "models/Zombie/Classic_legs.mdl", "models/Gibs/Fast_Zombie_Legs.mdl",
+	"models/Zombie/Classic_torso.mdl", "models/zombie/fast_torso.mdl" }
+	,
+",
+Rarity = 2,
+Price = 500,
+PhysSound = "Flesh.ImpactSoft" }
+>>>>>>> Stashed changes
 	function ITEM:OnInit( self ) self:PhysicsInitBox( self:OBBMins(), self:OBBMaxs() )
 		self:SetCollisionBounds( self:OBBMins(), self:OBBMaxs() ) self:SetMoveType( MOVETYPE_VPHYSICS )
 		self:SetSequence( 1 ) self:SetPlaybackRate( 0 ) self:SetMaxHealth( math.random( 100, 200 ) ) self:SetHealth( self:GetMaxHealth() )
@@ -724,6 +893,7 @@ items.it_corpse = {
 	
 
 items.it_gravestone = {
+<<<<<<< Updated upstream
     	Name = "xdefm."
 	Type = "Common",
 	Model = { "models/props_c17/gravestone001a.mdl", "models/props_c17/gravestone002a.mdl",
@@ -732,6 +902,17 @@ items.it_gravestone = {
 	Rarity = 1,
 	Price = 60,
 	PhysSound = "Concrete.ImpactHard" }
+=======
+    
+Type = "Useless",
+Model = { "models/props_c17/gravestone001a.mdl", "models/props_c17/gravestone002a.mdl",
+	"models/props_c17/gravestone003a.mdl", "models/props_c17/gravestone004a.mdl" }
+	,
+",
+Rarity = 1,
+Price = 60,
+PhysSound = "Concrete.ImpactHard" }
+>>>>>>> Stashed changes
 	function ITEM:OnInit( self ) self:SetMaxHealth( 100 ) self:SetHealth( self:GetMaxHealth() ) self.xdefm_Killed = false end
 	function ITEM:OnDamaged( self, dmg ) if self.xdefm_Killed then return end self:EmitSound( "Breakable.MatConcrete" )
 		self:SetHealth( math.max( 0, self:Health() -dmg:GetDamage() ) ) if self:Health() <= 0 then self.xdefm_Killed = true
@@ -742,6 +923,7 @@ items.it_gravestone = {
 	
 
 items.cr_crab = {
+<<<<<<< Updated upstream
     	Name = "xdefm."
 	Type = "Creature",
 	Model = "models/headcrabclassic.mdl",
@@ -750,6 +932,15 @@ items.cr_crab = {
 	Price = 80,
 	TickRate = 0.1, MinSize = 0.6, MaxSize = 1.4
 }
+=======
+    
+Type = "Creature",
+Model = "models/headcrabclassic.mdl"
+	,
+",
+Rarity = 2,
+Price = 80, TickRate = 0.1, MinSize = 0.6, MaxSize = 1.4 }
+>>>>>>> Stashed changes
 	ITEM.Constants = { Health = 20, Force = 75, PainSnd = "NPC_HeadCrab.Pain", DieSnd = "NPC_HeadCrab.Die", JumpSnd = "NPC_Headcrab.Attack",
 	FlyAct = "Drown", IdleAct = "Idle01", Damage = 25, DamageType = DMG_CLUB, AtkSnd = "NPC_FastHeadcrab.Bite", JumpFreq = 25, LPos = Vector( 0, 0, 8 ), LDis = 20 }
 	function ITEM:OnReady( self ) self:GetPhysicsObject():SetBuoyancyRatio( 1 ) self:SetTrigger( true ) self:StartMotionController() self:PhysWake() end
@@ -815,6 +1006,7 @@ items.cr_crab = {
 	
 
 items.cr_crab2 = {
+<<<<<<< Updated upstream
     	Name = "xdefm."
 	Type = "Creature",
 	Model = { "models/headcrab.mdl" },
@@ -823,12 +1015,22 @@ items.cr_crab2 = {
 	Price = 100,
 	TickRate = 0.1, MinSize = 0.6, MaxSize = 1.4
 }
+=======
+    
+Type = "Creature",
+Model = { "models/headcrab.mdl" }
+	,
+",
+Rarity = 2,
+Price = 100, TickRate = 0.1, MinSize = 0.6, MaxSize = 1.4 }
+>>>>>>> Stashed changes
 	ITEM.Constants = { Health = 20, Force = 125, PainSnd = "NPC_HeadCrab.Pain", DieSnd = "NPC_HeadCrab.Die", JumpSnd = "NPC_Headcrab.Attack",
 	FlyAct = "Drown", IdleAct = "Idle01", Damage = 25, DamageType = DMG_CLUB, AtkSnd = "NPC_FastHeadcrab.Bite", JumpFreq = 5, LPos = Vector( 0, 0, 8 ), LDis = 20 }
 	xdefm_ItemBased( "cr_crab", it, ITEM )
 
 
 items.cr_crab3 = {
+<<<<<<< Updated upstream
     	Name = "xdefm."
 	Type = "Creature",
 	Model = { "models/headcrabblack.mdl" },
@@ -837,6 +1039,15 @@ items.cr_crab3 = {
 	Price = 300,
 	TickRate = 0.1, MinSize = 0.6, MaxSize = 1.4
 }
+=======
+    
+Type = "Creature",
+Model = { "models/headcrabblack.mdl" }
+	,
+",
+Rarity = 3,
+Price = 300, TickRate = 0.1, MinSize = 0.6, MaxSize = 1.4 }
+>>>>>>> Stashed changes
 	ITEM.Constants = { Health = 30, Force = 150, PainSnd = "NPC_BlackHeadcrab.Pain", DieSnd = "NPC_BlackHeadcrab.Die", JumpSnd = "NPC_BlackHeadcrab.Talk",
 	FlyAct = "Drown", IdleAct = "Idle01", Damage = 50, DamageType = DMG_POISON, AtkSnd = "NPC_BlackHeadcrab.Bite", JumpFreq = 30, LPos = Vector( 0, 0, 8 ), LDis = 20 }
 	xdefm_ItemBased( "cr_crab", it, ITEM )
@@ -851,11 +1062,19 @@ items.cr_gnome = {
 			"*vo/ravenholm/monk_pain10.wav", "*vo/ravenholm/monk_pain12.wav" } } )
 	sound.Add( { name = "xdefm.GnomeLaugh", channel = CHAN_VOICE, volume = 1, level = 75, pitch = 200,
 	sound = { "*vo/ravenholm/madlaugh01.wav", "*vo/ravenholm/madlaugh02.wav", "*vo/ravenholm/madlaugh03.wav",
+<<<<<<< Updated upstream
 			"*vo/ravenholm/madlaugh04.wav" } } )
 	Name = "xdefm."
 	Type = "Creature",
 	Model = "models/props_junk/gnome.mdl",
 	Helper = "#xdefm.d",
+=======
+		"*vo/ravenholm/madlaugh04.wav" } } )
+	
+Type = "Creature",
+Model = "models/props_junk/gnome.mdl",
+",
+>>>>>>> Stashed changes
 	Rarity = 2,
 	Price = 250,
 	TickRate = 0.1,
@@ -867,10 +1086,17 @@ items.cr_gnome = {
 
 
 items.it_campfire = {
+<<<<<<< Updated upstream
     	Name = "xdefm."
 	Type = "Uncommon",
 	Model = "models/props_unique/firepit_campground.mdl",
 	Helper = "#xdefm.d",
+=======
+    
+Type = "Useless",
+Model = "models/props_unique/firepit_campground.mdl",
+",
+>>>>>>> Stashed changes
 	Rarity = 2,
 	Price = 100,
 	TickRate = 1,
@@ -924,10 +1150,17 @@ items.it_campfire = {
 	
 
 items.it_stove1 = {
+<<<<<<< Updated upstream
     	Name = "xdefm."
 	Type = "Uncommon",
 	Model = "models/props_interiors/makeshift_stove_battery.mdl",
 	Helper = "#xdefm.d",
+=======
+    
+Type = "Useless",
+Model = "models/props_interiors/makeshift_stove_battery.mdl",
+",
+>>>>>>> Stashed changes
 	Rarity = 2,
 	Price = 250,
 	TickRate = 1,
@@ -954,10 +1187,17 @@ items.it_stove1 = {
 	
 
 items.it_stove2 = {
+<<<<<<< Updated upstream
     	Name = "xdefm."
 	Type = "Uncommon",
 	Model = "models/props/cs_militia/stove01.mdl",
 	Helper = "#xdefm.d",
+=======
+    
+Type = "Useless",
+Model = "models/props/cs_militia/stove01.mdl",
+",
+>>>>>>> Stashed changes
 	Rarity = 2,
 	Price = 450,
 	HelperUse = "xdefm.U4",
@@ -983,10 +1223,17 @@ items.it_stove2 = {
 	
 
 items.it_stove3 = {
+<<<<<<< Updated upstream
     	Name = "xdefm."
 	Type = "Rare",
 	Model = "models/props_c17/furniturestove001a.mdl",
 	Helper = "#xdefm.d",
+=======
+    
+Type = "Useless",
+Model = "models/props_c17/furniturestove001a.mdl",
+",
+>>>>>>> Stashed changes
 	Rarity = 3,
 	Price = 750,
 	HelperUse = "xdefm.U4",
@@ -1014,6 +1261,7 @@ items.it_stove3 = {
 	
 
 items.it_furniture1 = {
+<<<<<<< Updated upstream
     	Name = "xdefm."
 	Type = "Common",
 	Model = { "models/props_c17/FurnitureChair001a.mdl", "models/props_c17/FurnitureTable001a.mdl",
@@ -1057,6 +1305,48 @@ items.it_radio = {
 	PhysSound = "MetalVent.ImpactHard",
 	TickRate = 0.1
 }
+=======
+    
+Type = "Useless",
+Model = { "models/props_c17/FurnitureChair001a.mdl", "models/props_c17/FurnitureTable001a.mdl",
+	"models/props_c17/FurnitureTable002a.mdl", "models/props_c17/FurnitureTable003a.mdl", "models/props_interiors/Furniture_Vanity01a.mdl", "models/props_interiors/Furniture_Couch02a.mdl",
+	"models/props_c17/bench01a.mdl", "models/props_c17/FurnitureDrawer002a.mdl", "models/props_c17/FurnitureDresser001a.mdl" }
+	,
+",
+Rarity = 1,
+Price = 25,
+PhysSound = "Wood.ImpactHard",
+Carryable = false }
+	function ITEM:OnReady( self ) self:GetPhysicsObject():SetMass( self:GetPhysicsObject():GetMass()*0.1 ) end
+	
+}
+items.it_furniture2 = {
+    
+Type = "Useless",
+Model = { "models/props_c17/chair02a.mdl", "models/props_c17/FurnitureBathtub001a.mdl", "models/props_c17/door01_left.mdl",
+	"models/props_c17/FurnitureRadiator001a.mdl", "models/props_c17/FurnitureWashingmachine001a.mdl", "models/props_c17/Lockers001a.mdl", "models/props_combine/breendesk.mdl",
+	"models/props_interiors/Furniture_chair03a.mdl", "models/props_junk/PushCart01a.mdl", "models/props_junk/ravenholmsign.mdl", "models/props_wasteland/controlroom_chair001a.mdl",
+	"models/props_wasteland/controlroom_desk001a.mdl", "models/props_wasteland/controlroom_desk001b.mdl", "models/props_wasteland/controlroom_storagecloset001a.mdl", "models/props_interiors/bathtub01a.mdl" }
+	,
+",
+Rarity = 2,
+Price = 125,
+PhysSound = "Metal_Box.ImpactHard",
+Carryable = false }
+	function ITEM:OnReady( self ) self:GetPhysicsObject():SetMass( self:GetPhysicsObject():GetMass()*0.1 ) end
+	
+}
+items.it_radio"
+	local so = { "ambient/music/mirame_radio_thru_wall.wav", "ambient/music/cubanmusic1.wav",
+	"ambient/music/country_rock_am_radio_loop.wav", "ambient/music/flamenco.wav", "ambient/music/latin.wav",
+	"ambient/music/piano1.wav", "ambient/music/piano2.wav" }
+	
+Type = "Useless",
+Model = "models/props_lab/citizenradio.mdl",
+Rarity = 3,
+Price = 400,
+PhysSound = "MetalVent.ImpactHard", TickRate = 0.1 }
+>>>>>>> Stashed changes
 	function ITEM:OnInit( self ) self.xdefm_Snd = CreateSound( self, Sound( so[ math.random( #so ) ] ) )
 		self.xdefm_Snd:Play()  self.xdefm_BrokenDelay = -1
 	end
@@ -1083,10 +1373,17 @@ items.it_radio = {
 	
 
 items.it_orange = {
+<<<<<<< Updated upstream
     	Name = "xdefm."
 	Type = "Common",
 	Model = "models/props/cs_italy/orange.mdl",
 	Helper = "#xdefm.d",
+=======
+    
+Type = "Useless",
+Model = "models/props/cs_italy/orange.mdl",
+",
+>>>>>>> Stashed changes
 	Rarity = 1,
 	Price = 16,
 	PhysSound = "Watermelon.Impact",
@@ -1101,10 +1398,17 @@ items.it_orange = {
 	
 
 items.it_apple = {
+<<<<<<< Updated upstream
     	Name = "xdefm."
 	Type = "Common",
 	Model = "models/maniasfood/apple/apple.mdl",
 	Helper = "#xdefm.d",
+=======
+    
+Type = "Useless",
+Model = "models/maniasfood/apple/apple.mdl",
+",
+>>>>>>> Stashed changes
 	Rarity = 1,
 	Price = 12,
 	PhysSound = "Watermelon.Impact",
@@ -1120,10 +1424,17 @@ items.it_apple = {
 	
 
 items.it_banana = {
+<<<<<<< Updated upstream
     	Name = "xdefm."
 	Type = "Uncommon",
 	Model = "models/props/cs_italy/bananna_bunch.mdl",
 	Helper = "#xdefm.d",
+=======
+    
+Type = "Useless",
+Model = "models/props/cs_italy/bananna_bunch.mdl",
+",
+>>>>>>> Stashed changes
 	Rarity = 2,
 	Price = 40,
 	PhysSound = "Watermelon.Impact",
@@ -1138,10 +1449,17 @@ items.it_banana = {
 	
 
 items.it_melon = {
+<<<<<<< Updated upstream
     	Name = "xdefm."
 	Type = "Uncommon",
 	Model = "models/props_junk/watermelon01.mdl",
 	Helper = "#xdefm.d",
+=======
+    
+Type = "Useless",
+Model = "models/props_junk/watermelon01.mdl",
+",
+>>>>>>> Stashed changes
 	Rarity = 2,
 	Price = 60,
 	PhysSound = "Watermelon.Impact",
@@ -1161,6 +1479,7 @@ items.it_melon = {
 	
 
 items.it_melo = {
+<<<<<<< Updated upstream
     	Name = "xdefm."
 	Type = "Common",
 	Model = { "models/props_junk/watermelon01_chunk01b.mdl", "models/props_junk/watermelon01_chunk01c.mdl" },
@@ -1170,6 +1489,15 @@ items.it_melo = {
 	Price = 10,
 	HelperUse = "xdefm.U2"
 }
+=======
+    
+Type = "Useless",
+Model = { "models/props_junk/watermelon01_chunk01b.mdl", "models/props_junk/watermelon01_chunk01c.mdl" },
+Rarity = 1,
+PhysSound = "Watermelon.Impact",
+Price = 10,
+HelperUse = "xdefm.U2" }
+>>>>>>> Stashed changes
 	function ITEM:OnInit( self ) self.xdefm_Used = false  self.xdefm_Touch = 0  self:SetCollisionGroup( COLLISION_GROUP_WEAPON ) end
 	function ITEM:OnReady( self ) self:SetTrigger( true ) end
 	function ITEM:OnUse( self, ent ) if self.xdefm_Used then return end if ent:Health() >= ent:GetMaxHealth() then return true end
@@ -1187,11 +1515,19 @@ items.it_melo = {
 	
 
 items.it_orangebox = {
+<<<<<<< Updated upstream
     	Name = "xdefm."
 	Type = "Rare",
 	Model = "models/props/de_inferno/crate_fruit_break.mdl",
 	Helper = "#xdefm.d",
 	HelperUse = "xdefm.U3", SType = 1,
+=======
+    
+Type = "Struct",
+Model = "models/props/de_inferno/crate_fruit_break.mdl",
+",
+HelperUse = "xdefm.U3", SType = 1,
+>>>>>>> Stashed changes
 	Rarity = 3,
 	Price = 500,
 	PhysSound = "Wood.ImpactHard", TickRate = 1, Amount = 12, StartSound = "AmmoCrate.Open", ExitSound = "AmmoCrate.Close"
@@ -1233,6 +1569,7 @@ items.it_orangebox = {
 	
 
 items.cr_fish = {
+<<<<<<< Updated upstream
     	Name = "xdefm."
 	Type = "Creature",
 	Model = "models/props/cs_militia/fishriver01.mdl",
@@ -1243,6 +1580,16 @@ items.cr_fish = {
 	MinSize = 0.6, MaxSize = 1.5,
 	PhysSound = "Watermelon.Impact"
 }
+=======
+    
+Type = "Creature",
+Model = "models/props/cs_militia/fishriver01.mdl"
+	,
+",
+Rarity = 1,
+Price = 100, TickRate = 0.1, MinSize = 0.6, MaxSize = 1.5,
+PhysSound = "Watermelon.Impact" }
+>>>>>>> Stashed changes
 	ITEM.Constants = { SpdPos = 28, SpdAng = 100, MoveDist = 512, Health = 25, Mass = 32, AngInv = 0 }
 	function ITEM:OnInit( self ) self:SetMaxHealth( self.xdefm_T2.Constants.Health ) self:SetHealth( self:GetMaxHealth() ) self:SetCollisionGroup( COLLISION_GROUP_NPC )
 		self:SetBloodColor( BLOOD_COLOR_RED ) self.xdefm_NT = CurTime() +0.5  self.xdefm_TPos = nil  self.ShadowParams = {}  self.xdefm_Killed = false
@@ -1307,6 +1654,7 @@ items.cr_fish = {
 	
 
 items.cr_gold = {
+<<<<<<< Updated upstream
     	Name = "xdefm.",
 	Type = "Common",
 	Model = "models/props/de_inferno/goldfish.mdl",
@@ -1314,12 +1662,19 @@ items.cr_gold = {
 	Rarity = 1,
 	Helper = "#xdefm.d"
 }
+=======
+     Model = "models/props/de_inferno/goldfish.mdl",
+Price = 60,
+Rarity = 1,
+" }
+>>>>>>> Stashed changes
 	ITEM.Constants = { SpdPos = 28, SpdAng = 100, MoveDist = 512, Health = 10, Mass = 24, AngInv = 0,
 	PhysSound = "Watermelon.Impact" }
 	xdefm_ItemBased( "cr_fish", it, ITEM )
 
 
 items.cr_fish2 = {
+<<<<<<< Updated upstream
     	Name = "xdefm.",
 	Type = "Uncommon",
 	Model = { "models/tmp_mod/island_fish_001.mdl", "models/tmp_mod/island_fish_002.mdl", "models/tmp_mod/island_fish_003.mdl" },
@@ -1327,18 +1682,34 @@ items.cr_fish2 = {
 	Rarity = 2,
 	Helper = "#xdefm.d"
 }
+=======
+     Model = { "models/tmp_mod/island_fish_001.mdl", "models/tmp_mod/island_fish_002.mdl", "models/tmp_mod/island_fish_003.mdl" },
+	Price = 84,
+Rarity = 2,
+" }
+>>>>>>> Stashed changes
 	ITEM.Constants = { SpdPos = 32, SpdAng = 100, MoveDist = 512, Health = 15, Mass = 48, AngInv = 2,
 	PhysSound = "Watermelon.Impact" }
 	xdefm_ItemBased( "cr_fish", it, ITEM )
 
 
 items.cr_perch = {
+<<<<<<< Updated upstream
     	Name = "xdefm.",
 	Type = "Rare",
 	Model = "models/fish/perch/perch.mdl",
 	Price = 256,
 	Rarity = 3,
 	Helper = "#xdefm.d"
+=======
+     Model = "models/fish/perch/perch.mdl",
+Price = 256,
+Rarity = 3,
+" }
+	ITEM.Constants = { SpdPos = 48, SpdAng = 100, MoveDist = 768, Health = 30, Mass = 64, AngInv = 1,
+PhysSound = "Watermelon.Impact" }
+	xdefm_ItemBased( "cr_fish", it, ITEM )
+>>>>>>> Stashed changes
 }
 	ITEM.Constants = { SpdPos = 48, SpdAng = 100, MoveDist = 768, Health = 30, Mass = 64, AngInv = 1,
 	PhysSound = "Watermelon.Impact" }
@@ -1346,6 +1717,7 @@ items.cr_perch = {
 
 
 items.cr_perch2 = {
+<<<<<<< Updated upstream
     	Name = "xdefm.",
 	Type = "Legendary",
 	Model = "models/fish/perch/perch.mdl",
@@ -1353,6 +1725,12 @@ items.cr_perch2 = {
 	Rarity = 4,
 	Helper = "#xdefm.d"
 }
+=======
+     Model = "models/fish/perch/perch.mdl",
+Price = 2500,
+Rarity = 4,
+" }
+>>>>>>> Stashed changes
 	ITEM.Constants = { SpdPos = 64, SpdAng = 500, MoveDist = 1024, Health = 50, Mass = 100, AngInv = 1,
 	PhysSound = "Watermelon.Impact" }
 	function ITEM:OnInit( self ) self:SetMaxHealth( self.xdefm_T2.Constants.Health ) self:SetHealth( self:GetMaxHealth() ) self:SetCollisionGroup( COLLISION_GROUP_NPC )
@@ -1368,6 +1746,7 @@ items.cr_perch2 = {
 
 
 items.cr_cute = {
+<<<<<<< Updated upstream
     	Name = "xdefm."
 	Type = "Creature",
 	Model = "models/xdeedited/ichthyosaur.mdl",
@@ -1377,6 +1756,17 @@ items.cr_cute = {
 	Carryable = false,
 	Price = 800, TickRate = 0.1, MinSize = 0.8, MaxSize = 1.2
 }
+=======
+    
+Type = "Creature",
+Model = "models/xdeedited/ichthyosaur.mdl",
+PhysSound = "Strider.Impact"
+	,
+",
+Rarity = 4,
+Carryable = false,
+Price = 800, TickRate = 0.1, MinSize = 0.8, MaxSize = 1.2 }
+>>>>>>> Stashed changes
 	function ITEM:OnInit( self ) self:SetMaxHealth( 300 ) self:SetHealth( self:GetMaxHealth() )
 		self:SetBloodColor( BLOOD_COLOR_RED ) self:PhysicsInit( SOLID_BBOX ) self:SetAutomaticFrameAdvance( true )
 		self:GetPhysicsObject():SetMass( math.ceil( self:GetPhysicsObject():GetMass()*0.1 ) )
@@ -1480,6 +1870,7 @@ items.cr_cute = {
 	
 
 items.it_barre1 = {
+<<<<<<< Updated upstream
     	Name = "xdefm."
 	Type = "Common",
 	Model = "models/props_c17/oildrum001.mdl",
@@ -1488,6 +1879,14 @@ items.it_barre1 = {
 	Price = 50,
 	PhysSound = "Metal_Barrel.ImpactSoft", TickRate = 1
 }
+=======
+    
+Type = "Useless",
+Model = "models/props_c17/oildrum001.mdl",
+Rarity = 1,
+Price = 50,
+PhysSound = "Metal_Barrel.ImpactSoft", TickRate = 1 }
+>>>>>>> Stashed changes
 	function ITEM:OnInit( self ) self:SetMaxHealth( 50 ) self:SetHealth( self:GetMaxHealth() ) self.xdefm_Killed = false end
 	function ITEM:OnDamaged( self, dmg ) if self:Health() <= 0 or self.xdefm_Killed then return end
 		self:SetHealth( math.max( 0, self:Health() -dmg:GetDamage() ) ) self:EmitSound( "Breakable.Metal" )
@@ -1505,6 +1904,7 @@ items.it_barre1 = {
 	
 
 items.it_barre2 = {
+<<<<<<< Updated upstream
 	Name = "xdefm."
 	Type = "Uncommon",
 	Model = "models/props_c17/oildrum001_explosive.mdl",
@@ -1513,6 +1913,14 @@ items.it_barre2 = {
 	Price = 120,
 	PhysSound = "Metal_Barrel.ImpactSoft", TickRate = 1
 }
+=======
+    
+Type = "Useless",
+Model = "models/props_c17/oildrum001_explosive.mdl",
+Rarity = 2,
+Price = 120,
+PhysSound = "Metal_Barrel.ImpactSoft", TickRate = 1 }
+>>>>>>> Stashed changes
 	function ITEM:OnInit( self ) self:SetMaxHealth( 25 ) self:SetHealth( self:GetMaxHealth() ) self.xdefm_Killed = false end
 	function ITEM:OnDamaged( self, dmg ) if self:Health() <= 0 or self.xdefm_Killed then return end
 		if ( dmg:IsExplosionDamage() or dmg:IsBulletDamage() or dmg:IsDamageType( DMG_BURN ) or dmg:IsDamageType( DMG_SLOWBURN ) ) and !self:IsOnFire() then
@@ -1533,6 +1941,7 @@ items.it_barre2 = {
 	
 
 items.it_bomb1 = {
+<<<<<<< Updated upstream
     	Name = "xdefm."
 	Type = "Rare",
 	Model = "models/Combine_Helicopter/helicopter_bomb01.mdl",
@@ -1541,6 +1950,14 @@ items.it_bomb1 = {
 	Price = 200,
 	PhysSound = "MetalVent.ImpactHard", TickRate = 0.5
 }
+=======
+    
+Type = "Useless",
+Model = "models/Combine_Helicopter/helicopter_bomb01.mdl",
+Rarity = 3,
+Price = 200,
+PhysSound = "MetalVent.ImpactHard", TickRate = 0.5 }
+>>>>>>> Stashed changes
 	function ITEM:OnInit( self ) self:SetMaxHealth( 10 ) self:SetHealth( self:GetMaxHealth() )
 		self.xdefm_Killed = false  self.xdefm_KillDelay = 0
 	end
@@ -1568,6 +1985,7 @@ items.it_bomb1 = {
 	
 
 items.it_bomb2 = {
+<<<<<<< Updated upstream
     	Name = "xdefm."
 	Type = "Rare",
 	Model = { "models/props_phx/ww2bomb.mdl", "models/props_phx/torpedo.mdl",
@@ -1577,6 +1995,16 @@ items.it_bomb2 = {
 	Price = 500,
 	PhysSound = "PhxMetal.ImpactSoft"
 }
+=======
+    
+Type = "Useless",
+Model = { "models/props_phx/ww2bomb.mdl", "models/props_phx/torpedo.mdl",
+	"models/props_phx/amraam.mdl", "models/props_phx/mk-82.mdl", "models/props_phx/ball.mdl" }
+	,",
+Rarity = 3,
+Price = 500,
+PhysSound = "PhxMetal.ImpactSoft" }
+>>>>>>> Stashed changes
 	function ITEM:OnInit( self ) self:SetMaxHealth( 1 ) self:SetHealth( 1 )
 		self.xdefm_Killed = false  self.xdefm_Armed = false
 	end
@@ -1607,5 +2035,7 @@ end
 
 
 for i, v in pairs(items) do -- simple as that!
+	v.Name = "#xdefm." .. i
+	v." .. i
 	xdefm_ItemRegister( i, v )
 end
