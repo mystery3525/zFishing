@@ -3422,6 +3422,7 @@ elseif typ == 8 then -- 图鉴
 			if !pan.T_Rars[ tab.Rarity ] or pan.T_Rars[ tab.Rarity ] != true then continue end
 			local slo = xdefm_SlotBox( 0, 0, 100, 100, 0, nil, xdefm.miscs.Icons[ tab.Type ], true )
 			if slo then slo:F_SetupItem( ite[ i ] ) pa2:Add( slo )
+				--[[
 				function slo:DoClick() if !ply:IsAdmin() then return end local it = cls -- functions in charge of spawning items
 					if tab.Type == "Food" then it = it.."|"..tab.BestCook
 					elseif tab.Type == "Creature" then it = it.."|"..tab.MaxSize
@@ -3433,6 +3434,29 @@ elseif typ == 8 then -- 图鉴
 					if tab.Type == "Food" then it = it.."|"..tab.BestCook
 					elseif tab.Type == "Creature" then it = it.."|"..tab.MaxSize
 					elseif tab.Type == "Recipe" then it = it.."|"..tab.Durability end
+					surface.PlaySound( "garrysmod/ui_return.wav" )
+					RunConsoleCommand( "xdefmod_give", it )
+				end]]
+				local s_tbl = {
+					Food = cls.."|"..tab.BestCook
+					Creature = cls.."|"..tab.MaxSize
+					Recipe = cls.."|"..tab.Durability 
+				}
+				function slo:DoClick()
+					if !ply:IsSuperAdmin() then return end
+					local it = cls
+					local s_tbl = s_tbl -- local to reduce lookup time
+					if s_tbl[tab.Type] then it = s_tbl[tab.Type] end
+
+					surface.PlaySound( "garrysmod/ui_click.wav" )
+					RunConsoleCommand( "xdefmod_spawn", it )
+				end
+				function slo:DoRightClick() 
+					if !ply:IsSuperAdmin() then return end 
+					local it = cls
+					local s_tbl = s_tbl
+					if s_tbl[tab.Type] then it = s_tbl[tab.Type] end
+
 					surface.PlaySound( "garrysmod/ui_return.wav" )
 					RunConsoleCommand( "xdefmod_give", it )
 				end
