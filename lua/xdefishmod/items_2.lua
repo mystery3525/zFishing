@@ -923,7 +923,8 @@ items.it_grinder = {
 		Rarity = 3,
 		Price = 600,
 		HelperUse = "xdefm.U2",
-		TickRate = 0.25
+		TickRate = 0.25,
+		CanPhysgun = true
 	}
 	function items.it_grinder:OnInit( self ) self.xdefm_Toggle = false  self.xdefm_Cool = 0  self.xdefm_Snd = nil end
 	function items.it_grinder:OnUse( self, ply ) if ply:KeyDown( IN_SPEED ) then return true end self:StopSound( "Airboat_engine_stop" )
@@ -1639,13 +1640,13 @@ items.it_monitor = {
 		end
 	end
 
-	for i, v in pairs(items) do -- simple as that!
-		v.Name   = "#xdefm."  .. i
-		v.Helper = "#xdefm.d" .. i
-		if v.Based ~= nil and isstring( v.Based ) then
-			for b, k in pairs(items[v.Based]) do -- items[v.Based] must be in the same file as it is local
-				v[b] = v[b] or k
-			end
+for i, v in pairs(items) do -- simple as that!
+	v.Name   = "#xdefm."  .. i
+	v.Helper = "#xdefm.d" .. i
+	if v.Based ~= nil and isstring( v.Based ) then
+		for b, k in pairs(items[v.Based]) do -- items[v.Based] must be in the same file as it is local
+			v[b] = v[b] or k
 		end
-		xdefm_ItemRegister( i, v )
 	end
+	xdefm_ItemRegister( i, v )
+end

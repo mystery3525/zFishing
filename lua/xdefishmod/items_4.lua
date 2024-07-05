@@ -1095,7 +1095,8 @@ items.it_cage = { Type = "Struct", Model = "models/lostcoast/props_wasteland/cra
 	end
 	
 items.it_auto = { Type = "Struct", Model = "models/props_c17/FurnitureBoiler001a.mdl", StartSound = "Doors.FullOpen7", ExitSound = "Doors.FullClose7",
-	Rarity = 5, Price = 10000, Carryable = false, TickRate = 0.4, PhysSound = "SolidMetal.ImpactSoft", HelperUse = "xdefm.U3", SType = 1, Amount = 12 }
+	Rarity = 5, Price = 10000, Carryable = true, TickRate = 0.4, PhysSound = "SolidMetal.ImpactSoft", HelperUse = "xdefm.U3", SType = 1, Amount = 12,
+	CanPhysgun = true }
 	function items.it_auto:OnInit( self ) self.xdefm_Delay = 0  self.xdefm_Snd = nil
 		self:SetNWInt( "XDEFM_CT", 0 )  self:SetNWBool( "XDEFM_AV", false )
 	end
@@ -1287,7 +1288,8 @@ items.it_propane = { Type = "Useless", Model = "models/props_junk/propane_tank00
 	end
 	
 items.it_furnace1 = { Type = "Struct", Model = "models/props/de_inferno/clayoven.mdl", 
-	Rarity = 2, Price = 600, Carryable = false, PhysSound = "Concrete.ImpactHard", HelperUse = "xdefm.U3", SType = 2, StartSound = "Concrete.ImpactSoft", ExitSound = "Concrete.ImpactHard" }
+	Rarity = 2, Price = 600, Carryable = false, PhysSound = "Concrete.ImpactHard", HelperUse = "xdefm.U3", SType = 2, StartSound = "Concrete.ImpactSoft", ExitSound = "Concrete.ImpactHard",
+	CanPhysgun = true }
 	items.it_furnace1.Crafts = {
 		"it_wood&it_wood&it_wood&it_coal",
 		"it_ore&it_ore&it_coal&it_copperbar",
@@ -1362,13 +1364,13 @@ items.it_mine2  = { Type = "Useless", Model = "models/roller.mdl"
 	end
 	
 
-	for i, v in pairs(items) do -- simple as that!
-		v.Name   = "#xdefm."  .. i
-		v.Helper = "#xdefm.d" .. i
-		if v.Based ~= nil and isstring( v.Based ) then
-			for b, k in pairs(items[v.Based]) do -- items[v.Based] must be in the same file as it is local
-				v[b] = v[b] or k
-			end
+for i, v in pairs(items) do -- simple as that!
+	v.Name   = "#xdefm."  .. i
+	v.Helper = "#xdefm.d" .. i
+	if v.Based ~= nil and isstring( v.Based ) then
+		for b, k in pairs(items[v.Based]) do -- items[v.Based] must be in the same file as it is local
+			v[b] = v[b] or k
 		end
-		xdefm_ItemRegister( i, v )
 	end
+	xdefm_ItemRegister( i, v )
+end

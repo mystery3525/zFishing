@@ -133,7 +133,8 @@ items.it_error = { Type = "Useless", Model = "models/hunter/blocks/cube025x025x0
 	Rarity = 1, Price = 20000, PhysSound = "citadel.br_no", Carryable = true, CantCook = true }
 
 items.it_crafting1 = { Type = "Struct", Model = "models/props_forest/table_shed.mdl", StartSound = "DoorHandles.Locked2", ExitSound = "DoorSound.DefaultLocked",
-	Rarity = 3, Price = 1000, PhysSound = "Wood.ImpactHard", Carryable = false, SType = 2, HelperUse = "xdefm.U3" }
+	Rarity = 3, Price = 1000, PhysSound = "Wood.ImpactHard", Carryable = true, SType = 2, HelperUse = "xdefm.U3",
+	CanPhysgun = true }
     items.it_crafting1.Crafts = {
 		"it_wood&it_wood&it_wood&it_wood2",
 		"it_metal&it_metal&it_metal&it_metal2",
@@ -166,7 +167,8 @@ items.it_crafting1 = { Type = "Struct", Model = "models/props_forest/table_shed.
     }
 
 items.it_crafting2 = { Type = "Struct", Model = "models/props_waterfront/tattoo_table.mdl", StartSound = "DoorHandles.Unlocked2", ExitSound = "Doors.FullClose1",
-	Rarity = 4, Price = 2500, PhysSound = "Metal_Box.ImpactHard", Carryable = false, SType = 2, HelperUse = "xdefm.U3" }
+	Rarity = 4, Price = 2500, PhysSound = "Metal_Box.ImpactHard", Carryable = true, SType = 2, HelperUse = "xdefm.U3",
+	CanPhysgun = true }
     items.it_crafting2.Crafts = {
 		"it_wood2&it_wood2&it_wood2&it_wood3",
 		"it_brick&it_brick&it_brick&it_brick&it_stone2",
@@ -197,15 +199,18 @@ items.it_crafting2 = { Type = "Struct", Model = "models/props_waterfront/tattoo_
     }
 
 items.it_storage1 = { Type = "Struct", Model = "models/props_junk/wood_crate001a.mdl", Amount = 6, StartSound = "AmmoCrate.Open", ExitSound = "AmmoCrate.Close",
-	Rarity = 3, Price = 1000, PhysSound = "Wood.ImpactHard", Carryable = false, SType = 1, HelperUse = "xdefm.U3" }
+	Rarity = 3, Price = 1000, PhysSound = "Wood.ImpactHard", Carryable = true, SType = 1, HelperUse = "xdefm.U3",
+	CanPhysgun = true }
 	function items.it_storage1:OnInit( self ) self:SetSkin( 1 ) end
 
 items.it_storage2 = { Type = "Struct", Model = "models/props_junk/wood_crate002a.mdl", Amount = 30, StartSound = "AmmoCrate.Open", ExitSound = "AmmoCrate.Close",
-	Rarity = 4, Price = 4500, PhysSound = "Wood.ImpactHard", Carryable = false, SType = 1, HelperUse = "xdefm.U3" }
+	Rarity = 4, Price = 4500, PhysSound = "Wood.ImpactHard", Carryable = true, SType = 1, HelperUse = "xdefm.U3",
+	CanPhysgun = true }
 	function items.it_storage2:OnInit( self ) self:SetSkin( 1 ) end
 
 items.it_furnace2 = { Type = "Struct", Model = "models/props/cs_militia/furnace01.mdl", StartSound = "Metal_Barrel.ImpactSoft", ExitSound = "Metal_Barrel.ImpactHard",
-	Rarity = 4, Price = 3000, Carryable = false, PhysSound = "EpicMetal.ImpactSoft", HelperUse = "xdefm.U3", SType = 2 }
+	Rarity = 4, Price = 3000, Carryable = true, PhysSound = "EpicMetal.ImpactSoft", HelperUse = "xdefm.U3", SType = 2,
+	CanPhysgun = true }
 	items.it_furnace2.Crafts = {
 		"it_wood&it_wood&it_wood&it_coal",
 		"it_ore&it_ore&it_coal&it_copperbar",
@@ -254,7 +259,8 @@ items.it_plate = { Name = "#xdefm.Plate", Type = "Struct", Model = "models/props
 	function items.it_plate:OnThink( self ) if IsValid( self.xdefm_Dummy ) then self.xdefm_Dummy:SetAngles( self:LocalToWorldAngles( Angle( 0, CurTime()*10, 0 ) ) ) end end
 
 items.it_pshop = { Type = "Struct", Model = "models/props_lab/teleplatform.mdl",
-	Rarity = 5, Price = 7500, Carryable = false, PhysSound = "EpicMetal_Heavy.ImpactHard", HelperUse = "xdefm.U3", SType = 3, StartSound = "Weapon_PhysCannon.Charge", ExitSound = "Weapon_PhysCannon.Drop" }
+	Rarity = 5, Price = 7500, Carryable = true, PhysSound = "EpicMetal_Heavy.ImpactHard", HelperUse = "xdefm.U3", SType = 3, StartSound = "Weapon_PhysCannon.Charge", ExitSound = "Weapon_PhysCannon.Drop",
+	CanPhysgun = true }
 	local Ma2 = Material( "effects/exit1" )
 	items.it_pshop.Shop = { [ "it_recipe1" ] = { 1500, 25 }, [ "it_recipe2" ] = { 3750, 25 }, [ "it_stove3" ] = { 3750, 25 },
 	[ "re_toolbox|10" ] = { 1000, 25 }, [ "it_antibird" ] = { 2500, 25 }, [ "it_part2" ] = { 15000, 25 }, [ "it_flower" ] = { 2000, 25 },
@@ -313,9 +319,13 @@ items.it_bouncy = { Type = "Useless", Model = "models/maxofs2d/hover_classic.mdl
 		end
 	end
 
-
-for i, v in pairs(items) do -- simple as that!
+for i, v in pairs(items) do -- v.based isn't used in the direct port, but future items may be added to furthe the progression into a possible tier 6
 	v.Name   = "#xdefm."  .. i
 	v.Helper = "#xdefm.d" .. i
+	if v.Based ~= nil and isstring( v.Based ) then
+		for b, k in pairs(items[v.Based]) do -- items[v.Based] must be in the same file as it is local
+			v[b] = v[b] or k
+		end
+	end
 	xdefm_ItemRegister( i, v )
 end

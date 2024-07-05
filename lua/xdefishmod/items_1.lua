@@ -827,7 +827,8 @@ Model = "models/props_unique/firepit_campground.mdl",
 	Price = 100,
 	TickRate = 1,
 	PhysSound = "Concrete.ImpactHard",
-	CantCook = true
+	CantCook = true,
+	CanPhysgun = true
 }
 	function items.it_campfire:OnReady( self ) self:GetPhysicsObject():SetMass( math.ceil( self:GetPhysicsObject():GetMass()*0.1 ) ) end
 	function items.it_campfire:OnInit( self )  self.xdefm_Spot = nil  self.xdefm_Pressed = 0  self.xdefm_Fire = -1  self.xdefm_Lit = nil
@@ -883,7 +884,8 @@ Model = "models/props_interiors/makeshift_stove_battery.mdl",
 	TickRate = 1,
 	HelperUse = "xdefm.U4",
 	PhysSound = "Metal_Barrel.ImpactHard",
-	CantCook = true
+	CantCook = true,
+	CanPhysgun = true
 }
 	function items.it_stove1:OnInit( self )  self.xdefm_Enabled = 0  self.xdefm_Spot = nil  self.xdefm_Pressed = 0
 		self.xdefm_Spot = xdefm_FireSpot( self:LocalToWorld(Vector(-2.5,-6.5,18)), 5, math.random( 0, 5 ), self )
@@ -911,7 +913,8 @@ Model = "models/props/cs_militia/stove01.mdl",
 	HelperUse = "xdefm.U4",
 	TickRate = 1,
 	PhysSound = "Metal_Barrel.ImpactHard",
-	CantCook = true
+	CantCook = true,
+	CanPhysgun = true
 }
 	function items.it_stove2:OnInit( self )  self.xdefm_Enabled = 0  self.xdefm_Spots = {}  self.xdefm_Pressed = 0
 		self.xdefm_Spots[ 1 ] = xdefm_FireSpot( self:LocalToWorld(Vector(6,12,16)), 5, 2, self )
@@ -938,7 +941,8 @@ Model = "models/props_c17/furniturestove001a.mdl",
 	HelperUse = "xdefm.U4",
 	TickRate = 1,
 	PhysSound = "Metal_Barrel.ImpactHard",
-	CantCook = true
+	CantCook = true,
+	CanPhysgun = true
 }
 	function items.it_stove3:OnInit( self )  self.xdefm_Enabled = 0  self.xdefm_Spots = {}  self.xdefm_Pressed = 0
 		self.xdefm_Spots[ 1 ] = xdefm_FireSpot( self:LocalToWorld(Vector(3,11,20)), 3, 6, self )
@@ -988,7 +992,8 @@ items.it_radio = {
 	Model = "models/props_lab/citizenradio.mdl",
 	Rarity = 3,
 	Price = 400,
-	PhysSound = "MetalVent.ImpactHard", TickRate = 0.1 
+	PhysSound = "MetalVent.ImpactHard", TickRate = 0.1,
+	CanPhysgun = true
 }
 	local so = { "ambient/music/mirame_radio_thru_wall.wav", "ambient/music/cubanmusic1.wav",
 	"ambient/music/country_rock_am_radio_loop.wav", "ambient/music/flamenco.wav", "ambient/music/latin.wav",
@@ -1117,7 +1122,8 @@ Model = "models/props/de_inferno/crate_fruit_break.mdl",
 HelperUse = "xdefm.U3", SType = 1,
 	Rarity = 3,
 	Price = 500,
-	PhysSound = "Wood.ImpactHard", TickRate = 1, Amount = 12, StartSound = "AmmoCrate.Open", ExitSound = "AmmoCrate.Close"
+	PhysSound = "Wood.ImpactHard", TickRate = 1, Amount = 12, StartSound = "AmmoCrate.Open", ExitSound = "AmmoCrate.Close",
+	CanPhysgun = true
 }
 	function items.it_orangebox:OnInit( self ) self.xdefm_OTimer = 0 self:SetNWInt( "XDEFM_CT", 0 ) end
 	function items.it_orangebox:OnReady( self ) self:GetPhysicsObject():SetMass( 100 ) end
@@ -1490,13 +1496,13 @@ PhysSound = "PhxMetal.ImpactSoft" }
 
 
 
-	for i, v in pairs(items) do -- simple as that!
-		v.Name   = "#xdefm."  .. i
-		v.Helper = "#xdefm.d" .. i
-		if v.Based ~= nil and isstring( v.Based ) then
-			for b, k in pairs(items[v.Based]) do -- items[v.Based] must be in the same file as it is local
-				v[b] = v[b] or k
-			end
+for i, v in pairs(items) do -- simple as that!
+	v.Name   = "#xdefm."  .. i
+	v.Helper = "#xdefm.d" .. i
+	if v.Based ~= nil and isstring( v.Based ) then
+		for b, k in pairs(items[v.Based]) do -- items[v.Based] must be in the same file as it is local
+			v[b] = v[b] or k
 		end
-		xdefm_ItemRegister( i, v )
 	end
+	xdefm_ItemRegister( i, v )
+end

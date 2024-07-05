@@ -3679,7 +3679,7 @@ end end end
 		inp.Constants 	= {}  if istable( dat.Constants ) then inp.Constants = dat.Constants end --常量集合
 		inp.PhysSound	= isstring( dat.PhysSound ) and dat.PhysSound or nil --碰撞音效
 		inp.CantCook	= isbool( dat.CantCook ) and dat.CantCook or nil --不允许该物品烹饪增值,用于炉子一类物品
-		inp.CanPhysgun  = isbool( dat.CanPhysgun) and dat.CanPhysgun or nil -- adds the ability to physgun certain items (like workbenches)
+		inp.CanPhysgun  = isbool( dat.CanPhysgun) and dat.CanPhysgun or false -- adds the ability to physgun certain items (like workbenches)
 		if SERVER then
 			inp.OnTouch = function( inp, ent, usr, typ ) end if isfunction( dat.OnTouch ) then inp.OnTouch = dat.OnTouch end --触摸,usr触碰实体,typ1开始,0持续,-1结束
 			inp.OnUse = function( inp, ent, usr ) return true end if isfunction( dat.OnUse ) then inp.OnUse = dat.OnUse end --使用,return false来阻止捡起物品
