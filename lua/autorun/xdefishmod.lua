@@ -3438,8 +3438,8 @@ elseif typ == 8 then -- 图鉴
 					RunConsoleCommand( "xdefmod_give", it )
 				end]]
 				local s_tbl = {
-					Food = cls.."|"..tab.BestCook
-					Creature = cls.."|"..tab.MaxSize
+					Food = cls.."|"..tab.BestCook,
+					Creature = cls.."|"..tab.MaxSize,
 					Recipe = cls.."|"..tab.Durability 
 				}
 				function slo:DoClick()
