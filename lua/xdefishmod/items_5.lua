@@ -325,13 +325,13 @@ items.it_storage2 = {
 	function items.it_storage2:OnInit( self ) self:SetSkin( 1 ) end
 
 items.it_bucket = { 
-	Type = "Struct", 
+	Type = "Structure", 
 	Model = "models/props_junk/MetalBucket01a.mdl", 
 	Amount = 5, 
 	StartSound = "Metal_Box.ImpactSoft", 
 	ExitSound = "MetalGrate.ImpactSoft",
 	Rarity = 2, 
-	Price = 4500, 
+	Price = 500, 
 	PhysSound = "MetalVent.ImpactHard", 
 	Carryable = true, 
 	SType = 1, 
@@ -339,7 +339,7 @@ items.it_bucket = {
 	CanPhysgun = true 
 }
 
-items.it_furnace2 = { Type = "Struct", Model = "models/props/cs_militia/furnace01.mdl", StartSound = "Metal_Barrel.ImpactSoft", ExitSound = "Metal_Barrel.ImpactHard",
+items.it_furnace2 = { Type = "Structure", Model = "models/props/cs_militia/furnace01.mdl", StartSound = "Metal_Barrel.ImpactSoft", ExitSound = "Metal_Barrel.ImpactHard",
 	Rarity = 4, Price = 3000, Carryable = true, PhysSound = "EpicMetal.ImpactSoft", HelperUse = "xdefm.U3", SType = 2,
 	CanPhysgun = true }
 

@@ -1253,20 +1253,53 @@ items.it_cage = {
 		end
 		if typ == -1 then items.it_cage:C_DummySet( self ) end
 	end
-	function items.it_cage:OnThink( self ) if self.xdefm_Delay > CurTime() or self.xdefm_Bait == "_" then return end
-		if self:WaterLevel() < 3 then return end local tr = util.QuickTrace( self:GetPos(), -Vector( 0, 0, 15 ), self )  if !tr.HitWorld then return end
+	function items.it_cage:OnThink( self ) 
+		if self.xdefm_Delay > CurTime() or self.xdefm_Bait == "_" then return end
+		if self:WaterLevel() < 3 then return end 
+		local tr = util.QuickTrace( self:GetPos(), -Vector( 0, 0, 15 ), self )  
+		if !tr.HitWorld then return end
+		
 		local slo, bai = 0, "_"
-		for k, v in pairs( self.xdefm_T3 ) do if v != "_" then local xx, yy = xdefm_ItemGet( v ) if yy and yy.Type == "Bait" then slo = k  bai = v break end end end
+		for k, v in pairs( self.xdefm_T3 ) do 
+			if v != "_" then 
+				local xx, yy = xdefm_ItemGet( v ) 
+				if yy and yy.Type == "Bait" then 
+					slo = k 
+					bai = v 
+					break 
+				end 
+			end 
+		end
 		local aa, bb = xdefm_ItemGet( bai )
-		local ite = xdefm_PoolGet( math.random( 0, 10 ), 100, bai, 0, false )  if ite == nil then return end
-		local cc, dd = xdefm_ItemGet( ite )  if !istable( dd ) or dd.Type != "Creature" or !dd.Carryable then return end
-		if isnumber( dd.MinSize ) and isnumber( dd.MaxSize ) then ite = ite.."|"..math.Round( math.Rand( dd.MinSize, dd.MaxSize ), 1 ) end
+		local ite = xdefm_PoolGet( math.random( 0, 10 ), 100, bai, 0, false ) 
+		if ite == nil then return end
+		local cc, dd = xdefm_ItemGet( ite )  
+		if !istable( dd ) or dd.Type != "Creature" or !dd.Carryable then return end
+		if isnumber( dd.MinSize ) and isnumber( dd.MaxSize ) then 
+			ite = ite.."|"..math.Round( math.Rand( dd.MinSize, dd.MaxSize ), 1 )
+		end
 		if math.random( 1, bb.Consume ) == 1 then
 			self:EmitSound("ambient/water/water_spray1.wav", 75, math.random( 95, 105 ), 1, CHAN_ITEM ) self.xdefm_T3[ slo ] = "_"
-			for k, v in pairs( player.GetHumans() ) do if v.xdefm_Struct and v.xdefm_Struct == self then xdefm_UpdateMenu( v, 3, { [ slo ] = "_" } ) end end
-		end local ful = true
-		for k, v in pairs( self.xdefm_T3 ) do if isstring( v ) and v == "_" then ful = false  self.xdefm_T3[ k ] = ite
-		for k, v in pairs( player.GetHumans() ) do if v.xdefm_Struct and v.xdefm_Struct == self then xdefm_UpdateMenu( v, 3, { [ k ] = ite } ) end end break end end
+			for k, v in pairs( player.GetHumans() ) do 
+				if v.xdefm_Struct and v.xdefm_Struct == self then 
+					xdefm_UpdateMenu( v, 3, { [ slo ] = "_" } ) 
+				end 
+			end
+		end 
+		local ful = true
+		for k, v in pairs( self.xdefm_T3 ) do 
+			if isstring( v ) and v == "_" then 
+				ful = false  
+				self.xdefm_T3[ k ] = ite
+				for k, v in pairs( player.GetHumans() ) do 
+					if v.xdefm_Struct and v.xdefm_Struct == self then 
+						xdefm_UpdateMenu( v, 3, { [ k ] = ite } )
+					end 
+				end 
+				break 
+			end 
+		end
+		
 		if !ful then
 			self:EmitSound( "ChainLink.ImpactSoft" ) items.it_cage:C_DummySet( self )
 		else if math.random( 1, 5 ) == 1 then

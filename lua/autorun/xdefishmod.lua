@@ -100,14 +100,14 @@ if true then --信息集锦
 		[ "Bait" ] = 1,
 		[ "Useless" ] = 2,
 		[ "Recipe" ] = 2,
-		[ "Struct" ] = 2,
+		[ "Structure" ] = 2,
 	}
 	xdefm.miscs.Icons = {
 		[ "Creature" ] = Material( "icon16/monkey.png" ),
 		[ "Bait" ] = Material( "icon16/bug.png" ),
 		[ "Useless" ] = Material( "icon16/box.png" ),
 		[ "Recipe" ] = Material( "icon16/script.png" ),
-		[ "Struct" ] = Material( "icon16/building.png" )
+		[ "Structure" ] = Material( "icon16/building.png" )
 	}
 end
 sound.Add( { name = "xdefm.ChargeMax", channel = CHAN_WEAPON, volume = 1, level = 75, pitch = 80, sound = ")weapons/shotgun/shotgun_empty.wav" } )
@@ -261,7 +261,7 @@ if CLIENT then --客户端
 		[ "NotRP" ] = "本服务器未处于DarkRP模式！", [ "FMoney" ] = "钓鱼货币", [ "DMoney" ] = "DarkRP货币", [ "DRate" ] = "兑换汇率", [ "Exchanged" ] = "货币已兑换",
 		[ "DEnter" ] = "输入兑换数值...", [ "Conv1" ] = "兑换为DarkRP", [ "Conv2" ] = "兑换为钓鱼", [ "DarkNPC" ] = "渔夫", [ "DarkNPC2" ] = "我能为你做点什么?",
 		[ "NPC1" ] = "获取/放回钓鱼装备", [ "NPC2" ] = "卖出背包内全部物品", [ "NPC3" ] = "打开背包和银行", [ "NPC4" ] = "打开背包和合成", [ "NPC5" ] = "打开图鉴", [ "NPC6" ] = "打开任务", [ "NPC7" ] = "打开RP模式货币转换",
-		[ "c_bg" ] = "界面背景颜色", [ "c_br" ] = "界面勾线颜色", [ "Weapon_Craft" ] = "合成", [ "Struct" ] = "建筑", [ "Interact" ] = "互动",
+		[ "c_bg" ] = "界面背景颜色", [ "c_br" ] = "界面勾线颜色", [ "Weapon_Craft" ] = "合成", [ "Structure" ] = "建筑", [ "Interact" ] = "互动",
 		[ "ST0" ] = "其他建筑", [ "ST1" ] = "存储", [ "ST2" ] = "合成台", [ "ST3" ] = "商店", [ "c_nomorehook1" ] = "关闭多钩功能", [ "c_nomorehook2" ] = "有人说多钩卡服,没办法哎.",
 		[ "NoMoreHook" ] = "额外鱼钩已被服务器禁止!", [ "NotEmpty" ] = "不是空的!",
 	}
@@ -326,7 +326,7 @@ if CLIENT then --客户端
 		[ "NotRP" ] = "This server is not running in DarkRP gamemode!", [ "FMoney" ] = "Fishing Money", [ "DMoney" ] = "DarkRP Money", [ "DRate" ] = "Convert Rate", [ "Exchanged" ] = "Currency Converted",
 		[ "DEnter" ] = "Enter Convert Value...", [ "Conv1" ] = "To DarkRP", [ "Conv2" ] = "To Fishing", [ "DarkNPC" ] = "Fisherman", [ "DarkNPC2" ] = "What can I do for you?",
 		[ "NPC1" ] = "Equip/Unequip Fishing Equipments", [ "NPC2" ] = "Sell Everything", [ "NPC3" ] = "Open Inventory and Bank", [ "NPC4" ] = "Open Inventory and Crafting", [ "NPC5" ] = "Open Collection Menu", [ "NPC6" ] = "Open Quest Eenu", [ "NPC7" ] = "Open Currency Conversion",
-		[ "c_bg" ] = "Menu background color", [ "c_br" ] = "Menu outline color", [ "Weapon_Craft" ] = "Crafting", [ "Struct" ] = "Structure", [ "U3" ] = "Interact",
+		[ "c_bg" ] = "Menu background color", [ "c_br" ] = "Menu outline color", [ "Weapon_Craft" ] = "Crafting", [ "Structure" ] = "Structure", [ "U3" ] = "Interact",
 		[ "ST0" ] = "Structure", [ "ST1" ] = "Storage", [ "ST2" ] = "Crafting", [ "ST3" ] = "Shop", [ "c_nomorehook1" ] = "Disable Extra Hooks", [ "c_nomorehook2" ] = "Since some say it causes lags.",
 		[ "NoMoreHook" ] = "Extra Hooks is disabled in this server!", [ "NotEmpty" ] = "Is not empty!",
 	}
@@ -378,10 +378,10 @@ if CLIENT then --客户端
 					if isstring( v ) and v == "_" then num = k break end end
 					if num > 0 then xdefm_Command( ply, "MoveBank", pax.S_Place.."|"..num )
 					else xdefm_AddNote( ply, "!V", "resource/warning.wav", "cross", 5 ) end return
-				elseif IsValid( men[ "Struct" ] ) and men[ "Struct" ].N_SType == 1 then local num = 0
-					for k, v in pairs( men[ "Struct" ].T_Items ) do
+				elseif IsValid( men[ "Structure" ] ) and men[ "Structure" ].N_SType == 1 then local num = 0
+					for k, v in pairs( men[ "Structure" ].T_Items ) do
 					if isstring( v ) and v == "_" then num = k break end end
-					if num > 0 then xdefm_Command( ply, "Struct", pax.S_Place.."|"..num )
+					if num > 0 then xdefm_Command( ply, "Structure", pax.S_Place.."|"..num )
 					else xdefm_AddNote( ply, "!V", "resource/warning.wav", "cross", 5 ) end return
 				elseif !IsValid( men[ "Trade" ] ) then
 					if pax.T_Item.Type == "Bait" and pax.S_Place != "21" then xdefm_Command( ply, "MoveInv", pax.S_Place.."|21" ) return
@@ -410,7 +410,7 @@ if CLIENT then --客户端
 			if typ == "Storage" and men[ "Inventory" ] then
 				local num = 0  for k, v in pairs( pro.Items ) do
 					if isstring( v ) and v == "_" and ( k != 21 or pax.T_Item.Type == "Bait" ) then num = k break end
-				end if num > 0 then xdefm_Command( ply, "Struct", num.."|"..pax.S_Place )
+				end if num > 0 then xdefm_Command( ply, "Structure", num.."|"..pax.S_Place )
 				else xdefm_AddNote( ply, "xdefm.FullInv", "resource/warning.wav", "cross", 5 ) end return
 			end
 			if typ == "Trade" and men[ "Inventory" ] then
@@ -439,9 +439,9 @@ if CLIENT then --客户端
 						xdefm_Command( LocalPlayer(), "MoveBank", own.S_Place.."|"..ppp.S_Place )
 					end
 					if ppp.S_Type == "Inventory" and own.S_Type == "Storage" then
-						xdefm_Command( LocalPlayer(), "Struct", ppp.S_Place.."|"..own.S_Place )
+						xdefm_Command( LocalPlayer(), "Structure", ppp.S_Place.."|"..own.S_Place )
 					elseif own.S_Type == "Inventory" and ppp.S_Type == "Storage" then
-						xdefm_Command( LocalPlayer(), "Struct", own.S_Place.."|"..ppp.S_Place )
+						xdefm_Command( LocalPlayer(), "Structure", own.S_Place.."|"..ppp.S_Place )
 					end
 					if ppp.S_Type == "Inventory" and own.S_Type == "Trade" then
 						xdefm_Command( LocalPlayer(), "MoveTrade", ppp.S_Place.."|"..own.S_Place )
@@ -772,7 +772,7 @@ if CLIENT then --客户端
 						end
 					end
 				end
-				if typ == "Inventory" and ( IsValid( man[ "Bank" ] ) or IsValid( man[ "Trade" ] ) or ( IsValid( man[ "Struct" ] ) and man[ "Struct" ].N_SType == 1 ) ) then
+				if typ == "Inventory" and ( IsValid( man[ "Bank" ] ) or IsValid( man[ "Trade" ] ) or ( IsValid( man[ "Structure" ] ) and man[ "Structure" ].N_SType == 1 ) ) then
 					use = true
 					mat = I2
 				elseif typ == "Bank" and IsValid( man[ "Inventory" ] ) then
@@ -2272,12 +2272,12 @@ if typ == 0 then -- 背包
 						xdefm_Command( LocalPlayer(), "MoveBank", slo.S_Place.."|"..num )
 						else xdefm_AddNote( ply, "!V", "resource/warning.wav", "cross", 5 ) end end end )
 						O_Store:SetIcon( "icon16/basket_go.png" )
-					elseif IsValid( xdefm.miscs.Menus[ "Struct" ] ) and xdefm.miscs.Menus[ "Struct" ].N_SType == 1 then
+					elseif IsValid( xdefm.miscs.Menus[ "Structure" ] ) and xdefm.miscs.Menus[ "Structure" ].N_SType == 1 then
 						local O_Store = dnm:AddOption( "#xdefm.Store", function()
-						if !slo.B_OnMove and IsValid( xdefm.miscs.Menus[ "Struct" ] ) and xdefm.miscs.Menus[ "Struct" ].N_SType == 1 then local num = 0
-						for k, v in pairs( xdefm.miscs.Menus[ "Struct" ].T_Items ) do
+						if !slo.B_OnMove and IsValid( xdefm.miscs.Menus[ "Structure" ] ) and xdefm.miscs.Menus[ "Structure" ].N_SType == 1 then local num = 0
+						for k, v in pairs( xdefm.miscs.Menus[ "Structure" ].T_Items ) do
 						if isstring( v ) and v == "_" then num = k break end end if num > 0 then
-						xdefm_Command( LocalPlayer(), "Struct", slo.S_Place.."|"..num )
+						xdefm_Command( LocalPlayer(), "Structure", slo.S_Place.."|"..num )
 						else xdefm_AddNote( ply, "!V", "resource/warning.wav", "cross", 5 ) end end end )
 						O_Store:SetIcon( "icon16/basket_go.png" )
 					end
@@ -2761,7 +2761,7 @@ elseif typ == 3 then -- 渔夫
 		end end
 	function pan:XDEFM_Update( id, dt ) if id == 0 then pan.T_Data = dt end end
 elseif typ == 4 then -- 建筑
-	if IsValid( xdefm.miscs.Menus[ "Struct" ] ) then return end  local MaR = Material( "gui/gradient" )
+	if IsValid( xdefm.miscs.Menus[ "Structure" ] ) then return end  local MaR = Material( "gui/gradient" )
 	local pan = vgui.Create( "DFrame" )  xdefm.miscs.Menus.Struct = pan  pan.T_Data = ply.xdefm_Profile  pan.S_Recipe = "_"
 	pan:SetPos( ScrW()/2 -40, ScrH()/2 -550/2 ) pan:SetSize( 600, 550 ) pan:ShowCloseButton( false ) pan:SetAnimationEnabled( false )
 	pan:SetVisible( true ) pan:SetScreenLock( true ) pan:SetDraggable( true ) pan:SetTitle( "" ) pan:SetAlpha( 255 ) pan:MakePopup()
@@ -2827,7 +2827,7 @@ elseif typ == 4 then -- 建筑
 			end
 		elseif id == 2 then if !istable( dt ) or #dt < 1 then return end local str = dt[ 1 ]
 			local aa, bb = xdefm_ItemGet( str )
-			if istable( aa ) and istable( bb ) and bb.Type == "Struct" then
+			if istable( aa ) and istable( bb ) and bb.Type == "Structure" then
 				pan.S_Struct = str  local stp, pax = bb.SType, pan.P_Base  pan.N_SType = stp
 				if stp == 1 then table.remove( dt, 1 )  pan.T_Slots = {}  pan.N_Max = 0  pan.N_Num = 0  pan.T_Items = {}
 					for k, v in pairs( dt ) do
@@ -2839,7 +2839,7 @@ elseif typ == 4 then -- 建筑
 							local O_Take = dnm:AddOption( "#xdefm.Take", function() if !slo.B_OnMove and IsValid( xdefm.miscs.Menus[ "Inventory" ] ) then
 							local num = 0  for k, v in pairs( LocalPlayer().xdefm_Profile.Items ) do
 								if isstring( v ) and v == "_" then num = k break end
-							end if num > 0 then xdefm_Command( LocalPlayer(), "Struct", num.."|"..k )
+							end if num > 0 then xdefm_Command( LocalPlayer(), "Structure", num.."|"..k )
 							else xdefm_AddNote( ply, "xdefm.FullInv", "resource/warning.wav", "cross", 5 ) end end end )
 							O_Take:SetIcon( "icon16/basket_put.png" ) dnm:Open()
 						end
@@ -2874,7 +2874,7 @@ elseif typ == 4 then -- 建筑
 					if pan.P_Select == slo then xdefm.miscs.Marker = nil
 					pan.P_Select = nil  xdefm.miscs.Marker = nil end end
 					function slo:DoClick() if slo.N_Clk > CurTime() then return end slo.N_Clk = CurTime() +0.25
-					xdefm_Command( LocalPlayer(), "Struct", tostring( slo.N_Num ) ) end
+					xdefm_Command( LocalPlayer(), "Structure", tostring( slo.N_Num ) ) end
 					local ico = xdefm_SlotBox( 13, 11, 60, 60, 1 ) slo:Add( ico ) ico:F_SetupItem( cc[ #cc ] )
 					ico.P_Txt:Remove() ico:SetMouseInputEnabled( false )
 					end for k, v in pairs( bb.Crafts ) do xdefm_AddCraft( v ) end
@@ -2888,7 +2888,7 @@ elseif typ == 4 then -- 建筑
 						function Item:DoClick() Item.N_Clicked = CurTime() +0.2  local yes, pro = true, LocalPlayer().xdefm_Profile
 							if pro.Money < Item.N_Cost then xdefm_AddNote( ply, "xdefm.NoMoney", "resource/warning.wav", "cross", 5 ) yes = false end
 							if pro.Level < Item.N_Level then xdefm_AddNote( ply, "xdefm.NoLevel", "resource/warning.wav", "cross", 5 ) yes = false end
-							if yes then xdefm_Command( LocalPlayer(), "Struct", k ) end end
+							if yes then xdefm_Command( LocalPlayer(), "Structure", k ) end end
 						function Item:OnRemove() Item:OnCursorExited() end
 						function Item:Paint( w, h ) local col = xdefm.miscs.Rarity[ Item.N_Rarity+1 ]
 							draw.RoundedBox( 0, 0, 0, w, h, col )  local pro = LocalPlayer().xdefm_Profile  if !istable( pro ) then return end
@@ -3266,9 +3266,9 @@ elseif typ == 8 then -- 图鉴
 	if IsValid( xdefm.miscs.Menus[ "Bestiary" ] ) then return end
 	local pan = vgui.Create( "DFrame" )  xdefm.miscs.Menus.Bestiary = pan  pan.T_Items = {}  pan.N_Total = 0  pan.N_All = 0
 	for k, v in pairs( xdefm.items ) do pan.N_All = pan.N_All +1 end pan.N_Bing = -1
-	pan.T_Typs = { ["Creature"] = true, ["Bait"] = true, ["Useless"] = true, ["Recipe"] = true, ["Struct"] = true }
+	pan.T_Typs = { ["Creature"] = true, ["Bait"] = true, ["Useless"] = true, ["Recipe"] = true, ["Structure"] = true }
 	pan.T_Rars = { true, true, true, true, true }  pan.T_Buts = {}  pan.T_But2 = {}  pan.T_Dats = { PagO = 0, PagT = 0, Num = 0 }
-	local Typs = { "Creature", "Bait", "Useless", "Recipe", "Struct" }
+	local Typs = { "Creature", "Bait", "Useless", "Recipe", "Structure" }
 	local cvar = string.Explode( "", GetConVar( "xdefmod_collection" ):GetString() )
 	if !istable( cvar ) or #cvar != 11 then RunConsoleCommand( "xdefmod_collection", "11111111111" )
 	else
@@ -3368,7 +3368,7 @@ elseif typ == 8 then -- 图鉴
 		local ico = xdefm.miscs.Icons[ typ ]  local spr = but:Add( "DImage" ) spr:SetPos( 8, 8 )
 		spr:SetSize( 16, 16 ) spr:SetMaterial( ico ) return but end local ba = 30
 	AddTickButton( ba, 50, "Useless" ) AddTickButton( ba +175, 50, "Creature" )
-	AddTickButton( ba +175*2, 50, "Bait" ) AddTickButton( ba +175*3, 50, "Recipe" ) AddTickButton( ba, 86, "Struct" )
+	AddTickButton( ba +175*2, 50, "Bait" ) AddTickButton( ba +175*3, 50, "Recipe" ) AddTickButton( ba, 86, "Structure" )
 	pan.P_Select = pan:Add( "DPanel" ) local pax = pan.P_Select  pax:SetSize( 734 -6, 420 -6 )
 	pax:SetPos( 8 +3, 165 +3 ) local Mat = Material( "gui/center_gradient" )
 	function pax:Paint( w, h ) surface.SetDrawColor( xdefm.bck_col ) surface.DrawRect( 0, 0, w, h ) end
@@ -3713,7 +3713,7 @@ end end end
 			local dec = string.Explode( "&", v ) if !istable( dec ) or #dec < 2 then return false end end
 			--图纸格式:"材料A&材料B&材料C&产品",可填集合,产品为&分割开的最后一个物品,材料种类可重合,物品类别不做要求
 			--注意生物大小不受限制,但烹饪后的物品无法参与制作
-		elseif typ == "Struct" then
+		elseif typ == "Structure" then
 			inp.SType = isnumber( dat.SType ) and math.Clamp( math.Round( dat.SType ), 0, 3 ) or 0 --建筑类型,其他、存储、合成、商店
 			if inp.SType == 1 then
 				inp.Accepted = istable( dat.Accepted ) and dat.Accepted or nil --存储物品类型限制,留白为不限
@@ -3794,9 +3794,9 @@ if cmd == "StructExit" then local usi = ply.xdefm_Struct  if !IsValid( ply.xdefm
 		for k, v in pairs( player.GetHumans() ) do if v.xdefm_Struct == usi then yes = false end end
 		if yes then bb:OnInteract( usi, ply, -1 ) end
 	end return true
-elseif cmd == "Struct" then local usi = ply.xdefm_Struct  if !IsValid( ply.xdefm_Struct ) then return false end local usi = ply.xdefm_Struct  local cls = xdefm_GetClass( usi )
+elseif cmd == "Structure" then local usi = ply.xdefm_Struct  if !IsValid( ply.xdefm_Struct ) then return false end local usi = ply.xdefm_Struct  local cls = xdefm_GetClass( usi )
 	if ( !xdefm_FriendAllow( ply, usi ) and !xdefm_NadAllow( ply, usi ) ) then return end
-	if !isstring( cls ) then return false end local aa, bb = xdefm_ItemGet( cls )  if !istable( bb ) or bb.Type != "Struct" then return false end local stp = bb.SType
+	if !isstring( cls ) then return false end local aa, bb = xdefm_ItemGet( cls )  if !istable( bb ) or bb.Type != "Structure" then return false end local stp = bb.SType
 	if stp == 1 then local ab = string.Explode( "|", dat ) if !istable( ab ) or #ab != 2 then return false end
 		if isfunction( bb.OnInteract ) then if bb:OnInteract( usi, ply, 0, unpack( ab ) ) == false then
 		xdefm_AddNote( ply, "!V", "resource/warning.wav", "cross", 5 ) return end end
@@ -3851,7 +3851,7 @@ elseif cmd == "Struct" then local usi = ply.xdefm_Struct  if !IsValid( ply.xdefm
 			ply.xdefm_Profile.TBuy = ply.xdefm_Profile.TBuy+1  xdefm_ProfileUpdate( ply ) return true end
 		end return true
 elseif cmd == "StructOuter" then local usi = ply.xdefm_Struct  if !IsValid( ply.xdefm_Struct ) then return false end local usi = ply.xdefm_Struct  local cls = xdefm_GetClass( usi )
-	if !isstring( cls ) then return false end local aa, bb = xdefm_ItemGet( cls )  if !istable( bb ) or bb.Type != "Struct" then return false end local stp = bb.SType
+	if !isstring( cls ) then return false end local aa, bb = xdefm_ItemGet( cls )  if !istable( bb ) or bb.Type != "Structure" then return false end local stp = bb.SType
 	if stp == 1 then local ab = string.Explode( "|", dat ) if !istable( ab ) or #ab != 2 then return false end
 		if isfunction( bb.OnInteract ) then if bb:OnInteract( usi, ply, 0, unpack( ab ) ) == false then
 		xdefm_AddNote( ply, "!V", "resource/warning.wav", "cross", 5 ) return end end
@@ -4226,7 +4226,7 @@ end end
 		end
 		if SERVER and IsValid( ply ) then
 			if IsValid( ply.xdefm_Struct ) and ply.xdefm_Struct:GetClass() == "xdefm_base" and ply:GetPos():Distance( ply.xdefm_Struct:GetPos() ) > 300 then local usi = ply.xdefm_Struct
-				xdefm_CloseMenu( v, "Struct" )
+				xdefm_CloseMenu( v, "Structure" )
 			end
 			if ply:GetNWFloat( "XDEFM_QC" ) > 0 and ply:GetNWFloat( "XDEFM_QC" ) <= CurTime() then
 				ply:SetNWFloat( "XDEFM_QC", 0 ) ply:SetNWBool( "XDEFM_QD", false ) xdefm.skips[ ply:SteamID() ] = nil
@@ -4337,7 +4337,7 @@ if true then -- xdefm_base
 		elseif bb.Type == "Recipe" and isnumber( bb.Durability ) and ( !istable( tab ) or #tab < 2 or tab[ 2 ] == 0 ) then
 			local dur = math.ceil( math.Rand( bb.Durability/2, bb.Durability ) ) if !istable( tab ) then tab = { self:GetFMod_DT() } end
 			table.insert( tab, 2, dur ) self:SetFMod_DT( table.concat( tab, "|" ) )
-		elseif bb.Type == "Struct" and bb.SType == 1 and bb.Amount > 0 then self.xdefm_T3 = {}
+		elseif bb.Type == "Structure" and bb.SType == 1 and bb.Amount > 0 then self.xdefm_T3 = {}
 			for i=1, bb.Amount do self.xdefm_T3[ i ] = "_" end
 		end local tab = string.Explode( "|", self:GetFMod_DT() )
 		if bb.Type != "Bait" and ( !istable( tab ) or #tab != xdefm.miscs.Types[ bb.Type ] ) then self:SetFMod_DT( self:GetFMod_DT().."|0" ) end
@@ -4352,8 +4352,8 @@ if true then -- xdefm_base
 	end
 	function ENT:HandleAnimEvent() return true end
 	function ENT:OnRemove() if CLIENT or !istable( self.xdefm_T2 ) then return end self.xdefm_T2:OnRemove( self )
-		if self.xdefm_T2.Type == "Struct" then
-			for k, v in pairs( player.GetHumans() ) do if v.xdefm_Struct == self then xdefm_CloseMenu( v, "Struct" ) end end
+		if self.xdefm_T2.Type == "Structure" then
+			for k, v in pairs( player.GetHumans() ) do if v.xdefm_Struct == self then xdefm_CloseMenu( v, "Structure" ) end end
 		end
 	end
 	function ENT:OnDuplicated() SafeRemoveEntity( self ) end
@@ -4369,7 +4369,7 @@ if true then -- xdefm_base
 	end
 	function ENT:Use( ent ) if !IsValid( ent ) or !istable( self.xdefm_T2 ) or !ent:IsPlayer() or ent:KeyDown( IN_RELOAD ) then return end local owi = self:GetFMod_OI()
 		if !xdefm_CanInteract( ent, self ) or ( !xdefm_FriendAllow( ent, owi ) and !xdefm_NadAllow( ent, self ) ) then return end
-		if self.xdefm_T2.Type == "Struct" and self.xdefm_T2.SType != 0 and !ent:IsBot() then
+		if self.xdefm_T2.Type == "Structure" and self.xdefm_T2.SType != 0 and !ent:IsBot() then
 			local act = self.xdefm_T2.OnInteract and self.xdefm_T2:OnInteract( self, ent, 1 ) or nil
 			if act == false or IsValid( ent.xdefm_Struct ) then return end local ttt, dat = self.xdefm_T2.SType, {}
 			if !ent:KeyDown( IN_SPEED ) then
@@ -4453,7 +4453,7 @@ if true then -- xdefm_dummy
 		elseif bb.Type == "Recipe" and isnumber( bb.Durability ) and ( !istable( tab ) or #tab < 2 or tab[ 2 ] == 0 ) then
 			local dur = math.ceil( math.Rand( bb.Durability/2, bb.Durability ) ) if !istable( tab ) then tab = { self:GetFMod_DT() } end
 			table.insert( tab, 2, dur ) self:SetFMod_DT( table.concat( tab, "|" ) )
-		elseif bb.Type == "Struct" and bb.SType == 1 and bb.Amount > 0 then self.xdefm_T3 = {}
+		elseif bb.Type == "Structure" and bb.SType == 1 and bb.Amount > 0 then self.xdefm_T3 = {}
 			for i=1, bb.Amount do self.xdefm_T3[ i ] = "_" end
 		end local tab = string.Explode( "|", self:GetFMod_DT() )
 		if bb.Type != "Bait" and ( !istable( tab ) or #tab != xdefm.miscs.Types[ bb.Type ] ) then self:SetFMod_DT( self:GetFMod_DT().."|0" ) end
