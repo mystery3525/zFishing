@@ -11,6 +11,7 @@ if CLIENT then local langs = {}
 		[ "it_rainbow" ] 	= "彩虹石", [ "dit_rainbow" ] 		= "<color=0,0,255>★</color><color=255,0,255>★</color><color=0,255,0>★</color><color=255,255,0>★</color><color=255,0,0>★</color><color=255,255,255>★</color>.",
 		[ "it_crafting1" ] 	= "工作台", [ "dit_crafting1" ] 		= "用于制作基础物品.",
 		[ "it_crafting2" ] 	= "机械台", [ "dit_crafting2" ] 		= "用于制作高级物品.",
+		[ "it_recycler" ]	= "洗衣机", [ "dit_recycler" ]     = "清理垃圾",
 		[ "it_storage1" ] 	= "储藏箱", [ "dit_storage1" ] 		= "可以存放12个物品.",
 		[ "it_storage2" ] 	= "大储藏箱", [ "dit_storage2" ] 	= "可以存放30个物品.",
 		[ "it_bucket" ]     = "储物桶",  ["dit_bucket"]         = "可以存放6个物品.",
@@ -32,6 +33,7 @@ if CLIENT then local langs = {}
 		[ "it_rainbow" ] 	= "Rainbow Gem", [ "dit_rainbow" ] 		= "<color=0,0,255>★</color><color=255,0,255>★</color><color=0,255,0>★</color><color=255,255,0>★</color><color=255,0,0>★</color><color=255,255,255>★</color>.",
 		[ "it_crafting1" ] 	= "Inventor's Table", [ "dit_crafting1" ] 	= "Craft Basic items.",
 		[ "it_crafting2" ] 	= "Machining's Table", [ "dit_crafting2" ] 	= "Craft Advanced items.",
+		[ "it_recycler" ]	= "Washing Machine", [ "dit_recycler" ]     = "Cleans Junk",
 		[ "it_storage1" ] 	= "Storage Crate", [ "dit_storage1" ] 		= "Can hold up to 12 items.",
 		[ "it_storage2" ] 	= "Big Storage Crate", [ "dit_storage2" ] 	= "Can hold up to 30 items.",
 		[ "it_bucket" ]     = "Storage Bucket", ["dit_bucket"]          = "Can hold up to 6 items.",
@@ -290,7 +292,24 @@ items.it_crafting2 = {
 		"it_steelbar&it_glass3&ba_c4",
 		"it_armor&it_steelbar&it_metal3&ba_drill",
     		}
-
+items.it_recycler = {
+	Type = "Structure",
+	Model = "models/props_wasteland/laundry_dryer002.mdl",
+	StartSound = "DoorHandles.Unlocked2",
+	ExitSound = "Doors.FullClose1",
+	Rarity = 4,
+	Price = 3000,
+	PhysSound = "Metal_Box.ImpactHard",
+	SType = 2,
+	HelperUse = "xdefm.U3",
+	CanPhysgun = true
+	}
+	items.it_recycler.Crafts = {
+	"it_junk&it_junk&it_junk&it_junk&it_wood",
+	"iit_junk&t_junk&it_junk&it_junk&it_glass",
+	"it_junk&it_junk&it_junk&it_junk&it_stone",
+	"it_junk&it_junk&it_junk&it_junk&it_metal"
+	}
 
 items.it_storage1 = {
 	Type = "Structure",

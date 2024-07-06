@@ -54,6 +54,7 @@ if true then local it = "re_toolbox"
 		"it_propane&it_part2&it_metal3&it_stove4",
 		"it_part2&it_metal3&it_metal3&it_metal3&it_crafting2",
 		"it_crate2&it_wood3&it_wood3&it_wood3&it_storage2",
+		"it_part2&it_metal3&it_metal3&it_glass3&it_recycler"
     }
 	xdefm_ItemRegister( it, ITEM )
 end
