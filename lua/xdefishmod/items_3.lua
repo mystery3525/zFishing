@@ -1308,10 +1308,10 @@ items.it_csuper = {
 	function items.it_csuper:OnInit( self ) self.xdefm_Cool = CurTime() +1  self:SetAutomaticFrameAdvance( true ) self:ResetSequence( "idle" ) self:SetPlaybackRate( 0 ) end
 	function items.it_csuper:OnUse( self, usr ) if self.xdefm_Cool > CurTime() then return false end
 		if usr:KeyDown( IN_SPEED ) then return true end local pro = usr.xdefm_Profile  self.xdefm_Cool = CurTime() +1
-		if !istable( pro ) or !isnumber( pro.Money ) or pro.Money < 150 or ( usr:Armor() >= usr:GetMaxArmor() and usr:Health() >= usr:GetMaxHealth() ) then self:EmitSound( "TriggerSuperArmor.DoneCharging" ) return false end
+		if !istable( pro ) or !isnumber( pro.Money ) or pro.Money < 350 or ( usr:Armor() >= usr:GetMaxArmor() and usr:Health() >= usr:GetMaxHealth() ) then self:EmitSound( "TriggerSuperArmor.DoneCharging" ) return false end
 		self:ResetSequence( "idle" ) self:SetPlaybackRate( 1 ) usr:SetArmor( usr:GetMaxArmor()*2 )
 		self:EmitSound( "TriggerSuperArmor.StartCharging" ) usr:SetHealth( usr:GetMaxHealth() )
-		usr.xdefm_Profile.Money = pro.Money -150  xdefm_ProfileUpdate( usr ) return false end
+		usr.xdefm_Profile.Money = pro.Money -350  xdefm_ProfileUpdate( usr ) return false end
 	function items.it_csuper:OnThink( self ) if self.xdefm_Cool > 0 and self.xdefm_Cool <= CurTime() then
 		self.xdefm_Cool = 0  self:ResetSequence( "idle" ) self:SetPlaybackRate( 0 )
 	end end
