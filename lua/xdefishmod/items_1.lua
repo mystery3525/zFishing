@@ -935,7 +935,7 @@ items.it_campfire = {
 	Price = 100,
 	TickRate = 1,
 	PhysSound = "Concrete.ImpactHard",
-	CanPhysgun = true
+	CanPhysgun = true,
 	CantCook = true
 	}
 	function items.it_campfire:OnReady( self ) self:GetPhysicsObject():SetMass( math.ceil( self:GetPhysicsObject():GetMass()*0.1 ) ) end
@@ -992,7 +992,7 @@ items.it_stove1 = {
 	TickRate = 1,
 	HelperUse = "xdefm.U4",
 	PhysSound = "Metal_Barrel.ImpactHard",
-	CanPhysgun = true
+	CanPhysgun = true,
 	CantCook = true
 	}
 	function items.it_stove1:OnInit( self )  self.xdefm_Enabled = 0  self.xdefm_Spot = nil  self.xdefm_Pressed = 0
@@ -1021,8 +1021,8 @@ items.it_stove2 = {
 	HelperUse = "xdefm.U4",
 	TickRate = 1,
 	PhysSound = "Metal_Barrel.ImpactHard",
-	CanPhysgun = true
-	CantCook = true
+	CanPhysgun = true,
+    CantCook = true
 	}
 	function items.it_stove2:OnInit( self )  self.xdefm_Enabled = 0  self.xdefm_Spots = {}  self.xdefm_Pressed = 0
 		self.xdefm_Spots[ 1 ] = xdefm_FireSpot( self:LocalToWorld(Vector(6,12,16)), 5, 2, self )
@@ -1049,8 +1049,8 @@ items.it_stove3 = {
 	HelperUse = "xdefm.U4",
 	TickRate = 1,
 	PhysSound = "Metal_Barrel.ImpactHard",
-	CanPhysgun = true
-	CantCook = true
+	CanPhysgun = true,
+    CantCook = true
 	}
 	function items.it_stove3:OnInit( self )  self.xdefm_Enabled = 0  self.xdefm_Spots = {}  self.xdefm_Pressed = 0
 		self.xdefm_Spots[ 1 ] = xdefm_FireSpot( self:LocalToWorld(Vector(3,11,20)), 3, 6, self )

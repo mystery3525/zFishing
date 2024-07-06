@@ -1086,7 +1086,7 @@ items.it_defib = {
 	Model = "models/w_models/weapons/w_eq_defibrillator.mdl",
 	Rarity = 4,
 	Price = 1000,
-	PhysSound = "weapon.ImpactSoft"
+	PhysSound = "weapon.ImpactSoft",
 	CanPhysgun = true
 	}
 	function items.it_defib:OnInit( self ) self.xdefm_Cool = 0 end
@@ -1113,7 +1113,7 @@ items.it_vending = {
 	HelperUse = "xdefm.U3",
 	SType = 3,
 	StartSound = "Buttons.snd1",
-	ExitSound = "NPC.ButtonLatchUnlocked2"
+	ExitSound = "NPC.ButtonLatchUnlocked2",
 	CanPhysgun = true
 	}
 	items.it_vending.Shop = {
