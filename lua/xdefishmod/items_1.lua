@@ -57,50 +57,50 @@ if CLIENT then local langs = {}
 		[ "it_stone" ] 		= "Stone", [ "dit_stone" ] 			= "",
 		[ "it_metal" ] 		= "Metal", [ "dit_metal" ] 			= "",
 		[ "it_glass" ] 		= "Glass", [ "dit_glass" ] 			= "",
-		[ "it_junks" ] 		= "Junk Pile", [ "dit_junks" ] 			= "Tons of junk, break to open.",
-		[ "it_shoe" ] 		= "Old Shoe", [ "dit_shoe" ] 			= "The reason for its abandonment is obvious.",
-		[ "it_mine1" ] 		= "Old Naval Mine", [ "dit_mine1" ] 		= "Seems dangerous, not sure if it still works.",
+		[ "it_junks" ] 		= "Junk Pile", [ "dit_junks" ] 			= "A pile of Junk, break to open.",
+		[ "it_shoe" ] 		= "Old Shoe", [ "dit_shoe" ] 			= "",
+		[ "it_mine1" ] 		= "Old Naval Mine", [ "dit_mine1" ] 		= "Still floats but very dangerous.",
 		[ "it_hula" ] 		= "Hula Doll", [ "dit_hula" ] 			= "A doll that can dance, nothing else.",
-		[ "it_cactus" ] 	= "Cactus", [ "dit_cactus" ] 			= "Aggressive.",
+		[ "it_cactus" ] 	= "Cactus", [ "dit_cactus" ] 			= "Friend.",
         	[ "it_combine" ] 	= "Zombine Soldier?", [ "dit_combine" ] 	= "???",
         	[ "it_brick" ] 		= "Brick", [ "dit_brick" ] 			= "",
-		[ "it_health" ] 	= "Health Kit", [ "dit_health" ] 		= "Refill your health. Can also revive creatures.",
-		[ "it_armor" ] 		= "Armor Kit", [ "dit_armor" ] 			= "Refill your armor.",
-        	[ "it_paper" ] 		= "Paper Roll", [ "dit_paper" ] 		= "",
-        	[ "it_dollar" ] 	= "Money", [ "dit_dollar" ] 			= "Loads of money.",
-        	[ "it_coin" ] 		= "Coin", [ "dit_coin" ] 			= "Valuable silver coin.",
-        	[ "it_register" ] 	= "Cash Register", [ "dit_register" ] 		= "It seems remained underwater for a long time.",
-        	[ "it_pallet" ] 	= "Money Pallet", [ "dit_pallet" ] 		= "Jackpot.",
+		[ "it_health" ] 	= "Health Kit", [ "dit_health" ] 		= "Refills your health. Can revive creatures.",
+		[ "it_armor" ] 		= "Armor Kit", [ "dit_armor" ] 			= "Refills your armor.",
+        	[ "it_paper" ] 		= "Paper Roll", [ "dit_paper" ] 		= "Is it waterproof?",
+        	[ "it_dollar" ] 	= "Money", [ "dit_dollar" ] 			= "Free money.",
+        	[ "it_coin" ] 		= "Coin", [ "dit_coin" ] 			= "A valuable silver coin with many uses.",
+        	[ "it_register" ] 	= "Cash Register", [ "dit_register" ] 		= "Still has cash inside, break to open.",
+        	[ "it_pallet" ] 	= "Money Pallet", [ "dit_pallet" ] 		= "Lost during a failed heist, break to open.",
         	[ "cr_dollar" ] 	= "Cursed Money", [ "dcr_dollar" ] 		= "Will fight back.",
-		[ "it_present" ] 	= "Present", [ "dit_present" ] 			= "Contains random amount of money, time to test your luck.",
+		[ "it_present" ] 	= "Present", [ "dit_present" ] 			= "Contains a random amount of money, time to test your luck.",
         	[ "it_rottenmeat" ] 	= "Rotten Meat", [ "dit_rottenmeat" ] 		= "Too dirty to pick up.",
-		[ "it_corpse" ] 	= "Corpse", [ "dit_corpse" ] 			= "Dead human body.",
-		[ "it_gravestone" ] 	= "Gravestone", [ "dit_gravestone" ] 		= "The text on the stone is blurred.",
+		[ "it_corpse" ] 	= "Corpse", [ "dit_corpse" ] 			= "Dead human body?",
+		[ "it_gravestone" ] 	= "Gravestone", [ "dit_gravestone" ] 		= "Old headstone, the text has long since faded.",
 		[ "cr_crab" ] 		= "Headcrab", [ "dcr_crab" ] 			= "Common crab.",
 		[ "cr_crab2" ] 		= "Fast Headcrab", [ "dcr_crab2" ] 		= "Energetic crab.",
 		[ "cr_crab3" ] 		= "Poison Headcrab", [ "dcr_crab3" ] 		= "Poisonous crab.",
-		[ "cr_gnome" ] 		= "Gnome", [ "dcr_gnome" ] 			= "Garden gnome, but with parkour skills.",
-        	[ "it_campfire" ] 	= "Campfire", [ "dit_campfire" ] 		= "Insert wood, coal, or junk to create a fire. Press Shift+E to extinguish.",
-        	[ "it_stove1" ] 	= "Simple Stove", [ "dit_stove1" ] 		= "A makeshift stove powered by a car battery. Quite unstable.",
-        	[ "it_stove2" ] 	= "Broken Stove", [ "dit_stove2" ] 		= "Cooked items can increase in value, may sometimes shutdown itself.",
-        	[ "it_stove3" ] 	= "Stove", [ "dit_stove3" ] 			= "Cooked items can increase in value.",
+		[ "cr_gnome" ] 		= "Gnome", [ "dcr_gnome" ] 			= "Fast little garden gnome, may accidentally hurt.",
+        	[ "it_campfire" ] 	= "Campfire", [ "dit_campfire" ] 		= "Insert Wood, Coal, or Junk to create a fire. Press Shift+E to extinguish.",
+        	[ "it_stove1" ] 	= "Simple Stove", [ "dit_stove1" ] 		= "A makeshift stove able to cook items. May shut down automatically.",
+        	[ "it_stove2" ] 	= "Broken Stove", [ "dit_stove2" ] 		= "A broken stove able to cook items. May shut down automatically.",
+        	[ "it_stove3" ] 	= "Stove", [ "dit_stove3" ] 			= "A functional stove able to cook items.",
 		[ "it_furniture1" ] 	= "Wooden Furniture", [ "dit_furniture1" ] 	= "",
 		[ "it_furniture2" ] 	= "Metal Furniture", [ "dit_furniture2" ] 	= "",
 		[ "it_radio" ] 		= "Broken Radio", [ "dit_radio" ] 		= "Radio that never stops playing random music.",
-		[ "it_orange" ] 	= "Orange", [ "dit_orange" ] 			= "",
+		[ "it_orange" ] 	= "Orange", [ "dit_orange" ] 			= "The orane juce.",
 		[ "it_melon" ] 		= "Melon", [ "dit_melon" ] 			= "",
-		[ "it_melo" ] 		= "Melon Slice", [ "dit_melo" ] 		= "",
-		[ "it_apple" ] 		= "Apple", [ "dit_apple" ] 			= "",
-		[ "it_banana" ] 	= "Banana", [ "dit_banana" ] 			= "",
-		[ "it_orangebox" ] 	= "Orange Box", [ "dit_orangebox" ] 		= "Spawn an orange every 2 minutes.",
-		[ "cr_fish" ] 		= "Fish", [ "dcr_fish" ] 			= "",
-		[ "cr_fish2" ] 		= "Fish", [ "dcr_fish2" ] 			= "",
+		[ "it_melo" ] 		= "Melon Slice", [ "dit_melo" ] 		= "Victim of a hungry cat.",
+		[ "it_apple" ] 		= "Apple", [ "dit_apple" ] 			= "Cider anyone?",
+		[ "it_banana" ] 	= "Banana", [ "dit_banana" ] 			= "Banan my beloved.",
+		[ "it_orangebox" ] 	= "Orange Box", [ "dit_orangebox" ] 		= "Spawns an orange every 2 minutes.",
+		[ "cr_fish" ] 		= "River Fish", [ "dcr_fish" ] 			= "",
+		[ "cr_fish2" ] 		= "Sea Fish", [ "dcr_fish2" ] 			= "",
 		[ "cr_gold" ] 		= "Goldfish", [ "dcr_gold" ] 			= "",
 		[ "cr_perch" ] 		= "Perch", [ "dcr_perch" ] 			= "",
-		[ "cr_perch2" ] 	= "Golden Fish", [ "dcr_perch2" ] 		= "",
+		[ "cr_perch2" ] 	= "Golden Perch", [ "dcr_perch2" ] 		= "",
 		[ "cr_cute" ] 		= "Ichthyosaur", [ "dcr_cute" ] 		= "Rare and dangerous creature living in deep water.",
-		[ "it_barre1" ] 	= "Oil Barrel", [ "dit_barre1" ] 		= "Metal barrel with some oil inside. May explode.",
-		[ "it_barre2" ] 	= "Unstable Oil Barrel", [ "dit_barre2" ] 	= "Metal barrel full of oil. No smoking!",
+		[ "it_barre1" ] 	= "Oil Barrel", [ "dit_barre1" ] 		= "Metal barrel with oil inside. May explode.",
+		[ "it_barre2" ] 	= "Unstable Oil Barrel", [ "dit_barre2" ] 	= "Unstable metal barrel with oil inside.",
 		[ "it_bomb1" ] 		= "Combine Bomb", [ "dit_bomb1" ] 		= "Handle with care. Detonates on touch.",
 		[ "it_bomb2" ] 		= "Bomb", [ "dit_bomb2" ] 			= "Handle with care. Shift+E to arm/disarm.",
     }
@@ -113,87 +113,101 @@ langs = nil
 local items = {}
 
 items.it_wood = {	
-	Type = "Useless", 
-	Model = { "models/gibs/wood_gib01a.mdl", "models/gibs/wood_gib01b.mdl", "models/Gibs/wood_gib01c.mdl", "models/gibs/wood_gib01d.mdl" },
+	Type = "Common", 
+	Model = {
+		"models/gibs/wood_gib01a.mdl", "models/gibs/wood_gib01b.mdl",
+		"models/Gibs/wood_gib01c.mdl", "models/gibs/wood_gib01d.mdl"
+		},
 	Rarity = 1, 
 	Price = 6, 
 	KillInWater = true, 
 	PhysSound = "Wood.ImpactSoft"
-}
+	}
 
 items.it_stone = {
-	Type = "Useless", 
+	Type = "Common", 
 	Model = "models/props_junk/rock001a.mdl", 
 	Rarity = 1, 
 	Price = 8, 
 	KillInWater = true, 
 	PhysSound = "Concrete.ImpactSoft" 
-}
+	}
 
 items.it_metal = { 
 	Name = "#xdefm.it_metal", 
 	Type = "Common", 
-	Model = { "models/gibs/metal_gib1.mdl", "models/gibs/metal_gib2.mdl", "models/gibs/metal_gib3.mdl", "models/gibs/metal_gib4.mdl", "models/gibs/metal_gib5.mdl" }, 
+	Model = {
+		"models/gibs/metal_gib1.mdl", "models/gibs/metal_gib2.mdl",
+		"models/gibs/metal_gib3.mdl", "models/gibs/metal_gib4.mdl",
+		"models/gibs/metal_gib5.mdl"
+		}, 
 	Rarity = 1, 
 	Price = 15, 
 	KillInWater = true, 
 	PhysSound = "SolidMetal.ImpactSoft"
-}
+	}
 
 items.it_glass = {
-	Type = "Useless", 
-	Model = { "models/props_junk/garbage_glassbottle001a_chunk04.mdl", "models/props_junk/garbage_glassbottle001a_chunk02.mdl", "models/props_junk/garbage_glassbottle001a_chunk03.mdl", "models/props_junk/garbage_glassbottle001a_chunk01.mdl",
-			  "models/props_junk/garbage_glassbottle003a_chunk01.mdl", "models/props_junk/garbage_glassbottle003a_chunk02.mdl", "models/props_junk/garbage_glassbottle003a_chunk03.mdl",
-		      "models/props_junk/glassjug01_chunk01.mdl", "models/props_junk/glassjug01_chunk02.mdl", "models/props_junk/glassjug01_chunk03.mdl" }, 
+	Type = "Common", 
+	Model = {
+		"models/props_junk/garbage_glassbottle001a_chunk04.mdl", "models/props_junk/garbage_glassbottle001a_chunk02.mdl",
+		"models/props_junk/garbage_glassbottle001a_chunk03.mdl", "models/props_junk/garbage_glassbottle001a_chunk01.mdl",
+		"models/props_junk/garbage_glassbottle003a_chunk01.mdl", "models/props_junk/garbage_glassbottle003a_chunk02.mdl",
+		"models/props_junk/garbage_glassbottle003a_chunk03.mdl", "models/props_junk/glassjug01_chunk01.mdl",
+		"models/props_junk/glassjug01_chunk02.mdl", "models/props_junk/glassjug01_chunk03.mdl"
+		}, 
 	Rarity = 1,
 	Price = 10, 
 	KillInWater = true, 
 	PhysSound = "GlassBottle.ImpactHard"
-}
+	}
 
 items.it_junks = {
-	Type = "Useless",
+	Type = "Common",
 	Model = "models/props_junk/trashcluster01a_corner.mdl",
 	Rarity = 1,
 	Price = 60,
 	Carryable = false,
 	PhysSound = "Sand.BulletImpact",
-}
+	}
+	function items.it_junks:OnInit( self )
+		self:SetMaxHealth( 10 ) 
+		self:SetHealth( self:GetMaxHealth() ) 
+		self.xdefm_Killed = false 
+	end
+	function items.it_junks:OnDamaged( self, dmg ) 
+		if self:Health() <= 0 or dmg:GetDamage() <= 0 or self.xdefm_Killed then 
+			return false 
+		end
+		self:SetHealth( math.max( 0, self:Health() -dmg:GetDamage() ) ) 
+		self:StopSound( "Cardboard.Break" ) 
+		self:EmitSound( "Cardboard.Break" )
+		if self:Health() <= 0 then 
+			self.xdefm_Killed = true
+			local lt = {
+				["it_junk"]=250,
+				["it_metal"]=50,
+				["it_glass"]=50,
+				["it_stone"]=50,
+				["it_wood"]=50}
 
-function items.it_junks:OnInit( self )
-	self:SetMaxHealth( 10 ) 
-	self:SetHealth( self:GetMaxHealth() ) 
-	self.xdefm_Killed = false 
-end
-function items.it_junks:OnDamaged( self, dmg ) 
-	if self:Health() <= 0 or dmg:GetDamage() <= 0 or self.xdefm_Killed then 
-		return false 
+			for i=1, math.random( 4, 8 ) do 
+				xdefm_LootDrop( lt, self ) 
+			end
+			self:SetNotSolid( true ) 
+			SafeRemoveEntityDelayed( self, 0.1 ) 
+		end 
+		return true
 	end
 
-	self:SetHealth( math.max( 0, self:Health() -dmg:GetDamage() ) ) 
-	self:StopSound( "Cardboard.Break" ) 
-	self:EmitSound( "Cardboard.Break" )
-	
-	if self:Health() <= 0 then 
-		self.xdefm_Killed = true
-		local lt = {["it_junk"]=250,["it_metal"]=50,["it_glass"]=50,["it_stone"]=50,["it_wood"]=50}
-
-		for i=1, math.random( 4, 8 ) do 
-			xdefm_LootDrop( lt, self ) 
-		end
-		self:SetNotSolid( true ) 
-		SafeRemoveEntityDelayed( self, 0.1 ) 
-	end 
-	return true
-end
 
 items.it_shoe = {
-	Type = "Useless",
+	Type = "Uncommon",
 	Model = "models/props_junk/shoe001a.mdl",
 	Rarity = 2,
 	Price = 30, 
 	TickRate = 1 
-}
+	}
 	function items.it_shoe:OnInit( self ) self:NextThink( CurTime() +2 ) end
 	function items.it_shoe:OnThink( self )
 		for k, v in pairs( ents.FindInSphere( self:WorldSpaceCenter(), 50 ) ) do
@@ -260,13 +274,13 @@ items.it_shoe = {
 
 
 items.it_mine1 = {
-	Type = "Useless",
+	Type = "Uncommon",
 	Model = "models/roller.mdl",
 	Rarity = 2,
 	Price = 75,
 	TickRate = 0.1,
 	PhysSound = "Metal_Box.BulletImpact" 
-}
+	}
 	function items.it_mine1:C_Explode( self ) if self.xdefm_Killed then return else self.xdefm_Killed = true end
 		local ef = EffectData() ef:SetStart( self:WorldSpaceCenter() )
 		ef:SetOrigin( self:WorldSpaceCenter() ) ef:SetScale( 1 ) util.Effect( "HelicopterMegaBomb", ef )
@@ -287,14 +301,14 @@ items.it_mine1 = {
 
 
 items.it_hula = {
-	Type = "Useless",
+	Type = "Uncommon",
 	Model = "models/props_lab/huladoll.mdl",
 	HelperUse = "xdefm.U2",
 	Rarity = 2,
 	Price = 60,
 	TickRate = 0.01,
 	PhysSound = "Plastic_Barrel.ImpactSoft" 
-}
+	}
 	function items.it_hula:OnInit( self ) self:SetAutomaticFrameAdvance( true ) self.xdefm_Push = 0 end
 	function items.it_hula:OnUse( self, ent ) if self:IsOnFire() then return end if ent:KeyDown( IN_SPEED ) then return true end
 		self:EmitSound( "ambient/creatures/teddy.wav", 70, 100 +math.ceil( self.xdefm_Push/4 ), 0.5 )
@@ -308,12 +322,12 @@ items.it_hula = {
 
 
 items.it_cactus = {
-	Type = "Useless",
+	Type = "Uncommon",
 	Model = "models/props_lab/cactus.mdl",
 	Rarity = 2,
 	Price = 50,
 	PhysSound = "Sand.BulletImpact" 
-}
+	}
 	function items.it_cactus:OnInit( self ) self.xdefm_NextTouch = CurTime() +1 end
 	function items.it_cactus:OnReady( self ) self:SetTrigger( true ) end
 	function items.it_cactus:OnTouch( self, ent, typ )
@@ -328,17 +342,20 @@ items.it_cactus = {
 	end
 
 items.it_combine = {
-	Type = "Useless",
+	Type = "Common",
 	Model = "models/Combine_Soldier.mdl", 
 	TickRate = 0.1,
 	Rarity = 1,
 	Price = 0,
 	KillInWater = true,
 	PhysSound = "MetalVehicle.ImpactSoft" 
-}
-	local ac = { "deathpose_back", "deathpose_front", "deathpose_left", "deathpose_right", "flinchbig", "flinchgut",
-	"flinchhead", "flinchleft", "flinchright", "flinchsmall", "signal_advance", "signal_forward", "signal_group", "signal_halt",
-	"signal_left", "signal_right", "signal_takecover", "reload" }
+	}
+	local ac = {
+		"deathpose_back", "deathpose_front", "deathpose_left", "deathpose_right",
+		"flinchbig", "flinchgut", "flinchhead", "flinchleft", "flinchright", "flinchsmall",
+		"signal_advance", "signal_forward", "signal_group", "signal_halt",
+		"signal_left", "signal_right", "signal_takecover", "reload"
+		}
 	local Mat = Material( "sprites/light_glow02_add" ) Mat:SetInt( "$ignorez", 1 )
 	function items.it_combine:OnInit( self ) self.xdefm_Killed = false  self:SetAutomaticFrameAdvance( true )
 		self.xdefm_Act = 0  self.xdefm_ActNext = 0  self.xdefm_Boom = 0
@@ -390,12 +407,12 @@ items.it_combine = {
 
 
 items.it_brick = {
-    
-	Type = "Useless",
+	Type = "Uncommon",
 	Model = "models/props_debris/concrete_cynderblock001.mdl",
 	Rarity = 2,
 	Price = 50,
-	PhysSound = "Concrete.ImpactHard" }
+	PhysSound = "Concrete.ImpactHard"
+	}
 	function items.it_brick:OnInit( self ) self.xdefm_Thrown = 0 end
 	function items.it_brick:OnReady( self ) self:GetPhysicsObject():SetMass( 25 ) end
 	function items.it_brick:OnStore( self, ent ) if self.xdefm_Thrown > 0 then return false end end
@@ -425,13 +442,13 @@ items.it_brick = {
 
 
 items.it_health = {
-    
-	Type = "Useless",
+	Type = "Uncommon",
 	Model = "models/Items/HealthKit.mdl",
 	HelperUse = "xdefm.U2",
 	Rarity = 2,
 	Price = 100,
-	PhysSound = "Plastic_Box.ImpactSoft" }
+	PhysSound = "Plastic_Box.ImpactSoft"
+	}
 	function items.it_health:OnInit( self ) self.xdefm_Used = false end
 	function items.it_health:OnUse( self, ent ) if self.xdefm_Used then return end if ent:Health() >= ent:GetMaxHealth() then return true end
 		if ent:KeyDown( IN_SPEED ) then return true end ent:SetHealth( math.min( ent:GetMaxHealth(), ent:Health() +100 ) )
@@ -451,14 +468,13 @@ items.it_health = {
 	
 
 items.it_armor = {
-    
-	Type = "Useless",
+	Type = "Uncommon",
 	Model = "models/items/battery.mdl",
-	HelperUse = "xdefm.U2"
-	,
+	HelperUse = "xdefm.U2",
 	Rarity = 2,
 	Price = 80,
-	PhysSound = "Plastic_Box.ImpactSoft" }
+	PhysSound = "Plastic_Box.ImpactSoft"
+	}
 	function items.it_armor:OnInit( self ) self.xdefm_Used = false end
 	function items.it_armor:OnUse( self, ent ) if self.xdefm_Used then return end if ent:Armor() >= ent:GetMaxArmor() then return true end
 		if ent:KeyDown( IN_SPEED ) then return true end ent:SetArmor( math.min( ent:GetMaxArmor(), ent:Armor() +100 ) )
@@ -467,37 +483,39 @@ items.it_armor = {
 
 
 items.it_paper = {
-    
-	Type = "Useless",
+	Type = "Common",
 	Model = "models/props/cs_office/paper_towels.mdl",
 	Rarity = 1,
 	Price = 15,
-	KillInWater = true,
 	PhysSound = "Cardboard.ImpactHard" 
-}
+	}
+
 
 items.it_dollar = {
-	Type = "Useless",
+	Type = "Common",
 	Model = "models/props/cs_assault/money.mdl",
 	Rarity = 1,
 	Price = 200,
 	PhysSound = "Sand.BulletImpact" 
-}
+	}
+
+
 items.it_coin = {
-	Type = "Useless",
+	Type = "Uncommon",
 	Model = "models/money/silvcoin.mdl",
 	Rarity = 2,
 	Price = 500,
 	PhysSound = "Chain.ImpactHard" 
-}
+	}
+
 
 items.it_register = {
-	Type = "Useless",
+	Type = "Rare",
 	Model = "models/props_c17/cashregister01a.mdl",
 	Rarity = 3,
 	Price = 400,
 	PhysSound = "SolidMetal.ImpactSoft" 
-}
+	}
 	function items.it_register:OnInit( self ) self:SetMaxHealth( 50 ) self:SetHealth( self:GetMaxHealth() ) self.xdefm_Killed = false end
 	function items.it_register:OnDamaged( self, dmg ) if self:Health() <= 0 or dmg:GetDamage() <= 0 or self.xdefm_Killed then return false end
 		self:SetHealth( math.max( 0, self:Health() -dmg:GetDamage() ) ) self:EmitSound( "Breakable.Metal" )
@@ -508,21 +526,25 @@ items.it_register = {
 	
 
 items.it_pallet = {
-	Type = "Useless",
+	Type = "Legendary",
 	Model = "models/props/cs_assault/moneypallet.mdl",
 	Rarity = 4,
 	Price = 5000,
 	Carryable = false,
 	PhysSound = "Wood_Crate.ImpactHard" 
-}
+	}
 	function items.it_pallet:OnReady( self ) self:GetPhysicsObject():SetMaterial( "wood" ) self:GetPhysicsObject():SetBuoyancyRatio( 5 ) end
 
+
 items.cr_dollar = {
-Type = "Creature",
-Model = "models/props_collectables/money_wad.mdl"
-	,
-Rarity = 2,
-Price = 750, TickRate = 1, MinSize = 0.8, MaxSize = 1.4 }
+	Type = "Creature",
+	Model = "models/props_collectables/money_wad.mdl",
+	Rarity = 2,
+	Price = 750,
+	TickRate = 1,
+	MinSize = 0.8,
+	MaxSize = 1.4
+	}
 	function items.it_pallet:OnInit( self ) self:SetMaxHealth( 25 ) self:SetHealth( self:GetMaxHealth() )
 		self:SetBloodColor( BLOOD_COLOR_RED ) self:PhysicsInit( SOLID_VPHYSICS )
 		self:GetPhysicsObject():SetMaterial( "flesh" ) self:SetCollisionGroup( COLLISION_GROUP_NPC )
@@ -598,13 +620,16 @@ Price = 750, TickRate = 1, MinSize = 0.8, MaxSize = 1.4 }
 	
 
 items.it_present = {
-Type = "Useless",
-Model = { "models/effects/bday_gib01.mdl", "models/effects/bday_gib02.mdl",
-	"models/effects/bday_gib03.mdl", "models/effects/bday_gib04.mdl" },
-Rarity = 3,
-Price = 200,
-PhysSound = "Cardboard.ImpactSoft",
-HelperUse = "xdefm.U2" }
+	Type = "Rare",
+	Model = {
+		"models/effects/bday_gib01.mdl", "models/effects/bday_gib02.mdl",
+		"models/effects/bday_gib03.mdl", "models/effects/bday_gib04.mdl"
+		},
+	Rarity = 3,
+	Price = 200,
+	PhysSound = "Cardboard.ImpactSoft",
+	HelperUse = "xdefm.U2"
+	}
 	if CLIENT then -- xdefm_present
 		local EFFECT = {}
 		function EFFECT:Init( data ) local pos = data:GetOrigin()  self.Emitter = ParticleEmitter( pos )
@@ -651,14 +676,18 @@ HelperUse = "xdefm.U2" }
 	
 
 items.it_rottenmeat = {
-Type = "Useless",
-Model = { "models/Gibs/HGIBS_rib.mdl", "models/Gibs/HGIBS_scapula.mdl",
-	"models/Gibs/HGIBS_spine.mdl", "models/gibs/antlion_gib_medium_1.mdl", "models/gibs/antlion_gib_medium_2.mdl", "models/gibs/antlion_gib_small_2.mdl",
-	"models/gibs/antlion_gib_small_1.mdl", "models/gibs/antlion_gib_medium_3.mdl" }
-	,
-Rarity = 1,
-Price = 10,
-PhysSound = "Flesh_Bloody.ImpactHard", TickRate = 1 }
+	Type = "Common",
+	Model = {
+		"models/Gibs/HGIBS_rib.mdl", "models/Gibs/HGIBS_scapula.mdl",
+		"models/Gibs/HGIBS_spine.mdl", "models/gibs/antlion_gib_medium_1.mdl",
+		"models/gibs/antlion_gib_medium_2.mdl", "models/gibs/antlion_gib_small_2.mdl",
+		"models/gibs/antlion_gib_small_1.mdl", "models/gibs/antlion_gib_medium_3.mdl"
+		},
+	Rarity = 1,
+	Price = 10,
+	PhysSound = "Flesh_Bloody.ImpactHard",
+	TickRate = 1
+	}
 	function items.it_rottenmeat:OnInit( self ) self:SetMaterial( "models/flesh" ) self:SetColor( Color( 255, 255, 0 ) ) self.xdefm_Kill = CurTime() +60 end
 	function items.it_rottenmeat:OnThink( self ) if self.xdefm_Kill > CurTime() then return end
 		xdefm_BroadEffect( "BloodImpact", { Flags = 0, Origin = self:GetPos(), Scale = 1, Radius = 1, Magnitude = 1 } )
@@ -667,13 +696,17 @@ PhysSound = "Flesh_Bloody.ImpactHard", TickRate = 1 }
 	
 
 items.it_corpse = {
-Type = "Useless",
-Model = { "models/Zombie/Fast.mdl", "models/Zombie/Classic.mdl",
-	"models/Zombie/Poison.mdl", "models/Humans/corpse1.mdl", "models/Zombie/Classic_legs.mdl", "models/Gibs/Fast_Zombie_Legs.mdl",
-	"models/Zombie/Classic_torso.mdl", "models/zombie/fast_torso.mdl" },
-Rarity = 2,
-Price = 500,
-PhysSound = "Flesh.ImpactSoft" }
+	Type = "Uncommon",
+	Model = {
+		"models/Zombie/Fast.mdl", "models/Zombie/Classic.mdl",
+		"models/Zombie/Poison.mdl", "models/Humans/corpse1.mdl",
+		"models/Zombie/Classic_legs.mdl", "models/Gibs/Fast_Zombie_Legs.mdl",
+		"models/Zombie/Classic_torso.mdl", "models/zombie/fast_torso.mdl"
+		},
+	Rarity = 2,
+	Price = 500,
+	PhysSound = "Flesh.ImpactSoft"
+	}
 	function items.it_corpse:OnInit( self ) self:PhysicsInitBox( self:OBBMins(), self:OBBMaxs() )
 		self:SetCollisionBounds( self:OBBMins(), self:OBBMaxs() ) self:SetMoveType( MOVETYPE_VPHYSICS )
 		self:SetSequence( 1 ) self:SetPlaybackRate( 0 ) self:SetMaxHealth( math.random( 100, 200 ) ) self:SetHealth( self:GetMaxHealth() )
@@ -690,12 +723,15 @@ PhysSound = "Flesh.ImpactSoft" }
 	
 
 items.it_gravestone = {
-Type = "Useless",
-Model = { "models/props_c17/gravestone001a.mdl", "models/props_c17/gravestone002a.mdl",
-	"models/props_c17/gravestone003a.mdl", "models/props_c17/gravestone004a.mdl" },
-Rarity = 1,
-Price = 60,
-PhysSound = "Concrete.ImpactHard" }
+	Type = "Common",
+	Model = {
+		"models/props_c17/gravestone001a.mdl", "models/props_c17/gravestone002a.mdl",
+		"models/props_c17/gravestone003a.mdl", "models/props_c17/gravestone004a.mdl"
+		},
+	Rarity = 1,
+	Price = 60,
+	PhysSound = "Concrete.ImpactHard"
+	}
 	function items.it_gravestone:OnInit( self ) self:SetMaxHealth( 100 ) self:SetHealth( self:GetMaxHealth() ) self.xdefm_Killed = false end
 	function items.it_gravestone:OnDamaged( self, dmg ) if self.xdefm_Killed then return end self:EmitSound( "Breakable.MatConcrete" )
 		self:SetHealth( math.max( 0, self:Health() -dmg:GetDamage() ) ) if self:Health() <= 0 then self.xdefm_Killed = true
@@ -706,10 +742,15 @@ PhysSound = "Concrete.ImpactHard" }
 	
 
 items.cr_crab = {
-Type = "Creature",
-Model = "models/headcrabclassic.mdl",Rarity = 2,
-Price = 80, TickRate = 0.1, MinSize = 0.6, MaxSize = 1.4 }
-items.cr_crab.Constants = { Health = 20, Force = 75, PainSnd = "NPC_HeadCrab.Pain", DieSnd = "NPC_HeadCrab.Die", JumpSnd = "NPC_Headcrab.Attack",
+	Type = "Creature",
+	Model = "models/headcrabclassic.mdl",
+	Rarity = 2,
+	Price = 80,
+	TickRate = 0.1,
+	MinSize = 0.6,
+	MaxSize = 1.4
+	}
+	items.cr_crab.Constants = { Health = 20, Force = 75, PainSnd = "NPC_HeadCrab.Pain", DieSnd = "NPC_HeadCrab.Die", JumpSnd = "NPC_Headcrab.Attack",
 	FlyAct = "Drown", IdleAct = "Idle01", Damage = 25, DamageType = DMG_CLUB, AtkSnd = "NPC_FastHeadcrab.Bite", JumpFreq = 25, LPos = Vector( 0, 0, 8 ), LDis = 20 }
 	function items.cr_crab:OnReady( self ) self:GetPhysicsObject():SetBuoyancyRatio( 1 ) self:SetTrigger( true ) self:StartMotionController() self:PhysWake() end
 	function items.cr_crab:OnInit( self ) local con = self.xdefm_T2.Constants  self:SetCollisionGroup( COLLISION_GROUP_NPC )
@@ -774,24 +815,57 @@ items.cr_crab.Constants = { Health = 20, Force = 75, PainSnd = "NPC_HeadCrab.Pai
 	
 
 items.cr_crab2 = {
-Type = "Creature",
-Model = { "models/headcrab.mdl" },
-Rarity = 2,
-Price = 100, TickRate = 0.1, MinSize = 0.6, MaxSize = 1.4,
-Based = "cr_crab" }
-items.cr_crab2.Constants = { Health = 20, Force = 125, PainSnd = "NPC_HeadCrab.Pain", DieSnd = "NPC_HeadCrab.Die", JumpSnd = "NPC_Headcrab.Attack",
-	FlyAct = "Drown", IdleAct = "Idle01", Damage = 25, DamageType = DMG_CLUB, AtkSnd = "NPC_FastHeadcrab.Bite", JumpFreq = 5, LPos = Vector( 0, 0, 8 ), LDis = 20 }
+	Type = "Creature",
+	Model = "models/headcrab.mdl",
+	Rarity = 2,
+	Price = 100,
+	TickRate = 0.1,
+	MinSize = 0.6,
+	MaxSize = 1.4,
+	Based = "cr_crab"
+	}
+	items.cr_crab2.Constants = {
+			Health = 20,
+			Force = 125,
+			PainSnd = "NPC_HeadCrab.Pain",
+			DieSnd = "NPC_HeadCrab.Die",
+			JumpSnd = "NPC_Headcrab.Attack",
+			FlyAct = "Drown",
+			IdleAct = "Idle01",
+			Damage = 25,
+			DamageType = DMG_CLUB,
+			AtkSnd = "NPC_FastHeadcrab.Bite",
+			JumpFreq = 5,
+			LPos = Vector( 0, 0, 8 ),
+			LDis = 20
+			}
 
 
 items.cr_crab3 = {
-Type = "Creature",
-Model = { "models/headcrabblack.mdl" },
-Rarity = 3,
-Price = 300, TickRate = 0.1, MinSize = 0.6, MaxSize = 1.4 ,
-Based = "cr_crab"
-}
-items.cr_crab3.Constants = { Health = 30, Force = 150, PainSnd = "NPC_BlackHeadcrab.Pain", DieSnd = "NPC_BlackHeadcrab.Die", JumpSnd = "NPC_BlackHeadcrab.Talk",
-	FlyAct = "Drown", IdleAct = "Idle01", Damage = 50, DamageType = DMG_POISON, AtkSnd = "NPC_BlackHeadcrab.Bite", JumpFreq = 30, LPos = Vector( 0, 0, 8 ), LDis = 20 }
+	Type = "Creature",
+	Model = "models/headcrabblack.mdl",
+	Rarity = 3,
+	Price = 300,
+	TickRate = 0.1,
+	MinSize = 0.6,
+	MaxSize = 1.4,
+	Based = "cr_crab"
+	}
+	items.cr_crab3.Constants = {
+			Health = 30,
+			Force = 150,
+			PainSnd = "NPC_BlackHeadcrab.Pain",
+			DieSnd = "NPC_BlackHeadcrab.Die",
+			JumpSnd = "NPC_BlackHeadcrab.Talk",
+			FlyAct = "Drown",
+			IdleAct = "Idle01",
+			Damage = 50,
+			DamageType = DMG_POISON,
+			AtkSnd = "NPC_BlackHeadcrab.Bite",
+			JumpFreq = 30,
+			LPos = Vector( 0, 0, 8 ),
+			LDis = 20
+			}
 
 
 items.cr_gnome = {
@@ -802,34 +876,68 @@ items.cr_gnome = {
 	TickRate = 0.1,
 	MinSize = 0.8, MaxSize = 1.4,
 	Based = "cr_crab"
-}
-	sound.Add( { name = "xdefm.GnomeDie", channel = CHAN_VOICE, volume = 1, level = 75, pitch = 200, sound = "*vo/ravenholm/monk_death07.wav" } )
-	sound.Add( { name = "xdefm.GnomePain", channel = CHAN_VOICE, volume = 1, level = 75, pitch = 200,
-		sound = { "*vo/ravenholm/monk_pain01.wav", "*vo/ravenholm/monk_pain02.wav", "*vo/ravenholm/monk_pain03.wav",
-				  "*vo/ravenholm/monk_pain04.wav", "*vo/ravenholm/monk_pain05.wav", "*vo/ravenholm/monk_pain06.wav",
-				  "*vo/ravenholm/monk_pain07.wav", "*vo/ravenholm/monk_pain08.wav", "*vo/ravenholm/monk_pain09.wav",
-				  "*vo/ravenholm/monk_pain10.wav", "*vo/ravenholm/monk_pain12.wav" 
-				} 
-		} 
-	)
-	sound.Add( { name = "xdefm.GnomeLaugh", channel = CHAN_VOICE, volume = 1, level = 75, pitch = 200,
-	sound = { "*vo/ravenholm/madlaugh01.wav", "*vo/ravenholm/madlaugh02.wav", "*vo/ravenholm/madlaugh03.wav",
-		"*vo/ravenholm/madlaugh04.wav" } } 
-	)
-	items.cr_gnome.Constants = { Health = 200, Force = 100, PainSnd = "xdefm.GnomePain", DieSnd = "xdefm.GnomeDie", JumpSnd = "xdefm.GnomeLaugh",
-	FlyAct = "idle", IdleAct = "idle", Damage = 10, DamageType = DMG_CLUB, AtkSnd = "Flesh.ImpactHard", JumpFreq = 5, LPos = Vector( 0, 0, 0 ), LDis = 5 }
+	}
+	sound.Add( {
+			name = "xdefm.GnomeDie",
+			channel = CHAN_VOICE,
+			volume = 1,
+			level = 75,
+			pitch = 200,
+			sound = "*vo/ravenholm/monk_death07.wav"
+			} )
+	sound.Add( {
+			name = "xdefm.GnomePain",
+			channel = CHAN_VOICE,
+			volume = 1,
+			level = 75,
+			pitch = 200,
+			sound = { 
+				"*vo/ravenholm/monk_pain01.wav", "*vo/ravenholm/monk_pain02.wav", 
+				"*vo/ravenholm/monk_pain03.wav", "*vo/ravenholm/monk_pain04.wav",
+				"*vo/ravenholm/monk_pain05.wav", "*vo/ravenholm/monk_pain06.wav",
+				"*vo/ravenholm/monk_pain07.wav", "*vo/ravenholm/monk_pain08.wav",
+				"*vo/ravenholm/monk_pain09.wav", "*vo/ravenholm/monk_pain10.wav",
+				"*vo/ravenholm/monk_pain12.wav" 
+				}
+			} )
+	sound.Add( {
+			name = "xdefm.GnomeLaugh",
+			channel = CHAN_VOICE,
+			volume = 1,
+			level = 75,
+			pitch = 200,
+			sound = {
+				"*vo/ravenholm/madlaugh01.wav", "*vo/ravenholm/madlaugh02.wav",
+				"*vo/ravenholm/madlaugh03.wav", "*vo/ravenholm/madlaugh04.wav"
+				}
+			} )
+	items.cr_gnome.Constants = {
+			Health = 200,
+			Force = 100,
+			PainSnd = "xdefm.GnomePain",
+			DieSnd = "xdefm.GnomeDie",
+			JumpSnd = "xdefm.GnomeLaugh",
+			FlyAct = "idle",
+			IdleAct = "idle",
+			Damage = 10,
+			DamageType = DMG_CLUB,
+			AtkSnd = "Flesh.ImpactHard",
+			JumpFreq = 5,
+			LPos = Vector( 0, 0, 0 ),
+			LDis = 5
+			}
 
 
 items.it_campfire = {
-Type = "Useless",
-Model = "models/props_unique/firepit_campground.mdl",
+	Type = "Uncommon",
+	Model = "models/props_unique/firepit_campground.mdl",
 	Rarity = 2,
 	Price = 100,
 	TickRate = 1,
 	PhysSound = "Concrete.ImpactHard",
-	CantCook = true,
 	CanPhysgun = true
-}
+	CantCook = true
+	}
 	function items.it_campfire:OnReady( self ) self:GetPhysicsObject():SetMass( math.ceil( self:GetPhysicsObject():GetMass()*0.1 ) ) end
 	function items.it_campfire:OnInit( self )  self.xdefm_Spot = nil  self.xdefm_Pressed = 0  self.xdefm_Fire = -1  self.xdefm_Lit = nil
 		self.xdefm_Spot = xdefm_FireSpot( self:LocalToWorld(Vector(0,0,6)), 1, 1, self )
@@ -877,16 +985,16 @@ Model = "models/props_unique/firepit_campground.mdl",
 	
 
 items.it_stove1 = {
-Type = "Useless",
-Model = "models/props_interiors/makeshift_stove_battery.mdl",
+	Type = "Uncommon",
+	Model = "models/props_interiors/makeshift_stove_battery.mdl",
 	Rarity = 2,
 	Price = 250,
 	TickRate = 1,
 	HelperUse = "xdefm.U4",
 	PhysSound = "Metal_Barrel.ImpactHard",
-	CantCook = true,
 	CanPhysgun = true
-}
+	CantCook = true
+	}
 	function items.it_stove1:OnInit( self )  self.xdefm_Enabled = 0  self.xdefm_Spot = nil  self.xdefm_Pressed = 0
 		self.xdefm_Spot = xdefm_FireSpot( self:LocalToWorld(Vector(-2.5,-6.5,18)), 5, math.random( 0, 5 ), self )
 	end
@@ -906,16 +1014,16 @@ Model = "models/props_interiors/makeshift_stove_battery.mdl",
 	
 
 items.it_stove2 = {
-Type = "Useless",
-Model = "models/props/cs_militia/stove01.mdl",
+	Type = "Uncommon",
+	Model = "models/props/cs_militia/stove01.mdl",
 	Rarity = 2,
 	Price = 450,
 	HelperUse = "xdefm.U4",
 	TickRate = 1,
 	PhysSound = "Metal_Barrel.ImpactHard",
-	CantCook = true,
 	CanPhysgun = true
-}
+	CantCook = true
+	}
 	function items.it_stove2:OnInit( self )  self.xdefm_Enabled = 0  self.xdefm_Spots = {}  self.xdefm_Pressed = 0
 		self.xdefm_Spots[ 1 ] = xdefm_FireSpot( self:LocalToWorld(Vector(6,12,16)), 5, 2, self )
 		self.xdefm_Spots[ 2 ] = xdefm_FireSpot( self:LocalToWorld(Vector(6,-12,16)), 5, 2, self )
@@ -934,16 +1042,16 @@ Model = "models/props/cs_militia/stove01.mdl",
 	
 
 items.it_stove3 = {
-Type = "Useless",
-Model = "models/props_c17/furniturestove001a.mdl",
+	Type = "Rare",
+	Model = "models/props_c17/furniturestove001a.mdl",
 	Rarity = 3,
 	Price = 750,
 	HelperUse = "xdefm.U4",
 	TickRate = 1,
 	PhysSound = "Metal_Barrel.ImpactHard",
-	CantCook = true,
 	CanPhysgun = true
-}
+	CantCook = true
+	}
 	function items.it_stove3:OnInit( self )  self.xdefm_Enabled = 0  self.xdefm_Spots = {}  self.xdefm_Pressed = 0
 		self.xdefm_Spots[ 1 ] = xdefm_FireSpot( self:LocalToWorld(Vector(3,11,20)), 3, 6, self )
 		self.xdefm_Spots[ 2 ] = xdefm_FireSpot( self:LocalToWorld(Vector(3,-11,20)), 3, 6, self )
@@ -964,40 +1072,56 @@ Model = "models/props_c17/furniturestove001a.mdl",
 	
 
 items.it_furniture1 = {
-	Type = "Useless",
-	Model = { "models/props_c17/FurnitureChair001a.mdl", "models/props_c17/FurnitureTable001a.mdl",
-		"models/props_c17/FurnitureTable002a.mdl", "models/props_c17/FurnitureTable003a.mdl", "models/props_interiors/Furniture_Vanity01a.mdl", "models/props_interiors/Furniture_Couch02a.mdl",
-		"models/props_c17/bench01a.mdl", "models/props_c17/FurnitureDrawer002a.mdl", "models/props_c17/FurnitureDresser001a.mdl" },
+	Type = "Common",
+	Model = {
+		"models/props_c17/FurnitureChair001a.mdl", "models/props_c17/FurnitureTable001a.mdl",
+		"models/props_c17/FurnitureTable002a.mdl", "models/props_c17/FurnitureTable003a.mdl",
+		"models/props_interiors/Furniture_Vanity01a.mdl", "models/props_interiors/Furniture_Couch02a.mdl",
+		"models/props_c17/bench01a.mdl", "models/props_c17/FurnitureDrawer002a.mdl",
+		"models/props_c17/FurnitureDresser001a.mdl"
+		},
 	Rarity = 1,
 	Price = 25,
 	PhysSound = "Wood.ImpactHard",
 	Carryable = false 
-}
+	}
 	function items.it_furniture1:OnReady( self ) self:GetPhysicsObject():SetMass( self:GetPhysicsObject():GetMass()*0.1 ) end
+
+
 items.it_furniture2 = {
-	Type = "Useless",
-	Model = { "models/props_c17/chair02a.mdl", "models/props_c17/FurnitureBathtub001a.mdl", "models/props_c17/door01_left.mdl",
-		"models/props_c17/FurnitureRadiator001a.mdl", "models/props_c17/FurnitureWashingmachine001a.mdl", "models/props_c17/Lockers001a.mdl", "models/props_combine/breendesk.mdl",
-		"models/props_interiors/Furniture_chair03a.mdl", "models/props_junk/PushCart01a.mdl", "models/props_junk/ravenholmsign.mdl", "models/props_wasteland/controlroom_chair001a.mdl",
-		"models/props_wasteland/controlroom_desk001a.mdl", "models/props_wasteland/controlroom_desk001b.mdl", "models/props_wasteland/controlroom_storagecloset001a.mdl", "models/props_interiors/bathtub01a.mdl" },
+	Type = "Uncommon",
+	Model = {
+		"models/props_c17/chair02a.mdl", "models/props_c17/FurnitureBathtub001a.mdl",
+		"models/props_c17/door01_left.mdl", "models/props_c17/FurnitureRadiator001a.mdl",
+		"models/props_c17/FurnitureWashingmachine001a.mdl", "models/props_c17/Lockers001a.mdl",
+		"models/props_combine/breendesk.mdl", "models/props_interiors/Furniture_chair03a.mdl",
+		"models/props_junk/PushCart01a.mdl", "models/props_junk/ravenholmsign.mdl",
+		"models/props_wasteland/controlroom_chair001a.mdl", "models/props_wasteland/controlroom_desk001a.mdl",
+		"models/props_wasteland/controlroom_desk001b.mdl", "models/props_wasteland/controlroom_storagecloset001a.mdl",
+		"models/props_interiors/bathtub01a.mdl"
+		},
 	Rarity = 2,
 	Price = 125,
 	PhysSound = "Metal_Box.ImpactHard",
 	Carryable = false 
-}
+	}
 	function items.it_furniture2:OnReady( self ) self:GetPhysicsObject():SetMass( self:GetPhysicsObject():GetMass()*0.1 ) end
-	
+
+
 items.it_radio = {
-	Type = "Useless",
+	Type = "Rare",
 	Model = "models/props_lab/citizenradio.mdl",
 	Rarity = 3,
 	Price = 400,
-	PhysSound = "MetalVent.ImpactHard", TickRate = 0.1,
-	CanPhysgun = true
-}
-	local so = { "ambient/music/mirame_radio_thru_wall.wav", "ambient/music/cubanmusic1.wav",
-	"ambient/music/country_rock_am_radio_loop.wav", "ambient/music/flamenco.wav", "ambient/music/latin.wav",
-	"ambient/music/piano1.wav", "ambient/music/piano2.wav" }
+	PhysSound = "MetalVent.ImpactHard",
+	TickRate = 0.1 
+	}
+	local so = {
+		"ambient/music/mirame_radio_thru_wall.wav", "ambient/music/cubanmusic1.wav",
+		"ambient/music/country_rock_am_radio_loop.wav", "ambient/music/flamenco.wav",
+		"ambient/music/latin.wav", "ambient/music/piano1.wav",
+		"ambient/music/piano2.wav"
+		}
 	function items.it_radio:OnInit( self ) self.xdefm_Snd = CreateSound( self, Sound( so[ math.random( #so ) ] ) )
 		self.xdefm_Snd:Play()  self.xdefm_BrokenDelay = -1
 	end
@@ -1024,13 +1148,13 @@ items.it_radio = {
 	
 
 items.it_orange = {
-	Type = "Useless",
+	Type = "Uncommon",
 	Model = "models/props/cs_italy/orange.mdl",
 	Rarity = 1,
 	Price = 16,
 	PhysSound = "Watermelon.Impact",
 	HelperUse = "xdefm.U2"
-}
+	}
 	function items.it_orange:OnInit( self ) self.xdefm_Used = false end
 	function items.it_orange:OnUse( self, ent ) if self.xdefm_Used then return end if ent:Health() >= ent:GetMaxHealth() then return true end
 		if ent:KeyDown( IN_SPEED ) then return true end local met = xdefm_CookMeter( self:GetFMod_DT() )
@@ -1040,13 +1164,13 @@ items.it_orange = {
 	
 
 items.it_apple = {
-	Type = "Useless",
+	Type = "Common",
 	Model = "models/maniasfood/apple/apple.mdl",
 	Rarity = 1,
 	Price = 12,
 	PhysSound = "Watermelon.Impact",
 	HelperUse = "xdefm.U2"
-}
+	}
 	function items.it_apple:OnInit( self ) self.xdefm_Used = false end
 	function items.it_apple:OnReady( self ) self:GetPhysicsObject():SetMass( 15 ) end
 	function items.it_apple:OnUse( self, ent ) if self.xdefm_Used then return end if ent:Health() >= ent:GetMaxHealth() then return true end
@@ -1057,13 +1181,13 @@ items.it_apple = {
 	
 
 items.it_banana = {
-	Type = "Useless",
+	Type = "Uncommon",
 	Model = "models/props/cs_italy/bananna_bunch.mdl",
 	Rarity = 2,
 	Price = 40,
 	PhysSound = "Watermelon.Impact",
 	HelperUse = "xdefm.U2"
-}
+	}
 	function items.it_banana:OnInit( self ) self.xdefm_Used = false end
 	function items.it_banana:OnUse( self, ent ) if self.xdefm_Used then return end if ent:Health() >= ent:GetMaxHealth() then return true end
 		if ent:KeyDown( IN_SPEED ) then return true end local met = xdefm_CookMeter( self:GetFMod_DT() )
@@ -1073,13 +1197,13 @@ items.it_banana = {
 	
 
 items.it_melon = {
-	Type = "Useless",
+	Type = "Uncommon",
 	Model = "models/props_junk/watermelon01.mdl",
 	Rarity = 2,
 	Price = 60,
 	PhysSound = "Watermelon.Impact",
 	HelperUse = "xdefm.U2"
-}
+	}
 	function items.it_melon:OnInit( self ) self:SetMaxHealth( 10 ) self:SetHealth( self:GetMaxHealth() ) self.xdefm_Killed = false end
 	function items.it_melon:OnDamaged( self, dmg ) if self.xdefm_Killed then return end self:EmitSound( "Watermelon.BulletImpact" )
 		self:SetHealth( math.max( 0, self:Health() -dmg:GetDamage() ) ) if self:Health() <= 0 then self.xdefm_Killed = true
@@ -1094,12 +1218,15 @@ items.it_melon = {
 	
 
 items.it_melo = {
-Type = "Useless",
-Model = { "models/props_junk/watermelon01_chunk01b.mdl", "models/props_junk/watermelon01_chunk01c.mdl" },
-Rarity = 1,
-PhysSound = "Watermelon.Impact",
-Price = 10,
-HelperUse = "xdefm.U2" }
+	Type = "Common",
+	Model = {
+		"models/props_junk/watermelon01_chunk01b.mdl", "models/props_junk/watermelon01_chunk01c.mdl"
+		},
+	Rarity = 1,
+	PhysSound = "Watermelon.Impact",
+	Price = 10,
+	HelperUse = "xdefm.U2"
+	}
 	function items.it_melo:OnInit( self ) self.xdefm_Used = false  self.xdefm_Touch = 0  self:SetCollisionGroup( COLLISION_GROUP_WEAPON ) end
 	function items.it_melo:OnReady( self ) self:SetTrigger( true ) end
 	function items.it_melo:OnUse( self, ent ) if self.xdefm_Used then return end if ent:Health() >= ent:GetMaxHealth() then return true end
@@ -1117,14 +1244,18 @@ HelperUse = "xdefm.U2" }
 	
 
 items.it_orangebox = {
-Type = "Struct",
-Model = "models/props/de_inferno/crate_fruit_break.mdl",
-HelperUse = "xdefm.U3", SType = 1,
+	Type = "Structure",
+	Model = "models/props/de_inferno/crate_fruit_break.mdl",
+	HelperUse = "xdefm.U3",
+	SType = 1,
 	Rarity = 3,
 	Price = 500,
-	PhysSound = "Wood.ImpactHard", TickRate = 1, Amount = 12, StartSound = "AmmoCrate.Open", ExitSound = "AmmoCrate.Close",
-	CanPhysgun = true
-}
+	PhysSound = "Wood.ImpactHard",
+	TickRate = 1,
+	Amount = 12,
+	StartSound = "AmmoCrate.Open",
+	ExitSound = "AmmoCrate.Close"
+	}
 	function items.it_orangebox:OnInit( self ) self.xdefm_OTimer = 0 self:SetNWInt( "XDEFM_CT", 0 ) end
 	function items.it_orangebox:OnReady( self ) self:GetPhysicsObject():SetMass( 100 ) end
 	function items.it_orangebox:OnThink( self ) local ful, tot = true, 0
@@ -1162,10 +1293,15 @@ HelperUse = "xdefm.U3", SType = 1,
 	
 
 items.cr_fish = {
-Type = "Creature",
-Model = "models/props/cs_militia/fishriver01.mdl",Rarity = 1,
-Price = 100, TickRate = 0.1, MinSize = 0.6, MaxSize = 1.5,
-PhysSound = "Watermelon.Impact" }
+	Type = "Creature",
+	Model = "models/props/cs_militia/fishriver01.mdl",
+	Rarity = 1,
+	Price = 100,
+	TickRate = 0.1,
+	MinSize = 0.6,
+	MaxSize = 1.5,
+	PhysSound = "Watermelon.Impact"
+	}
 	items.cr_fish.Constants = { SpdPos = 28, SpdAng = 100, MoveDist = 512, Health = 25, Mass = 32, AngInv = 0 }
 	function items.cr_fish:OnInit( self ) self:SetMaxHealth( self.xdefm_T2.Constants.Health ) self:SetHealth( self:GetMaxHealth() ) self:SetCollisionGroup( COLLISION_GROUP_NPC )
 		self:SetBloodColor( BLOOD_COLOR_RED ) self.xdefm_NT = CurTime() +0.5  self.xdefm_TPos = nil  self.ShadowParams = {}  self.xdefm_Killed = false
@@ -1230,40 +1366,78 @@ PhysSound = "Watermelon.Impact" }
 	
 
 items.cr_gold = {
-     Model = "models/props/de_inferno/goldfish.mdl",
-Price = 60,
-Rarity = 1,
-Based = "cr_fish"}
-	items.cr_gold.Constants = { SpdPos = 28, SpdAng = 100, MoveDist = 512, Health = 10, Mass = 24, AngInv = 0,
-	PhysSound = "Watermelon.Impact" }
+	Type = "Creature",
+     	Model = "models/props/de_inferno/goldfish.mdl",
+	Price = 60,
+	Rarity = 1,
+	Based = "cr_fish"
+	}
+	items.cr_gold.Constants = { 
+			SpdPos = 28,
+			SpdAng = 100,
+			MoveDist = 512,
+			Health = 10,
+			Mass = 24,
+			AngInv = 0,
+			PhysSound = "Watermelon.Impact"
+			}
 
 
 items.cr_fish2 = {
-     Model = { "models/tmp_mod/island_fish_001.mdl", "models/tmp_mod/island_fish_002.mdl", "models/tmp_mod/island_fish_003.mdl" },
+	Type = "Creature",
+	Model = {
+		"models/tmp_mod/island_fish_001.mdl",
+		"models/tmp_mod/island_fish_002.mdl",
+		"models/tmp_mod/island_fish_003.mdl"
+		},
 	Price = 84,
-Rarity = 2,
-Based = "cr_fish"}
-	items.cr_fish2.Constants = { SpdPos = 32, SpdAng = 100, MoveDist = 512, Health = 15, Mass = 48, AngInv = 2,
-	PhysSound = "Watermelon.Impact" }
+	Rarity = 2,
+	Based = "cr_fish"
+	}
+	items.cr_fish2.Constants = {
+			SpdPos = 32,
+			SpdAng = 100,
+			MoveDist = 512,
+			Health = 15,
+			Mass = 48,
+			AngInv = 2,
+			PhysSound = "Watermelon.Impact"
+			}
 
 
 items.cr_perch = {
-     Model = "models/fish/perch/perch.mdl",
-Price = 256,
-Rarity = 3,
-Based = "cr_fish"}
-	items.cr_perch.Constants = { SpdPos = 48, SpdAng = 100, MoveDist = 768, Health = 30, Mass = 64, AngInv = 1,
-PhysSound = "Watermelon.Impact" 
-}
+	Type = "Creature",
+     	Model = "models/fish/perch/perch.mdl",
+	Price = 256,
+	Rarity = 3,
+	Based = "cr_fish"
+	}
+	items.cr_perch.Constants = {
+			SpdPos = 48,
+			SpdAng = 100,
+			MoveDist = 768,
+			Health = 30,
+			Mass = 64,
+			AngInv = 1,
+			PhysSound = "Watermelon.Impact" 
+			}
 
 
 items.cr_perch2 = {
-     Model = "models/fish/perch/perch.mdl",
-Price = 2500,
-Rarity = 4,
-Based = "cr_fish"}
-	items.cr_perch2 .Constants = { SpdPos = 64, SpdAng = 500, MoveDist = 1024, Health = 50, Mass = 100, AngInv = 1,
-	PhysSound = "Watermelon.Impact" }
+	Model = "models/fish/perch/perch.mdl",
+	Price = 2500,
+	Rarity = 4,
+	Based = "cr_fish"
+	}
+	items.cr_perch2.Constants = {
+			SpdPos = 64,
+			SpdAng = 500,
+			MoveDist = 1024,
+			Health = 50,
+			Mass = 100,
+			AngInv = 1,
+			PhysSound = "Watermelon.Impact"
+			}
 	function items.cr_perch2 :OnInit( self ) self:SetMaxHealth( self.xdefm_T2.Constants.Health ) self:SetHealth( self:GetMaxHealth() ) self:SetCollisionGroup( COLLISION_GROUP_NPC )
 		self:SetBloodColor( BLOOD_COLOR_RED ) self.xdefm_NT = CurTime() +0.5  self.xdefm_TPos = nil  self.ShadowParams = {}  self.xdefm_Killed = false
 		self:SetMaterial( "models/props_collectables/gold_bar" )
@@ -1276,11 +1450,15 @@ Based = "cr_fish"}
 
 
 items.cr_cute = {
-Type = "Creature",
-Model = "models/xdeedited/ichthyosaur.mdl",
-PhysSound = "Strider.Impact",Rarity = 4,
-Carryable = false,
-Price = 800, TickRate = 0.1, MinSize = 0.8, MaxSize = 1.2 }
+	Type = "Creature",
+	Model = "models/xdeedited/ichthyosaur.mdl",
+	Rarity = 4,
+	Price = 800,
+	TickRate = 0.1,
+	MinSize = 0.8,
+	MaxSize = 1.2,
+	PhysSound = "Strider.Impact"
+	}
 	function items.cr_cute:OnInit( self ) self:SetMaxHealth( 300 ) self:SetHealth( self:GetMaxHealth() )
 		self:SetBloodColor( BLOOD_COLOR_RED ) self:PhysicsInit( SOLID_BBOX ) self:SetAutomaticFrameAdvance( true )
 		self:GetPhysicsObject():SetMass( math.ceil( self:GetPhysicsObject():GetMass()*0.1 ) )
@@ -1384,11 +1562,13 @@ Price = 800, TickRate = 0.1, MinSize = 0.8, MaxSize = 1.2 }
 	
 
 items.it_barre1 = {
-Type = "Useless",
-Model = "models/props_c17/oildrum001.mdl",
-Rarity = 1,
-Price = 50,
-PhysSound = "Metal_Barrel.ImpactSoft", TickRate = 1 }
+	Type = "Common",
+	Model = "models/props_c17/oildrum001.mdl",
+	Rarity = 1,
+	Price = 50,
+	PhysSound = "Metal_Barrel.ImpactSoft",
+	TickRate = 1
+	}
 	function items.it_barre1:OnInit( self ) self:SetMaxHealth( 50 ) self:SetHealth( self:GetMaxHealth() ) self.xdefm_Killed = false end
 	function items.it_barre1:OnDamaged( self, dmg ) if self:Health() <= 0 or self.xdefm_Killed then return end
 		self:SetHealth( math.max( 0, self:Health() -dmg:GetDamage() ) ) self:EmitSound( "Breakable.Metal" )
@@ -1406,11 +1586,13 @@ PhysSound = "Metal_Barrel.ImpactSoft", TickRate = 1 }
 	
 
 items.it_barre2 = {
-Type = "Useless",
-Model = "models/props_c17/oildrum001_explosive.mdl",
-Rarity = 2,
-Price = 120,
-PhysSound = "Metal_Barrel.ImpactSoft", TickRate = 1 }
+	Type = "Uncommon",
+	Model = "models/props_c17/oildrum001_explosive.mdl",
+	Rarity = 2,
+	Price = 120,
+	PhysSound = "Metal_Barrel.ImpactSoft",
+	TickRate = 1
+	}
 	function items.it_barre2:OnInit( self ) self:SetMaxHealth( 25 ) self:SetHealth( self:GetMaxHealth() ) self.xdefm_Killed = false end
 	function items.it_barre2:OnDamaged( self, dmg ) if self:Health() <= 0 or self.xdefm_Killed then return end
 		if ( dmg:IsExplosionDamage() or dmg:IsBulletDamage() or dmg:IsDamageType( DMG_BURN ) or dmg:IsDamageType( DMG_SLOWBURN ) ) and !self:IsOnFire() then
@@ -1431,11 +1613,13 @@ PhysSound = "Metal_Barrel.ImpactSoft", TickRate = 1 }
 	
 
 items.it_bomb1 = {
-Type = "Useless",
-Model = "models/Combine_Helicopter/helicopter_bomb01.mdl",
-Rarity = 3,
-Price = 200,
-PhysSound = "MetalVent.ImpactHard", TickRate = 0.5 }
+	Type = "Rare",
+	Model = "models/Combine_Helicopter/helicopter_bomb01.mdl",
+	Rarity = 3,
+	Price = 200,
+	PhysSound = "MetalVent.ImpactHard",
+	TickRate = 0.5
+	}
 	function items.it_bomb1:OnInit( self ) self:SetMaxHealth( 10 ) self:SetHealth( self:GetMaxHealth() )
 		self.xdefm_Killed = false  self.xdefm_KillDelay = 0
 	end
@@ -1463,12 +1647,16 @@ PhysSound = "MetalVent.ImpactHard", TickRate = 0.5 }
 	
 
 items.it_bomb2 = {
-Type = "Useless",
-Model = { "models/props_phx/ww2bomb.mdl", "models/props_phx/torpedo.mdl",
-	"models/props_phx/amraam.mdl", "models/props_phx/mk-82.mdl", "models/props_phx/ball.mdl" },
-Rarity = 3,
-Price = 500,
-PhysSound = "PhxMetal.ImpactSoft" }
+	Type = "Rare",
+	Model = {
+		"models/props_phx/ww2bomb.mdl", "models/props_phx/torpedo.mdl",
+		"models/props_phx/amraam.mdl", "models/props_phx/mk-82.mdl",
+		"models/props_phx/ball.mdl"
+		},
+	Rarity = 3,
+	Price = 500,
+	PhysSound = "PhxMetal.ImpactSoft"
+	}
 	function items.it_bomb2:OnInit( self ) self:SetMaxHealth( 1 ) self:SetHealth( 1 )
 		self.xdefm_Killed = false  self.xdefm_Armed = false
 	end
@@ -1496,13 +1684,13 @@ PhysSound = "PhxMetal.ImpactSoft" }
 
 
 
-for i, v in pairs(items) do -- simple as that!
-	v.Name   = "#xdefm."  .. i
-	v.Helper = "#xdefm.d" .. i
-	if v.Based ~= nil and isstring( v.Based ) then
-		for b, k in pairs(items[v.Based]) do -- items[v.Based] must be in the same file as it is local
-			v[b] = v[b] or k
+	for i, v in pairs(items) do -- simple as that!
+		v.Name   = "#xdefm."  .. i
+		v.Helper = "#xdefm.d" .. i
+		if v.Based ~= nil and isstring( v.Based ) then
+			for b, k in pairs(items[v.Based]) do -- items[v.Based] must be in the same file as it is local
+				v[b] = v[b] or k
+			end
 		end
+		xdefm_ItemRegister( i, v )
 	end
-	xdefm_ItemRegister( i, v )
-end
