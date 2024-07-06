@@ -19,7 +19,7 @@ if CLIENT then local langs = {}
 		[ "it_steelbar" ] 	= "钢锭", [ "dit_steelbar" ] 		= "",
 		[ "it_silverbar" ] 	= "银锭", [ "dit_silverbar" ] 		= "银闪闪!",
 		[ "it_goldbar" ] 	= "金锭", [ "dit_goldbar" ] 		= "金闪闪!!",
-		[ "it_platinumbar" ] 	= "铂锭", [ "dit_platinumbar" ] 	= "超闪亮!!!",
+		[ "it_platinumbar" ] 	= "铂锭", [ "dit_platinumbar" ] 		= "超闪亮!!!",
 		[ "it_oreblue" ] 	= "蓝水晶", [ "dit_oreblue" ] 		= "",
 		[ "it_orepurple" ] 	= "紫水晶", [ "dit_orepurple" ] 		= "",
 		[ "it_oregreen" ] 	= "绿水晶", [ "dit_oregreen" ] 		= "",
@@ -47,7 +47,7 @@ if CLIENT then local langs = {}
 		[ "it_figurine" ] 	= "部落塑像", [ "dit_figurine" ] 	= "瞎几把乱飞.",
 		[ "it_torch" ] 		= "部落火炬", [ "dit_torch" ] 		= "火炬承载着永不熄灭的火焰.",
 		[ "it_bust" ] 		= "部落半身像", [ "dit_bust" ] 		= "摸一摸它可以治愈一切损伤.",
-		[ "cr_saw" ] 		= "圆锯", [ "dcr_saw" ] 		= "别问我,我只是在照搬原版.",
+		[ "cr_saw" ] 		= "圆锯", [ "dcr_saw" ]			= "别问我,我只是在照搬原版.",
 		[ "cr_baby" ] 		= "愤怒娃娃", [ "dcr_baby" ] 		= "全能狂怒警告.",
 		[ "cr_melon" ] 		= "活西瓜", [ "dcr_melon" ] 		= "成精的西瓜.",
 	}
@@ -58,10 +58,10 @@ if CLIENT then local langs = {}
 		[ "it_rpg" ] 		= "RPG Missile", [ "dit_rpg" ] 			= "Press E to launch.",
 		[ "cr_seagull" ] 	= "Seagull", [ "dcr_seagull" ] 			= "Will steal your catches.",
 		[ "cr_crow" ] 		= "Crow", [ "dcr_crow" ] 			= "Will steal your catches, smarter and quicker than seagulls.",
-		[ "cr_seagull2" ] 	= "Golden Seagull", [ "dcr_seagull2" ] 		= "Feel the doom.",
-		[ "it_vault" ] 		= "Safe", [ "dit_vault" ] 			= "May be difficult to open it.",
-		[ "it_vending" ] 	= "Vending Machine", [ "dit_vending" ] 		= "Buy drinks and resfreshments.",
-		[ "it_soda" ] 		= "Canned Soda", [ "dit_soda" ] 		= "Refreshing.",
+		[ "cr_seagull2" ] 	= "Golden Seagull", [ "dcr_seagull2" ] 		= "Sparkly.",
+		[ "it_vault" ] 		= "Safe", [ "dit_vault" ] 			= "May be difficult to open.",
+		[ "it_vending" ] 	= "Vending Machine", [ "dit_vending" ] 		= "Buy drinks and other resfreshments.",
+		[ "it_soda" ] 		= "Canned Soda", [ "dit_soda" ] 		= "Or is it called Pop?",
 		[ "it_pottery" ] 	= "Pottery Shard", [ "dit_pottery" ] 		= "Expensive... at least before broken.",
 		[ "it_potter1" ] 	= "Small Pottery", [ "dit_potter1" ] 		= "Expensive but delicate.",
 		[ "it_potter2" ] 	= "Medium Pottery", [ "dit_potter2" ] 		= "Quite expensive but delicate.",
@@ -70,36 +70,36 @@ if CLIENT then local langs = {}
 		[ "it_copperbar" ] 	= "Copper Ingot", [ "dit_copperbar" ] 		= "",
 		[ "it_leadbar" ] 	= "Lead Ingot", [ "dit_leadbar" ] 		= "",
 		[ "it_steelbar" ] 	= "Steel Ingot", [ "dit_steelbar" ] 		= "",
-		[ "it_silverbar" ] 	= "Silver Ingot", [ "dit_silverbar" ] 		= "Shiny!",
-		[ "it_goldbar" ] 	= "Gold Ingot", [ "dit_goldbar" ] 		= "Extra shiny!!",
-		[ "it_platinumbar" ] 	= "Platinum Ingot", [ "dit_platinumbar" ] 	= "Super shiny!!!",
+		[ "it_silverbar" ] 	= "Silver Ingot", [ "dit_silverbar" ] 		= "",
+		[ "it_goldbar" ] 	= "Gold Ingot", [ "dit_goldbar" ] 		= "",
+		[ "it_platinumbar" ] 	= "Platinum Ingot", [ "dit_platinumbar" ] 	= "How did you get this?",
 		[ "it_oreblue" ] 	= "Sapphire", [ "dit_oreblue" ] 		= "",
 		[ "it_orepurple" ] 	= "Amethyst", [ "dit_orepurple" ] 		= "",
 		[ "it_oregreen" ] 	= "Emerald", [ "dit_oregreen" ] 		= "",
 		[ "it_orered" ] 	= "Ruby", [ "dit_orered" ] 			= "",
 		[ "it_orewhite" ] 	= "Diamond", [ "dit_orewhite" ] 		= "",
-		[ "it_gemblue" ] 	= "Pure Sapphire", [ "dit_gemblue" ] 		= "Pure polished sapphire, expensive.",
-		[ "it_gempurple" ] 	= "Pure Amethyst", [ "dit_gempurple" ] 		= "Pure polished amethyst, expensive.",
-		[ "it_gemgreen" ] 	= "Pure Emerald", [ "dit_gemgreen" ] 		= "A polished emerald, extremely expensive.",
-		[ "it_gemred" ] 	= "Pure Ruby", [ "dit_gemred" ] 		= "A polished ruby, extremely expensive.",
-		[ "it_gemwhite" ] 	= "Pure Diamond", [ "dit_gemwhite" ] 		= "Diamond sword not included.",
+		[ "it_gemblue" ] 	= "Pure Sapphire", [ "dit_gemblue" ] 		= "Polished Sapphire.",
+		[ "it_gempurple" ] 	= "Pure Amethyst", [ "dit_gempurple" ] 		= "Polished Amethyst.",
+		[ "it_gemgreen" ] 	= "Pure Emerald", [ "dit_gemgreen" ] 		= "Polished Emerald.",
+		[ "it_gemred" ] 	= "Pure Ruby", [ "dit_gemred" ] 		= "Polished Ruby.",
+		[ "it_gemwhite" ] 	= "Pure Diamond", [ "dit_gemwhite" ] 		= "Polished Diamond.",
 		[ "it_crowbar" ] 	= "Crowbar", [ "dit_crowbar" ] 			= "",
 		[ "it_stunstick" ] 	= "Stunstick", [ "dit_stunstick" ] 		= "",
 		[ "it_hatchet" ] 	= "Hatchet", [ "dit_hatchet" ] 			= "",
 		[ "it_guitar" ] 	= "Guitar", [ "dit_guitar" ] 			= "It's an instrument, not a weapon.",
 		[ "it_gnome" ] 		= "Garden Gnome", [ "dit_gnome" ] 		= "Bad news:Common.\nGood news:Breakable.\nStill bad news:Breakable.",
-		[ "it_grinder" ] 	= "Grinder", [ "dit_grinder" ] 			= "Press E to toggle. Will be painful.",
+		[ "it_grinder" ] 	= "Grinder", [ "dit_grinder" ] 			= "Press E to toggle but it will be painful.",
 		[ "it_defib" ] 		= "Defibrillator", [ "dit_defib" ] 		= "Can revive creatures. Has a small chance to break.",
-		[ "it_bugs" ] 		= "Bug Box", [ "dit_bugs" ] 			= "Minorly trembling box, I dont recommend touching it.",
-		[ "it_rock" ] 		= "Rock", [ "dit_rock" ] 			= "Giant, breakable rock.",
+		[ "it_bugs" ] 		= "Bug Box", [ "dit_bugs" ] 			= "Trembling box of bugs, I dont recommend touching it.",
+		[ "it_rock" ] 		= "Rock", [ "dit_rock" ] 			= "Giant, breakable rock. Contains many Stones.",
 		[ "it_crate1" ] 	= "Crate", [ "dit_crate1" ] 			= "There seems to be something in the crate. Break to open.",
 		[ "it_bait1" ] 		= "Basic Bait Box", [ "dit_bait1" ] 		= "Contains 3 random Common baits. Break to open.",
-		[ "it_junkx" ] 		= "Dumpster", [ "dit_junkx" ] 			= "Filled with garbage. Open carefully.",
+		[ "it_junkx" ] 		= "Dumpster", [ "dit_junkx" ] 			= "Filled with Junk piles. Open carefully.",
 		[ "it_monitor" ] 	= "Broken Monitor", [ "dit_monitor" ] 		= "A gift from an ragequitted gamer.",
 		[ "it_cosmogram" ] 	= "Tribal Cosmogram", [ "dit_cosmogram" ] 	= "Teleport you to a random location. Do not use when recharging!",
 		[ "it_figurine" ] 	= "Tribal Figurine", [ "dit_figurine" ] 	= "Enchanted figurine that flies everywhere.",
-		[ "it_torch" ] 		= "Tribal Torch", [ "dit_torch" ] 		= "The flame on it will never go out.",
-		[ "it_bust" ] 		= "Tribal Bust", [ "dit_bust" ] 		= "Fix all the broken on touch.",
+		[ "it_torch" ] 		= "Tribal Torch", [ "dit_torch" ] 		= "The flame on it will never go out... unless you toggle it.",
+		[ "it_bust" ] 		= "Tribal Bust", [ "dit_bust" ] 		= "Fix all broken items on touch.",
 		[ "cr_baby" ] 		= "Angry Baby", [ "dcr_baby" ] 			= "Unplanned catch.",
 		[ "cr_saw" ] 		= "Sawblade", [ "dcr_saw" ] 			= "It's a living sawblade.",
 		[ "cr_melon" ] 		= "Living Melon", [ "dcr_melon" ] 		= "It's a living melon.",
@@ -114,59 +114,67 @@ local items = {}
 
 items.it_junk = {
 		Type = "Common",
-		Model = { "models/props_junk/garbage_bag001a.mdl", "models/props_junk/garbage_metalcan001a.mdl",
-				"models/props_junk/garbage_metalcan002a.mdl", "models/props_junk/garbage_takeoutcarton001a.mdl",
-				"models/props_junk/garbage_plasticbottle001a.mdl", "models/props_junk/garbage_plasticbottle003a.mdl",
-				"models/props_junk/garbage_milkcarton002a.mdl", "models/props_junk/garbage_milkcarton001a.mdl" },
+		Model = { 
+			"models/props_junk/garbage_bag001a.mdl", "models/props_junk/garbage_metalcan001a.mdl",
+			"models/props_junk/garbage_metalcan002a.mdl", "models/props_junk/garbage_takeoutcarton001a.mdl",
+			"models/props_junk/garbage_plasticbottle001a.mdl", "models/props_junk/garbage_plasticbottle003a.mdl",
+			"models/props_junk/garbage_milkcarton002a.mdl", "models/props_junk/garbage_milkcarton001a.mdl"
+			},
 		Rarity = 1,
 		Price = 5,
 		KillInWater = true,
 		PhysSound = "Plastic_Barrel.ImpactSoft"
 	}
 
+
 items.it_scrap = {
 		Type = "Common",
-		Model = { "models/props_c17/oildrumchunk01a.mdl", "models/props_c17/oildrumchunk01b.mdl", "models/props_c17/oildrumchunk01c.mdl",
-				"models/props_c17/oildrumchunk01d.mdl", "models/props_c17/oildrumchunk01e.mdl" },
+		Model = {
+			"models/props_c17/oildrumchunk01a.mdl", "models/props_c17/oildrumchunk01b.mdl",
+			"models/props_c17/oildrumchunk01c.mdl", "models/props_c17/oildrumchunk01d.mdl",
+			"models/props_c17/oildrumchunk01e.mdl"
+			},
 		Rarity = 1,
 		Price = 20,
 		PhysSound = "Metal_Box.ImpactSoft"
-	}
+		}
+
 
 items.it_rpg = {
 		Type = "Uncommon",
 		Model = "models/weapons/w_missile_closed.mdl",
-		CantCook = true,
 		Rarity = 2,
 		Price = 225,
 		PhysSound = "Metal_Box.BulletImpact",
 		TickRate = 0.05,
-		HelperUse = "xdefm.U2"
-	}
-	function items.it_rpg :OnInit( self ) self.xdefm_TimerExp = 0  self.xdefm_Killed = false  self.xdefm_ForceExp = 0
-        self:SetMaxHealth( 1 ) self:SetHealth( self:GetMaxHealth() )
-    end
-	function items.it_rpg :OnUse( self, ply ) if self.xdefm_TimerExp <= 0 and ply:KeyDown( IN_SPEED ) then return true end
-		if self.xdefm_TimerExp > 0 or self.xdefm_Killed then return false end self.xdefm_TimerExp = CurTime() +0.25  self.xdefm_ForceExp = CurTime() +10
-		self:EmitSound( "Weapon_RPG.NPC_Single" ) return false
-	end
-    function items.it_rpg :OnDamaged( self, dmg ) if self.xdefm_TimerExp > CurTime() or dmg:GetDamage() < 1 then return end
-        if self.xdefm_TimerExp <= 0 or self.xdefm_Killed then return end self.xdefm_Killed = true local ef = EffectData()
-		ef:SetStart( self:WorldSpaceCenter() ) ef:SetOrigin( self:WorldSpaceCenter() )
-		ef:SetScale( 1 ) util.Effect( "HelicopterMegaBomb", ef )
-		local dmg = DamageInfo() dmg:SetDamage( 100 ) dmg:SetDamageType( bit.bor( DMG_BLAST, DMG_AIRBOAT ) )
-		dmg:SetDamagePosition( self:WorldSpaceCenter() ) dmg:SetDamageForce( Vector( 0, 0, 1 ) ) dmg:SetAttacker( self:GetFMod_OW() )
-		dmg:SetInflictor( self ) util.BlastDamageInfo( dmg, self:WorldSpaceCenter(), 128 ) self:EmitSound( "Explo.ww2bomb" ) SafeRemoveEntity( self )
-    end
-	function items.it_rpg :OnThink( self ) if self.xdefm_TimerExp <= 0 or self.xdefm_Killed then return end
-		local lp, la = LocalToWorld( Vector( -15, 0, 0 ), Angle( 180, 0, 0 ), self:GetPos(), self:GetAngles() )
-		xdefm_BroadEffect( "Sparks", { Origin = lp, Angles = la, Normal = la:Forward(), Scale = 1, Magnitude = 1, Radius = 2 } )
-		self:GetPhysicsObject():SetVelocity( self:GetAngles():Forward()*2000 )
-        if self.xdefm_ForceExp > 0 and self.xdefm_ForceExp <= CurTime() then self:TakeDamage( 1 ) end
-	end
-	function items.it_rpg :OnCollide( self, dat, phy ) if self.xdefm_TimerExp > CurTime() or self.xdefm_Killed then return end
-		self:TakeDamage( 10 )
-	end
+		HelperUse = "xdefm.U2",
+		CantCook = true
+		}
+		function items.it_rpg :OnInit( self ) self.xdefm_TimerExp = 0  self.xdefm_Killed = false  self.xdefm_ForceExp = 0
+        		self:SetMaxHealth( 1 ) self:SetHealth( self:GetMaxHealth() )
+  		  end
+		function items.it_rpg :OnUse( self, ply ) if self.xdefm_TimerExp <= 0 and ply:KeyDown( IN_SPEED ) then return true end
+			if self.xdefm_TimerExp > 0 or self.xdefm_Killed then return false end self.xdefm_TimerExp = CurTime() +0.25  self.xdefm_ForceExp = CurTime() +10
+				self:EmitSound( "Weapon_RPG.NPC_Single" ) return false
+		end
+  	  	function items.it_rpg :OnDamaged( self, dmg ) if self.xdefm_TimerExp > CurTime() or dmg:GetDamage() < 1 then return end
+       			if self.xdefm_TimerExp <= 0 or self.xdefm_Killed then return end self.xdefm_Killed = true local ef = EffectData()
+				ef:SetStart( self:WorldSpaceCenter() ) ef:SetOrigin( self:WorldSpaceCenter() )
+				ef:SetScale( 1 ) util.Effect( "HelicopterMegaBomb", ef )
+			local dmg = DamageInfo() dmg:SetDamage( 100 ) dmg:SetDamageType( bit.bor( DMG_BLAST, DMG_AIRBOAT ) )
+				dmg:SetDamagePosition( self:WorldSpaceCenter() ) dmg:SetDamageForce( Vector( 0, 0, 1 ) ) dmg:SetAttacker( self:GetFMod_OW() )
+				dmg:SetInflictor( self ) util.BlastDamageInfo( dmg, self:WorldSpaceCenter(), 128 ) self:EmitSound( "Explo.ww2bomb" ) SafeRemoveEntity( self )
+   	 	end
+		function items.it_rpg :OnThink( self ) if self.xdefm_TimerExp <= 0 or self.xdefm_Killed then return end
+			local lp, la = LocalToWorld( Vector( -15, 0, 0 ), Angle( 180, 0, 0 ), self:GetPos(), self:GetAngles() )
+				xdefm_BroadEffect( "Sparks", { Origin = lp, Angles = la, Normal = la:Forward(), Scale = 1, Magnitude = 1, Radius = 2 } )
+				self:GetPhysicsObject():SetVelocity( self:GetAngles():Forward()*2000 )
+        		if self.xdefm_ForceExp > 0 and self.xdefm_ForceExp <= CurTime() then self:TakeDamage( 1 ) end
+		end
+		function items.it_rpg :OnCollide( self, dat, phy ) if self.xdefm_TimerExp > CurTime() or self.xdefm_Killed then return end
+			self:TakeDamage( 10 )
+		end
+
 
 items.cr_seagull = {
 		Type = "Creature",
@@ -174,127 +182,137 @@ items.cr_seagull = {
 		Rarity = 2,
 		Price = 250,
 		TickRate = 0.1,
-		MinSize = 0.8, MaxSize = 1.2
-	}
-	items.cr_seagull.Constants = {
-		Speed = 512,
-		MoveSnd = "xdefm.SeagullIncoming", HurtSnd = "xdefm.SeagullHurt",
-		TrailColor = Color( 200, 200, 200 ),
-		IdleAni = "Idle01", FlyAni = "Fly", DieAni = "Soar",
-		MoveDist = 1024,
-		Health = 10
-	}
-	sound.Add( {
+		MinSize = 0.8,
+		MaxSize = 1.2
+		}
+		items.cr_seagull.Constants = {
+			Speed = 512,
+			MoveSnd = "xdefm.SeagullIncoming",
+			HurtSnd = "xdefm.SeagullHurt",
+			TrailColor = Color( 200, 200, 200 ),
+			IdleAni = "Idle01",
+			FlyAni = "Fly",
+			DieAni = "Soar",
+			MoveDist = 1024,
+			Health = 10
+			}
+		sound.Add( {
 			name = "xdefm.SeagullIncoming",
 			channel = CHAN_VOICE,
 			volume = 1,
 			level = 75,
 			pitch = math.random( 95, 105 ),
-			sound = { "ambient/creatures/seagull_idle1.wav", "ambient/creatures/seagull_idle2.wav", "ambient/creatures/seagull_idle3.wav" } 
-		} )
-	sound.Add( {
+			sound = {
+				"ambient/creatures/seagull_idle1.wav", "ambient/creatures/seagull_idle2.wav",
+				"ambient/creatures/seagull_idle3.wav"
+				} 
+			} )
+		sound.Add( {
 			name = "xdefm.SeagullHurt", 
 			channel = CHAN_VOICE, 
 			volume = 1, 
 			level = 75,
 			pitch = math.random( 115, 125 ), 
-			sound = { "ambient/creatures/seagull_pain1.wav", "ambient/creatures/seagull_pain2.wav", "ambient/creatures/seagull_pain3.wav" } 
-		} )
-	function items.cr_seagull:OnInit( self ) self:SetMaxHealth( self.xdefm_T2.Constants.Health ) self:SetHealth( self:GetMaxHealth() )
-		self:PhysicsInitBox( self:OBBMins()/3, self:OBBMaxs()/3 ) self:SetAutomaticFrameAdvance( true )
-		self:SetCollisionGroup( COLLISION_GROUP_WORLD ) self:SetBloodColor( BLOOD_COLOR_RED )
-		self:GetPhysicsObject():SetMaterial( "flesh" ) self:ResetSequence( self.xdefm_T2.Constants.IdleAni ) self:SetPlaybackRate( 1 )
-		self.xdefm_NT = 0  self.xdefm_TPos = nil  self.ShadowParams = {}  self.xdefm_TickGone = 0  self.xdefm_NextCatch = 0
-		self.xdefm_Killed = false  xdefm_NoTool( self )  self.xdefm_Target, self.xdefm_Catch = nil, nil
-		self.xdefm_Trail = util.SpriteTrail( self, 0, self.xdefm_T2.Constants.TrailColor, true, 5, 20, 1, 1/(20+5)*0.5, "trails/smoke" )
-		return true
-	end
-	function items.cr_seagull:OnUse( self ) if self:Health() > 0 then return false end end
-	function items.cr_seagull:OnReady( self ) self:StartMotionController() self:PhysWake() self:GetPhysicsObject():SetMass( 100 )
-		if !self.xdefm_Killed then self:EmitSound( self.xdefm_T2.Constants.MoveSnd ) end self:SetTrigger( true )
-	end
-	function items.cr_seagull:OnPlayerDrop( self, own ) self:SetHealth( 0 ) xdefm_NoTool( self, true )
-		self:SetColor( Color( 255, 155, 155 ) ) self:ResetSequence( self.xdefm_T2.Constants.DieAni ) self:SetPlaybackRate( 0 ) self.xdefm_Killed = true
-		if IsValid( self.xdefm_Trail ) then self.xdefm_Trail:Remove() end self:SetCollisionGroup( COLLISION_GROUP_NPC )
-	end
-	function items.cr_seagull:OnTouch( self, ent, typ ) if typ != 1 or ent:GetClass() != "xdefm_base" or ent != self.xdefm_Target or IsValid( self.xdefmod_Catch ) or !IsValid( self.xdefm_Target ) then return end
-		local ite = ent:TurnToDummy()  if IsValid( ite ) then self.xdefm_Catch = ite  ite:SetParent( self )  self.xdefm_Target = nil
-			self.xdefm_TPos = nil  self.xdefm_NT = 0
-			self:EmitSound( ")weapons/iceaxe/iceaxe_swing1.wav", 75, math.random( 95, 100 ) )
+			sound = {
+				"ambient/creatures/seagull_pain1.wav", "ambient/creatures/seagull_pain2.wav",
+				"ambient/creatures/seagull_pain3.wav"
+				} 
+			} )
+		function items.cr_seagull:OnInit( self ) self:SetMaxHealth( self.xdefm_T2.Constants.Health ) self:SetHealth( self:GetMaxHealth() )
+			self:PhysicsInitBox( self:OBBMins()/3, self:OBBMaxs()/3 ) self:SetAutomaticFrameAdvance( true )
+			self:SetCollisionGroup( COLLISION_GROUP_WORLD ) self:SetBloodColor( BLOOD_COLOR_RED )
+			self:GetPhysicsObject():SetMaterial( "flesh" ) self:ResetSequence( self.xdefm_T2.Constants.IdleAni ) self:SetPlaybackRate( 1 )
+			self.xdefm_NT = 0  self.xdefm_TPos = nil  self.ShadowParams = {}  self.xdefm_TickGone = 0  self.xdefm_NextCatch = 0
+			self.xdefm_Killed = false  xdefm_NoTool( self )  self.xdefm_Target, self.xdefm_Catch = nil, nil
+			self.xdefm_Trail = util.SpriteTrail( self, 0, self.xdefm_T2.Constants.TrailColor, true, 5, 20, 1, 1/(20+5)*0.5, "trails/smoke" )
+			return true
 		end
-	end
-	function items.cr_seagull:OnDamaged( self, dmg ) if self.xdefm_Killed or !dmg:GetAttacker():IsPlayer() or dmg:GetDamage() <= 0 then return end
-		self:SetHealth( math.max( 0, self:Health() -dmg:GetDamage() ) ) local con = ( GetConVar( "xdefmod_thiefnerf" ):GetInt() < 1 )
-		self:StopSound( self.xdefm_T2.Constants.MoveSnd ) self:StopSound( self.xdefm_T2.Constants.HurtSnd ) self:EmitSound( self.xdefm_T2.Constants.HurtSnd )
-		if self:Health() <= 0 then self:GetPhysicsObject():EnableGravity( true ) self:SetColor( Color( 255, 155, 155 ) )
-			local atk = dmg:GetAttacker()  if atk:IsPlayer() and !atk:IsBot() then
-				self:SetFMod_OW( atk ) self:SetFMod_OI( atk:SteamID() )
-			end if IsValid( self.xdefm_Catch ) then self.xdefm_Catch:TurnToItem() end
+		function items.cr_seagull:OnUse( self ) if self:Health() > 0 then return false end end
+		function items.cr_seagull:OnReady( self ) self:StartMotionController() self:PhysWake() self:GetPhysicsObject():SetMass( 100 )
+			if !self.xdefm_Killed then self:EmitSound( self.xdefm_T2.Constants.MoveSnd ) end self:SetTrigger( true )
+		end
+		function items.cr_seagull:OnPlayerDrop( self, own ) self:SetHealth( 0 ) xdefm_NoTool( self, true )
+			self:SetColor( Color( 255, 155, 155 ) ) self:ResetSequence( self.xdefm_T2.Constants.DieAni ) self:SetPlaybackRate( 0 ) self.xdefm_Killed = true
+			if IsValid( self.xdefm_Trail ) then self.xdefm_Trail:Remove() end self:SetCollisionGroup( COLLISION_GROUP_NPC )
+		end
+		function items.cr_seagull:OnTouch( self, ent, typ ) if typ != 1 or ent:GetClass() != "xdefm_base" or ent != self.xdefm_Target or IsValid( self.xdefmod_Catch ) or !IsValid( self.xdefm_Target ) then return end
+			local ite = ent:TurnToDummy()  if IsValid( ite ) then self.xdefm_Catch = ite  ite:SetParent( self )  self.xdefm_Target = nil
+				self.xdefm_TPos = nil  self.xdefm_NT = 0
+				self:EmitSound( ")weapons/iceaxe/iceaxe_swing1.wav", 75, math.random( 95, 100 ) )
+			end
+		end
+		function items.cr_seagull:OnDamaged( self, dmg ) if self.xdefm_Killed or !dmg:GetAttacker():IsPlayer() or dmg:GetDamage() <= 0 then return end
+			self:SetHealth( math.max( 0, self:Health() -dmg:GetDamage() ) ) local con = ( GetConVar( "xdefmod_thiefnerf" ):GetInt() < 1 )
+			self:StopSound( self.xdefm_T2.Constants.MoveSnd ) self:StopSound( self.xdefm_T2.Constants.HurtSnd ) self:EmitSound( self.xdefm_T2.Constants.HurtSnd )
+			if self:Health() <= 0 then self:GetPhysicsObject():EnableGravity( true ) self:SetColor( Color( 255, 155, 155 ) )
+				local atk = dmg:GetAttacker()  if atk:IsPlayer() and !atk:IsBot() then
+					self:SetFMod_OW( atk ) self:SetFMod_OI( atk:SteamID() )
+				end if IsValid( self.xdefm_Catch ) then self.xdefm_Catch:TurnToItem() end
 			if IsValid( self.xdefm_Trail ) and con and IsValid( dmg:GetInflictor() ) and dmg:GetInflictor():GetClass() != "xdefm_base" then
 				xdefm_GiveExp( dmg:GetAttacker(), 20*( self.xdefm_T2.Rarity ) )
 			end
 			if IsValid( self.xdefm_Trail ) then SafeRemoveEntity( self.xdefm_Trail ) end
-			self:ResetSequence( self.xdefm_T2.Constants.DieAni ) self:SetPlaybackRate( 0 )
-			self:SetCollisionGroup( COLLISION_GROUP_NPC ) self.xdefm_TickGone = 0
-			xdefm_NoTool( self, true ) self.xdefm_Killed = true  self:PhysWake()
+				self:ResetSequence( self.xdefm_T2.Constants.DieAni ) self:SetPlaybackRate( 0 )
+				self:SetCollisionGroup( COLLISION_GROUP_NPC ) self.xdefm_TickGone = 0
+				xdefm_NoTool( self, true ) self.xdefm_Killed = true  self:PhysWake()
+			end
 		end
-	end
-	function items.cr_seagull:OnThink( self ) if self.xdefm_Killed then return end
-		if !IsValid( self.xdefm_Target ) or self.xdefm_Target:GetClass() != "xdefm_base" then self.xdefm_TickGone = self.xdefm_TickGone +1
-			if self.xdefm_TickGone > 600 then SafeRemoveEntity( self.xdefm_Catch ) SafeRemoveEntity( self ) self.xdefm_Killed = true
-			self:StopSound( self.xdefm_T2.Constants.HurtSnd )  self:EmitSound( self.xdefm_T2.Constants.MoveSnd ) end
-		elseif !IsValid( self.xdefmod_Catch ) and self.xdefm_NextCatch <= CurTime() then self.xdefm_NextCatch = CurTime() +0.5
-			local tr = util.TraceLine( {
-				start = self:GetPos(),
-				endpos = self:GetPos() +( self.xdefm_Target:WorldSpaceCenter() -self:GetPos() ):GetNormal()*8,
-				mask = MASK_SHOT,
-				filter = self
-			} )
+		function items.cr_seagull:OnThink( self ) if self.xdefm_Killed then return end
+			if !IsValid( self.xdefm_Target ) or self.xdefm_Target:GetClass() != "xdefm_base" then self.xdefm_TickGone = self.xdefm_TickGone +1
+				if self.xdefm_TickGone > 600 then SafeRemoveEntity( self.xdefm_Catch ) SafeRemoveEntity( self ) self.xdefm_Killed = true
+					self:StopSound( self.xdefm_T2.Constants.HurtSnd )  self:EmitSound( self.xdefm_T2.Constants.MoveSnd ) end
+			elseif !IsValid( self.xdefmod_Catch ) and self.xdefm_NextCatch <= CurTime() then self.xdefm_NextCatch = CurTime() +0.5
+				local tr = util.TraceLine( {
+					start = self:GetPos(),
+					endpos = self:GetPos() +( self.xdefm_Target:WorldSpaceCenter() -self:GetPos() ):GetNormal()*8,
+					mask = MASK_SHOT,
+					filter = self
+					} )
 			if !IsValid( tr.Entity ) or tr.Entity != self.xdefm_Target then return end
-			local ite = self.xdefm_Target:TurnToDummy()  if IsValid( ite ) then self.xdefm_Catch = ite
-				self:EmitSound( ")weapons/iceaxe/iceaxe_swing1.wav", 75, math.random( 95, 100 ) )
-				ite:SetParent( self )  self.xdefm_Target = nil
-				self.xdefm_TPos = nil  self.xdefm_NT = 0
+				local ite = self.xdefm_Target:TurnToDummy()  if IsValid( ite ) then self.xdefm_Catch = ite
+					self:EmitSound( ")weapons/iceaxe/iceaxe_swing1.wav", 75, math.random( 95, 100 ) )
+					ite:SetParent( self )  self.xdefm_Target = nil
+					self.xdefm_TPos = nil  self.xdefm_NT = 0
+				end
 			end
 		end
-	end
-	function items.cr_seagull:OnPhysSimulate( self, phy, del ) if self.xdefm_Killed or constraint.FindConstraint( self, "Weld" ) then return end phy:Wake()
-		local pos = self:GetPos()  local con = ( GetConVar( "xdefmod_thiefnerf" ):GetInt() < 1 )  if self.xdefm_NT <= CurTime() then
-			if !IsValid( self.xdefm_Target ) and ( !isvector( self.xdefm_TPos ) or pos:Distance( self.xdefm_TPos ) <= 25 or math.random( 1, 5 ) == 1 ) then
-				local ran = self.xdefm_T2.Constants.MoveDist
-				local vel = VectorRand():GetNormalized()*math.Rand( ran/4, ran )  vel.z = math.abs( vel.z/4 )
-				local tr_up = util.QuickTrace( pos, Vector( 0, 0, 200 ), self ) if tr_up.Hit then vel.z = 0 end
-				local tr_tu = util.TraceHull( { start = pos, endpos = pos+vel, mask = MASK_NPCSOLID, filter = self,
-				mins = self:OBBMins(), maxs = self:OBBMaxs() } )
-				if tr_tu.HitPos:Distance( tr_tu.StartPos ) >= 50 and !tr_tu.HitSky then self.xdefm_TPos = tr_tu.HitPos +tr_tu.HitNormal  self.xdefm_NT = CurTime() +math.Rand( 1, 2 )
-				if phy:IsGravityEnabled() then phy:EnableGravity( false ) self:ResetSequence( self.xdefm_T2.Constants.FlyAni ) self:SetPlaybackRate( 2 ) end end
-			end
-			if IsValid( self.xdefm_Target ) then
-				self.xdefm_TPos = self.xdefm_Target:WorldSpaceCenter()
+		function items.cr_seagull:OnPhysSimulate( self, phy, del ) if self.xdefm_Killed or constraint.FindConstraint( self, "Weld" ) then return end phy:Wake()
+			local pos = self:GetPos()  local con = ( GetConVar( "xdefmod_thiefnerf" ):GetInt() < 1 )  if self.xdefm_NT <= CurTime() then
+				if !IsValid( self.xdefm_Target ) and ( !isvector( self.xdefm_TPos ) or pos:Distance( self.xdefm_TPos ) <= 25 or math.random( 1, 5 ) == 1 ) then
+					local ran = self.xdefm_T2.Constants.MoveDist
+					local vel = VectorRand():GetNormalized()*math.Rand( ran/4, ran )  vel.z = math.abs( vel.z/4 )
+					local tr_up = util.QuickTrace( pos, Vector( 0, 0, 200 ), self ) if tr_up.Hit then vel.z = 0 end
+					local tr_tu = util.TraceHull( { start = pos, endpos = pos+vel, mask = MASK_NPCSOLID, filter = self,
+						mins = self:OBBMins(), maxs = self:OBBMaxs() } )
+					if tr_tu.HitPos:Distance( tr_tu.StartPos ) >= 50 and !tr_tu.HitSky then self.xdefm_TPos = tr_tu.HitPos +tr_tu.HitNormal  self.xdefm_NT = CurTime() +math.Rand( 1, 2 )
+					if phy:IsGravityEnabled() then phy:EnableGravity( false ) self:ResetSequence( self.xdefm_T2.Constants.FlyAni ) self:SetPlaybackRate( 2 ) end end
+					end
+				if IsValid( self.xdefm_Target ) then
+					self.xdefm_TPos = self.xdefm_Target:WorldSpaceCenter()
 				if phy:IsGravityEnabled() then phy:EnableGravity( false ) self:ResetSequence( self.xdefm_T2.Constants.FlyAni ) self:SetPlaybackRate( 2 ) end
+				end
 			end
+			local aa = self:GetAngles()  if isvector( self.xdefm_TPos ) then
+				local tr_fo = util.QuickTrace( pos, ( self.xdefm_TPos - self:GetPos() ):GetNormalized()*50, self )
+				if ( tr_fo.Hit or pos:Distance( self.xdefm_TPos ) <= 50 ) and !IsValid( self.xdefm_Target ) then self.xdefm_TPos = nil
+					if tr_fo.Hit then self.xdefm_NT = CurTime() +math.Rand( 1, 2 ) else self.xdefm_NT = 0 end
+					if !phy:IsGravityEnabled() then phy:EnableGravity( true ) self:ResetSequence( self.xdefm_T2.Constants.IdleAni ) self:SetPlaybackRate( 1 ) end
+				end
+				if isvector( self.xdefm_TPos ) then
+					aa = ( self.xdefm_TPos -self:GetPos() ):Angle()  aa = Angle( aa.pitch, aa.yaw, 0 )
+				end
+			end
+			self.ShadowParams.pos = isvector( self.xdefm_TPos ) and self.xdefm_TPos or self:GetPos()
+			self.ShadowParams.angle = aa
+			self.ShadowParams.maxangular = 1000
+			self.ShadowParams.maxangulardamp = 10000
+			self.ShadowParams.maxspeed = self.xdefm_T2.Constants.Speed*( con and 1 or 0.25 )
+			self.ShadowParams.maxspeeddamp = 10000
+			self.ShadowParams.dampfactor = 0.8
+			self.ShadowParams.teleportdistance = 0
+			self.ShadowParams.deltatime = deltatime
+			if isvector( self.xdefm_TPos ) then phy:ComputeShadowControl( self.ShadowParams ) end
 		end
-		local aa = self:GetAngles()  if isvector( self.xdefm_TPos ) then
-			local tr_fo = util.QuickTrace( pos, ( self.xdefm_TPos - self:GetPos() ):GetNormalized()*50, self )
-			if ( tr_fo.Hit or pos:Distance( self.xdefm_TPos ) <= 50 ) and !IsValid( self.xdefm_Target ) then self.xdefm_TPos = nil
-				if tr_fo.Hit then self.xdefm_NT = CurTime() +math.Rand( 1, 2 ) else self.xdefm_NT = 0 end
-				if !phy:IsGravityEnabled() then phy:EnableGravity( true ) self:ResetSequence( self.xdefm_T2.Constants.IdleAni ) self:SetPlaybackRate( 1 ) end
-			end
-			if isvector( self.xdefm_TPos ) then
-				aa = ( self.xdefm_TPos -self:GetPos() ):Angle()  aa = Angle( aa.pitch, aa.yaw, 0 )
-			end
-		end
-		self.ShadowParams.pos = isvector( self.xdefm_TPos ) and self.xdefm_TPos or self:GetPos()
-		self.ShadowParams.angle = aa
-		self.ShadowParams.maxangular = 1000
-		self.ShadowParams.maxangulardamp = 10000
-		self.ShadowParams.maxspeed = self.xdefm_T2.Constants.Speed*( con and 1 or 0.25 )
-		self.ShadowParams.maxspeeddamp = 10000
-		self.ShadowParams.dampfactor = 0.8
-		self.ShadowParams.teleportdistance = 0
-		self.ShadowParams.deltatime = deltatime
-		if isvector( self.xdefm_TPos ) then phy:ComputeShadowControl( self.ShadowParams ) end
-	end
 
 items.cr_crow = {
 		Type = "Creature",
@@ -302,120 +320,138 @@ items.cr_crow = {
 		Price = 800,
 		Rarity = 3,
 		Based = "cr_seagull"
-	}
-	items.cr_crow.Constants = {
-		Speed = 1024,
-		MoveSnd = "xdefm.CrowIncoming", HurtSnd = "xdefm.CrowHurt",
-		TrailColor = Color( 50, 50, 50 ),
-		IdleAni = "Idle01", FlyAni = "Fly", DieAni = "Soar",
-		MoveDist = 1024,
-		Health = 25
-	}
-	sound.Add( {
+		}
+		items.cr_crow.Constants = {
+			Speed = 1024,
+			MoveSnd = "xdefm.CrowIncoming",
+			HurtSnd = "xdefm.CrowHurt",
+			TrailColor = Color( 50, 50, 50 ),
+			IdleAni = "Idle01",
+			FlyAni = "Fly",
+			DieAni = "Soar",
+			MoveDist = 1024,
+			Health = 25
+		}
+		sound.Add( {
 			name = "xdefm.CrowIncoming",
 			channel = CHAN_VOICE,
 			volume = 1,
 			level = 75,
 			pitch = math.random( 95, 105 ),
-			sound = { "npc/crow/alert1.wav", "npc/crow/alert2.wav", "npc/crow/alert3.wav" } 
-		} )
-	sound.Add( {
+			sound = {
+				"npc/crow/alert1.wav", "npc/crow/alert2.wav",
+				"npc/crow/alert3.wav"
+				} 
+			} )
+		sound.Add( {
 			name = "xdefm.CrowHurt",
 			channel = CHAN_VOICE,
 			volume = 1,
 			level = 75,
 			pitch = math.random( 115, 125 ),
-			sound = { "npc/crow/pain1.wav", "npc/crow/pain2.wav" } 
-		} )
+			sound = {
+				"npc/crow/pain1.wav", "npc/crow/pain2.wav"
+				} 
+			} )
+
 
 items.cr_seagull2 = {
 		Model = "models/seagull.mdl",
 		Price = 5000,
 		Rarity = 5,
 		Based = "cr_seagull"
-	}
-	items.cr_seagull2.Constants = { 
-		Speed = 8192,
-		MoveSnd = "xdefm.SeagullIncoming", HurtSnd = "xdefm.SeagullHurt",
-		TrailColor = Color( 255, 192, 0 ),
-		IdleAni = "Idle01", FlyAni = "Fly", DieAni = "Soar",
-		MoveDist = 768,
-		Health = 50
-	}
-	sound.Add( {
+		}
+		items.cr_seagull2.Constants = { 
+			Speed = 8192,
+			MoveSnd = "xdefm.SeagullIncoming",
+			HurtSnd = "xdefm.SeagullHurt",
+			TrailColor = Color( 255, 192, 0 ),
+			IdleAni = "Idle01",
+			FlyAni = "Fly",
+			DieAni = "Soar",
+			MoveDist = 768,
+			Health = 50
+			}
+		sound.Add( {
 			name = "xdefm.CrowIncoming",
 			channel = CHAN_VOICE,
 			volume = 1,
 			level = 75,
 			pitch = math.random( 95, 105 ),
-			sound = { "npc/crow/alert1.wav", "npc/crow/alert2.wav", "npc/crow/alert3.wav" } 
-		} )
-	sound.Add( {
+			sound = { 
+				"npc/crow/alert1.wav", "npc/crow/alert2.wav", 
+				"npc/crow/alert3.wav" 
+				} 
+			} )
+		sound.Add( {
 			name = "xdefm.CrowHurt",
 			channel = CHAN_VOICE,
 			volume = 1,
 			level = 75,
 			pitch = math.random( 115, 125 ),
-			sound = { "npc/crow/pain1.wav", "npc/crow/pain2.wav" } 
-		} )
-	function items.cr_seagull2:OnInit( self ) self:SetMaxHealth( self.xdefm_T2.Constants.Health ) self:SetHealth( self:GetMaxHealth() )
-		self:PhysicsInitBox( self:OBBMins()/3, self:OBBMaxs()/3 ) self:SetAutomaticFrameAdvance( true )
-		self:SetCollisionGroup( COLLISION_GROUP_WORLD ) self:SetBloodColor( BLOOD_COLOR_RED )
-		self:GetPhysicsObject():SetMaterial( "flesh" ) self:ResetSequence( self.xdefm_T2.Constants.IdleAni ) self:SetPlaybackRate( 1 )
-		self.xdefm_NT = 0  self.xdefm_TPos = nil  self.ShadowParams = {}  self.xdefm_TickGone = 0  self.xdefm_NextCatch = 0
-		self.xdefm_Killed = false  xdefm_NoTool( self )  self.xdefm_Target, self.xdefm_Catch = nil, nil
-		self.xdefm_Trail = util.SpriteTrail( self, 0, self.xdefm_T2.Constants.TrailColor, true, 5, 20, 1, 1/(20+5)*0.5, "trails/laser" )
-		self:SetMaterial( "models/props_collectables/gold_bar" ) return true
-	end
-	function items.cr_seagull2:OnDraw( self ) if self:Health() <= 0 then return end
-		local cen = ( self:WorldSpaceCenter() +self:GetUp()*4 )
-		if !self.Emitter or !IsValid( self.Emitter ) then
-			self.Emitter = ParticleEmitter( self:WorldSpaceCenter() )
-			self:CallOnRemove( "XDEEmitter", function( self ) if self.Emitter then self.Emitter:Finish() end end )
-		elseif self:Health() > 0 then
-			if !isnumber( self.xdefm_Ptc ) or self.xdefm_Ptc <= CurTime() then self.xdefm_Ptc = CurTime() +0.01
-				local particle = self.Emitter:Add( "particle/smokesprites_000"..math.random( 1, 9 ), cen +VectorRand():GetNormal()*4 )
-				local vel = VectorRand():GetNormal()*10
-				particle:SetVelocity( vel )
-				particle:SetLifeTime( 0 )
-				particle:SetDieTime( math.Rand( 1, 1.5 ) )
-				particle:SetEndAlpha( 0 )
-				local Size = math.Rand( 6, 9 )
-				particle:SetStartSize( Size )
-				particle:SetEndSize( Size*2 )		
-				particle:SetRoll( 6 )
-				particle:SetRollDelta( 1 )
-				particle:SetAirResistance( 200 )
-				particle:SetGravity( Vector( 0, 0, 0 ) )
-				particle:SetColor( 255, 192, 0 )
-				particle:SetStartAlpha( 64 )
-				particle:SetCollide( false )
-				particle:SetBounce( 0 )
-				particle:SetLighting( false )
+			sound = {
+				"npc/crow/pain1.wav", "npc/crow/pain2.wav"
+				} 
+			} )
+		function items.cr_seagull2:OnInit( self ) self:SetMaxHealth( self.xdefm_T2.Constants.Health ) self:SetHealth( self:GetMaxHealth() )
+			self:PhysicsInitBox( self:OBBMins()/3, self:OBBMaxs()/3 ) self:SetAutomaticFrameAdvance( true )
+			self:SetCollisionGroup( COLLISION_GROUP_WORLD ) self:SetBloodColor( BLOOD_COLOR_RED )
+			self:GetPhysicsObject():SetMaterial( "flesh" ) self:ResetSequence( self.xdefm_T2.Constants.IdleAni ) self:SetPlaybackRate( 1 )
+			self.xdefm_NT = 0  self.xdefm_TPos = nil  self.ShadowParams = {}  self.xdefm_TickGone = 0  self.xdefm_NextCatch = 0
+			self.xdefm_Killed = false  xdefm_NoTool( self )  self.xdefm_Target, self.xdefm_Catch = nil, nil
+			self.xdefm_Trail = util.SpriteTrail( self, 0, self.xdefm_T2.Constants.TrailColor, true, 5, 20, 1, 1/(20+5)*0.5, "trails/laser" )
+			self:SetMaterial( "models/props_collectables/gold_bar" ) return true
+		end
+		function items.cr_seagull2:OnDraw( self ) if self:Health() <= 0 then return end
+			local cen = ( self:WorldSpaceCenter() +self:GetUp()*4 )
+			if !self.Emitter or !IsValid( self.Emitter ) then
+				self.Emitter = ParticleEmitter( self:WorldSpaceCenter() )
+				self:CallOnRemove( "XDEEmitter", function( self ) if self.Emitter then self.Emitter:Finish() end end )
+			elseif self:Health() > 0 then
+				if !isnumber( self.xdefm_Ptc ) or self.xdefm_Ptc <= CurTime() then self.xdefm_Ptc = CurTime() +0.01
+					local particle = self.Emitter:Add( "particle/smokesprites_000"..math.random( 1, 9 ), cen +VectorRand():GetNormal()*4 )
+					local vel = VectorRand():GetNormal()*10
+					particle:SetVelocity( vel )
+					particle:SetLifeTime( 0 )
+					particle:SetDieTime( math.Rand( 1, 1.5 ) )
+					particle:SetEndAlpha( 0 )
+					local Size = math.Rand( 6, 9 )
+					particle:SetStartSize( Size )
+					particle:SetEndSize( Size*2 )		
+					particle:SetRoll( 6 )
+					particle:SetRollDelta( 1 )
+					particle:SetAirResistance( 200 )
+					particle:SetGravity( Vector( 0, 0, 0 ) )
+					particle:SetColor( 255, 192, 0 )
+					particle:SetStartAlpha( 64 )
+					particle:SetCollide( false )
+					particle:SetBounce( 0 )
+					particle:SetLighting( false )
 
-				local particle = self.Emitter:Add( "effects/laser_tracer", cen +VectorRand():GetNormal()*4 )
-				local vel = VectorRand():GetNormal()*64  vel.z = math.abs( vel.z )
-				particle:SetVelocity( vel )
-				particle:SetLifeTime( 0 )
-				particle:SetDieTime( math.Rand( 1, 1.5 ) )
-				particle:SetEndAlpha( 0 )
-				local Size = math.Rand( 3, 6 )
-				particle:SetStartSize( Size )
-				particle:SetEndSize( Size )	
-				particle:SetStartLength( Size*2 )
-				particle:SetEndLength( 0 )	
-				particle:SetRoll( 6 )
-				particle:SetRollDelta( 1 )
-				particle:SetAirResistance( 16 )
-				particle:SetGravity( Vector( 0, 0, -64 ) )
-				particle:SetColor( 255, 192, 0 )
-				particle:SetStartAlpha( 255 )
-				particle:SetCollide( true )
-				particle:SetBounce( 1 )
-				particle:SetLighting( false )
+					local particle = self.Emitter:Add( "effects/laser_tracer", cen +VectorRand():GetNormal()*4 )
+					local vel = VectorRand():GetNormal()*64  vel.z = math.abs( vel.z )
+					particle:SetVelocity( vel )
+					particle:SetLifeTime( 0 )
+					particle:SetDieTime( math.Rand( 1, 1.5 ) )
+					particle:SetEndAlpha( 0 )
+					local Size = math.Rand( 3, 6 )
+					particle:SetStartSize( Size )
+					particle:SetEndSize( Size )	
+					particle:SetStartLength( Size*2 )
+					particle:SetEndLength( 0 )	
+					particle:SetRoll( 6 )
+					particle:SetRollDelta( 1 )
+					particle:SetAirResistance( 16 )
+					particle:SetGravity( Vector( 0, 0, -64 ) )
+					particle:SetColor( 255, 192, 0 )
+					particle:SetStartAlpha( 255 )
+					particle:SetCollide( true )
+					particle:SetBounce( 1 )
+					particle:SetLighting( false )
+				end
 			end
 		end
-	end
+
 
 items.it_vault = {
 		Type = "Exotic",
@@ -423,124 +459,146 @@ items.it_vault = {
 		Rarity = 5,
 		Price = 7500,
 		PhysSound = "Metal_Box.ImpactHard"
-	}
-	function items.it_vault:OnInit( self ) self:SetMaxHealth( math.random( 300, 3000 ) ) self:SetHealth( self:GetMaxHealth() ) self.xdefm_Killed = false end
-	function items.it_vault:OnReady( self ) self:GetPhysicsObject():SetMass( 150 ) end
-	function items.it_vault:OnDamaged( self, dmg ) if self:Health() <= 0 or self.xdefm_Killed then return end
-		self:SetHealth( math.max( 0, self:Health() -dmg:GetDamage() ) ) self:EmitSound( "Breakable.Metal" )
-		if self:Health() <= 0 then self.xdefm_Killed = true
-		local lt = {["it_coin2"]=1,["it_silverbar"]=1,["it_goldbar"]=1,["it_platinumbar"]=1,
-		["it_gemblue"]=1,["it_gemgreen"]=1,["it_gempurple"]=1,["it_gemred"]=1,["it_rainbowbar"]=1}
-		for i=1, math.random( 4, 6 ) do xdefm_LootDrop( lt, self ) end
-		xdefm_BreakEffect( self, 3 ) self:SetNotSolid( true ) SafeRemoveEntityDelayed( self, 0.1 ) end return true
-	end
+		}
+		function items.it_vault:OnInit( self ) self:SetMaxHealth( math.random( 300, 3000 ) ) self:SetHealth( self:GetMaxHealth() ) self.xdefm_Killed = false end
+		function items.it_vault:OnReady( self ) self:GetPhysicsObject():SetMass( 150 ) end
+		function items.it_vault:OnDamaged( self, dmg ) if self:Health() <= 0 or self.xdefm_Killed then return end
+			self:SetHealth( math.max( 0, self:Health() -dmg:GetDamage() ) ) self:EmitSound( "Breakable.Metal" )
+			if self:Health() <= 0 then self.xdefm_Killed = true
+			local lt = {
+				["it_coin2"]=1,
+				["it_silverbar"]=1,
+				["it_goldbar"]=1,
+				["it_platinumbar"]=1,
+				["it_gemblue"]=1,
+				["it_gemgreen"]=1,
+				["it_gempurple"]=1,
+				["it_gemred"]=1,
+				["it_rainbowbar"]=1
+				}
+			for i=1, math.random( 4, 6 ) do xdefm_LootDrop( lt, self ) end
+			xdefm_BreakEffect( self, 3 ) self:SetNotSolid( true ) SafeRemoveEntityDelayed( self, 0.1 ) end return true
+		end
 
 items.it_pottery = {
-		Type = "Common",
-		Model = { "models/props_c17/pottery02a_break01.mdl", "models/props_c17/pottery02a_break02.mdl",
-				"models/props_c17/pottery02a_break03.mdl", "models/props_c17/pottery02a_break04.mdl",
-				"models/props_c17/pottery04a_break01.mdl", "models/props_c17/pottery04a_break02.mdl",
-				"models/props_c17/pottery04a_break03.mdl", "models/props_c17/pottery04a_break04.mdl" },
-		Rarity = 1,
-		Price = 50,
-		PhysSound = "Tile.BulletImpact"
+	Type = "Common",
+	Model = { 
+		"models/props_c17/pottery02a_break01.mdl", "models/props_c17/pottery02a_break02.mdl",
+		"models/props_c17/pottery02a_break03.mdl", "models/props_c17/pottery02a_break04.mdl",
+		"models/props_c17/pottery04a_break01.mdl", "models/props_c17/pottery04a_break02.mdl",
+		"models/props_c17/pottery04a_break03.mdl", "models/props_c17/pottery04a_break04.mdl"
+		},
+	Rarity = 1,
+	Price = 50,
+	PhysSound = "Tile.BulletImpact"
 	}
 
 items.it_potter1 = {
-		Type = "Uncommon",
-		Model = { "models/props_c17/pottery01a.mdl", "models/props_c17/pottery02a.mdl",
-				"models/props_c17/pottery04a.mdl","models/props_c17/pottery03a.mdl",
-				"models/props_c17/pottery04a.mdl", "models/props_c17/pottery05a.mdl" },
-		Rarity = 2,
-		Price = 500,
-		PhysSound = "Tile.BulletImpact"
+	Type = "Uncommon",
+	Model = {
+		"models/props_c17/pottery01a.mdl", "models/props_c17/pottery02a.mdl",
+		"models/props_c17/pottery04a.mdl","models/props_c17/pottery03a.mdl",
+		"models/props_c17/pottery04a.mdl", "models/props_c17/pottery05a.mdl"
+		},
+	Rarity = 2,
+	Price = 500,
+	PhysSound = "Tile.BulletImpact"
 	}
-    function items.it_potter1:OnInit( self ) self.xdefm_Killed = false end
-    function items.it_potter1:OnDamaged( self, dmg )
-        if dmg:GetDamage() > 0 and !self.xdefm_Killed then self.xdefm_Killed = true
-            local lt = {["it_pottery"]=1} for i=1, 2 do xdefm_LootDrop( lt, self ) end
-            self:EmitSound( "Pottery.Break" ) self:Remove()
-        end
-    end
+    	function items.it_potter1:OnInit( self ) self.xdefm_Killed = false end
+    	function items.it_potter1:OnDamaged( self, dmg )
+       		if dmg:GetDamage() > 0 and !self.xdefm_Killed then self.xdefm_Killed = true
+            	local lt = {["it_pottery"]=1} for i=1, 2 do xdefm_LootDrop( lt, self ) end
+            	self:EmitSound( "Pottery.Break" ) self:Remove()
+        	end
+    	end
 	function items.it_potter1:OnCollide( self, dat ) if self.xdefm_Killed then return end
 		if dat.Speed >= 300 and dat.DeltaTime > 0.2 then self:TakeDamage( 1 ) end
 	end
 
+
 items.it_potter2 = {
 		Type = "Rare",
-		Model = { "models/props_c17/pottery06a.mdl", "models/props_c17/pottery07a.mdl",
-				"models/props_c17/pottery08a.mdl","models/props_c17/pottery09a.mdl" },
+		Model = {
+			"models/props_c17/pottery06a.mdl", "models/props_c17/pottery07a.mdl",
+			"models/props_c17/pottery08a.mdl","models/props_c17/pottery09a.mdl"
+			},
 		Rarity = 3,
 		Price = 1250,
 		PhysSound = "Tile.BulletImpact"
-	}
-    function items.it_potter2:OnInit( self ) self.xdefm_Killed = false end
-    function items.it_potter2:OnDamaged( self, dmg )
-        if dmg:GetDamage() > 0 and !self.xdefm_Killed then self.xdefm_Killed = true
-            local lt = {["it_pottery"]=1} for i=1, 4 do xdefm_LootDrop( lt, self ) end
-            self:EmitSound( "Pottery.Break" ) self:Remove()
-        end
-    end
-	function items.it_potter2:OnCollide( self, dat ) if self.xdefm_Killed then return end
-		if dat.Speed >= 450 and dat.DeltaTime > 0.2 then self:TakeDamage( 1 ) end
-	end
+		}
+    		function items.it_potter2:OnInit( self ) self.xdefm_Killed = false end
+    		function items.it_potter2:OnDamaged( self, dmg )
+        		if dmg:GetDamage() > 0 and !self.xdefm_Killed then self.xdefm_Killed = true
+            		local lt = {["it_pottery"]=1} for i=1, 4 do xdefm_LootDrop( lt, self ) end
+            			self:EmitSound( "Pottery.Break" ) self:Remove()
+        		end
+    		end
+		function items.it_potter2:OnCollide( self, dat ) if self.xdefm_Killed then return end
+			if dat.Speed >= 450 and dat.DeltaTime > 0.2 then self:TakeDamage( 1 ) end
+		end
+
 
 items.it_potter3 = {
-		Type = "Legendary",
-		Model = "models/props_c17/pottery_large01a.mdl",
-		Rarity = 4,
-		Price = 3000,
-		PhysSound = "Tile.BulletImpact"
+	Type = "Legendary",
+	Model = "models/props_c17/pottery_large01a.mdl",
+	Rarity = 4,
+	Price = 3000,
+	PhysSound = "Tile.BulletImpact"
 	}
-    function items.it_potter3:OnInit( self ) self.xdefm_Killed = false end
-    function items.it_potter3:OnDamaged( self, dmg )
-        if dmg:GetDamage() > 0 and !self.xdefm_Killed then self.xdefm_Killed = true
-            local lt = {["it_pottery"]=1} for i=1, 6 do xdefm_LootDrop( lt, self ) end
-            self:EmitSound( "Pottery.Break" ) self:Remove()
-        end
-    end
+    	function items.it_potter3:OnInit( self ) self.xdefm_Killed = false end
+    	function items.it_potter3:OnDamaged( self, dmg )
+        	if dmg:GetDamage() > 0 and !self.xdefm_Killed then self.xdefm_Killed = true
+            	local lt = {["it_pottery"]=1} for i=1, 6 do xdefm_LootDrop( lt, self ) end
+            		self:EmitSound( "Pottery.Break" ) self:Remove()
+        	end
+    	end
 	function items.it_potter3:OnCollide( self, dat ) if self.xdefm_Killed then return end
 		if dat.Speed >= 600 and dat.DeltaTime > 0.2 then self:TakeDamage( 1 ) end
 	end
 
+
 items.it_coal = {
-		Type = "Common",
-		Model = "models/xdeedited/coal.mdl",
-		Rarity = 1,
-		Price = 30,
-		PhysSound = "Concrete.ImpactHard"
+	Type = "Common",
+	Model = "models/xdeedited/coal.mdl",
+	Rarity = 1,
+	Price = 30,
+	PhysSound = "Concrete.ImpactHard"
 	}
+
 
 items.it_copperbar = {
-		Type = "Uncommon",
-		Model = "models/xdeedited/ingot_copper.mdl",
-		Rarity = 2,
-		Price = 100,
-		PhysSound = "GlassBottle.ImpactHard"
+	Type = "Uncommon",
+	Model = "models/xdeedited/ingot_copper.mdl",
+	Rarity = 2,
+	Price = 100,
+	PhysSound = "GlassBottle.ImpactHard"
 	}
+
 
 items.it_leadbar = {
-		Type = "Uncommon",
-		Model = "models/xdeedited/ingot_lead.mdl",
-		Rarity = 2,
-		Price = 225,
-		PhysSound = "GlassBottle.ImpactHard"
+	Type = "Uncommon",
+	Model = "models/xdeedited/ingot_lead.mdl",
+	Rarity = 2,
+	Price = 225,
+	PhysSound = "GlassBottle.ImpactHard"
 	}
+
 
 items.it_steelbar = {
-		Type = "Uncommon",
-		Model = "models/xdeedited/ingot_steel.mdl",
-		Rarity = 2,
-		Price = 300,
-		PhysSound = "GlassBottle.ImpactHard"
+	Type = "Uncommon",
+	Model = "models/xdeedited/ingot_steel.mdl",
+	Rarity = 2,
+	Price = 300,
+	PhysSound = "GlassBottle.ImpactHard"
 	}
 
+
 items.it_silverbar = {
-		Type = "Rare",
-		Model = "models/xdeedited/ingot_tungsten.mdl",
-		Rarity = 3,
-		Price = 1500,
-		PhysSound = "GlassBottle.ImpactHard"
+	Type = "Rare",
+	Model = "models/xdeedited/ingot_tungsten.mdl",
+	Rarity = 3,
+	Price = 1500,
+	PhysSound = "GlassBottle.ImpactHard"
 	}
 	function items.it_silverbar:OnDraw( self )render.SetMaterial( Mat ) local siz, col = 32 +math.sin( CurTime()*2 )*2, Color( 255, 255, 255, 255 )
 		render.DrawSprite( self:WorldSpaceCenter(), siz, siz, col )
@@ -548,12 +606,13 @@ items.it_silverbar = {
         	render.DrawSprite( self:WorldSpaceCenter() -self:GetForward()*6, siz, siz, col )
 	end
 
+
 items.it_goldbar = {
-		Type = "Legendary",
-		Model = "models/xdeedited/ingot_gold.mdl",
-		Rarity = 4,
-		Price = 2400,
-		PhysSound = "GlassBottle.ImpactHard"
+	Type = "Legendary",
+	Model = "models/xdeedited/ingot_gold.mdl",
+	Rarity = 4,
+	Price = 2400,
+	PhysSound = "GlassBottle.ImpactHard"
 	}
 	function items.it_goldbar:OnDraw( self ) render.SetMaterial( Mat ) local siz, col = 32 +math.sin( CurTime()*2 )*2, Color( 255, 255, 55, 255 )
 		render.DrawSprite( self:WorldSpaceCenter(), siz, siz, col )
@@ -561,12 +620,13 @@ items.it_goldbar = {
         	render.DrawSprite( self:WorldSpaceCenter() -self:GetForward()*6, siz, siz, col )
 	end
 
+
 items.it_platinumbar = {
-		Type = "Exotic",
-		Model = "models/xdeedited/ingot_platinum.mdl",
-		Rarity = 5,
-		Price = 4000,
-		PhysSound = "GlassBottle.ImpactHard"
+	Type = "Exotic",
+	Model = "models/xdeedited/ingot_platinum.mdl",
+	Rarity = 5,
+	Price = 4000,
+	PhysSound = "GlassBottle.ImpactHard"
 	}
 	function items.it_platinumbar:OnDraw( self ) render.SetMaterial( Mat ) local siz, col = 32 +math.sin( CurTime()*2 )*2, Color( 255, 255, 255, 255 )
 		render.DrawSprite( self:WorldSpaceCenter(), siz, siz, col )
@@ -597,11 +657,11 @@ items.it_platinumbar = {
 	end
 
 items.it_oreblue = {
-		Type = "Uncommon",
-		Model = "models/xdeedited/ore_sapphire.mdl",
-		Rarity = 2,
-		Price = 200,
-		PhysSound = "Concrete.ImpactSoft"
+	Type = "Uncommon",
+	Model = "models/xdeedited/ore_sapphire.mdl",
+	Rarity = 2,
+	Price = 200,
+	PhysSound = "Concrete.ImpactSoft"
 	}
 	function items.it_oreblue :OnReady( self ) self:GetPhysicsObject():SetMass( 100 ) end
 	function items.it_oreblue :OnDraw( self )
@@ -609,12 +669,13 @@ items.it_oreblue = {
 		render.DrawSprite( self:WorldSpaceCenter(), siz, siz, Color( 0, 0, 255, 255 ) )
 	end
 
+
 items.it_orepurple = {
-		Type = "Uncommon",
-		Model = "models/xdeedited/ore_amethyst.mdl",
-		Rarity = 2,
-		Price = 450,
-		PhysSound = "Concrete.ImpactSoft"
+	Type = "Uncommon",
+	Model = "models/xdeedited/ore_amethyst.mdl",
+	Rarity = 2,
+	Price = 450,
+	PhysSound = "Concrete.ImpactSoft"
 	}
 	function items.it_orepurple:OnReady( self ) self:GetPhysicsObject():SetMass( 100 ) end
 	function items.it_orepurple:OnDraw( self )
@@ -622,12 +683,13 @@ items.it_orepurple = {
 		render.DrawSprite( self:WorldSpaceCenter(), siz, siz, Color( 255, 0, 255, 255 ) )
 	end
 
+
 items.it_oregreen = {
-		Type = "Rare",
-		Model = "models/xdeedited/ore_emerald.mdl",
-		Rarity = 3,
-		Price = 900,
-		PhysSound = "Concrete.ImpactSoft"
+	Type = "Rare",
+	Model = "models/xdeedited/ore_emerald.mdl",
+	Rarity = 3,
+	Price = 900,
+	PhysSound = "Concrete.ImpactSoft"
 	}
 	function items.it_oregreen:OnReady( self ) self:GetPhysicsObject():SetMass( 100 ) end
 	function items.it_oregreen:OnDraw( self )
@@ -635,12 +697,13 @@ items.it_oregreen = {
 		render.DrawSprite( self:WorldSpaceCenter(), siz, siz, Color( 0, 255, 0, 255 ) )
 	end
 
+
 items.it_orered = {
-		Type = "Rare",
-		Model = "models/xdeedited/ore_ruby.mdl",
-		Rarity = 3,
-		Price = 1200,
-		PhysSound = "Concrete.ImpactSoft"
+	Type = "Rare",
+	Model = "models/xdeedited/ore_ruby.mdl",
+	Rarity = 3,
+	Price = 1200,
+	PhysSound = "Concrete.ImpactSoft"
 	}
 	function items.it_orered:OnReady( self ) self:GetPhysicsObject():SetMass( 100 ) end
 	function items.it_orered:OnDraw( self )
@@ -648,12 +711,13 @@ items.it_orered = {
 		render.DrawSprite( self:WorldSpaceCenter(), siz, siz, Color( 255, 0, 0, 255 ) )
 	end
 
+
 items.it_orewhite = {
-		Type = "Legendary",
-		Model = "models/xdeedited/ore_diamond.mdl",
-		Rarity = 4,
-		Price = 2500,
-		PhysSound = "Concrete.ImpactSoft"
+	Type = "Legendary",
+	Model = "models/xdeedited/ore_diamond.mdl",
+	Rarity = 4,
+	Price = 2500,
+	PhysSound = "Concrete.ImpactSoft"
 	}
 	function items.it_orewhite:OnReady( self ) self:GetPhysicsObject():SetMass( 150 ) end
 	function items.it_orewhite:OnDraw( self )
@@ -661,12 +725,13 @@ items.it_orewhite = {
 		render.DrawSprite( self:WorldSpaceCenter(), siz, siz, Color( 255, 255, 255, 255 ) )
 	end
 
+
 items.it_gemblue = {
-		Type = "Rare",
-		Model = "models/oc_diving/sapphire.mdl",
-		Rarity = 3,
-		Price = 900,
-		PhysSound = "GlassBottle.ImpactHard"
+	Type = "Rare",
+	Model = "models/oc_diving/sapphire.mdl",
+	Rarity = 3,
+	Price = 900,
+	PhysSound = "GlassBottle.ImpactHard"
 	}
 	local Mat = Material( "sprites/light_glow02_add" ) Mat:SetInt( "$ignorez", 1 ) 
 	function items.it_gemblue:OnReady( self ) self:GetPhysicsObject():SetMass( 150 ) end
@@ -675,12 +740,13 @@ items.it_gemblue = {
 		render.DrawSprite( self:WorldSpaceCenter(), siz, siz, Color( 0, 0, 255, 255 ) )
 	end
 
+
 items.it_gempurple = {
-		Type = "Rare",
-		Model = "models/xdeedited/amethyst.mdl",
-		Rarity = 3,
-		Price = 1400,
-		PhysSound = "GlassBottle.ImpactHard"
+	Type = "Rare",
+	Model = "models/xdeedited/amethyst.mdl",
+	Rarity = 3,
+	Price = 1400,
+	PhysSound = "GlassBottle.ImpactHard"
 	}
 	local Mat = Material( "sprites/light_glow02_add" ) Mat:SetInt( "$ignorez", 1 ) 
 	function items.it_gempurple:OnReady( self ) self:GetPhysicsObject():SetMass( 150 ) end
@@ -689,12 +755,13 @@ items.it_gempurple = {
 		render.DrawSprite( self:WorldSpaceCenter(), siz, siz, Color( 255, 0, 255, 255 ) )
 	end
 
+
 items.it_gemgreen = {
-		Type = "Legendary",
-		Model = "models/oc_diving/emerald.mdl",
-		Rarity = 4,
-		Price = 2700,
-		PhysSound = "GlassBottle.ImpactHard"
+	Type = "Legendary",
+	Model = "models/oc_diving/emerald.mdl",
+	Rarity = 4,
+	Price = 2700,
+	PhysSound = "GlassBottle.ImpactHard"
 	}
 	local Mat = Material( "sprites/light_glow02_add" ) Mat:SetInt( "$ignorez", 1 ) 
 	function items.it_gemgreen:OnReady( self ) self:GetPhysicsObject():SetMass( 150 ) end
@@ -727,12 +794,13 @@ items.it_gemgreen = {
 		end
 	end
 
+
 items.it_gemred = {
-		Type = "Legendary",
-		Model = "models/oc_diving/ruby.mdl",
-		Rarity = 4,
-		Price = 3600,
-		PhysSound = "GlassBottle.ImpactHard"
+	Type = "Legendary",
+	Model = "models/oc_diving/ruby.mdl",
+	Rarity = 4,
+	Price = 3600,
+	PhysSound = "GlassBottle.ImpactHard"
 	}
 	local Mat = Material( "sprites/light_glow02_add" ) Mat:SetInt( "$ignorez", 1 )
 	function items.it_gemred:OnReady( self ) self:GetPhysicsObject():SetMass( 150 ) end
@@ -764,13 +832,14 @@ items.it_gemred = {
 		end
 	end
 
+
 items.it_gemwhite = {
-		Type = "Exotic",
-		Model = "models/oc_diving/diamond.mdl",
-		Rarity = 5,
-		Price = 6000,
-		TickRate = 0.1,
-		PhysSound = "GlassBottle.ImpactHard"
+	Type = "Exotic",
+	Model = "models/oc_diving/diamond.mdl",
+	Rarity = 5,
+	Price = 6000,
+	TickRate = 0.1,
+	PhysSound = "GlassBottle.ImpactHard"
 	}
 	local Mat = Material( "sprites/light_glow02_add" ) Mat:SetInt( "$ignorez", 1 )
 	function items.it_gemwhite:OnReady( self ) self:GetPhysicsObject():SetMass( 150 ) end
@@ -802,12 +871,13 @@ items.it_gemwhite = {
 		end
 	end
 
+
 items.it_crowbar = {
-		Type = "Common",
-		Model = "models/weapons/w_crowbar.mdl",
-		Rarity = 1,
-		Price = 75,
-		PhysSound = "Weapon_Crowbar.Melee_HitWorld"
+	Type = "Common",
+	Model = "models/weapons/w_crowbar.mdl",
+	Rarity = 1,
+	Price = 75,
+	PhysSound = "Weapon_Crowbar.Melee_HitWorld"
 	}
 	function items.it_crowbar:OnUse( self, ply ) return true end
 	function items.it_crowbar:OnCollide( self, dat )
@@ -820,12 +890,13 @@ items.it_crowbar = {
 		end
 	end
 
+
 items.it_stunstick = {
-		Type = "Uncommon",
-		Model = "models/weapons/w_stunbaton.mdl",
-		Rarity = 2,
-		Price = 120,
-		PhysSound = "Weapon_StunStick.Melee_HitWorld"
+	Type = "Uncommon",
+	Model = "models/weapons/w_stunbaton.mdl",
+	Rarity = 2,
+	Price = 120,
+	PhysSound = "Weapon_StunStick.Melee_HitWorld"
 	}
 	function items.it_stunstick:OnUse( self, ply ) return true end
 	function items.it_stunstick:OnCollide( self, dat )
@@ -841,29 +912,30 @@ items.it_stunstick = {
 		end
 	end
 
+
 items.it_guitar = {
-		Type = "Rare",
-		Model = "models/props_phx/misc/fender.mdl",
-		Rarity = 3,
-		Price = 500,
-		PhysSound = "Wood_Box.ImpactSoft",
-		HelperUse = "xdefm.U2"
+	Type = "Rare",
+	Model = "models/props_phx/misc/fender.mdl",
+	Rarity = 3,
+	Price = 500,
+	PhysSound = "Wood_Box.ImpactSoft",
+	HelperUse = "xdefm.U2"
 	}
 	sound.Add( {
-			name = "xdefm.GuitarUse",
-			channel = CHAN_WEAPON,
-			volume = 1,
-			level = 75,
-			pitch = { 75, 125 },
-			sound = ")weapons/guitar_strum.wav"
+		name = "xdefm.GuitarUse",
+		channel = CHAN_WEAPON,
+		volume = 1,
+		level = 75,
+		pitch = { 75, 125 },
+		sound = ")weapons/guitar_strum.wav"
 		} )
 	sound.Add( {
-			name = "xdefm.GuitarHit",
-			channel = CHAN_WEAPON,
-			volume = 1,
-			level = 75,
-			pitch = { 95, 105 },
-			sound = { ")weapons/guitar_impact1.wav", ")weapons/guitar_impact2.wav" } 
+		name = "xdefm.GuitarHit",
+		channel = CHAN_WEAPON,
+		volume = 1,
+		level = 75,
+		pitch = { 95, 105 },
+		sound = { ")weapons/guitar_impact1.wav", ")weapons/guitar_impact2.wav" } 
 		} )
 	function items.it_guitar:OnInit( self ) self.xdefm_NexGuit = 0 end
 	function items.it_guitar:OnUse( self, ply ) if ply:KeyDown( IN_SPEED ) then return true end
@@ -880,12 +952,13 @@ items.it_guitar = {
 		end
 	end
 
+
 items.it_hatchet = {
-		Type = "Uncommon",
-		Model = "models/props/cs_militia/axe.mdl",
-		Rarity = 2,
-		Price = 150,
-		PhysSound = "Weapon_Crowbar.Melee_HitWorld"
+	Type = "Uncommon",
+	Model = "models/props/cs_militia/axe.mdl",
+	Rarity = 2,
+	Price = 150,
+	PhysSound = "Weapon_Crowbar.Melee_HitWorld"
 	}
 	function items.it_hatchet:OnUse( self, ply ) return true end
 	function items.it_hatchet:OnCollide( self, dat )
@@ -898,12 +971,13 @@ items.it_hatchet = {
 		end
 	end
 
+
 items.it_gnome = {
-		Type = "Common",
-		Model = "models/props_junk/gnome.mdl",
-		Rarity = 1,
-		Price = 50,
-		PhysSound = "Concrete.ImpactSoft"
+	Type = "Common",
+	Model = "models/props_junk/gnome.mdl",
+	Rarity = 1,
+	Price = 50,
+	PhysSound = "Concrete.ImpactSoft"
 	}
 	function items.it_gnome:OnInit( self ) self:SetMaxHealth( 100 ) self:SetHealth( self:GetMaxHealth() ) self.xdefm_Killed = false end
 	function items.it_gnome:OnDamaged( self, dmg ) if self:Health() <= 0 or dmg:GetDamage() <= 0 or self.xdefm_Killed then return false end
@@ -917,14 +991,15 @@ items.it_gnome = {
 		end return true
 	end
 
+
 items.it_grinder = {
-		Type = "Rare",
-		Model = "models/props_c17/grinderclamp01a.mdl",
-		Rarity = 3,
-		Price = 600,
-		HelperUse = "xdefm.U2",
-		TickRate = 0.25,
-		CanPhysgun = true
+	Type = "Rare",
+	Model = "models/props_c17/grinderclamp01a.mdl",
+	Rarity = 3,
+	Price = 600,
+	HelperUse = "xdefm.U2",
+	TickRate = 0.25,
+	CanPhysgun = true
 	}
 	function items.it_grinder:OnInit( self ) self.xdefm_Toggle = false  self.xdefm_Cool = 0  self.xdefm_Snd = nil end
 	function items.it_grinder:OnUse( self, ply ) if ply:KeyDown( IN_SPEED ) then return true end self:StopSound( "Airboat_engine_stop" )
@@ -948,13 +1023,14 @@ items.it_grinder = {
 	function items.it_grinder:OnThink( self ) if self.xdefm_Toggle then self:GetPhysicsObject():AddVelocity( VectorRand():GetNormalized()*50 ) end end
 	function items.it_grinder:OnRemove( self ) if self.xdefm_Snd then self.xdefm_Snd:Stop() self.xdefm_Snd = nil end end
 
+
 items.it_bugs = {
-		Type = "Uncommon",
-		Model = "models/props_junk/garbage_takeoutcarton001a.mdl",
-		Rarity = 2,
-		Price = 110,
-		PhysSound = "Default.ImpactSoft",
-		TickRate = 0.1
+	Type = "Uncommon",
+	Model = "models/props_junk/garbage_takeoutcarton001a.mdl",
+	Rarity = 2,
+	Price = 110,
+	PhysSound = "Default.ImpactSoft",
+	TickRate = 0.1
 	}
 	function items.it_bugs:OnInit( self ) self.xdefm_Killing = 0  self.xdefm_Snd = nil end
 	function items.it_bugs:OnThink( self )
@@ -1004,12 +1080,14 @@ items.it_bugs = {
 	end
 	function items.it_bugs:OnRemove( self ) if self.xdefm_Snd then self.xdefm_Snd:Stop() self.xdefm_Snd = nil end end
 
+
 items.it_defib = {
-		Type = "Legendary",
-		Model = "models/w_models/weapons/w_eq_defibrillator.mdl",
-		Rarity = 4,
-		Price = 1000,
-		PhysSound = "weapon.ImpactSoft"
+	Type = "Legendary",
+	Model = "models/w_models/weapons/w_eq_defibrillator.mdl",
+	Rarity = 4,
+	Price = 1000,
+	PhysSound = "weapon.ImpactSoft"
+	CanPhysgun = true
 	}
 	function items.it_defib:OnInit( self ) self.xdefm_Cool = 0 end
 	function items.it_defib:OnTouch( self, ent, typ ) if typ == -1 or !self:IsPlayerHolding() or self.xdefm_Cool > CurTime() then return end
@@ -1025,16 +1103,18 @@ items.it_defib = {
 		end
 	end
 
+
 items.it_vending = {
-		Type = "Structure",
-		Model = "models/props_interiors/VendingMachineSoda01a.mdl",
-		Rarity = 4,
-		Price = 1280,
-		PhysSound = "Plastic_Box.ImpactHard",
-		HelperUse = "xdefm.U3",
-		SType = 3,
-		StartSound = "Buttons.snd1",
-		ExitSound = "NPC.ButtonLatchUnlocked2"
+	Type = "Structure",
+	Model = "models/props_interiors/VendingMachineSoda01a.mdl",
+	Rarity = 4,
+	Price = 1280,
+	PhysSound = "Plastic_Box.ImpactHard",
+	HelperUse = "xdefm.U3",
+	SType = 3,
+	StartSound = "Buttons.snd1",
+	ExitSound = "NPC.ButtonLatchUnlocked2"
+	CanPhysgun = true
 	}
 	items.it_vending.Shop = {
 		[ "it_soda" ] 	= { 150, 5 },
@@ -1043,14 +1123,15 @@ items.it_vending = {
 		[ "it_armor" ] 	= { 400, 5 }
 	}
 
+
 items.it_soda = {
-		Type = "Common",
-		Model = "models/props_junk/PopCan01a.mdl",
-		TickRate = 0.1,
-		Rarity = 1,
-		Price = 30,
-		PhysSound = "Popcan.ImpactHard",
-		HelperUse = "xdefm.U2"
+	Type = "Common",
+	Model = "models/props_junk/PopCan01a.mdl",
+	TickRate = 0.1,
+	Rarity = 1,
+	Price = 30,
+	PhysSound = "Popcan.ImpactHard",
+	HelperUse = "xdefm.U2"
 	}
 	function items.it_soda:OnInit( self ) self:SetSkin( math.random( 0, 2 ) ) self.xdefm_Used = false self.xdefm_Snd = nil
 		self:SetMaxHealth( 1 ) self:SetHealth( 1 )
@@ -1090,13 +1171,14 @@ items.it_soda = {
 		end
 	end
 
+
 items.it_rock = {
-		Type = "Rare",
-		Model = { "models/props_lab/bigrock.mdl", "models/props_mining/caverocks_cluster01.mdl", "models/props_mining/caverocks_cluster02.mdl" },
-		Rarity = 3,
-		Price = 250,
-		Carryable = false,
-		PhysSound = "Concrete.ImpactHard"
+	Type = "Rare",
+	Model = { "models/props_lab/bigrock.mdl", "models/props_mining/caverocks_cluster01.mdl", "models/props_mining/caverocks_cluster02.mdl" },
+	Rarity = 3,
+	Price = 250,
+	Carryable = false,
+	PhysSound = "Concrete.ImpactHard"
 	}
 	function items.it_rock:OnInit( self ) self:SetMaxHealth( 120 ) self:SetHealth( self:GetMaxHealth() ) self:SetCollisionGroup( COLLISION_GROUP_NONE ) self.xdefm_Killed = false end
 	function items.it_rock:OnReady( self ) self:GetPhysicsObject():SetMass( 100 ) end
@@ -1104,54 +1186,55 @@ items.it_rock = {
 		self:SetHealth( math.max( 0, self:Health() -dmg:GetDamage() ) ) self:EmitSound( "Breakable.Concrete" )
 		if self:Health() <= 0 then self.xdefm_Killed = true
 		local lt = {
-				["it_stone"]=80,
-				["it_ore"]=60,
-				["it_coal"]=40,
-				["it_copperbar"]=20,
-				["it_leadbar"]=20,
-				["it_steelbar"]=20,
-				["it_oreblue"]=2,
-				["it_oregreen"]=2,
-				["it_orered"]=2,
-				["it_orepurple"]=2
+			["it_stone"]=80,
+			["it_ore"]=60,
+			["it_coal"]=40,
+			["it_copperbar"]=20,
+			["it_leadbar"]=20,
+			["it_steelbar"]=20,
+			["it_oreblue"]=2,
+			["it_oregreen"]=2,
+			["it_orered"]=2,
+			["it_orepurple"]=2
 			}
 		for i=1, math.random( 3, 6 ) do xdefm_LootDrop( lt, self ) end
 		xdefm_BreakEffect( self, 4 ) self:SetNotSolid( true ) SafeRemoveEntityDelayed( self, 0.1 ) end return true
 	end
 
+
 items.it_crate1 = {
-		Type = "Rare",
-		Model = "models/props_junk/wood_crate001a.mdl",
-		Rarity = 3,
-		Price = 200
+	Type = "Rare",
+	Model = "models/props_junk/wood_crate001a.mdl",
+	Rarity = 3,
+	Price = 200
 	}
 	function items.it_crate1:OnInit( self ) self:SetMaxHealth( 40 ) self:SetHealth( self:GetMaxHealth() ) self.xdefm_Killed = false end
 	function items.it_crate1:OnDamaged( self, dmg ) if self:Health() <= 0 or dmg:GetDamage() <= 0 or self.xdefm_Killed then return false end
 		self:SetHealth( math.max( 0, self:Health() -dmg:GetDamage() ) ) self:EmitSound( "Wood.Break" )
 		if self:Health() <= 0 then self.xdefm_Killed = true
 		local lt = {
-				["it_health"]=3,
-				["it_steelbar"]=2,
-				["it_copperbar"]=2,
-				["it_grenade"]=2,
-				["it_metal2"]=2,
-				["it_wood2"]=2,
-				["it_armor"]=3,
-				["it_present"]=1,
-				["it_refill"]=2,
-				["it_coin"]=2,
-				["it_plastic"]=2
+			["it_health"]=3,
+			["it_steelbar"]=2,
+			["it_copperbar"]=2,
+			["it_grenade"]=2,
+			["it_metal2"]=2,
+			["it_wood2"]=2,
+			["it_armor"]=3,
+			["it_present"]=1,
+			["it_refill"]=2,
+			["it_coin"]=2,
+			["it_plastic"]=2
 			}
 		for i=1, math.random( 4, 8 ) do xdefm_LootDrop( lt, self ) end
 		xdefm_BreakEffect( self, 1 ) self:SetNotSolid( true ) SafeRemoveEntityDelayed( self, 0.1 ) end return true
 	end
 
 items.it_bait1 = {
-		Type = "Common",
-		Model = "models/props_junk/cardboard_box003a.mdl",
-		Rarity = 1,
-		Price = 200,
-		PhysSound = "Cardboard.ImpactHard"
+	Type = "Common",
+	Model = "models/props_junk/cardboard_box003a.mdl",
+	Rarity = 1,
+	Price = 200,
+	PhysSound = "Cardboard.ImpactHard"
 	}
 	function items.it_bait1:OnInit( self ) self:SetMaxHealth( 40 ) self:SetHealth( self:GetMaxHealth() ) self:SetCollisionGroup( COLLISION_GROUP_NONE ) self.xdefm_Killed = false end
 	function items.it_bait1:OnReady( self ) self:GetPhysicsObject():SetMass( 100 ) end
@@ -1159,24 +1242,26 @@ items.it_bait1 = {
 		self:SetHealth( math.max( 0, self:Health() -dmg:GetDamage() ) ) self:EmitSound( "Cardboard.Break" )
 		if self:Health() <= 0 then self.xdefm_Killed = true
 		local lt = {
-				["ba_money"]=5,
-				["ba_seed"]=5,
-				["ba_wrench"]=5,
-				["ba_pan"]=5,
-				["ba_hook"]=5,
-				["ba_skull"]=2,
-				["ba_bread"]=2
+			["ba_money"]=5,
+			["ba_seed"]=5,
+			["ba_wrench"]=5,
+			["ba_pan"]=5,
+			["ba_hook"]=5,
+			["ba_skull"]=2,
+			["ba_bread"]=2
 			}
 		for i=1, 3 do xdefm_LootDrop( lt, self ) end self:SetNotSolid( true ) SafeRemoveEntityDelayed( self, 0.1 ) end return true
 	end
 
+
 items.cr_baby = {
-		Type = "Creature",
-		Model = "models/props_c17/doll01.mdl",
-		Rarity = 2,
-		Price = 230,
-		TickRate = 0.1,
-		MinSize = 0.8, MaxSize = 1.4
+	Type = "Creature",
+	Model = "models/props_c17/doll01.mdl",
+	Rarity = 2,
+	Price = 230,
+	TickRate = 0.1,
+	MinSize = 0.8,
+	MaxSize = 1.4
 	}
 	function items.cr_baby:OnReady( self ) self:StartMotionController() self:SetTrigger( true ) self:GetPhysicsObject():SetMass( 50 ) end
 	function items.cr_baby:OnInit( self ) self:SetMaxHealth( 10 ) self:SetHealth( self:GetMaxHealth() ) self.ShadowParams = {}
@@ -1234,13 +1319,13 @@ items.cr_baby = {
 	end
 
 items.cr_saw = {
-		Type = "Creature",
-		Model = "models/props_junk/sawblade001a.mdl",
-		Rarity = 2,
-		Price = 200,
-		TickRate = 0.1,
-		MinSize = 0.6,
-		MaxSize = 1.4
+	Type = "Creature",
+	Model = "models/props_junk/sawblade001a.mdl",
+	Rarity = 2,
+	Price = 200,
+	TickRate = 0.1,
+	MinSize = 0.6,
+	MaxSize = 1.4
 	}
 	function items.cr_saw:OnInit( self ) self:SetMaxHealth( 75 ) self:SetHealth( self:GetMaxHealth() ) self:SetCollisionGroup( COLLISION_GROUP_NPC )
 		self.xdefm_NT = CurTime() +0.5  self.xdefm_TPos = nil  self.ShadowParams = {}  self.xdefm_Killed = false  self.xdefm_NextAtk = 0
@@ -1303,12 +1388,13 @@ items.cr_saw = {
 		end
 	end
 
+
 items.it_cosmogram = {
-		Type = "Legendary",
-		Model = "models/props_combine/breenglobe.mdl",
-		Rarity = 4,
-		Price = 1500,
-		PhysSound = "Default.ImpactSoft"
+	Type = "Legendary",
+	Model = "models/props_combine/breenglobe.mdl",
+	Rarity = 4,
+	Price = 1500,
+	PhysSound = "Default.ImpactSoft"
 	}
 	local Mat = Material( "effects/blueflare1" )
 	local s1 = { "ambient/machines/teleport4.wav", "ambient/machines/teleport3.wav", "ambient/machines/teleport1.wav" }
@@ -1381,13 +1467,14 @@ items.it_cosmogram = {
 		end
 	end
 
+
 items.it_figurine = {
-		Type = "Rare",
-		Model = "models/dav0r/hoverball.mdl",
-		TickRate = 0.5,
-		Rarity = 3,
-		Price = 500,
-		PhysSound = "AI_BaseNPC.BodyDrop_Light"
+	Type = "Rare",
+	Model = "models/dav0r/hoverball.mdl",
+	TickRate = 0.5,
+	Rarity = 3,
+	Price = 500,
+	PhysSound = "AI_BaseNPC.BodyDrop_Light"
 	}
 	local Mat = Material( "sprites/light_glow02_add" ) Mat:SetInt( "$ignorez", 1 )
 	local ma = {
@@ -1448,13 +1535,14 @@ items.it_figurine = {
 		phy:ComputeShadowControl( self.ShadowParams )
 	end
 
+
 items.it_torch = {
-		Type = "Rare",
-		Model = "models/props_debris/wood_chunk08b.mdl",
-		CantCook = true,
-		Rarity = 3,
-		Price = 800,
-		PhysSound = "Default.ImpactSoft"
+	Type = "Rare",
+	Model = "models/props_debris/wood_chunk08b.mdl",
+	CantCook = true,
+	Rarity = 3,
+	Price = 800,
+	PhysSound = "Default.ImpactSoft"
 	}
 	local Mat = Material( "effects/blueflare1" )  local Ma2 = Material( "effects/splashwake3" )  Ma2:SetInt( "$ignorez", 1 )
 	function items.it_torch:OnInit( self ) self:SetNWBool( "XDEFM_TOn", true )
@@ -1499,12 +1587,13 @@ items.it_torch = {
 		end
 	end
 
+
 items.it_bust = {
-		Type = "Exotic",
-		Model = "models/props_combine/breenbust.mdl",
-		Rarity = 5,
-		Price = 3600,
-		PhysSound = "Concrete.ImpactSoft"
+	Type = "Exotic",
+	Model = "models/props_combine/breenbust.mdl",
+	Rarity = 5,
+	Price = 3600,
+	PhysSound = "Concrete.ImpactSoft"
 	}
 	local Mat = Material( "sprites/light_glow02_add" ) Mat:SetInt( "$ignorez", 1 )
 	function items.it_bust:OnInit( self ) self.xdefm_NextT = CurTime() +1 end
@@ -1564,14 +1653,15 @@ items.it_bust = {
 		end
 	end
 
+
 items.cr_melon = {
-		Type = "Creature",
-		Model = "models/props_junk/watermelon01.mdl",
-		Rarity = 2,
-		Price = 80,
-		TickRate = 0.1,
-		MinSize = 0.8,
-		MaxSize = 1.2
+	Type = "Creature",
+	Model = "models/props_junk/watermelon01.mdl",
+	Rarity = 2,
+	Price = 80,
+	TickRate = 0.1,
+	MinSize = 0.8,
+	MaxSize = 1.2
 	}
 	function items.cr_melon:OnInit( self ) self:SetMaxHealth( 10 ) self:SetHealth( self:GetMaxHealth() )
 		self:SetBloodColor( BLOOD_COLOR_RED ) self:PhysicsInit( SOLID_VPHYSICS )
@@ -1594,13 +1684,14 @@ items.cr_melon = {
 		end
 	end
 
+
 items.it_junkx = {
-		Type = "Uncommon",
-		Model = "models/props_junk/TrashDumpster01a.mdl",
-		Rarity = 2,
-		Price = 200,
-		Carryable = false,
-		PhysSound = "MetalGrate.ImpactHard"
+	Type = "Uncommon",
+	Model = "models/props_junk/TrashDumpster01a.mdl",
+	Rarity = 2,
+	Price = 200,
+	Carryable = false,
+	PhysSound = "MetalGrate.ImpactHard"
 	}
 	function items.it_junkx:OnInit( self ) self:SetMaxHealth( 100 ) self:SetHealth( self:GetMaxHealth() ) self.xdefm_Killed = false end
 	function items.it_junkx:OnReady( self ) self:GetPhysicsObject():SetMass( 50 ) end
@@ -1612,12 +1703,16 @@ items.it_junkx = {
 		xdefm_BreakEffect( self, 3 ) self:SetNotSolid( true ) SafeRemoveEntityDelayed( self, 0.1 ) end return true
 	end
 
+
 items.it_monitor = {
-		Type = "Uncommon",
-		Model = { "models/props_lab/monitor01a.mdl", "models/props_lab/monitor01b.mdl", "models/props_lab/monitor02.mdl" },
-		Rarity = 2,
-		Price = 200,
-		PhysSound = "Computer.ImpactSoft"
+	Type = "Uncommon",
+	Model = {
+		"models/props_lab/monitor01a.mdl", "models/props_lab/monitor01b.mdl",
+		"models/props_lab/monitor02.mdl"
+		},
+	Rarity = 2,
+	Price = 200,
+	PhysSound = "Computer.ImpactSoft"
 	}
 	function items.it_monitor:OnInit( self ) self.xdefm_NextBounce = CurTime() +0.25 end
 	function items.it_monitor:OnDamaged( self, dmg ) if self.xdefm_NextBounce > CurTime() then return end  self.xdefm_NextBounce = CurTime() +0.25
