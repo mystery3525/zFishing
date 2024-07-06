@@ -1759,7 +1759,8 @@ items.it_junku = {
 	Price = 666,
 	PhysSound = "Plastic_Barrel.ImpactHard",
 	SType = 1,
-	HelperUse = "xdefm.U3"
+	HelperUse = "xdefm.U3",
+	CanPhysgun = true
 	}
 	function items.it_junku:OnInteract( self, ent, typ )
 		if typ == -1 then local yes = false
