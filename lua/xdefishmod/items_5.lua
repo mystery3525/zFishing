@@ -107,7 +107,8 @@ items.it_coffee = {
 	HelperUse = "xdefm.U3",
 	SType = 2,
 	StartSound = "Buttons.snd4",
-	ExitSound = "NPC.ButtonLatchUnlocked2"
+	ExitSound = "NPC.ButtonLatchUnlocked2",
+	CanPhysgun = true
 	}
    	items.it_coffee.Crafts = {
 		"it_water&ba_seed&it_armor&re_exp",
@@ -404,7 +405,8 @@ items.it_cquest = {
 	HelperUse = "xdefm.U3",
 	SType = 2,
 	StartSound = "Weapon_AR2.Reload_Rotate",
-	ExitSound = "Weapon_AR2.Reload_Push"
+	ExitSound = "Weapon_AR2.Reload_Push",
+	CanPhysgun = true
 	}
 	items.it_cquest.Crafts = {
 		"it_bait3&it_bait3&it_exp3&it_bag4",

@@ -707,7 +707,8 @@ items.it_printer = {
 	HelperUse = "xdefm.U3",
 	SType = 2,
 	StartSound = "Buttons.snd4",
-	ExitSound = "NPC.ButtonLatchUnlocked2"
+	ExitSound = "NPC.ButtonLatchUnlocked2",
+	CanPhysgun = true
 	}
     	items.it_printer.Crafts = {
 		"it_chemical&it_paper&it_expr",

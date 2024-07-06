@@ -1254,7 +1254,8 @@ items.it_orangebox = {
 	TickRate = 1,
 	Amount = 12,
 	StartSound = "AmmoCrate.Open",
-	ExitSound = "AmmoCrate.Close"
+	ExitSound = "AmmoCrate.Close",
+	CanPhysgun = true
 	}
 	function items.it_orangebox:OnInit( self ) self.xdefm_OTimer = 0 self:SetNWInt( "XDEFM_CT", 0 ) end
 	function items.it_orangebox:OnReady( self ) self:GetPhysicsObject():SetMass( 100 ) end

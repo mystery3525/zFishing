@@ -1262,6 +1262,7 @@ items.it_chealth = {
 	Price = 175,
 	PhysSound = "EpicMetal.ImpactSoft",
 	TickRate = 0.1,
+	CanPhysgun = true
 	}
 	function items.it_chealth:OnInit( self ) self.xdefm_Cool = CurTime() +1  self:SetAutomaticFrameAdvance( true ) self:ResetSequence( "idle" ) self:SetPlaybackRate( 0 ) end
 	function items.it_chealth:OnReady( self ) self:GetPhysicsObject():SetMass( self:GetPhysicsObject():GetMass()*0.5 ) end
@@ -1283,6 +1284,7 @@ items.it_carmor = {
 	Price = 150,
 	PhysSound = "EpicMetal.ImpactSoft",
 	TickRate = 0.1,
+	CanPhysgun = true
 	}
 	function items.it_carmor:OnInit( self ) self.xdefm_Cool = CurTime() +1  self:SetAutomaticFrameAdvance( true ) self:ResetSequence( "idle" ) self:SetPlaybackRate( 0 ) end
 	function items.it_carmor:OnReady( self ) self:GetPhysicsObject():SetMass( self:GetPhysicsObject():GetMass()*0.5 ) end
@@ -1304,6 +1306,7 @@ items.it_csuper = {
 	Price = 800,
 	PhysSound = "EpicMetal.ImpactSoft",
 	TickRate = 0.1,
+	CanPhysgun = true
 	}
 	function items.it_csuper:OnInit( self ) self.xdefm_Cool = CurTime() +1  self:SetAutomaticFrameAdvance( true ) self:ResetSequence( "idle" ) self:SetPlaybackRate( 0 ) end
 	function items.it_csuper:OnUse( self, usr ) if self.xdefm_Cool > CurTime() then return false end
