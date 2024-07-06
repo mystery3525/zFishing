@@ -221,7 +221,7 @@ items.it_crafting1 = {
 		"it_wood&it_wood&it_wood&it_wood2",
 		"it_metal&it_metal&it_metal&it_metal2",
 		"it_glass&it_glass&it_glass&it_glass2",
-        	"it_stone&it_stone&it_stone&it_brick",
+        "it_stone&it_stone&it_stone&it_brick",
 		"it_junk&it_junk&it_junk&it_plastic",
 		"it_metal&it_copperbar&it_steelbar&it_part",
 		"it_wood&it_stone&it_ore&it_chemical",
@@ -246,6 +246,7 @@ items.it_crafting1 = {
 		"it_rottenmeat&it_rottenmeat&it_rottenmeat&ba_fish",
 		"it_glass2&it_glass2&it_copperbar&ba_lamp",
 		"it_metal2&it_steelbar&ba_pickaxe",
+		"it_metal2&it_metal2&it_bucket"
    	 	}
 
 
