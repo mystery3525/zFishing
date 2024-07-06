@@ -295,7 +295,7 @@ items.it_crafting2 = {
     		}
 items.it_recycler = {
 	Type = "Structure",
-	Model = "models/props_wasteland/kitchen_stove002a.mdl",
+	Model = "models/props_wasteland/laundry_washer001a.mdl",
 	StartSound = "DoorHandles.Unlocked2",
 	ExitSound = "Doors.FullClose1",
 	Rarity = 4,
