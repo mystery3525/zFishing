@@ -85,6 +85,7 @@ if true then local it = "re_tool1"
 		"it_melon&it_plastic&it_health",
 		"it_metal2&it_metal2&it_cage",
 		"it_copperbar&it_brick&it_brick&it_furnace",
+		"it_metal2&it_metal2&it_bucket"
     }
 	xdefm_ItemRegister( it, ITEM )
 end

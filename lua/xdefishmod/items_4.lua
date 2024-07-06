@@ -1298,7 +1298,8 @@ items.it_auto = {
 	function items.it_auto:OnInit( self ) self.xdefm_Delay = 0  self.xdefm_Snd = nil
 		self:SetNWInt( "XDEFM_CT", 0 )  self:SetNWBool( "XDEFM_AV", false )
 	end
-	function items.it_auto:OnThink( self ) local ful, tot = true, 0
+	function items.it_auto:OnThink( self ) 
+		local ful, tot = true, 0
 		for k, v in pairs( self.xdefm_T3 ) do if v == "_" then ful = false else tot = tot +1 end end
 		self:SetNWInt( "XDEFM_CT", tot )
 		local bb = ( self:WaterLevel() >= 1 and !ful )
