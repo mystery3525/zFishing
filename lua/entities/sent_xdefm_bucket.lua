@@ -1,3 +1,5 @@
+return -- excluding file in development (turning to it_bucket)
+
 AddCSLuaFile() ENT.PrintName = "#xdefm.Bucket"  ENT.Category = "#xdefm.Category"  ENT.Author = "LemonCola3424"
 ENT.Spawnable = true  
 ENT.AdminOnly = true  

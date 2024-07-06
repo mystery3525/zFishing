@@ -13,6 +13,7 @@ if CLIENT then local langs = {}
 		[ "it_crafting2" ] = "机械台", [ "dit_crafting2" ] = "用于制作高级物品.",
 		[ "it_storage1" ] = "储藏箱", [ "dit_storage1" ] = "可以存放6个物品.",
 		[ "it_storage2" ] = "大储藏箱", [ "dit_storage2" ] = "可以存放30个物品.",
+		[ "it_bucket" ] = "储物桶", ["dit_bucket"] = "可容纳16个小物品.",
 		[ "it_error" ] = "被删除物品", [ "dit_error" ] = "拿点鱼币做补偿吧.",
 		[ "it_furnace2" ] = "金属熔炉", [ "dit_furnace2" ] = "高级矿石冶炼.",
 		[ "it_cquest" ] = "联合军终端", [ "dit_cquest" ] = "上交珍贵物品以获得奖励.",
@@ -33,6 +34,7 @@ if CLIENT then local langs = {}
 		[ "it_crafting2" ] = "Machining's Table", [ "dit_crafting2" ] = "Craft advanced items.",
 		[ "it_storage1" ] = "Storage Crate", [ "dit_storage1" ] = "Can hold 6 items.",
 		[ "it_storage2" ] = "Big Storage Crate", [ "dit_storage2" ] = "Can hold 30 items.",
+		[ "it_bucket" ] = "Storage Bucket", ["dit_bucket"] = "Can hold 16 small items.",
 		[ "it_error" ] = "Deleted Item", [ "dit_error" ] = "Take some money as compensation.",
 		[ "it_furnace2" ] = "Metal Furnace", [ "dit_furnace2" ] = "Advanced ore smelting.",
 		[ "it_cquest" ] = "Combine Terminal", [ "dit_cquest" ] = "Turn in valuable items for rewards.",
@@ -207,6 +209,22 @@ items.it_storage2 = { Type = "Struct", Model = "models/props_junk/wood_crate002a
 	Rarity = 4, Price = 4500, PhysSound = "Wood.ImpactHard", Carryable = true, SType = 1, HelperUse = "xdefm.U3",
 	CanPhysgun = true }
 	function items.it_storage2:OnInit( self ) self:SetSkin( 1 ) end
+
+items.it_bucket = { 
+	Type = "Struct", 
+	Model = "models/props_junk/MetalBucket01a.mdl", 
+	Amount = 16, 
+	StartSound = "Metal_Box.ImpactSoft", 
+	ExitSound = "MetalGrate.ImpactSoft",
+	Rarity = 2, 
+	Price = 4500, 
+	PhysSound = "MetalVent.ImpactHard", 
+	Carryable = true, 
+	SType = 1, 
+	HelperUse = "xdefm.U3",
+	CanPhysgun = true 
+}
+	function items.bucket:OnInit( self ) self:SetSkin( 1 ) end
 
 items.it_furnace2 = { Type = "Struct", Model = "models/props/cs_militia/furnace01.mdl", StartSound = "Metal_Barrel.ImpactSoft", ExitSound = "Metal_Barrel.ImpactHard",
 	Rarity = 4, Price = 3000, Carryable = true, PhysSound = "EpicMetal.ImpactSoft", HelperUse = "xdefm.U3", SType = 2,
