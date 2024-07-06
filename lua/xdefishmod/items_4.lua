@@ -564,7 +564,8 @@ items.it_cooler = {
 	HelperUse = "xdefm.U3",
 	SType = 3,
 	StartSound = "Buttons.snd1",
-	ExitSound = "NPC.ButtonLatchUnlocked2"
+	ExitSound = "NPC.ButtonLatchUnlocked2",
+	CanPhysgun = true
 	}
 	items.it_cooler.Shop = {
 			[ "it_water" ] = { 400, 0 }
