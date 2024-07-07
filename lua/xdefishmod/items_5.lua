@@ -11,10 +11,10 @@ if CLIENT then local langs = {}
 		[ "it_rainbow" ] 	= "彩虹石", [ "dit_rainbow" ] 		= "<color=0,0,255>★</color><color=255,0,255>★</color><color=0,255,0>★</color><color=255,255,0>★</color><color=255,0,0>★</color><color=255,255,255>★</color>.",
 		[ "it_crafting1" ] 	= "工作台", [ "dit_crafting1" ] 		= "用于制作基础物品.",
 		[ "it_crafting2" ] 	= "机械台", [ "dit_crafting2" ] 		= "用于制作高级物品.",
-		[ "it_recycler" ]	= "洗衣机", [ "dit_recycler" ]     = "清理垃圾",
+		[ "it_recycler" ]	= "洗衣机", [ "dit_recycler" ]     	= "清理垃圾",
 		[ "it_storage1" ] 	= "储藏箱", [ "dit_storage1" ] 		= "可以存放12个物品.",
 		[ "it_storage2" ] 	= "大储藏箱", [ "dit_storage2" ] 	= "可以存放30个物品.",
-		[ "it_bucket" ]     = "储物桶",  ["dit_bucket"]         = "可以存放6个物品.",
+		[ "it_bucket" ]     	= "储物桶",  ["dit_bucket"]         	= "可以存放6个物品.",
 		[ "it_error" ] 		= "被删除物品", [ "dit_error" ] 		= "拿点鱼币做补偿吧.",
 		[ "it_furnace2" ] 	= "金属熔炉", [ "dit_furnace2" ] 	= "高级矿石冶炼.",
 		[ "it_cquest" ] 	= "联合军终端", [ "dit_cquest" ] 	= "上交珍贵物品以获得奖励.",
@@ -33,10 +33,10 @@ if CLIENT then local langs = {}
 		[ "it_rainbow" ] 	= "Rainbow Gem", [ "dit_rainbow" ] 		= "<color=0,0,255>★</color><color=255,0,255>★</color><color=0,255,0>★</color><color=255,255,0>★</color><color=255,0,0>★</color><color=255,255,255>★</color>.",
 		[ "it_crafting1" ] 	= "Inventor's Table", [ "dit_crafting1" ] 	= "Craft Basic items.",
 		[ "it_crafting2" ] 	= "Machining's Table", [ "dit_crafting2" ] 	= "Craft Advanced items.",
-		[ "it_recycler" ]	= "Washing Machine", [ "dit_recycler" ]     = "Cleans Junk",
+		[ "it_recycler" ]	= "Washing Machine", [ "dit_recycler" ]     	= "Cleans Junk",
 		[ "it_storage1" ] 	= "Storage Crate", [ "dit_storage1" ] 		= "Can hold up to 12 items.",
 		[ "it_storage2" ] 	= "Big Storage Crate", [ "dit_storage2" ] 	= "Can hold up to 30 items.",
-		[ "it_bucket" ]     = "Storage Bucket", ["dit_bucket"]          = "Can hold up to 6 items.",
+		[ "it_bucket" ]     	= "Storage Bucket", ["dit_bucket"]          	= "Can hold up to 6 items.",
 		[ "it_error" ] 		= "Deleted Item", [ "dit_error" ] 		= "Take some money as compensation.",
 		[ "it_furnace2" ] 	= "Metal Furnace", [ "dit_furnace2" ] 		= "Advanced ore smelting.",
 		[ "it_cquest" ] 	= "Combine Terminal", [ "dit_cquest" ] 		= "Turn in valuable items for rewards.",
@@ -224,7 +224,7 @@ items.it_crafting1 = {
 		"it_wood&it_wood&it_wood&it_wood2",
 		"it_metal&it_metal&it_metal&it_metal2",
 		"it_glass&it_glass&it_glass&it_glass2",
-        "it_stone&it_stone&it_stone&it_brick",
+        	"it_stone&it_stone&it_stone&it_brick",
 		"it_junk&it_junk&it_junk&it_plastic",
 		"it_metal&it_copperbar&it_steelbar&it_part",
 		"it_wood&it_stone&it_ore&it_chemical",
@@ -360,8 +360,16 @@ items.it_bucket = {
 	CanPhysgun = true 
 }
 
-items.it_furnace2 = { Type = "Structure", Model = "models/props/cs_militia/furnace01.mdl", StartSound = "Metal_Barrel.ImpactSoft", ExitSound = "Metal_Barrel.ImpactHard",
-	Rarity = 4, Price = 3000, Carryable = true, PhysSound = "EpicMetal.ImpactSoft", HelperUse = "xdefm.U3", SType = 2,
+items.it_furnace2 = {
+	Type = "Structure",
+	Model = "models/props/cs_militia/furnace01.mdl",
+	StartSound = "Metal_Barrel.ImpactSoft",
+	ExitSound = "Metal_Barrel.ImpactHard",
+	Rarity = 4,
+	Price = 3000,
+	PhysSound = "EpicMetal.ImpactSoft",
+	HelperUse = "xdefm.U3",
+	SType = 2,
 	CanPhysgun = true }
 
 items.it_furnace2 = {
