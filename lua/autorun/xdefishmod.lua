@@ -273,7 +273,7 @@ if CLIENT then --客户端
 		[ "M11" ] = "Manage your items and baits", [ "M22" ] = "Upgrade your fishing abilities using skill points", [ "M33" ] = "Check your fishing records", [ "BaseItem" ] = "",
 		[ "Creature" ] = "Creature", [ "Bait" ] = "Bait", [ "Pickup" ] = "New Item", [ "NotBait" ] = "This slot is for baits only,", [ "NotBai2" ] = "is not a valid bait!", [ "Drop" ] = "Drop",
 		[ "Destroy" ] = "Destroy", [ "Trashed" ] = "Item Trashed", [ "Dropped" ] = "Item Dropped", [ "T1" ] = "Common", [ "T2" ] = "Uncommon",
-		[ "T0" ] = "?", [ "T3" ] = "Rare", [ "T4" ] = "Epic", [ "T5" ] = "Legendary", [ "Price" ] = "Price", [ "Total" ] = "Total",
+		[ "T0" ] = "?", [ "T3" ] = "Rare", [ "T4" ] = "Legendary", [ "T5" ] = "Exotic", [ "Price" ] = "Price", [ "Total" ] = "Total",
 		[ "U1" ] = "Pick Up", [ "Store" ] = "Store", [ "Owner" ] = "Owner", [ "Useless" ] = "Item", [ "NotMine" ] = "You have no right to do this!",
 		[ "FullInv" ] = "Your inventory is full!", [ "Length" ] = "Length", [ "Depth" ] = "Depth", [ "Bobber" ] = "Bobber", [ "Hook" ] = "Hook",
 		[ "Uplevel" ] = "Level Up!", [ "Skp" ] = "Skill Points", [ "UpdA" ] = "Rod Length", [ "UpdB" ] = "String Length", [ "UpdC" ] = "Reel Speed", [ "UpdG" ] = "Extra Hooks",
