@@ -1683,15 +1683,4 @@ items.it_bomb2 = {
 		if dat.Speed >= 120 and dat.DeltaTime > 0.2 then self:TakeDamage( 10 ) end
 	end
 
-
-
-	for i, v in pairs(items) do -- simple as that!
-		v.Name   = "#xdefm."  .. i
-		v.Helper = "#xdefm.d" .. i
-		if v.Based ~= nil and isstring( v.Based ) then
-			for b, k in pairs(items[v.Based]) do -- items[v.Based] must be in the same file as it is local
-				v[b] = v[b] or k
-			end
-		end
-		xdefm_ItemRegister( i, v )
-	end
+ITEMS[1] = items

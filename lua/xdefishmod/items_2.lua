@@ -1747,3 +1747,5 @@ for i, v in pairs(items) do -- simple as that!
 	end
 	xdefm_ItemRegister( i, v )
 end
+
+ITEMS[2] = items

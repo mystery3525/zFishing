@@ -546,13 +546,4 @@ items.it_bouncy = {
 	end
 
 
-for i, v in pairs(items) do -- v.based isn't used in the direct port, but future items may be added to furthe the progression into a possible tier 6
-	v.Name   = "#xdefm."  .. i
-	v.Helper = "#xdefm.d" .. i
-	if v.Based ~= nil and isstring( v.Based ) then
-		for b, k in pairs(items[v.Based]) do -- items[v.Based] must be in the same file as it is local
-			v[b] = v[b] or k
-		end
-	end
-	xdefm_ItemRegister( i, v )
-end
+ITEMS[5] = items
