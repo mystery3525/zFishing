@@ -58,7 +58,7 @@ if CLIENT then local langs = {}
 		[ "it_metal" ] 		= "Metal", [ "dit_metal" ] 			= "",
 		[ "it_glass" ] 		= "Glass", [ "dit_glass" ] 			= "",
 		[ "it_junks" ] 		= "Junk Pile", [ "dit_junks" ] 			= "A pile of Junk, break to open.",
-		[ "it_shoe" ] 		= "Old Shoe", [ "dit_shoe" ] 			= "",
+		[ "it_shoe" ] 		= "Old Shoe", [ "dit_shoe" ] 			= "Victim of the 9-5.",
 		[ "it_mine1" ] 		= "Old Naval Mine", [ "dit_mine1" ] 		= "Still floats but very dangerous.",
 		[ "it_hula" ] 		= "Hula Doll", [ "dit_hula" ] 			= "A doll that can dance, nothing else.",
 		[ "it_cactus" ] 	= "Cactus", [ "dit_cactus" ] 			= "Friend.",
@@ -545,14 +545,14 @@ items.cr_dollar = {
 	MinSize = 0.8,
 	MaxSize = 1.4
 	}
-	function items.it_pallet:OnInit( self ) self:SetMaxHealth( 25 ) self:SetHealth( self:GetMaxHealth() )
+	function items.cr_dollar:OnInit( self ) self:SetMaxHealth( 25 ) self:SetHealth( self:GetMaxHealth() )
 		self:SetBloodColor( BLOOD_COLOR_RED ) self:PhysicsInit( SOLID_VPHYSICS )
 		self:GetPhysicsObject():SetMaterial( "flesh" ) self:SetCollisionGroup( COLLISION_GROUP_NPC )
 		self.xdefm_NextSnd = 0  self.xdefm_Killed = false  self.xdefm_AtkD = CurTime() +1
 		self.xdefm_NextTouch = 0
 	end
-	function items.it_pallet:OnCaught( self ) self:EmitSound( "NPC_PoisonZombie.Alert" ) self.xdefm_NextSnd = CurTime() +math.Rand( 2, 3 ) end
-	function items.it_pallet:OnTouch( self, ent, typ ) if !isnumber( self.xdefm_NextTouch ) or self.xdefm_Killed or self.xdefm_NextTouch > CurTime() then return end
+	function items.cr_dollar:OnCaught( self ) self:EmitSound( "NPC_PoisonZombie.Alert" ) self.xdefm_NextSnd = CurTime() +math.Rand( 2, 3 ) end
+	function items.cr_dollar:OnTouch( self, ent, typ ) if !isnumber( self.xdefm_NextTouch ) or self.xdefm_Killed or self.xdefm_NextTouch > CurTime() then return end
 		self.xdefm_NextTouch = CurTime() + 0.5  if !ent:IsPlayer() and !ent:IsNPC() then return end
 		ent:StopSound( "Zombie.AttackHit" ) ent:EmitSound( "Zombie.AttackHit" )
 		local vel = ( self:WorldSpaceCenter() - ent:WorldSpaceCenter() ):GetNormalized()
@@ -562,7 +562,7 @@ items.cr_dollar = {
 		self:GetPhysicsObject():SetVelocity( vel*400 )  ent:SetVelocity( vel*-250 )
 		if IsValid( ent:GetPhysicsObject() ) then ent:GetPhysicsObject():SetVelocity( vel*-250 ) end
 	end
-	function items.it_pallet:OnThink( self ) if self.xdefm_Killed then return end
+	function items.cr_dollar:OnThink( self ) if self.xdefm_Killed then return end
 		if math.random( 1, 40 ) == 1 and self.xdefm_NextSnd <= CurTime() then self.xdefm_NextSnd = CurTime() +math.Rand( 2, 4 )
 			self:EmitSound( "NPC_PoisonZombie.Idle" )
 		end if self:WaterLevel() > 0 or self:IsPlayerHolding() or constraint.FindConstraint( self, "Weld" ) or !self:GetPhysicsObject():IsMotionEnabled() then return end
@@ -580,17 +580,17 @@ items.cr_dollar = {
 			end
 		end
 	end
-	function items.it_pallet:OnUse( self ) if !self.xdefm_Killed then return false end end
-	function items.it_pallet:OnStore( self ) if !self.xdefm_Killed then return false end end
-	function items.it_pallet:OnReady( self ) self:GetPhysicsObject():SetMass( 10 ) self:SetTrigger( true ) self:UseTriggerBounds( true, 4 ) end
-	function items.it_pallet:OnPlayerDrop( self, own ) self:SetHealth( 0 ) self:SetColor( Color( 255, 155, 155 ) ) self.xdefm_Anim = "idle"
+	function items.cr_dollar:OnUse( self ) if !self.xdefm_Killed then return false end end
+	function items.cr_dollar:OnStore( self ) if !self.xdefm_Killed then return false end end
+	function items.cr_dollar:OnReady( self ) self:GetPhysicsObject():SetMass( 10 ) self:SetTrigger( true ) self:UseTriggerBounds( true, 4 ) end
+	function items.cr_dollar:OnPlayerDrop( self, own ) self:SetHealth( 0 ) self:SetColor( Color( 255, 155, 155 ) ) self.xdefm_Anim = "idle"
 	self.xdefm_Killed = true end
-	function items.it_pallet:OnDamaged( self, dmg ) if self.xdefm_Killed then return end
+	function items.cr_dollar:OnDamaged( self, dmg ) if self.xdefm_Killed then return end
 		self:SetHealth( math.max( 0, self:Health() -dmg:GetDamage() ) )
 		if self:Health() <= 0 then self:SetColor( Color( 255, 155, 155 ) )
 		self:EmitSound( "NPC_PoisonZombie.Die" ) self.xdefm_Killed = true end
 	end
-	function items.it_pallet:OnDraw( self )
+	function items.cr_dollar:OnDraw( self )
 		if !self.Emitter or !IsValid( self.Emitter ) then
 			self.Emitter = ParticleEmitter( self:WorldSpaceCenter() )
 			self:CallOnRemove( "XDEEmitter", function( self ) if self.Emitter then self.Emitter:Finish() end end )
@@ -929,7 +929,7 @@ items.cr_gnome = {
 
 
 items.it_campfire = {
-	Type = "Uncommon",
+	Type = "Structure",
 	Model = "models/props_unique/firepit_campground.mdl",
 	Rarity = 2,
 	Price = 100,
@@ -985,7 +985,7 @@ items.it_campfire = {
 	
 
 items.it_stove1 = {
-	Type = "Uncommon",
+	Type = "Structure",
 	Model = "models/props_interiors/makeshift_stove_battery.mdl",
 	Rarity = 2,
 	Price = 250,
@@ -1014,7 +1014,7 @@ items.it_stove1 = {
 	
 
 items.it_stove2 = {
-	Type = "Uncommon",
+	Type = "Structure",
 	Model = "models/props/cs_militia/stove01.mdl",
 	Rarity = 2,
 	Price = 450,
@@ -1022,7 +1022,7 @@ items.it_stove2 = {
 	TickRate = 1,
 	PhysSound = "Metal_Barrel.ImpactHard",
 	CanPhysgun = true,
-    CantCook = true
+    	CantCook = true
 	}
 	function items.it_stove2:OnInit( self )  self.xdefm_Enabled = 0  self.xdefm_Spots = {}  self.xdefm_Pressed = 0
 		self.xdefm_Spots[ 1 ] = xdefm_FireSpot( self:LocalToWorld(Vector(6,12,16)), 5, 2, self )
@@ -1042,7 +1042,7 @@ items.it_stove2 = {
 	
 
 items.it_stove3 = {
-	Type = "Rare",
+	Type = "Structure",
 	Model = "models/props_c17/furniturestove001a.mdl",
 	Rarity = 3,
 	Price = 750,
@@ -1050,7 +1050,7 @@ items.it_stove3 = {
 	TickRate = 1,
 	PhysSound = "Metal_Barrel.ImpactHard",
 	CanPhysgun = true,
-    CantCook = true
+    	CantCook = true
 	}
 	function items.it_stove3:OnInit( self )  self.xdefm_Enabled = 0  self.xdefm_Spots = {}  self.xdefm_Pressed = 0
 		self.xdefm_Spots[ 1 ] = xdefm_FireSpot( self:LocalToWorld(Vector(3,11,20)), 3, 6, self )
