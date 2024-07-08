@@ -263,7 +263,7 @@ if true then local it = "re_advance"
 	xdefm_ItemRegister( it, ITEM )
 end
 if true then local it = "re_exp"
-	local ITEM = { Name = "#xdefm."..it, Type = "Recipe", Model = "models/props_junk/garbage_coffeemug001a_fullsheet.mdl", Helper = "#xdefm.d"..it, Rarity = 3, Durability = 5,
+	local ITEM = { Name = "#xdefm."..it, Type = "Recipe", Model = "models/props_junk/garbage_coffeemug001a_fullsheet.mdl", Helper = "#xdefm.d"..it, Rarity = 3, Durability = 10,
     PhysSound = "GlassBottle.ImpactSoft", Price = 250 }
     ITEM.Crafts = {
 		"it_paper&it_paper&it_expr",
