@@ -1140,7 +1140,7 @@ items.it_bag1 = {
 
 
 items.it_bag2 = {
-	Type = "Useless",
+	Type = "Rare",
 	Model = "models/props_junk/garbage_bag001a.mdl",
 	Rarity = 3,
 	Price = 0,
