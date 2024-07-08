@@ -1395,7 +1395,7 @@ items.it_cosmogram = {
 	Model = "models/props_combine/breenglobe.mdl",
 	Rarity = 4,
 	Price = 1500,
-	PhysSound = "Default.ImpactSoft"
+	PhysSound = "Default.ImpactSoft",
 	CanPhysgun = true
 	}
 	local Mat = Material( "effects/blueflare1" )
