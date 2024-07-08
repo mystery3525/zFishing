@@ -113,7 +113,7 @@ items.it_coffee = {
 	}
    	items.it_coffee.Crafts = {
 		"it_water&ba_seed&it_armor&re_exp",
- 		"it_water&ba_seed&it_refill&re_exp",
+		"it_water&ba_seed&it_health&re_exp"
  		}
 
 
@@ -294,6 +294,8 @@ items.it_crafting2 = {
 		"it_steelbar&it_glass3&ba_c4",
 		"it_armor&it_steelbar&it_metal3&ba_drill",
     		}
+
+
 items.it_recycler = {
 	Type = "Structure",
 	Model = "models/props_wasteland/laundry_washer001a.mdl",
@@ -312,6 +314,7 @@ items.it_recycler = {
 	"it_junk&it_junk&it_junk&it_junk&it_stone",
 	"it_junk&it_junk&it_junk&it_junk&it_metal"
 	}
+
 
 items.it_storage1 = {
 	Type = "Structure",
