@@ -1688,4 +1688,4 @@ items.it_mine2  = {
 	end
 
 
-ITEMS[4] = items
+xdefm_ItemRegisterAll(items)

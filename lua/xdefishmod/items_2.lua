@@ -1748,4 +1748,4 @@ for i, v in pairs(items) do -- simple as that!
 	xdefm_ItemRegister( i, v )
 end
 
-ITEMS[2] = items
+xdefm_ItemRegisterAll(items)

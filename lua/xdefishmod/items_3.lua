@@ -1601,8 +1601,8 @@ items.it_water = {
 	Rarity = 1,
 	Price = 80,
 	PhysSound = "GlassBottle.ImpactHard",
-	CantCook = true
-	KillInWater = true,
+	CantCook = true,
+	KillInWater = true
 	}
 	function items.it_water:OnDrop( self, ent, typ ) if !typ or self.xdefm_Thrown > 0 then return end
 		self:EmitSound( "Zombie.AttackMiss" )
@@ -1656,7 +1656,7 @@ items.it_pot = {
 	PhysSound = "Metal_Box.ImpactSoft",
 	TickRate = 1,
 	CantCook = true,
-	CanPhysgun = true
+	CanPhysgun = true,
 	HelperUse = "xdefm.U2"
 	}
 	local tb = {
@@ -1847,4 +1847,4 @@ items.it_exp4 = {
 	}
 	items.it_exp4.Constants = { Amount = 9999 }
 
-ITEMS[3] = items
+xdefm_ItemRegisterAll(items)

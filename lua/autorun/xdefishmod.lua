@@ -1435,8 +1435,17 @@ if SERVER then --服务端
 		if file.Exists( path, "DATA" ) then
 			pro = util.JSONToTable( file.Read( path, "DATA" ) )
 			if !pro.UpdG then pro.UpdG = 0 end
-			for k, v in pairs( pro.Items ) do if isstring( v ) and v != "_" and !xdefm.items[ xdefm_GetClass( v ) ] then pro.Items[ k ] = ( k == 21 and "ba_junk" or "it_error" ) end end
-			for k, v in pairs( pro.Bnk ) do if isstring( v )  and v != "_" and !xdefm.items[ xdefm_GetClass( v ) ] then pro.Bnk[ k ] = "it_error" end end
+
+			for k, v in pairs( pro.Items ) do 
+				if isstring( v ) and v != "_" and !xdefm.items[ xdefm_GetClass( v ) ] then -- this code should never run, but just in case...
+					pro.Items[ k ] = ( k == 21 and "ba_junk" or "it_error" ) 
+				end 
+			end
+			for k, v in pairs( pro.Bnk ) do 
+				if isstring( v ) and v != "_" and !xdefm.items[ xdefm_GetClass( v ) ] then 
+					pro.Bnk[ k ] = "it_error" 
+				end 
+			end
 		else
 			pro = {
 				Level = 0,
@@ -1955,6 +1964,25 @@ if SERVER or CLIENT then --通用端
 		local tb = string.Explode( "|", ite )
 		if istable( tb ) and #tb > 1 then
 			ite = tb[ 1 ]
+		end
+		if isstring(ite) then
+			local prefix = string.Left(ite, 3)
+			if !xdefm.items[ite] then
+				if prefix == "it_" or prefix == "ba_" or prefix == "re_" or prefix == "cr_" then
+					local ITEM = {
+						Name = "#xdefm.it_error",
+						Helper = "#xdefm.dit_error",
+						Type = "Common",
+						Model = "models/hunter/blocks/cube025x025x025.mdl",
+						Rarity = 1,
+						Price = 20000,
+						PhysSound = "citadel.br_no",
+						CantCook = true
+					}
+					
+					xdefm_ItemRegister(ite, ITEM) -- this is for items that have been removed due to a compile error, without removing the item from inventory
+				end
+			end
 		end
 		return ite
 	end
@@ -3663,6 +3691,20 @@ end end end
 			return "&<color="..col.r..","..col.g..","..col.b..">&"..nam.."&"..ext.."&</color>&"
 		end
 	end
+	
+	function xdefm_ItemRegisterAll(tbl)
+		for i, v in pairs(tbl) do -- simple as that!
+			v.Name   = "#xdefm."  .. i or "#xdefm.it_error"
+			v.Helper = "#xdefm.d" .. i or "#xdefm.dit_error"
+			if v.Based ~= nil and isstring( v.Based ) then
+				for b, k in pairs(tbl[v.Based]) do -- items[v.Based] must be in the same file as it is local
+					v[b] = v[b] or k
+				end
+			end
+			xdefm_ItemRegister( i, v )
+		end
+	end
+
 	function xdefm_ItemRegister( nam, dat )
 		if !isstring( nam ) or nam == "" or nam == "_" or nam == "!V" or !istable( dat ) then return false end
 		local inp = {}

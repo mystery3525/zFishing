@@ -37,7 +37,7 @@ if CLIENT then local langs = {}
 		[ "it_storage1" ] 	= "Storage Crate", [ "dit_storage1" ] 		= "Can hold up to 12 items.",
 		[ "it_storage2" ] 	= "Big Storage Crate", [ "dit_storage2" ] 	= "Can hold up to 30 items.",
 		[ "it_bucket" ]     	= "Storage Bucket", ["dit_bucket"]          	= "Can hold up to 6 items.",
-		[ "it_error" ] 		= "Deleted Item", [ "dit_error" ] 		= "Take some money as compensation.",
+		[ "it_error" ] 		= "Compile Error", [ "dit_error" ] 		= "Have no fear, keep this item safe until it is readded... or sell it.",
 		[ "it_furnace2" ] 	= "Metal Furnace", [ "dit_furnace2" ] 		= "Advanced ore smelting.",
 		[ "it_cquest" ] 	= "Combine Terminal", [ "dit_cquest" ] 		= "Turn in valuable items for rewards.",
 		
@@ -361,18 +361,6 @@ items.it_bucket = {
 	CanPhysgun = true 
 }
 
-items.it_furnace2 = {
-	Type = "Structure",
-	Model = "models/props/cs_militia/furnace01.mdl",
-	StartSound = "Metal_Barrel.ImpactSoft",
-	ExitSound = "Metal_Barrel.ImpactHard",
-	Rarity = 4,
-	Price = 3000,
-	PhysSound = "EpicMetal.ImpactSoft",
-	HelperUse = "xdefm.U3",
-	SType = 2,
-	CanPhysgun = true
-	}
 
 items.it_furnace2 = {
 	Type = "Structure",
@@ -403,7 +391,7 @@ items.it_furnace2 = {
 		"it_orewhite&it_orewhite&it_coal&it_gemwhite",
 		"it_copperbar&it_steelbar&it_tungstenbar&it_silverbar&it_goldbar&it_platinumbar&it_rainbowbar",
 		"it_gemblue&it_gempurple&it_gemgreen&it_gemred&it_gemwhite&it_rainbow",
-		}
+	}
 
 
 items.it_cquest = {
@@ -546,4 +534,4 @@ items.it_bouncy = {
 	end
 
 
-ITEMS[5] = items
+xdefm_ItemRegisterAll(items)

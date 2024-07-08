@@ -134,7 +134,6 @@ items.it_stone = {
 	}
 
 items.it_metal = { 
-	Name = "#xdefm.it_metal", 
 	Type = "Common", 
 	Model = {
 		"models/gibs/metal_gib1.mdl", "models/gibs/metal_gib2.mdl",
@@ -1683,4 +1682,4 @@ items.it_bomb2 = {
 		if dat.Speed >= 120 and dat.DeltaTime > 0.2 then self:TakeDamage( 10 ) end
 	end
 
-ITEMS[1] = items
+xdefm_ItemRegisterAll(items)
