@@ -1970,8 +1970,6 @@ if SERVER or CLIENT then --通用端
 			if !xdefm.items[ite] then
 				if prefix == "it_" or prefix == "ba_" or prefix == "re_" or prefix == "cr_" then
 					local ITEM = {
-						Name = "#xdefm.it_error",
-						Helper = "#xdefm.dit_error",
 						Type = "Common",
 						Model = "models/hunter/blocks/cube025x025x025.mdl",
 						Rarity = 1,
