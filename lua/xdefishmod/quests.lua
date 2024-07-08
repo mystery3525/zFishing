@@ -1,7 +1,8 @@
-if CLIENT then return end
+it_crateif CLIENT then return end
 
-local quests = {
-    [0]  = {
+local quests = { 
+    
+    [0] = {
         reward = "it_bag1",
         "it_wood2&it_metal2",
         "it_glass2&it_brick",
@@ -23,8 +24,9 @@ local quests = {
         "it_wood&it_stone&it_metal&it_glass&it_junk",
         "it_brick&it_brick",
         "it_health&it_armor",
-        "cr_seagull",
+        "cr_seagull"
     },
+
     [15] = {
         reward = "it_bag2",
         "it_wood2&it_metal2&it_glass2&it_stone2",
@@ -37,7 +39,7 @@ local quests = {
         "it_potter2&it_potter2",
         "it_potter1&it_potter1&it_potter1&it_potter1",
         "it_stove1&it_stove1&it_stove1",
-        "cr_crab&cr_crab2&cr_crab",
+        "cr_crab&cr_crab2&cr_crab3",
         "cr_gold&cr_fish&cr_perch",
         "it_copperbar&it_leadbar&it_steelbar",
         "it_barre1&it_barre2&it_barre1",
@@ -47,15 +49,16 @@ local quests = {
         "it_camera",
         "it_expr&it_expr&it_expr",
         "it_egg&it_egg",
-        "cr_crow",
+        "cr_crow"
     },
+
     [30] = {
         reward = "it_bag3",
-        "it_crate1&it_crate2&it_crate",
+        "it_crate1&it_crate2&it_crate3",
         "it_present&it_present&it_present&it_present",
         "it_coin2",
         "it_flower&it_flower",
-        "it_potter3&it_potter2&it_potter",
+        "it_potter3&it_potter2&it_potter3",
         "it_egg&it_egg&it_egg&it_egg",
         "cr_perch&cr_perch&cr_perch",
         "it_mine2&it_bomb2",
@@ -66,16 +69,17 @@ local quests = {
         "cr_baby&cr_saw&cr_gnome",
         "cr_bread&it_pumpkin2&cr_bread",
         "it_firearm2&it_firearm2&it_ammo",
-        "it_crate3&it_crate3&it_crate",
+        "it_crate3&it_crate3&it_crate3",
         "it_oreblue&it_orepurple&it_oregreen&it_orered",
         "it_goldbar&it_goldbar",
         "it_copperbar&it_leadbar&it_steelbar&it_tungstenbar",
         "it_exp2",
-        "cr_crow&cr_seagull&cr_pigeon",
+        "cr_crow&cr_seagull&cr_pigeon"
     },
+
     [50] = {
         reward = "it_bag4",
-        "it_bait3&it_bait3&it_exp",
+        "it_bait3&it_bait3&it_exp3",
         "it_coin2&it_coin2&it_coin2&it_coin2",
         "it_goldbar&it_orewhite&it_goldbar",
         "it_pturre2&it_cturret&it_pturre1",
@@ -84,8 +88,8 @@ local quests = {
         "it_torch&it_figurine&it_cosmogram",
         "cr_pigeon&cr_pigeon&cr_pigeon&cr_pigeon",
         "it_treasure&it_treasure&it_coin2",
-        "it_ammocan1&it_ammocan1&it_ammocan1&it_crate",
-        "cr_crow&cr_crow&cr_crow&cr_crow",
+        "it_ammocan1&it_ammocan1&it_ammocan1&it_crate3",
+        "cr_crow&cr_crow&cr_crow&cr_crow"
     }
 }
 
