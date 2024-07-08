@@ -934,7 +934,7 @@ items.it_pturre2 = {
 	Rarity = 3,
 	Price = 1250,
 	PhysSound = "SolidMetal.ImpactSoft",
-	Based = "it_pturre1"
+	Based = "it_pturre1",
 	CanPhysgun = true
 	}
 	items.it_pturre2.Constants = { [ "Broken" ] = true }
@@ -1561,7 +1561,7 @@ items.it_gballoox = {
 	Rarity = 2,
 	Price = 500,
 	PhysSound = "Cardboard.ImpactHard",
-	CantCook = true
+	CantCook = true,
 	CanPhysgun = true
 	}
 	function items.it_gballoox:OnInit( self ) self.xdefm_Killed = false end
