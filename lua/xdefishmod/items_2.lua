@@ -136,8 +136,8 @@ items.it_scrap = {
 			},
 		Rarity = 1,
 		Price = 20,
-		PhysSound = "Metal_Box.ImpactSoft"
-		KillInWater = true,
+		PhysSound = "Metal_Box.ImpactSoft",
+		KillInWater = true
 		}
 
 
