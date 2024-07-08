@@ -805,12 +805,13 @@ items.it_pcore = {
 
 
 items.it_pturre1 = {
-	Type = "Legendary",
+	Type = "Structure",
 	Model = "models/props/turret_01.mdl",
 	TickRate = 0.04,
 	Rarity = 4,
 	Price = 2250,
 	PhysSound = "SolidMetal.ImpactSoft",
+	CanPhysgun = true
 	}
 	items.it_pturre1.Constants = { [ "Broken" ] = false }
 	local so = {"npc/turret/different_turret01.wav",
@@ -927,13 +928,14 @@ items.it_pturre1 = {
 
 
 items.it_pturre2 = {
-	Type = "Rare",
+	Type = "Structure",
 	Model = "models/props/turret_01.mdl",
 	TickRate = 0.04,
 	Rarity = 3,
 	Price = 1250,
 	PhysSound = "SolidMetal.ImpactSoft",
 	Based = "it_pturre1"
+	CanPhysgun = true
 	}
 	items.it_pturre2.Constants = { [ "Broken" ] = true }
 
@@ -1100,12 +1102,13 @@ items.it_ccore = {
 
 
 items.it_cturret = {
-	Type = "Legendary",
+	Type = "Structure",
 	Model = "models/Combine_turrets/Floor_turret.mdl",
 	TickRate = 0.04,
 	Rarity = 4,
 	Price = 1800,
 	PhysSound = "SolidMetal.ImpactSoft",
+	CanPhysgun = true
 	}
 	function items.it_cturret:OnInit( self ) self.xdefm_NextSnd = CurTime() +1  self.xdefm_Detect = CurTime() +1
 		self:SetAutomaticFrameAdvance( true ) self:ResetSequence( "idle" ) self:SetPlaybackRate( 1 )
@@ -1255,7 +1258,7 @@ items.it_chopper = {
 
 
 items.it_chealth = {
-	Type = "Uncommon",
+	Type = "Strcuture",
 	Model = "models/props_combine/health_charger001.mdl",
 	HelperUse = "xdefm.U2",
 	Rarity = 2,
@@ -1277,7 +1280,7 @@ items.it_chealth = {
 
 
 items.it_carmor = {
-	Type = "Uncommon",
+	Type = "Structure",
 	Model = "models/props_combine/suit_charger001.mdl",
 	HelperUse = "xdefm.U2",
 	Rarity = 2,
@@ -1299,7 +1302,7 @@ items.it_carmor = {
 
 
 items.it_csuper = {
-	Type = "Rare",
+	Type = "Structure",
 	Model = "models/props_combine/suit_charger001.mdl",
 	HelperUse = "xdefm.U2",
 	Rarity = 3,
@@ -1553,12 +1556,13 @@ items.it_gballoon = {
 
 
 items.it_gballoox = {
-	Type = "Uncommon",
+	Type = "Structure",
 	Model = "models/maxofs2d/cube_tool.mdl",
 	Rarity = 2,
 	Price = 500,
 	PhysSound = "Cardboard.ImpactHard",
 	CantCook = true
+	CanPhysgun = true
 	}
 	function items.it_gballoox:OnInit( self ) self.xdefm_Killed = false end
 	function items.it_gballoox:OnDamaged( self, dmg ) if dmg:GetDamage() <= 0 or self.xdefm_Killed then return end self.xdefm_Killed = true
@@ -1598,6 +1602,7 @@ items.it_water = {
 	Price = 80,
 	PhysSound = "GlassBottle.ImpactHard",
 	CantCook = true
+	KillInWater = true,
 	}
 	function items.it_water:OnDrop( self, ent, typ ) if !typ or self.xdefm_Thrown > 0 then return end
 		self:EmitSound( "Zombie.AttackMiss" )
@@ -1644,13 +1649,14 @@ items.it_shovel = {
 
 
 items.it_pot = {
-	Type = "Exotic",
+	Type = "Structure",
 	Model = "models/props_c17/metalPot001a.mdl",
 	Rarity = 5,
 	Price = 3000,
 	PhysSound = "Metal_Box.ImpactSoft",
 	TickRate = 1,
 	CantCook = true,
+	CanPhysgun = true
 	HelperUse = "xdefm.U2"
 	}
 	local tb = {
