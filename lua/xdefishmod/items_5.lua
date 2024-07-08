@@ -32,7 +32,7 @@ if CLIENT then local langs = {}
         	[ "it_bone" ] 		= "Bone", [ "dit_bone" ] 			= "Dinner?",
 		[ "it_rainbow" ] 	= "Rainbow Gem", [ "dit_rainbow" ] 		= "<color=0,0,255>★</color><color=255,0,255>★</color><color=0,255,0>★</color><color=255,255,0>★</color><color=255,0,0>★</color><color=255,255,255>★</color>.",
 		[ "it_crafting1" ] 	= "Inventor's Table", [ "dit_crafting1" ] 	= "Craft Basic items.",
-		[ "it_crafting2" ] 	= "Machining's Table", [ "dit_crafting2" ] 	= "Craft Advanced items.",
+		[ "it_crafting2" ] 	= "Machinist's Table", [ "dit_crafting2" ] 	= "Craft Advanced items.",
 		[ "it_recycler" ]	= "Washing Machine", [ "dit_recycler" ]     	= "Cleans Junk",
 		[ "it_storage1" ] 	= "Storage Crate", [ "dit_storage1" ] 		= "Can hold up to 12 items.",
 		[ "it_storage2" ] 	= "Big Storage Crate", [ "dit_storage2" ] 	= "Can hold up to 30 items.",
@@ -40,6 +40,7 @@ if CLIENT then local langs = {}
 		[ "it_error" ] 		= "Deleted Item", [ "dit_error" ] 		= "Take some money as compensation.",
 		[ "it_furnace2" ] 	= "Metal Furnace", [ "dit_furnace2" ] 		= "Advanced ore smelting.",
 		[ "it_cquest" ] 	= "Combine Terminal", [ "dit_cquest" ] 		= "Turn in valuable items for rewards.",
+		
 		[ "it_pshop" ] 		= "Mysterious Portal", [ "dit_pshop" ] 		= "Buy valuable items.",
 		[ "it_bouncy" ] 	= "Bouncy Ball", [ "dit_bouncy" ] 		= "Super bouncy.",
     }
@@ -321,7 +322,6 @@ items.it_storage1 = {
 	Rarity = 3,
 	Price = 1000,
 	PhysSound = "Wood.ImpactHard",
-	Carryable = true,
 	SType = 1,
 	HelperUse = "xdefm.U3",
 	CanPhysgun = true
@@ -338,7 +338,6 @@ items.it_storage2 = {
 	Rarity = 4,
 	Price = 4500,
 	PhysSound = "Wood.ImpactHard",
-	Carryable = true,
 	SType = 1,
 	HelperUse = "xdefm.U3",
 	CanPhysgun = true
@@ -353,8 +352,7 @@ items.it_bucket = {
 	ExitSound = "MetalGrate.ImpactSoft",
 	Rarity = 2, 
 	Price = 500, 
-	PhysSound = "MetalVent.ImpactHard", 
-	Carryable = true, 
+	PhysSound = "MetalVent.ImpactHard",
 	SType = 1, 
 	HelperUse = "xdefm.U3",
 	CanPhysgun = true 
@@ -370,7 +368,8 @@ items.it_furnace2 = {
 	PhysSound = "EpicMetal.ImpactSoft",
 	HelperUse = "xdefm.U3",
 	SType = 2,
-	CanPhysgun = true }
+	CanPhysgun = true
+	}
 
 items.it_furnace2 = {
 	Type = "Structure",
@@ -430,7 +429,7 @@ items.it_cquest = {
 		}
 
 
-items.it_plate = {
+items.it_plate = { --What are you?
 	Type = "Structure",
 	Model = "models/props_collectables/piepan.mdl",
 	Amount = 1,
