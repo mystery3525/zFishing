@@ -23,26 +23,26 @@ if CLIENT then local langs = {}
 		[ "ba_gmod" ] 		= "娃娃", [ "dba_gmod" ] 	= "通用鱼饵,可以钓起任何物品.",
 	}
 	langs[ "en" ] = {
-		[ "ba_junk" ] 		= "Basket", [ "dba_junk" ] 		= "A full inventory of junks isn't enough for you?",
-		[ "ba_money" ] 		= "Bank Note", [ "dba_money" ] 		= "Catch more notes with a note.",
-		[ "ba_skull" ] 		= "Skull", [ "dba_skull" ] 		= "Catch dead things and headcrabs.",
-		[ "ba_pan" ] 		= "Pan", [ "dba_pan" ] 			= "Catch stoves.",
+		[ "ba_junk" ] 		= "Basket", [ "dba_junk" ] 		= "A full inventory of junk isn't enough for you?",
+		[ "ba_money" ] 		= "Bank Note", [ "dba_money" ] 		= "Catch money and money accessories.",
+		[ "ba_skull" ] 		= "Skull", [ "dba_skull" ] 		= "Catch :skull:",
+		[ "ba_pan" ] 		= "Pan", [ "dba_pan" ] 			= "Catch stoves and other cookware.",
 		[ "ba_hook" ] 		= "Giant Hook", [ "dba_hook" ] 		= "Catch crafting materials and some recipes.",
-		[ "ba_wrench" ] 	= "Wrench", [ "dba_wrench" ] 		= "Catch furnitures.",
-		[ "ba_seed" ] 		= "Seed Bag", [ "dba_seed" ] 		= "Catch fruits, because I can't find any vegetable models.",
-		[ "ba_fish" ] 		= "Meatball", [ "dba_fish" ] 		= "Catch regular fishes, what could be wrong?",
-		[ "ba_bomb" ] 		= "Bomb Shard", [ "dba_bomb" ] 		= "Catch all kinds of explosives.",
+		[ "ba_wrench" ] 	= "Wrench", [ "dba_wrench" ] 		= "Catch furniture and pottery.",
+		[ "ba_seed" ] 		= "Seed Bag", [ "dba_seed" ] 		= "Catch fruits.",
+		[ "ba_fish" ] 		= "Meatball", [ "dba_fish" ] 		= "Catch fish and creatures.",
+		[ "ba_bomb" ] 		= "Bomb Shard", [ "dba_bomb" ] 		= "Catch various explosives.",
 		[ "ba_pickaxe" ] 	= "Pickaxe", [ "dba_pickaxe" ] 		= "Catch gems and metal ingots.",
-		[ "ba_lamp" ] 		= "Desk Lamp", [ "dba_lamp" ] 		= "Catch random machines.",
-		[ "ba_box" ] 		= "Box", [ "dba_box" ] 			= "Catch random stuffs.",
-		[ "ba_teddy" ] 		= "Teddy Bear", [ "dba_teddy" ] 	= "Catch strange things.",
-		[ "ba_meat" ] 		= "Meat Chunk", [ "dba_meat" ] 		= "Catch all kinds of creatures, including ichthyosaurs.",
-		[ "ba_c4" ] 		= "C4", [ "dba_c4" ] 			= "Catch ammo and firearms. It's a game so it's OK.",
-		[ "ba_bread" ] 		= "Lunch Bag", [ "dba_bread" ] 		= "Check if there's a bakery underwater.",
-		[ "ba_drill" ] 		= "Drill", [ "dba_drill" ] 		= "Catch better gems and ingots.",
-		[ "ba_combine" ] 	= "Power Core", [ "dba_combine" ] 	= "Catch Combine objects.",
-		[ "ba_portal" ] 	= "Ball", [ "dba_portal" ] 		= "Catch Aperture Science objects.",
-		[ "ba_magnet" ] 	= "Magnet", [ "dba_magnet" ] 		= "Increase the chance to catch crates.",
+		[ "ba_lamp" ] 		= "Desk Lamp", [ "dba_lamp" ] 		= "Catch machines and structures.",
+		[ "ba_box" ] 		= "Box", [ "dba_box" ] 			= "Catch some random items.",
+		[ "ba_teddy" ] 		= "Teddy Bear", [ "dba_teddy" ] 	= "Catch some strange items.",
+		[ "ba_meat" ] 		= "Meat Chunk", [ "dba_meat" ] 		= "Catch creatures of the more elusive variety.",
+		[ "ba_c4" ] 		= "C4", [ "dba_c4" ] 			= "Catch ammo and firearms.",
+		[ "ba_bread" ] 		= "Lunch Bag", [ "dba_bread" ] 		= "Catch food and food items.",
+		[ "ba_drill" ] 		= "Drill", [ "dba_drill" ] 		= "Catch more rare gems and ingots.",
+		[ "ba_combine" ] 	= "Power Core", [ "dba_combine" ] 	= "Catch lost Combine technology.",
+		[ "ba_portal" ] 	= "Ball", [ "dba_portal" ] 		= "Catch teleported Aperture Science objects.",
+		[ "ba_magnet" ] 	= "Magnet", [ "dba_magnet" ] 		= "Increases chance to catch crates.",
 		[ "ba_gmod" ] 		= "Companion Doll", [ "dba_gmod" ] 	= "Universal bait that catches everything.",
 	}
 	local ln = GetConVar( "gmod_language" ):GetString()  local lg = "en"
@@ -440,98 +440,98 @@ if SERVER then local ba = "ba_pickaxe"
     	xdefm_PoolAdd( { Items = { "it_orewhite", "it_goldbar" }, 							Exp = 40, 	Chances = { [ba] = 2000 }, 	DepthMin = 8 	} )
 end
 if SERVER then local ba = "ba_box"
-	xdefm_PoolAdd( { Items = { "it_shoe", "it_mine1", "it_hula", "it_cactus", "it_brick", "it_bugs", "it_monitor", "it_bouncy", "it_gnome" }, Exp = 5, Chances = { [ba] = 200 } } )
-	xdefm_PoolAdd( { Items = { "it_gballoon" }, Exp = 10, Chances = { [ba] = 300 } } )
-	xdefm_PoolAdd( { Items = { "it_crowbar", "it_hatchet", "it_stunstick", "it_shovel", "it_refill", "re_meat" }, Exp = 15, Chances = { [ba] = 450 } } )
-	xdefm_PoolAdd( { Items = { "it_guitar", "it_grinder", "it_camera", "it_balloox", "it_jumppad" }, Exp = 20, Chances = { [ba] = 1000 } } )
-	xdefm_PoolAdd( { Items = { "it_gballoom", "it_defib" }, Exp = 20, Chances = { [ba] = 2000 }, DepthMin = 3 } )
+	xdefm_PoolAdd( { Items = { "it_shoe", "it_mine1", "it_hula", "it_cactus", "it_brick", "it_bugs", "it_monitor", "it_bouncy", "it_gnome" }, 	Exp = 5, 	Chances = { [ba] = 200 } 	} )
+	xdefm_PoolAdd( { Items = { "it_gballoon" }, 													Exp = 10, 	Chances = { [ba] = 300 } 	} )
+	xdefm_PoolAdd( { Items = { "it_crowbar", "it_hatchet", "it_stunstick", "it_shovel", "it_refill", "re_meat" }, 					Exp = 15, 	Chances = { [ba] = 450 } 	} )
+	xdefm_PoolAdd( { Items = { "it_guitar", "it_grinder", "it_camera", "it_balloox", "it_jumppad" }, 						Exp = 20, 	Chances = { [ba] = 1000 } 	} )
+	xdefm_PoolAdd( { Items = { "it_gballoom", "it_defib" }, 											Exp = 20, 	Chances = { [ba] = 2000 }, 	DepthMin = 3 	} )
 end
 if SERVER then local ba = "ba_teddy"
-	xdefm_PoolAdd( { Items = { "cr_baby", "cr_saw", "cr_gnome", "it_hula" }, Exp = 10, Chances = { [ba] = 300 } } )
-	xdefm_PoolAdd( { Items = { "it_figurine", "it_torch" }, Exp = 15, Chances = { [ba] = 600 } } )
-	xdefm_PoolAdd( { Items = { "it_cosmogram", "cr_knight" }, Exp = 25, Chances = { [ba] = 2000 }, DepthMin = 5 } )
-	xdefm_PoolAdd( { Items = "it_bust", Exp = 40, Chances = { [ba] = 3000 }, DepthMin = 8 } )
-	xdefm_PoolAdd( { Items = "it_pot", Exp = 50, Chances = { [ba] = 2000 }, DepthMin = 8 } )
+	xdefm_PoolAdd( { Items = { "cr_baby", "cr_saw", "cr_gnome", "it_hula" }, 	Exp = 10, 	Chances = { [ba] = 300 } 	} )
+	xdefm_PoolAdd( { Items = { "it_figurine", "it_torch" }, 			Exp = 15, 	Chances = { [ba] = 600 } 	} )
+	xdefm_PoolAdd( { Items = { "it_cosmogram", "cr_knight" }, 			Exp = 25, 	Chances = { [ba] = 2000 }, 	DepthMin = 5 	} )
+	xdefm_PoolAdd( { Items = "it_bust", 						Exp = 40, 	Chances = { [ba] = 3000 }, 	DepthMin = 8 	} )
+	xdefm_PoolAdd( { Items = "it_pot", 						Exp = 50, 	Chances = { [ba] = 2000 }, 	DepthMin = 8 	} )
 end
 if SERVER then local ba = "ba_meat"
-	xdefm_PoolAdd( { Items = { "cr_crab", "cr_crab2", "cr_crab3", "cr_melon", "cr_dollar" }, Exp = 10, Chances = { [ba] = 300 } } )
-	xdefm_PoolAdd( { Items = { "cr_fish", "cr_gold", "cr_perch" }, Exp = 15, Chances = { [ba] = 450 } } )
-	xdefm_PoolAdd( { Items = { "cr_baby", "cr_saw", "cr_gnome" }, Exp = 15, Chances = { [ba] = 600 } } )
-	xdefm_PoolAdd( { Items = "cr_cute", Exp = 45, Chances = { [ba] = 800 }, DepthMin = 5 } )
-	xdefm_PoolAdd( { Items = { "cr_pigeon", "cr_crow", "cr_seagull", "cr_golden" }, Exp = 20, Chances = { [ba] = 1000 } } )
+	xdefm_PoolAdd( { Items = { "cr_crab", "cr_crab2", "cr_crab3", "cr_melon", "cr_dollar" }, 	Exp = 10, 	Chances = { [ba] = 300 } 	} )
+	xdefm_PoolAdd( { Items = { "cr_fish", "cr_gold", "cr_perch" }, 					Exp = 15, 	Chances = { [ba] = 450 } 	} )
+	xdefm_PoolAdd( { Items = { "cr_baby", "cr_saw", "cr_gnome" }, 					Exp = 15, 	Chances = { [ba] = 600 } 	} )
+	xdefm_PoolAdd( { Items = "cr_cute", 								Exp = 45, 	Chances = { [ba] = 800 }, 	DepthMin = 5 } )
+	xdefm_PoolAdd( { Items = { "cr_pigeon", "cr_crow", "cr_seagull", "cr_golden" }, 		Exp = 20, 	Chances = { [ba] = 1000 } 	} )
 end
 if SERVER then local ba = "ba_junk"
-	xdefm_PoolAdd( { Items = "it_junk", Exp = 0, Chances = { [ba] = 10 } } )
-	xdefm_PoolAdd( { Items = "it_junks", Exp = 0, Chances = { [ba] = 100 } } )
-	xdefm_PoolAdd( { Items = "it_junkx", Exp = 0, Chances = { [ba] = 200 } } )
-	xdefm_PoolAdd( { Items = { "re_recycle", "it_junku" }, Exp = 10, Chances = { [ba] = 400 } } )
+	xdefm_PoolAdd( { Items = "it_junk", 				Exp = 0, 	Chances = { [ba] = 10 } 	} )
+	xdefm_PoolAdd( { Items = "it_junks", 				Exp = 0, 	Chances = { [ba] = 100 } 	} )
+	xdefm_PoolAdd( { Items = "it_junkx", 				Exp = 0, 	Chances = { [ba] = 200 } 	} )
+	xdefm_PoolAdd( { Items = { "re_recycle", "it_junku" }, 		Exp = 10, 	Chances = { [ba] = 400 } 	} )
 end
 if SERVER then local ba = "ba_bread"
-	xdefm_PoolAdd( { Items = { "it_apple", "it_orange", "it_apple", "it_pumpkin1", "it_soda", "it_potato", "it_water" }, Exp = 5, Chances = { [ba] = 100 } } )
-	xdefm_PoolAdd( { Items = { "it_mush1", "it_mush2", "it_bread1", "it_bread1", "it_bread1", "it_egg" }, Exp = 10, Chances = { [ba] = 150 } } )
-	xdefm_PoolAdd( { Items = { "it_gfood", "it_bread2" }, Exp = 15, Chances = { [ba] = 300 } } )
-	xdefm_PoolAdd( { Items = { "it_pumpkin2", "cr_bread", "cr_bread", "cr_bread", "re_exp" }, Exp = 20, Chances = { [ba] = 600 }, DepthMin = 3 } )
-	xdefm_PoolAdd( { Items = { "it_fridge", "it_coffee" }, Exp = 20, Chances = { [ba] = 1000 }, DepthMin = 3 } )
+	xdefm_PoolAdd( { Items = { "it_apple", "it_orange", "it_apple", "it_pumpkin1", "it_soda", "it_potato", "it_water" }, 	Exp = 5, 	Chances = { [ba] = 100 } 	} )
+	xdefm_PoolAdd( { Items = { "it_mush1", "it_mush2", "it_bread1", "it_bread1", "it_bread1", "it_egg" }, 			Exp = 10, 	Chances = { [ba] = 150 } 	} )
+	xdefm_PoolAdd( { Items = { "it_gfood", "it_bread2" }, 									Exp = 15, 	Chances = { [ba] = 300 } 	} )
+	xdefm_PoolAdd( { Items = { "it_pumpkin2", "cr_bread", "cr_bread", "cr_bread", "re_exp" }, 				Exp = 20, 	Chances = { [ba] = 600 }, 	DepthMin = 3 	} )
+	xdefm_PoolAdd( { Items = { "it_fridge", "it_coffee" }, 									Exp = 20, 	Chances = { [ba] = 1000 }, 	DepthMin = 3 	} )
 end
 if SERVER then local ba = "ba_c4"
-	xdefm_PoolAdd( { Items = { "it_ammo", "it_rpg", "it_grenade", "it_flashbang" }, Exp = 10, Chances = { [ba] = 300 } } )
-	xdefm_PoolAdd( { Items = "it_firearm1", Exp = 15, Chances = { [ba] = 450 } } )
-	xdefm_PoolAdd( { Items = { "it_firearm2", "it_ammocan1" }, Exp = 20, Chances = { [ba] = 600 } } )
-	xdefm_PoolAdd( { Items = { "it_crate3", "it_ammocan2" }, Exp = 40, Chances = { [ba] = 1000 }, DepthMin = 3 } )
-	xdefm_PoolAdd( { Items = "it_supply", Exp = 40, Chances = { [ba] = 1600 }, DepthMin = 5 } )
-	xdefm_PoolAdd( { Items = "it_launcher", Exp = 50, Chances = { [ba] = 3000 }, DepthMin = 8 } )
+	xdefm_PoolAdd( { Items = { "it_ammo", "it_rpg", "it_grenade", "it_flashbang" }, 	Exp = 10, 	Chances = { [ba] = 300 } 	} )
+	xdefm_PoolAdd( { Items = "it_firearm1", 						Exp = 15, 	Chances = { [ba] = 450 } 	} )
+	xdefm_PoolAdd( { Items = { "it_firearm2", "it_ammocan1" }, 				Exp = 20, 	Chances = { [ba] = 600 } 	} )
+	xdefm_PoolAdd( { Items = { "it_crate3", "it_ammocan2" }, 				Exp = 40, 	Chances = { [ba] = 1000 }, 	DepthMin = 3 	} )
+	xdefm_PoolAdd( { Items = "it_supply", 							Exp = 40, 	Chances = { [ba] = 1600 }, 	DepthMin = 5 	} )
+	xdefm_PoolAdd( { Items = "it_launcher", 						Exp = 50, 	Chances = { [ba] = 3000 }, 	DepthMin = 8 	} )
 end
 if SERVER then local ba = "ba_drill"
-	xdefm_PoolAdd( { Items = { "it_coal", "it_pottery", "it_ore" }, Exp = 5, Chances = { [ba] = 100 } } )
-	xdefm_PoolAdd( { Items = { "it_copperbar", "it_leadbar", "it_steelbar", "it_barre1", "it_barre2" }, Exp = 10, Chances = { [ba] = 200 } } )
-	xdefm_PoolAdd( { Items = { "it_oreblue", "it_orepurple", "it_oregreen", "it_orered" }, Exp = 15, Chances = { [ba] = 450 }, DepthMin = 3 } )
-    xdefm_PoolAdd( { Items = { "it_gemblue", "it_gempurple", "it_silverbar", "it_tungstenbar" }, Exp = 25, Chances = { [ba] = 600 }, DepthMin = 5 } )
-    xdefm_PoolAdd( { Items = { "it_gemgreen", "it_gemred", "it_orewhite", "it_goldbar" }, Exp = 30, Chances = { [ba] = 800 }, DepthMin = 8 } )
-    xdefm_PoolAdd( { Items = "it_platinumbar", Exp = 40, Chances = { [ba] = 1000 }, DepthMin = 10 } )
-	xdefm_PoolAdd( { Items = { "it_treasure", "it_gemwhite" }, Exp = 50, Chances = { [ba] = 2000 }, DepthMin = 10 } )
-	xdefm_PoolAdd( { Items = "it_rainbowbar", Exp = 80, Chances = { [ba] = 4000 }, DepthMin = 10 } )
+	xdefm_PoolAdd( { Items = { "it_coal", "it_pottery", "it_ore" }, 					Exp = 5, 	Chances = { [ba] = 100 } 	} )
+	xdefm_PoolAdd( { Items = { "it_copperbar", "it_leadbar", "it_steelbar", "it_barre1", "it_barre2" }, 	Exp = 10, 	Chances = { [ba] = 200 } 	} )
+	xdefm_PoolAdd( { Items = { "it_oreblue", "it_orepurple", "it_oregreen", "it_orered" }, 			Exp = 15, 	Chances = { [ba] = 450 }, 	DepthMin = 3 	} )
+    	xdefm_PoolAdd( { Items = { "it_gemblue", "it_gempurple", "it_silverbar", "it_tungstenbar" }, 		Exp = 25, 	Chances = { [ba] = 600 }, 	DepthMin = 5 	} )
+    	xdefm_PoolAdd( { Items = { "it_gemgreen", "it_gemred", "it_orewhite", "it_goldbar" }, 			Exp = 30, 	Chances = { [ba] = 800 }, 	DepthMin = 8 	} )
+    	xdefm_PoolAdd( { Items = "it_platinumbar", 								Exp = 40, 	Chances = { [ba] = 1000 }, 	DepthMin = 10 	} )
+	xdefm_PoolAdd( { Items = { "it_treasure", "it_gemwhite" }, 						Exp = 50, 	Chances = { [ba] = 2000 }, 	DepthMin = 10 	} )
+	xdefm_PoolAdd( { Items = "it_rainbowbar", 								Exp = 80, 	Chances = { [ba] = 4000 }, 	DepthMin = 10 	} )
 end
 if SERVER then local ba = "ba_combine"
-	xdefm_PoolAdd( { Items = "it_cmetal", Exp = 10, Chances = { [ba] = 200 } } )
-	xdefm_PoolAdd( { Items = { "it_chopper", "it_bomb1", "it_clocked" }, Exp = 15, Chances = { [ba] = 250 } } )
-	xdefm_PoolAdd( { Items = { "it_csuper", "it_chealth", "it_carmor" }, Exp = 20, Chances = { [ba] = 600 }, DepthMin = 3 } )
-	xdefm_PoolAdd( { Items = { "it_cscanner", "it_cturret", "it_cheli" }, Exp = 30, Chances = { [ba] = 1600 }, DepthMin = 5 } )
-	xdefm_PoolAdd( { Items = "it_cthumper", Exp = 50, Chances = { [ba] = 3500 }, DepthMin = 8 } )
-	xdefm_PoolAdd( { Items = "it_cquest", Exp = 80, Chances = { [ba] = 5000 }, DepthMin = 10 } )
+	xdefm_PoolAdd( { Items = "it_cmetal", 					Exp = 10, 	Chances = { [ba] = 200 } 	} )
+	xdefm_PoolAdd( { Items = { "it_chopper", "it_bomb1", "it_clocked" }, 	Exp = 15, 	Chances = { [ba] = 250 } 	} )
+	xdefm_PoolAdd( { Items = { "it_csuper", "it_chealth", "it_carmor" }, 	Exp = 20, 	Chances = { [ba] = 600 }, 	DepthMin = 3 	} )
+	xdefm_PoolAdd( { Items = { "it_cscanner", "it_cturret", "it_cheli" }, 	Exp = 30, 	Chances = { [ba] = 1600 }, 	DepthMin = 5 	} )
+	xdefm_PoolAdd( { Items = "it_cthumper", 				Exp = 50, 	Chances = { [ba] = 3500 }, 	DepthMin = 8 	} )
+	xdefm_PoolAdd( { Items = "it_cquest", 					Exp = 80, 	Chances = { [ba] = 5000 }, 	DepthMin = 10 	} )
 end
 if SERVER then local ba = "ba_portal"
-	xdefm_PoolAdd( { Items = "it_pmetal", Exp = 10, Chances = { [ba] = 200 } } )
-	xdefm_PoolAdd( { Items = "it_pcube", Exp = 15, Chances = { [ba] = 300 } } )
-	xdefm_PoolAdd( { Items = "it_pradio", Exp = 20, Chances = { [ba] = 400 } } )
-	xdefm_PoolAdd( { Items = "it_pturre1", Exp = 20, Chances = { [ba] = 1250 }, DepthMin = 3 } )
-	xdefm_PoolAdd( { Items = "it_pturre2", Exp = 30, Chances = { [ba] = 2000 }, DepthMin = 5 } )
-	xdefm_PoolAdd( { Items = "it_pcore", Exp = 50, Chances = { [ba] = 3500 }, DepthMin = 8 } )
-	xdefm_PoolAdd( { Items = "it_pshop", Exp = 80, Chances = { [ba] = 5000 }, DepthMin = 10 } )
+	xdefm_PoolAdd( { Items = "it_pmetal", 		Exp = 10, 	Chances = { [ba] = 200 } 	} )
+	xdefm_PoolAdd( { Items = "it_pcube", 		Exp = 15, 	Chances = { [ba] = 300 } 	} )
+	xdefm_PoolAdd( { Items = "it_pradio", 		Exp = 20, 	Chances = { [ba] = 400 } 	} )
+	xdefm_PoolAdd( { Items = "it_pturre1", 		Exp = 20, 	Chances = { [ba] = 1250 }, 	DepthMin = 3 	} )
+	xdefm_PoolAdd( { Items = "it_pturre2", 		Exp = 30, 	Chances = { [ba] = 2000 }, 	DepthMin = 5 	} )
+	xdefm_PoolAdd( { Items = "it_pcore", 		Exp = 50, 	Chances = { [ba] = 3500 }, 	DepthMin = 8 	} )
+	xdefm_PoolAdd( { Items = "it_pshop", 		Exp = 80, 	Chances = { [ba] = 5000 }, 	DepthMin = 10 	} )
 end
 if SERVER then local ba = "ba_lamp"
-	xdefm_PoolAdd( { Items = "it_expr", Exp = 10, Chances = { [ba] = 450 } } )
-	xdefm_PoolAdd( { Items = "it_exps", Exp = 20, Chances = { [ba] = 1500 }, DepthMin = 5 } )
-	xdefm_PoolAdd( { Items = "it_exp1", Exp = 20, Chances = { [ba] = 800 } } )
-	xdefm_PoolAdd( { Items = { "it_exps", "it_exp2" }, Exp = 30, Chances = { [ba] = 1200 }, DepthMin = 3, Level = 15 } )
-	xdefm_PoolAdd( { Items = { "it_exps", "it_exp3" }, Exp = 45, Chances = { [ba] = 2000 }, DepthMin = 5, Level = 40 } )
-	xdefm_PoolAdd( { Items = { "it_chemical", "it_paper", "it_ejunk" }, Exp = 5, Chances = { [ba] = 100 } } )
-	xdefm_PoolAdd( { Items = { "it_printer", "it_chealth", "it_carmor", "it_cooler" }, Exp = 10, Chances = { [ba] = 600 } } )
-	xdefm_PoolAdd( { Items = { "it_vending" }, Exp = 15, Chances = { [ba] = 1200 }, DepthMin = 3 } )
-	xdefm_PoolAdd( { Items = { "it_antibird", "it_server", "it_miner" }, Exp = 20, Chances = { [ba] = 1600 }, DepthMin = 3 } )
-	xdefm_PoolAdd( { Items = { "it_crafting2", "it_tesla" }, Exp = 50, Chances = { [ba] = 3000 }, DepthMin = 8 } )
+	xdefm_PoolAdd( { Items = "it_expr", 							Exp = 10, 	Chances = { [ba] = 450 } 	} )
+	xdefm_PoolAdd( { Items = "it_exps", 							Exp = 20, 	Chances = { [ba] = 1500 }, 	DepthMin = 5 	} )
+	xdefm_PoolAdd( { Items = "it_exp1", 							Exp = 20,	Chances = { [ba] = 800 } 	} )
+	xdefm_PoolAdd( { Items = { "it_exps", "it_exp2" }, 					Exp = 30, 	Chances = { [ba] = 1200 }, 	DepthMin = 3, 	Level = 15 	} )
+	xdefm_PoolAdd( { Items = { "it_exps", "it_exp3" }, 					Exp = 45, 	Chances = { [ba] = 2000 }, 	DepthMin = 5, 	Level = 40 	} )
+	xdefm_PoolAdd( { Items = { "it_chemical", "it_paper", "it_ejunk" }, 			Exp = 5, 	Chances = { [ba] = 100 } 	} )
+	xdefm_PoolAdd( { Items = { "it_printer", "it_chealth", "it_carmor", "it_cooler" }, 	Exp = 10, 	Chances = { [ba] = 600 } 	} )
+	xdefm_PoolAdd( { Items = { "it_vending" }, 						Exp = 15, 	Chances = { [ba] = 1200 }, 	DepthMin = 3 	} )
+	xdefm_PoolAdd( { Items = { "it_antibird", "it_server", "it_miner" }, 			Exp = 20, 	Chances = { [ba] = 1600 }, 	DepthMin = 3 	} )
+	xdefm_PoolAdd( { Items = { "it_crafting2", "it_tesla" }, 				Exp = 50, 	Chances = { [ba] = 3000 }, 	DepthMin = 8 	} )
 end
 if SERVER then local ba = "ba_hook"
-	xdefm_PoolAdd( { Items = { "it_wood", "it_stone", "it_metal", "it_glass", "it_scrap", "it_paper" }, Exp = 10, Chances = { [ba] = 50 } } )
-	xdefm_PoolAdd( { Items = { "it_wood2", "it_brick", "it_metal2", "it_glass2", "it_part", "it_plastic", "it_ejunk", "it_pottery" }, Exp = 15, Chances = { [ba] = 250 } } )
-	xdefm_PoolAdd( { Items = { "re_toolbox", "it_recipe1", "it_recipe2" }, Exp = 15, Chances = { [ba] = 600 } } )
-	xdefm_PoolAdd( { Items = { "it_wood3", "it_stone2", "it_metal3", "it_glass3", "it_part", "re_recycle", "re_meat" }, Exp = 25, Chances = { [ba] = 800 }, DepthMin = 3 } )
-	xdefm_PoolAdd( { Items = "it_recipe2", Exp = 30, Chances = { [ba] = 1000 } } )
-	xdefm_PoolAdd( { Items = "it_part2", Exp = 40, Chances = { [ba] = 1000 }, DepthMin = 5 } )
-	xdefm_PoolAdd( { Items = "it_recipe3", Exp = 50, Chances = { [ba] = 2000 } } )
+	xdefm_PoolAdd( { Items = { "it_wood", "it_stone", "it_metal", "it_glass", "it_scrap", "it_paper" }, 					Exp = 10, 	Chances = { [ba] = 50 } 	} )
+	xdefm_PoolAdd( { Items = { "it_wood2", "it_brick", "it_metal2", "it_glass2", "it_part", "it_plastic", "it_ejunk", "it_pottery" }, 	Exp = 15, 	Chances = { [ba] = 250 } 	} )
+	xdefm_PoolAdd( { Items = { "re_toolbox", "it_recipe1", "it_recipe2" }, 									Exp = 15, 	Chances = { [ba] = 600 } 	} )
+	xdefm_PoolAdd( { Items = { "it_wood3", "it_stone2", "it_metal3", "it_glass3", "it_part", "re_recycle", "re_meat" }, 			Exp = 25, 	Chances = { [ba] = 800 }, 	DepthMin = 3 	} )
+	xdefm_PoolAdd( { Items = "it_recipe2", 													Exp = 30, 	Chances = { [ba] = 1000 } 	} )
+	xdefm_PoolAdd( { Items = "it_part2", 													Exp = 40, 	Chances = { [ba] = 1000 }, 	DepthMin = 5 	} )
+	xdefm_PoolAdd( { Items = "it_recipe3", 													Exp = 50, 	Chances = { [ba] = 2000 } 	} )
 end
 if SERVER then local ba = "ba_magnet"
-	xdefm_PoolAdd( { Items = { "it_rock", "it_crate1", "it_bait1", "it_register", "it_ammocan1" }, Exp = 0, Chances = { [ba] = 300 } } )
-	xdefm_PoolAdd( { Items = { "it_crate2", "it_crate3", "it_ammocan2" }, Exp = 0, Chances = { [ba] = 500 } } )
-	xdefm_PoolAdd( { Items = { "it_bait2", "it_bait2", "it_crate3", "it_treasure" }, Exp = 0, Chances = { [ba] = 700 } } )
-	xdefm_PoolAdd( { Items = "it_vault", Exp = 0, Chances = { [ba] = 900 } } )
+	xdefm_PoolAdd( { Items = { "it_rock", "it_crate1", "it_bait1", "it_register", "it_ammocan1" }, 		Exp = 0, 	Chances = { [ba] = 300 } 	} )
+	xdefm_PoolAdd( { Items = { "it_crate2", "it_crate3", "it_ammocan2" }, 					Exp = 0, 	Chances = { [ba] = 500 } 	} )
+	xdefm_PoolAdd( { Items = { "it_bait2", "it_bait2", "it_crate3", "it_treasure" }, 			Exp = 0, 	Chances = { [ba] = 700 } 	} )
+	xdefm_PoolAdd( { Items = "it_vault", 									Exp = 0, 	Chances = { [ba] = 900 } 	} )
 end
