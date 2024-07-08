@@ -137,6 +137,7 @@ items.it_scrap = {
 		Rarity = 1,
 		Price = 20,
 		PhysSound = "Metal_Box.ImpactSoft"
+		KillInWater = true,
 		}
 
 
@@ -1390,11 +1391,12 @@ items.cr_saw = {
 
 
 items.it_cosmogram = {
-	Type = "Legendary",
+	Type = "Structure",
 	Model = "models/props_combine/breenglobe.mdl",
 	Rarity = 4,
 	Price = 1500,
 	PhysSound = "Default.ImpactSoft"
+	CanPhysgun = true
 	}
 	local Mat = Material( "effects/blueflare1" )
 	local s1 = { "ambient/machines/teleport4.wav", "ambient/machines/teleport3.wav", "ambient/machines/teleport1.wav" }
