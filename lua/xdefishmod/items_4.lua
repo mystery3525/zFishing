@@ -113,11 +113,12 @@ local langs = nil -- removing langs after use to reduce overhead
 local items = {}
 
 items.it_slot = {
-	Type = "Exotic",
+	Type = "Structure",
 	Model = "models/props_c17/cashregister01a.mdl",
 	Rarity = 5,
 	Price = 2333,
-	PhysSound = "Metal_Box.ImpactSoft"
+	PhysSound = "Metal_Box.ImpactSoft",
+	CanPhysgun = true
 	}
 	function items.it_slot:OnInit( self ) self.xdefm_Cool = 0 end
 	function items.it_slot:OnUse( self, usr ) if self.xdefm_Cool > CurTime() then return false end
@@ -132,12 +133,13 @@ items.it_slot = {
 	
 
 items.it_gballoom = {
-	Type = "Legendary",
+	Type = "Structure",
 	Model = "models/maxofs2d/thruster_projector.mdl",
 	Rarity = 4,
 	Price = 1080,
 	PhysSound = "Metal_Box.ImpactSoft",
-	TickRate = 0.01
+	TickRate = 0.01,
+	CanPhysgun = true
 	}
 	function items.it_gballoom:OnInit( self ) self.xdefm_Cool = 0 end
 	function items.it_gballoom:OnUse( self, usr ) if self.xdefm_Cool > CurTime() then return false end
@@ -152,14 +154,15 @@ items.it_gballoom = {
 	
 
 items.it_atm = {
-	Type = "Legendary",
+	Type = "Structure",
 	Model = "models/props_unique/atm01.mdl",
 	Rarity = 4,
 	Price = 1500,
 	PhysSound = "Metal_Box.ImpactSoft",
 	TickRate = 1,
 	HelperUse = "xdefm.U2",
-	TickRate = 1
+	TickRate = 1,
+	CanPhysgun = true
 	}
 	local tb = {
 		[200]="it_dollar",
@@ -235,11 +238,12 @@ items.it_refill = {
 	
 
 items.it_fridge = {
-	Type = "Rare",
+	Type = "Structure",
 	Model = "models/props_c17/FurnitureFridge001a.mdl",
 	Rarity = 3,
 	Price = 500,
 	PhysSound = "SolidMetal.ImpactSoft",
+	CanPhysgun = true
 	}
 	function items.it_fridge:OnInit( self ) self:SetMaxHealth( 100 ) self:SetHealth( self:GetMaxHealth() ) self.xdefm_Killed = false end
 	function items.it_fridge:OnReady( self ) self:PhysWake() self:GetPhysicsObject():SetMass( 100 ) end
@@ -719,14 +723,15 @@ items.it_printer = {
 
 
 items.it_server = {
-	Type = "Legendary",
+	Type = "Structure",
 	Model = "models/props_lab/reciever_cart.mdl",
 	CantCook = true,
 	Rarity = 4,
 	Price = 1500,
 	TickRate = 1,
 	PhysSound = "Computer.ImpactHard",
-	HelperUse = "xdefm.U2"
+	HelperUse = "xdefm.U2",
+	CanPhysgun = true
 	}
 	function items.it_server:OnInit( self ) self.xdefm_Delay = 0  self.xdefm_Exps = 0 end
 	function items.it_server:OnUse( self, ent ) if ent:KeyDown( IN_SPEED ) then return true end
@@ -757,13 +762,14 @@ items.it_server = {
 
 
 items.it_tesla = {
-	Type = "Exotic",
+	Type = "Structure",
 	Model = "models/props_trainstation/trainstation_ornament002.mdl",
 	CantCook = true,
 	Rarity = 5,
 	Price = 4000,
 	TickRate = 0.2,
-	PhysSound = "Computer.ImpactHard"
+	PhysSound = "Computer.ImpactHard",
+	CanPhysgun = true
 	}
 	function items.it_tesla:OnInit( self ) self.xdefm_Cool = 0  self.xdefm_Charge = 0 end
 	function items.it_tesla:OnTouch( self, ent, typ ) if typ != 1 or self.xdefm_Cool > CurTime() or self.xdefm_Charge >= 15 then return end self.xdefm_Cool = CurTime() +0.5
@@ -867,7 +873,7 @@ items.it_flower = {
 
 
 items.it_stove4 = {
-	Type = "Legendary",
+	Type = "Structure",
 	Model = "models/props_wasteland/kitchen_stove001a.mdl", 
 	Rarity = 4,
 	Price = 2000,
@@ -900,7 +906,7 @@ items.it_stove4 = {
 
 
 items.it_stove5 = { 
-	Type = "Exotic", 
+	Type = "Structure", 
 	Model = "models/maxofs2d/hover_propeller.mdl", 
 	Rarity = 5,
 	Price = 3500,
@@ -987,14 +993,15 @@ items.it_stove5 = {
 
 
 items.it_microwave = {
-	Type = "Exotic",
+	Type = "Structure",
 	Model = "models/props/cs_office/microwave.mdl", 
 	Rarity = 5,
 	Price = 4000,
 	HelperUse = "xdefm.U4",
 	TickRate = 0.1,
 	PhysSound = "SolidMetal.ImpactSoft",
-	CantCook = true
+	CantCook = true,
+	CanPhysgun = true
 	}
 	function items.it_microwave:OnInit( self ) self:SetNWBool( "FMod_On", false )  self:SetNWFloat( "FMod_PR", 0 )
 		self.xdefm_Item = "_"  self.xdefm_Cool = 0  self.xdefm_Snd = nil
@@ -1188,14 +1195,15 @@ items.it_bag4 = {
 			}
 
 items.it_miner = {
-	Type = "Legendary",
+	Type = "Structure",
 	Model = "models/props_silo/silo_server_b.mdl",
 	CantCook = true,
 	Rarity = 4,
 	Price = 2000,
 	TickRate = 1,
 	PhysSound = "Computer.ImpactHard",
-	HelperUse = "xdefm.U2"
+	HelperUse = "xdefm.U2",
+	CanPhysgun = true
 	}
 	function items.it_miner:OnInit( self ) self.xdefm_Delay = 0  self.xdefm_Exps = 0 end
 	function items.it_miner:OnUse( self, ent ) if ent:KeyDown( IN_SPEED ) then return true end
