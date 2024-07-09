@@ -195,46 +195,134 @@ function SWEP:OnFastReel()
 	local inv = ( own:GetInfoNum( "xdefmod_fastreel", 0 ) > 0 )
 	return ( inv and !own:KeyDown( IN_SPEED ) ) or ( !inv and own:KeyDown( IN_SPEED ) )
 end
-function SWEP:Think() local own = self.Owner  if CLIENT or !IsValid( own ) or !own:IsPlayer() or !own:Alive() or !istable( own.xdefm_Profile ) then return end
-	local pro = own.xdefm_Profile  local st = self:GetFMod_ST()  local sl = self:GetFMod_SL()  if !istable( pro ) then return end if !IsValid( self.FMod_Rod ) then
-		local rod = ents.Create( "xdefm_rod" ) rod:Spawn() rod:SetFMod_OW( own ) self.FMod_Rod = rod
-		local sss = xdefm_GetUpValue( pro[ "UpdA" ], "A" )  if !isnumber( sss ) then sss = 0.5 end
-		self:SetHoldType( "passive" ) self:SetFMod_ST( 0 ) self:SetFMod_SL( 0 ) rod:SetModelScale( sss, 0 )
-	end self:NextThink( CurTime() +0.1 )
+function SWEP:Think() 
+	local own = self.Owner  
+	if CLIENT or !IsValid( own ) or !own:IsPlayer() or !own:Alive() or !istable( own.xdefm_Profile ) then return end
+
+	local pro = own.xdefm_Profile  
+	local st = self:GetFMod_ST()  
+	local sl = self:GetFMod_SL()  
+	if !istable( pro ) then return end 
+	if !IsValid( self.FMod_Rod ) then
+		local rod = ents.Create( "xdefm_rod" ) 
+		rod:Spawn() 
+		rod:SetFMod_OW( own ) 
+		self.FMod_Rod = rod
+		local sss = xdefm_GetUpValue( pro[ "UpdA" ], "A" )  
+		if !isnumber( sss ) then sss = 0.5 end
+		self:SetHoldType( "passive" ) 
+		self:SetFMod_ST( 0 ) 
+		self:SetFMod_SL( 0 ) 
+		rod:SetModelScale( sss, 0 )
+	end 
+
+	self:NextThink( CurTime() +0.1 )
 	if self:GetNextPrimaryFire() >= CurTime() or self:GetNextSecondaryFire() >= CurTime() then return true end
+	
 	if st == 1 then
-		if own:KeyDown( IN_ATTACK ) then local str = xdefm_GetUpValue( pro[ "UpdB" ], "B" )
+		if own:KeyDown( IN_ATTACK ) then 
+			local str = xdefm_GetUpValue( pro[ "UpdB" ], "B" )
 			local spd = xdefm_GetUpValue( pro[ "UpdC" ], "C" )
-			if sl < 100 then self:SetFMod_SL( sl +( self:OnFastReel() and spd*2 or spd )/str*100 )
-			if self:GetFMod_SL() >= 100 then own:EmitSound( "xdefm.ChargeMax" ) if self.FMod_Loop then self.FMod_Loop:Stop() end end
-			if self.FMod_Loop then self.FMod_Loop:ChangePitch( 100 +sl/2, 0 ) end end
-		else if self.FMod_Loop then self.FMod_Loop:Stop() end own:EmitSound( "xdefm.Throw" )
-			self:SetFMod_ST( 2 ) self:SetHoldType( "pistol" ) self:FMod_DoGest( ACT_HL2MP_GESTURE_RANGE_ATTACK_MELEE )
-			if IsValid( self.FMod_Rod ) then local rod = self.FMod_Rod
-				local CPos, CAng = rod:GetPos(), rod:GetAngles() if !CPos or !CAng then return end local shp = xdefm_GetUpValue( pro[ "UpdD" ], "D" )
-				local num = xdefm_GetUpValue( pro[ "UpdG" ], "G" )  if !isnumber( num ) then num = 1 end local las = nil
+			
+			if sl < 100 then 
+				self:SetFMod_SL( sl +( self:OnFastReel() and spd*2 or spd )/str*100 )
+			
+				if self:GetFMod_SL() >= 100 then 
+					own:EmitSound( "xdefm.ChargeMax" ) 
+					if self.FMod_Loop then 
+						self.FMod_Loop:Stop() 
+					end
+				end 
+			end
+			
+			if self.FMod_Loop then 
+				self.FMod_Loop:ChangePitch( 100 +sl/2, 0 ) 
+			end 
+
+		else 
+			if self.FMod_Loop then 
+				self.FMod_Loop:Stop() 
+			end 
+			
+			own:EmitSound( "xdefm.Throw" )
+			
+			self:SetFMod_ST( 2 ) 
+			self:SetHoldType( "pistol" ) 
+			self:FMod_DoGest( ACT_HL2MP_GESTURE_RANGE_ATTACK_MELEE )
+			
+			if IsValid( self.FMod_Rod ) then 
+				local rod = self.FMod_Rod
+				local CPos, CAng = rod:GetPos(), rod:GetAngles() 
+				
+				if !CPos or !CAng then return end 
+				local shp = xdefm_GetUpValue( pro[ "UpdD" ], "D" )
+				local num = xdefm_GetUpValue( pro[ "UpdG" ], "G" )  
+				if !isnumber( num ) then 
+					num = 1 
+				end 
+
+				local las = nil
+
 				for i=1, GetConVar( "xdefmod_nomorehook" ):GetInt() >= 1 and 1 or num do
-					local LVec = Vector( 0, 0, 105 )  local LAng = Angle( 90, 360/i*math.pi, 0 ) local siz = self.FMod_Rod:GetModelScale()
-					local NPos, NAng = LocalToWorld( LVec*siz, LAng, CPos, CAng )  local vel = Angle( 0, own:EyeAngles().yaw, 0 ):Forward() +Vector( 0, 0, 16 )
-					local bob = ents.Create( "xdefm_bobber" ) bob:SetPos( NPos ) bob:SetAngles( NAng ) bob:SetOwner( own )
-					bob:SetFMod_OW( own ) bob:SetFMod_RD( rod ) bob:Spawn() bob:Activate() rod:DeleteOnRemove( bob )
-					local upd = xdefm_GetUpValue( own.xdefm_Profile.UpdA, "A" )  local str = xdefm_GetUpValue( own.xdefm_Profile.UpdB, "B" )
+					local LVec = Vector( 0, 0, 105 )  
+					local LAng = Angle( 90, 360/i*math.pi, 0 ) 
+					local siz = self.FMod_Rod:GetModelScale()
+					local NPos, NAng = LocalToWorld( LVec*siz, LAng, CPos, CAng )  
+					local vel = Angle( 0, own:EyeAngles().yaw, 0 ):Forward() +Vector( 0, 0, 16 )
+					local bob = ents.Create( "xdefm_bobber" ) 
+					bob:SetPos( NPos ) 
+					bob:SetAngles( NAng ) 
+					bob:SetOwner( own )
+					bob:SetFMod_OW( own ) 
+					bob:SetFMod_RD( rod ) 
+					bob:Spawn() bob:Activate() 
+					rod:DeleteOnRemove( bob )
+
+					local upd = xdefm_GetUpValue( own.xdefm_Profile.UpdA, "A" )  
+					local str = xdefm_GetUpValue( own.xdefm_Profile.UpdB, "B" )
 					local con, rop = constraint.Elastic( rod, bob, 0, 0, Vector( 0, 0, 105*rod:GetModelScale() ),
-					Vector( 0, 0, 0 ), 2500, 50, 50, "cable/rope", 0, true ) bob:SetFMod_SW( 0.1 +pro[ "UpdD" ]/100*0.9 )
-					local hok = ents.Create( "xdefm_hook" ) hok:SetPos( NPos ) hok:SetAngles( NAng ) hok:SetOwner( own )
-					hok:SetFMod_OW( own ) hok:SetFMod_RD( rod ) hok:Spawn() hok:Activate() rod:DeleteOnRemove( hok ) bob:DeleteOnRemove( hok )
+					Vector( 0, 0, 0 ), 2500, 50, 50, "cable/rope", 0, true ) 
+					bob:SetFMod_SW( 0.1 +pro[ "UpdD" ]/100*0.9 )
+					local hok = ents.Create( "xdefm_hook" )
+					hok:SetPos( NPos ) 
+					hok:SetAngles( NAng ) 
+					hok:SetOwner( own )
+					hok:SetFMod_OW( own ) 
+					hok:SetFMod_RD( rod ) 
+					hok:Spawn() 
+					hok:Activate() 
+					rod:DeleteOnRemove( hok ) 
+					bob:DeleteOnRemove( hok )
+
 					local co2, rop = constraint.Elastic( hok, bob, 0, 0, Vector( 0, 4, 12 ), Vector( 0, 0, 0 ), 2500, 50, 50, "cable/rope", 0, true )
-					bob.FMod_S1 = con  bob.FMod_S2 = co2  local ll = str*self:GetFMod_SL()/100
-					bob:SetFMod_HK( hok ) hok:SetFMod_BB( bob ) self:SetFMod_RL( ll ) local le = self:GetFMod_RL()/3
-					con:Fire( "SetSpringLength", le*2 )  co2:Fire( "SetSpringLength", le )
-					bob:SetFMod_RS( 1 ) bob.FMod_RS = shp  bob.FMod_MaxRS = shp
+					bob.FMod_S1 = con  
+					bob.FMod_S2 = co2  
+					local ll = str*self:GetFMod_SL()/100
+					bob:SetFMod_HK( hok ) hok:SetFMod_BB( bob ) self:SetFMod_RL( ll ) 
+					local le = self:GetFMod_RL()/3
+					con:Fire( "SetSpringLength", le*2 )  
+					co2:Fire( "SetSpringLength", le )
+					bob:SetFMod_RS( 1 ) 
+					bob.FMod_RS = shp  
+					bob.FMod_MaxRS = shp
 					bob:GetPhysicsObject():SetVelocity( own:EyeAngles():Forward()*ll*2 )
 					hok:GetPhysicsObject():SetVelocity( own:EyeAngles():Forward()*ll*2 )
-					local ite = pro.Items[ 21 ]  if isstring( ite ) and ite != "_" then
-						local aa, bb = xdefm_ItemGet( ite )  if bb and istable( bb ) and bb.Type == "Bait" then
-							local cc = ents.Create( "base_anim" )  cc:SetModel( bb.Model[ math.random( #bb.Model ) ] )  cc:SetAngles( hok:GetAngles() )
-							cc:SetPos( hok:WorldSpaceCenter() -cc:WorldSpaceCenter() +cc:GetPos() ) cc:SetOwner( own ) hok:DeleteOnRemove( cc )
-							cc:SetParent( hok ) cc:Spawn() cc:Activate() hok.xdefm_BaitEnt = cc  hok.xdefm_Bait = ite
+
+					local ite = pro.Items[ 21 ]  
+					if isstring( ite ) and ite != "_" then
+						local aa, bb = xdefm_ItemGet( ite )  
+						if bb and istable( bb ) and bb.Type == "Bait" then
+							local cc = ents.Create( "base_anim" )  
+							cc:SetModel( bb.Model[ math.random( #bb.Model ) ] )  
+							cc:SetAngles( hok:GetAngles() )
+							cc:SetPos( hok:WorldSpaceCenter() -cc:WorldSpaceCenter() +cc:GetPos() ) 
+							cc:SetOwner( own ) 
+							hok:DeleteOnRemove( cc )
+							cc:SetParent( hok ) 
+							cc:Spawn() 
+							cc:Activate() 
+							hok.xdefm_BaitEnt = cc  
+							hok.xdefm_Bait = ite
 						end
 					end
 					for k, v in pairs( self.FMod_Hook ) do if !IsValid( v ) then continue end constraint.NoCollide( hok, v, 0, 0 ) end
@@ -242,7 +330,10 @@ function SWEP:Think() local own = self.Owner  if CLIENT or !IsValid( own ) or !o
 				end
 			end self:SetNextPrimaryFire( CurTime() +0.2 )
 		end
-	end st = self:GetFMod_ST()
+	end 
+	
+	st = self:GetFMod_ST()
+
 	if st == 2 then
 		for k, v in pairs( self.FMod_Bobber ) do if !IsValid( v ) then table.remove( self.FMod_Bobber, k ) end end
 		for k, v in pairs( self.FMod_Hook ) do if !IsValid( v ) then table.remove( self.FMod_Hook, k ) end end
