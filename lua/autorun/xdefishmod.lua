@@ -4408,20 +4408,34 @@ if true then -- xdefm_base
 		SafeRemoveEntity( self ) return dum
 	end
 	function ENT:Use( ent ) if !IsValid( ent ) or !istable( self.xdefm_T2 ) or !ent:IsPlayer() or ent:KeyDown( IN_RELOAD ) then return end local owi = self:GetFMod_OI()
-		if !xdefm_CanInteract( ent, self ) or ( !xdefm_FriendAllow( ent, owi ) and !xdefm_NadAllow( ent, self ) ) then return end
-		if self.xdefm_T2.Type == "Structure" and self.xdefm_T2.SType != 0 and !ent:IsBot() then
+		if self.xdefm_T2.Type ~= "Structure" or self.xdefm_T2.SType < 2 then
+			if !xdefm_CanInteract( ent, self ) or ( !xdefm_FriendAllow( ent, owi ) and !xdefm_NadAllow( ent, self ) ) then return end
+		end
+
+		if self.xdefm_T2.Type == "Structure" and self.xdefm_T2.SType ~= 0 and !ent:IsBot() then
 			local act = self.xdefm_T2.OnInteract and self.xdefm_T2:OnInteract( self, ent, 1 ) or nil
-			if act == false or IsValid( ent.xdefm_Struct ) then return end local ttt, dat = self.xdefm_T2.SType, {}
+			if act == false or IsValid( ent.xdefm_Struct ) then return end 
+			local ttt, dat = self.xdefm_T2.SType, {}
 			if !ent:KeyDown( IN_SPEED ) then
-				if ttt == 1 then dat = { xdefm_GetClass( self ), unpack( self.xdefm_T3 ) } else dat = { xdefm_GetClass( self ) } end
-				xdefm_OpenMenu( ent, 0, ent.xdefm_Profile ) xdefm_OpenMenu( ent, 4, dat ) ent.xdefm_Struct = self
-				if self.xdefm_T2.StartSound then self:EmitSound( self.xdefm_T2.StartSound ) end if act != true then return end
+				if ttt == 1 then 
+					dat = { xdefm_GetClass( self ), unpack( self.xdefm_T3 ) } 
+				else 
+					dat = { xdefm_GetClass( self ) } 
+				end
+				xdefm_OpenMenu( ent, 0, ent.xdefm_Profile ) 
+				xdefm_OpenMenu( ent, 4, dat ) 
+				ent.xdefm_Struct = self
+				if self.xdefm_T2.StartSound then self:EmitSound( self.xdefm_T2.StartSound ) end 
+				if act != true then return end
 			end
 		end
 		local use = self.xdefm_T2:OnUse( self, ent )  local typ = self.xdefm_T2.Type
+
 		if ( !isbool( use ) or use != false ) and !ent:IsPlayerHolding() then
-			if !constraint.FindConstraint( self, "Weld" ) and IsValid( self:GetPhysicsObject() ) and !self:IsPlayerHolding()
-			and self:GetPhysicsObject():IsMotionEnabled() and ( !ent.xdefm_Cool or ent.xdefm_Cool <= CurTime() ) then ent:PickupObject( self ) end
+			if !constraint.FindConstraint( self, "Weld" ) and IsValid( self:GetPhysicsObject() ) and !self:IsPlayerHolding() 
+			and self:GetPhysicsObject():IsMotionEnabled() and ( !ent.xdefm_Cool or ent.xdefm_Cool <= CurTime() ) then 
+				ent:PickupObject( self ) 
+			end
 		end
 	end
 	function ENT:StartTouch( ent ) if !IsValid( ent ) or !istable( self.xdefm_T2 ) then return end local tab = self.xdefm_T2
