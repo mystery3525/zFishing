@@ -310,7 +310,7 @@ items.it_recycler = {
 	}
 	items.it_recycler.Crafts = {
 	"it_junk&it_junk&it_junk&it_junk&it_wood",
-	"iit_junk&t_junk&it_junk&it_junk&it_glass",
+	"it_junk&it_junk&it_junk&it_junk&it_glass",
 	"it_junk&it_junk&it_junk&it_junk&it_stone",
 	"it_junk&it_junk&it_junk&it_junk&it_metal"
 	}
