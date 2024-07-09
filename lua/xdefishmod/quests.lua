@@ -1,4 +1,4 @@
-it_crateif CLIENT then return end
+if CLIENT then return end
 
 local quests = { 
     
