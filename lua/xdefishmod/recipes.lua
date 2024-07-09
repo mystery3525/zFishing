@@ -428,3 +428,4 @@ items.re_recycle = {
 		"it_junk&it_junk&it_junk&it_metal",
     }
 	
+xdefm_ItemRegisterAll(items)
