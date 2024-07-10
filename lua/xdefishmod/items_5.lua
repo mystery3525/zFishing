@@ -43,6 +43,8 @@ if CLIENT then local langs = {}
 		
 		[ "it_pshop" ] 		= "Mysterious Portal", [ "dit_pshop" ] 		= "Buy valuable items.",
 		[ "it_bouncy" ] 	= "Bouncy Ball", [ "dit_bouncy" ] 		= "Super bouncy.",
+		[ "it_charcoal" ]   = "Charcoal", [ "dit_charcoal" ] = "Produced from burning coal or wood. Cheaper steel this way!",
+		["it_boiler" ] = "Steam Boiler", [ "dit_boiler" ] = "Turns flameables into charcoal and water into steam.",
     }
 	local ln = GetConVar( "gmod_language" ):GetString()  local lg = "en"
 	if ln != nil and istable( langs[ ln ] ) then lg = GetConVar( "gmod_language" ):GetString() end
@@ -535,17 +537,13 @@ items.it_bouncy = {
 
 items.it_charcoal = {
 	Type = "Common",
-	Model = {
-		"models/gibs/wood_gib01a.mdl", "models/gibs/wood_gib01b.mdl",
-		"models/Gibs/wood_gib01c.mdl", "models/gibs/wood_gib01d.mdl"
-	},
+	Model = "models/props_debris/concrete_spawnchunk001k.mdl",
 	Rarity = 1,
 	Price = 5,
 	KillInWater = true, 
 	PhysSound = "Wood.ImpactSoft"
 }
 	function items.it_charcoal:OnInit( self )
-		self:SetMaterial(Material("plaster/plasterwall034a_c17"))
 		self:SetColor(Color(50, 50, 50))
 	end
 
@@ -556,7 +554,7 @@ items.it_boiler = {
 	Model = "models/props_wasteland/laundry_washer001a.mdl",
 	Rarity = 5,
 	Price = 8000,
-	Amout = 12,
+	Amount = 12,
 	PhysSound = "EpicMetal_Heavy.ImpactHard",
 	HelperUse = "xdefm.U3",
 	SType = 1,
@@ -565,16 +563,16 @@ items.it_boiler = {
 	CanPhysgun = true
 }
 
-	items.it_boiler:OnInit( self )
-		self.delay = 120 -- how many iterations with coef it can sustain before removing an item
-		self.coef = {
-			it_coal = 1,
-			it_wood2 = 2,
-			it_wood1 = 3,
-			it_wood  = 5
-		}
-	end
-	items.it_boiler:OnThink( self )
+function items.it_boiler:OnInit( self )
+	self.delay = 120 -- how many iterations with coef it can sustain before removing an item
+	self.coef = {
+		it_coal = 1,
+		it_wood2 = 2,
+		it_wood1 = 3,
+		it_wood  = 5
+	}
+end
+	function items.it_boiler:OnThink( self )
 		local inv = self.xdefm_T3 -- a local instance of the invetory (cannot write)
 		local fuel = nil -- the item for fuel
 		local coef = 0 -- the higher the faster fuel burns

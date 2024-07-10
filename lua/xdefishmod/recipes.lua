@@ -85,7 +85,7 @@ items.re_basic = {
 	
 items.re_tool1 = { 
     Type = "Recipe",
-    Model = "models/props_c17/paper01.mdl", Helper = "#xdefm.d"..it,
+    Model = "models/props_c17/paper01.mdl", 
     Rarity = 1,
     Durability = 10,
     PhysSound = "Cardboard.ImpactSoft",
@@ -107,7 +107,7 @@ items.re_tool1 = {
 	
 items.re_bait1 = { 
     Type = "Recipe",
-    Model = "models/props_c17/paper01.mdl", Helper = "#xdefm.d"..it,
+    Model = "models/props_c17/paper01.mdl", 
     Rarity = 1,
     Durability = 20,
     PhysSound = "Cardboard.ImpactSoft",
@@ -129,7 +129,7 @@ items.re_bait1 = {
 	
 items.re_furn1 = { 
     Type = "Recipe",
-    Model = "models/props_lab/powerbox02a.mdl", Helper = "#xdefm.d"..it,
+    Model = "models/props_lab/powerbox02a.mdl", 
     Rarity = 2,
     Durability = 20,
     PhysSound = "Cardboard.ImpactSoft",
@@ -146,7 +146,7 @@ items.re_furn1 = {
 	
 items.re_luck = { 
     Type = "Recipe",
-    Model = "models/props_c17/playgroundTick-tack-toe_block01a.mdl", Helper = "#xdefm.d"..it,
+    Model = "models/props_c17/playgroundTick-tack-toe_block01a.mdl", 
     Rarity = 5,
     Durability = 1,
     PhysSound = "Cardboard.ImpactSoft",
@@ -188,7 +188,7 @@ items.re_luck = {
 	
 items.re_tool2 = { 
     Type = "Recipe",
-    Model = "models/props_c17/paper01.mdl", Helper = "#xdefm.d"..it,
+    Model = "models/props_c17/paper01.mdl", 
     Rarity = 2,
     Durability = 10,
     PhysSound = "Cardboard.ImpactSoft",
@@ -212,7 +212,7 @@ items.re_tool2 = {
 	
 items.re_bait2 = { 
     Type = "Recipe",
-    Model = "models/props_c17/paper01.mdl", Helper = "#xdefm.d"..it,
+    Model = "models/props_c17/paper01.mdl", 
     Rarity = 2,
     Durability = 20,
     PhysSound = "Cardboard.ImpactSoft",
@@ -228,7 +228,7 @@ items.re_bait2 = {
 	
 items.re_tool3 = { 
     Type = "Recipe",
-    Model = "models/props_c17/paper01.mdl", Helper = "#xdefm.d"..it,
+    Model = "models/props_c17/paper01.mdl", 
     Rarity = 3,
     Durability = 10,
     PhysSound = "Cardboard.ImpactSoft",
@@ -249,7 +249,7 @@ items.re_tool3 = {
 	
 items.re_bait3 = { 
     Type = "Recipe",
-    Model = "models/props_c17/paper01.mdl", Helper = "#xdefm.d"..it,
+    Model = "models/props_c17/paper01.mdl", 
     Rarity = 3,
     Durability = 20,
     PhysSound = "Cardboard.ImpactSoft",
@@ -263,7 +263,7 @@ items.re_bait3 = {
 	
 items.re_spec = { 
     Type = "Recipe",
-    Model = "models/props_c17/paper01.mdl", Helper = "#xdefm.d"..it,
+    Model = "models/props_c17/paper01.mdl", 
     Rarity = 3,
     Durability = 5,
     PhysSound = "Cardboard.ImpactSoft",
@@ -283,7 +283,7 @@ items.re_spec = {
 	
 items.re_crate = { 
     Type = "Recipe",
-    Model = "models/props_c17/paper01.mdl", Helper = "#xdefm.d"..it,
+    Model = "models/props_c17/paper01.mdl", 
     Rarity = 2,
     Durability = 10,
     PhysSound = "Cardboard.ImpactSoft",
@@ -300,7 +300,7 @@ items.re_crate = {
 	
 items.re_advance = { 
     Type = "Recipe",
-    Model = "models/props_c17/paper01.mdl", Helper = "#xdefm.d"..it,
+    Model = "models/props_c17/paper01.mdl", 
     Rarity = 2,
     Durability = 20,
     PhysSound = "Cardboard.ImpactSoft",
@@ -319,7 +319,7 @@ items.re_advance = {
 	
 items.re_exp = { 
     Type = "Recipe",
-    Model = "models/props_junk/garbage_coffeemug001a_fullsheet.mdl", Helper = "#xdefm.d"..it,
+    Model = "models/props_junk/garbage_coffeemug001a_fullsheet.mdl", 
     Rarity = 3,
     Durability = 10,
     PhysSound = "GlassBottle.ImpactSoft",
@@ -360,7 +360,7 @@ items.re_exp = {
 	
 items.re_meat = { 
     Type = "Recipe",
-    Model = "models/weapons/w_knife_ct.mdl", Helper = "#xdefm.d"..it,
+    Model = "models/weapons/w_knife_ct.mdl", 
     Rarity = 3,
     Durability = 10,
     PhysSound = "SolidMetal.ImpactSoft",
@@ -390,7 +390,7 @@ items.re_meat = {
 	
 items.re_misc = { 
     Type = "Recipe",
-    Model = "models/props_c17/paper01.mdl", Helper = "#xdefm.d"..it,
+    Model = "models/props_c17/paper01.mdl", 
     Rarity = 2,
     Durability = 20,
     PhysSound = "Cardboard.ImpactSoft",
@@ -409,7 +409,7 @@ items.re_misc = {
 	
 items.re_recycle = { 
     Type = "Recipe",
-    Model = "models/props_junk/plasticbucket001a.mdl", Helper = "#xdefm.d"..it,
+    Model = "models/props_junk/plasticbucket001a.mdl", 
     Rarity = 3,
     Durability = 40,
     PhysSound = "Plastic_Barrel.ImpactSoft",
