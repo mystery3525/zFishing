@@ -36,6 +36,7 @@ if CLIENT then local langs = {}
 		[ "it_recycler" ]	= "Washing Machine", [ "dit_recycler" ]     	= "Cleans Junk",
 		[ "it_storage1" ] 	= "Storage Crate", [ "dit_storage1" ] 		= "Can hold up to 12 items.",
 		[ "it_storage2" ] 	= "Big Storage Crate", [ "dit_storage2" ] 	= "Can hold up to 30 items.",
+		[ "it_storage3" ] 	= "Storage Locker", [ "dit_storage2" ] 	= "The future is now! Stores 45 items.",
 		[ "it_bucket" ]     	= "Storage Bucket", ["dit_bucket"]          	= "Can hold up to 6 items.",
 		[ "it_error" ] 		= "Compile Error", [ "dit_error" ] 		= "Have no fear, keep this item safe until it is readded... or sell it.",
 		[ "it_furnace2" ] 	= "Metal Furnace", [ "dit_furnace2" ] 		= "Advanced ore smelting.",
@@ -349,6 +350,21 @@ items.it_storage2 = {
 	}
 	function items.it_storage2:OnInit( self ) self:SetSkin( 1 ) end
 
+items.it_storage3 = {
+	Type = "Structure",
+	Model = "models/props_wasteland/controlroom_storagecloset001a.mdl",
+	Amount = 45,
+	StartSound = "DoorHandles.Unlocked2",
+	ExitSound = "Doors.FullClose1",
+	Rarity = 5,
+	Price = 6500,
+	PhysSound = "Metal_Box.ImpactHard",
+	SType = 1,
+	HelperUse = "xdefm.U3",
+	CanPhysgun = true
+	}
+	function items.it_storage3:OnInit( self ) self:SetSkin( 1 ) end
+
 items.it_bucket = { 
 	Type = "Structure", 
 	Model = "models/props_junk/MetalBucket01a.mdl", 
@@ -599,6 +615,7 @@ end
 			return
 		end
 	end
+
 
 
 xdefm_ItemRegisterAll(items)

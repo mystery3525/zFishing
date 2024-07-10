@@ -23,6 +23,7 @@ if CLIENT then local langs = {}
 		[ "re_tool1" ] = "Basic Item Recipe", [ "dre_tool1" ] = "Craft basic tools.",
 		[ "re_tool2" ] = "Improved Item Recipe", [ "dre_tool2" ] = "Craft improved tools.",
 		[ "re_tool3" ] = "Advanced Item Recipe", [ "dre_tool3" ] = "Craft advanced tools.",
+		[ "re_tool3" ] = "Industrial Item Recipe", [ "dre_tool3" ] = "Craft steam tools.",
 		[ "re_bait1" ] = "Basic Bait Recipe", [ "dre_bait1" ] = "Craft common and uncommon baits.",
 		[ "re_bait2" ] = "Improved Bait Recipe", [ "dre_bait2" ] = "Craft rare baits.",
 		[ "re_bait3" ] = "Advanced Bait Recipe", [ "dre_bait3" ] = "Craft epic baits.",
@@ -425,5 +426,18 @@ items.re_recycle = {
 		"it_junk&it_junk&it_junk&it_stone",
 		"it_junk&it_junk&it_junk&it_metal",
     }
+
+items.re_tool4 = { 
+	Type = "Recipe",
+	Model = "models/props_c17/paper01.mdl", 
+	Rarity = 4,
+	Durability = 10,
+	PhysSound = "Cardboard.ImpactSoft",
+	Price = 1600 
+}
+	items.re_tool4.Crafts = {
+		"it_propane&it_part3&it_stove4&it_boiler",
+		"it_part3&it_storage2&it_storage2&it_storage3"
+	}
 	
 xdefm_ItemRegisterAll(items)
