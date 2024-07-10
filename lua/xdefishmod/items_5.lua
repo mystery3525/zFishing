@@ -596,6 +596,7 @@ function items.it_boiler:OnInit( self )
 		["it_wood1"] = 3,
 		["it_wood"]  = 5
 	}
+	self:NextThink( CurTime() )
 end
 	function items.it_boiler:OnThink( self )
 		local fuel = nil -- the item for fuel
@@ -611,7 +612,7 @@ end
 			end
 		end
 
-		self:NextThink( 0.1 )
+		self:NextThink( CurTime() + 0.1 )
 		if fuel == nil then 
 			self.xdefm_enabled = false
 			return 
