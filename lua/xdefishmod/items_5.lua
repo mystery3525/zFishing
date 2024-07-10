@@ -591,18 +591,17 @@ items.it_boiler = {
 function items.it_boiler:OnInit( self )
 	self.delay = 120 -- how many iterations with coef it can sustain before removing an item
 	self.coef = {
-		it_coal = 1,
-		it_wood2 = 2,
-		it_wood1 = 3,
-		it_wood  = 5
+		["it_coal"]  = 1,
+		["it_wood2"] = 2,
+		["it_wood1"] = 3,
+		["it_wood"]  = 5
 	}
 end
 	function items.it_boiler:OnThink( self )
-		local inv = self.xdefm_T3 -- a local instance of the invetory (cannot write)
 		local fuel = nil -- the item for fuel
 		local coef = 0 -- the higher the faster fuel burns
 
-		for i, v in pairs(inv) do
+		for i, v in pairs(self.xdefm_T3) do
 			local pre = string.Explode( v, "|" )[1]
 			if isnumber(self.coef[pre]) and self.coef[pre] > 0 then
 				fuel = i
@@ -620,9 +619,10 @@ end
 		local delay = self.delay - coef
 		if delay <= 0 then 
 			self.delay = 120
-			self.xdefm_T3[fuel] = "it_charcoal" -- later turning to charcoal? yeah...
+			self.xdefm_T3[fuel] = "it_charcoal"
 			return
-		end
+		else self.delay = delay end
+		
 	end
 
 
