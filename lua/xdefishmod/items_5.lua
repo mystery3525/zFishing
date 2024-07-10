@@ -27,6 +27,7 @@ if CLIENT then local langs = {}
 		[ "it_plastic2" ] 	= "Advanced Plastic Plate", [ "dit_plastic2" ] 	= "",
         	[ "it_part" ] 		= "Metal Part", [ "dit_part" ] 			= "",
         	[ "it_part2" ] 		= "Advanced Metal Part", [ "dit_part2" ] 	= "",
+			[ "it_part3" ] 		= "Flux Transducer Part", [ "dit_part3" ] 	= "",
 		[ "it_coffee" ] 	= "Coffee Machine", [ "dit_coffee" ] 		= "Insert a Water Bottle, a Seed Bag, and a Battery to make Coffee (recipe).",
         	[ "it_meat" ] 		= "Meat", [ "dit_meat" ] 			= "Meaty meat.",
         	[ "it_bone" ] 		= "Bone", [ "dit_bone" ] 			= "Dinner?",
@@ -97,6 +98,14 @@ items.it_part2 = {
 	Model = "models/props_c17/utilityconducter001.mdl",
 	Rarity = 3,
 	Price = 3000,
+	PhysSound = "SolidMetal.ImpactHard"
+	}
+
+items.it_part3 = {
+	Type = "Rare",
+	Model = "models/props_lab/tpplugholder.mdl",
+	Rarity = 4,
+	Price = 4500,
 	PhysSound = "SolidMetal.ImpactHard"
 	}
 
