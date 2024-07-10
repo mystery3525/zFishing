@@ -225,7 +225,7 @@ items.it_crafting1 = {
 		"it_wood&it_wood&it_wood&it_wood2",
 		"it_metal&it_metal&it_metal&it_metal2",
 		"it_glass&it_glass&it_glass&it_glass2",
-        	"it_stone&it_stone&it_stone&it_brick",
+        "it_stone&it_stone&it_stone&it_brick",
 		"it_junk&it_junk&it_junk&it_plastic",
 		"it_metal&it_copperbar&it_steelbar&it_part",
 		"it_wood&it_stone&it_ore&it_chemical",
@@ -530,6 +530,75 @@ items.it_bouncy = {
 			dmg:SetInflictor( self ) dmg:SetDamage( 2 ) ent:TakeDamageInfo( dmg ) ent:EmitSound( "Flesh.ImpactHard" ) ent:SetVelocity( vel*10 )
 			local ef = EffectData() ef:SetOrigin( self:WorldSpaceCenter() ) ef:SetEntity( self ) ef:SetRadius( 1 )
 			ef:SetScale( 1 ) ef:SetMagnitude( 1 ) util.Effect( "GlassImpact", ef )
+		end
+	end
+
+items.it_charcoal = {
+	Type = "Common",
+	Model = {
+		"models/gibs/wood_gib01a.mdl", "models/gibs/wood_gib01b.mdl",
+		"models/Gibs/wood_gib01c.mdl", "models/gibs/wood_gib01d.mdl"
+	},
+	Rarity = 1,
+	Price = 5,
+	KillInWater = true, 
+	PhysSound = "Wood.ImpactSoft"
+}
+	function items.it_charcoal:OnInit( self )
+		self:SetMaterial(Material("plaster/plasterwall034a_c17"))
+		self:SetColor(Color(50, 50, 50))
+	end
+
+
+
+items.it_boiler = {
+	Type = "Structure",
+	Model = "models/props_wasteland/laundry_washer001a.mdl",
+	Rarity = 5,
+	Price = 8000,
+	Amout = 12,
+	PhysSound = "EpicMetal_Heavy.ImpactHard",
+	HelperUse = "xdefm.U3",
+	SType = 1,
+	StartSound = "Weapon_PhysCannon.Charge",
+	ExitSound = "Weapon_PhysCannon.Drop",
+	CanPhysgun = true
+}
+
+	items.it_boiler:OnInit( self )
+		self.delay = 120 -- how many iterations with coef it can sustain before removing an item
+		self.coef = {
+			it_coal = 1,
+			it_wood2 = 2,
+			it_wood1 = 3,
+			it_wood  = 5
+		}
+	end
+	items.it_boiler:OnThink( self )
+		local inv = self.xdefm_T3 -- a local instance of the invetory (cannot write)
+		local fuel = nil -- the item for fuel
+		local coef = 0 -- the higher the faster fuel burns
+
+		for i, v in pairs(inv) do
+			local pre = string.Explode( v, "|" )[1]
+			if isnumber(self.coef[pre]) and self.coef[pre] > 0 then
+				fuel = i
+				coef = self.coef[pre]
+				self.xdefm_enabled = true
+				break
+			end
+		end
+
+		self:NextThink( 0.1 )
+		if fuel == nil then 
+			self.xdefm_enabled = false
+			return 
+		end
+		local delay = self.delay - coef
+		if delay <= 0 then 
+			self.delay = 120
+			self.xdefm_T3[fuel] = "it_charcoal" -- later turning to charcoal? yeah...
+			return
 		end
 	end
 
