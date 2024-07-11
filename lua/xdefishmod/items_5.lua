@@ -598,7 +598,8 @@ function items.it_boiler:OnInit( self )
 	}
 	self:NextThink( CurTime() + 1)
 end
-	function items.it_boiler:OnThink( self )
+	function items.it_boiler:Think( self )
+		self:NextThink( CurTime() + 0.3 )
 		local fuel = nil -- the item for fuel
 		local coef = 0 -- the higher the faster fuel burns
 		local c_tbl = self.xdefm_coef
@@ -615,7 +616,7 @@ end
 			end
 		end
 
-		self:NextThink( CurTime() + 0.1 )
+		
 		if fuel == nil then 
 			self.xdefm_enabled = false
 			return 
