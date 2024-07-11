@@ -48,6 +48,8 @@ if CLIENT then local langs = {}
 		[ "it_charcoal" ]   = "Charcoal", [ "dit_charcoal" ] = "Produced from burning coal or wood. Cheaper steel this way!",
 		[ "it_boiler" ] = "Steam Boiler", [ "dit_boiler" ] = "Turns flameables into charcoal and water into steam.",
 		[ "it_pump" ] = "Water Pump", [ "dit_pump" ] = "Pumps water using electricity or a battery",
+		[ "it_turbine" ] = "Steam Turbine", [ "dit_turbine" ] = "Turns steam into electricity.",
+		[ "it_relay" ] = "Power Relay", [ "dit_relay" ] = "Wireless power managemet, because nobody could afford the wires",
     }
 	local ln = GetConVar( "gmod_language" ):GetString()  local lg = "en"
 	if ln != nil and istable( langs[ ln ] ) then lg = GetConVar( "gmod_language" ):GetString() end
@@ -592,6 +594,8 @@ items.it_boiler = {
 
 function items.it_boiler:OnInit( self )
 	if CLIENT then return end
+	self.xdefm_Enabled = false
+	self.xdefm_SteamOut = 20
 	self.xdefm_delay = 120 -- how many iterations with coef it can sustain before removing an item
 	self.xdefm_coef = {
 		["it_coal"]  = 1,
@@ -616,7 +620,7 @@ end
 						fuel = i
 						self.xdefm_Fuel = i
 						coef = c_tbl[pre]
-						self.xdefm_enabled = true
+						self.xdefm_Enabled = true
 						self.xdefm_Snd = self:StartLoopingSound("ambient.steam01")
 						break
 					end
@@ -625,7 +629,7 @@ end
 		end
 
 		if fuel == nil then 
-			self.xdefm_enabled = false
+			self.xdefm_Enabled = false
 			if isnumber(self.xdefm_Snd) then
 				self:StopLoopingSound(self.xdefm_Snd)
 			end
@@ -655,6 +659,7 @@ items.it_pump = {
 		self.xdefm_Enabled = false
 		self.xdefm_InWater = false
 		self.xdefm_HasPower = false -- for system power
+		self.xdefm_PowerIn = 5
 		self.xdefm_Battery = 0
 	end
 
@@ -707,6 +712,119 @@ items.it_pump = {
 			if onBattery then self.xdefm_Battery = self.xdefm_Battery - 0.25 end -- about 400 seconds of runtime
 		end
 
+	end
+
+items.it_turbine = {
+	Type = "Structure",
+	Model = "models/props_vehicles/generatortrailer01.mdl",
+	Rarity = 4,
+	Price = 4000,
+	PhysSound = "EpicMetal_Heavy.ImpactHard",
+	CanPhysgun = true,
+	TickRate = 1
+}
+	function items.it_turbine:OnInit( self )
+		self.xdefm_SteamIn = 10
+		self.xdefm_PowerOut = 20
+		self.xdefm_Enabled = false
+		self.xdefm_HasSteam = false
+		self:NextThink( CurTime() + 1 )
+	end
+
+	function items.it_turbine:OnThink( self )
+		self.xdefm_Enabled = self.xdefm_HasSteam
+	end
+
+items.it_relay = {
+	Type = "Structure",
+	Model = "models/props_combine/combinethumper002.mdl",
+	Rarity = 3,
+	Price = 3000,
+	HelperUse = "xdefm.U2",
+	PhysSound = "EpicMetal_Heavy.ImpactHard",
+	CanPhysgun = true,
+	TickRate = 1
+}
+	function items.it_relay:OnInit( self )
+		self.xdefm_Steam = { ["In"] = {}, ["Out"] = {}}
+		self.xdefm_Power = { ["In"] = {}, ["Out"] = {}}
+		self.xdefm_CanSteam = false
+		self.xdefm_CanPower = false
+		self:NetThink( CurTime() + 1)
+	end
+
+	function items.it_relay:OnUse( self, ply )
+		if !xdefm_NadAllow( ply, self ) then return end
+
+		local near = ents.FindInSphere( self:GetPos(), 512)
+		if #near == 0 then return end
+
+		local steam = { ["In"] = {}, ["Out"] = {}}
+		local power = { ["In"] = {}, ["Out"] = {}}
+		for i, v in pairs(near) do
+			if isnumber(v.xdefm_PowerIn) then
+				table.insert( power["In"], v )
+			end
+			if isnumber(v.xdefm_PowerOut) then
+				table.insert( power["Out"], v )
+			end
+
+			if isnumber(v.xdefm_SteamIn) then
+				table.insert( steam["In"], v )
+			end
+			if isnumber(v.xdefm_SteamOut) then
+				table.insert( steam["Out"], v )
+			end
+		end
+
+		self.xdefm_Steam = steam
+		self.xdefm_Power = power
+	end
+
+	function items.it_relay:OnThink( self )
+		local steam = self.xdefm_Steam
+		local power = self.xdefm_Power
+
+		if #steam["Out"] > 0 then -- no point to run if there is nothing needing steam
+			local supply = 0
+			for i , v in pairs(steam["In"]) do
+				supply = supply + v.xdefm_SteamOut
+			end
+			for i , v in pairs(steam["Out"]) do
+				v.xdefm_HasSteam = supply > supply
+				supply = supply - v.xdefm_SteamIn
+			end
+			self:SetNWFloat( "XDEFM_RDEMS", supply)
+			self.xdefm_CanSteam = supply >= 0
+		end
+
+		if #power["Out"] > 0 then -- same here
+			local supply = 0
+			for i , v in pairs(power["In"]) do
+				supply = supply + v.xdefm_PowerOut
+			end
+			for i , v in pairs(power["Out"]) do
+				v.xdefm_HasPower = supply > supply
+				supply = supply - v.xdefm_PowerIn
+			end
+			self:SetNWFloat( "XDEFM_RDEMP", supply)
+			self.xdefm_CanPower = supply >= 0
+		end
+	end
+
+	function items.it_relay:OnDraw( self )
+		local txt = tostring( math.Round( self:GetNWFloat( "XDEFM_RDEMS" ) ) )
+		local txt2 = tostring( math.Round( self:GetNWFloat( "XDEFM_RDEMP" ) ) )
+		surface.SetFont( "HudHintTextLarge" )  
+		local xx, yy = surface.GetTextSize( txt )
+		
+		cam.Start3D2D(self:LocalToWorld( Vector(19, -25, 46.4) ), self:LocalToWorldAngles( Angle(0, 90, 90)), 0.10)
+			draw.RoundedBox( 0, -xx/2 -8, -yy -150 -8, xx +16, yy +16, Color( 0, 0, 0, 155 ) )
+			draw.TextShadow( { text = txt, pos = { 0, -150 }, font = "HudHintTextLarge",
+			xalign = TEXT_ALIGN_CENTER, yalign = TEXT_ALIGN_CENTER, color = Color( 255, 255, 255 ) }, 1, 255 )
+			draw.TextShadow( { text = txt2, pos = { 0, 150 }, font = "HudHintTextLarge",
+			xalign = TEXT_ALIGN_CENTER, yalign = TEXT_ALIGN_CENTER, color = Color( 255, 255, 255 ) }, 1, 255 )
+		cam.End3D2D()
 	end
 
 xdefm_ItemRegisterAll(items)
