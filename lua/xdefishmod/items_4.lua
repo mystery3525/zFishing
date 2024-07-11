@@ -72,13 +72,13 @@ if CLIENT then local langs = {}
 		[ "it_printer" ] 	= "Printer", [ "dit_printer" ] 			= "Insert 1 Bottle of Chemicals and 1 Paper Roll to craft a Newspaper.",
 		[ "it_server" ] 	= "Research Server", [ "dit_server" ] 		= "Generates 1 XP every 20 seconds, up to 300.",
 		[ "it_miner" ] 		= "FishCoin Miner", [ "dit_miner" ] 		= "Generates $1 every 2 seconds, up to $10,000.",
-		[ "it_tesla" ] 		= "Tesla Tower", [ "dit_tesla" ] 		= "Insert Batteries to attack birds.",
+		[ "it_tesla" ] 		= "Tesla Tower", [ "dit_tesla" ] 		= "Kills birds instantly within range. Charge with 3 Armor or Refill Kits for up to 15 birds.",
 		[ "it_cooler" ] 	= "Water Cooler", [ "dit_cooler" ] 		= "Buy some Bottled Water.",
 		[ "it_ejunk" ] 		= "E-Junk", [ "dit_ejunk" ] 			= "Discarded electronics.",
 		[ "it_jumppad" ] 	= "Jump Pad", [ "dit_jumppad" ] 		= "Launches you when stepped on.",
 		[ "it_flower" ] 	= "Flower", [ "dit_flower" ] 			= "Pwetty flower.",
 		[ "it_stove4" ] 	= "Deluxe Stove", [ "dit_stove4" ] 		= "Increases item's value by cooking them. Has 3 fire modes.",
-		[ "it_stove5" ] 	= "Technology Stove", [ "dit_stove5" ] 		= "Increases item's value by cooking them. Can detect baking degree and shut down automatically.",
+		[ "it_stove5" ] 	= "Technology Stove", [ "dit_stove5" ] 		= "Increases item's value by cooking them. Detects baking degree and shuts down automatically.",
 		[ "it_microwave" ] 	= "Microwave", [ "dit_microwave" ] 		= "Slow but safe.",
 		[ "it_metal2" ] 	= "Metal Sheet", [ "dit_metal2" ] 		= "A sheet of metal.",
 		[ "it_wood2" ] 		= "Wooden Board", [ "dit_wood2" ] 		= "A wooden board.",
@@ -777,7 +777,7 @@ items.it_tesla = {
 			self.xdefm_Cool = CurTime() +0.1  local cls = xdefm_GetClass( ent )
 			if ( cls == "it_armor" or cls == "it_refill" ) and !ent.xdefm_Trashed then
 				self:EmitSound( "Weapon_PhysCannon.Charge" ) ent.xdefm_Trashed = true  ent:Remove()
-				self.xdefm_Charge = self.xdefm_Charge +3
+				self.xdefm_Charge = self.xdefm_Charge +5
 				if self.xdefm_Charge >= 1 then self:SetColor( Color( 155, 255, 255 ) ) end
 			end
 		end
