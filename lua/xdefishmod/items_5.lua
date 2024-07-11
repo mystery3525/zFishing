@@ -590,6 +590,7 @@ items.it_boiler = {
 }
 
 function items.it_boiler:OnInit( self )
+	if CLIENT then return end
 	self.xdefm_delay = 120 -- how many iterations with coef it can sustain before removing an item
 	self.xdefm_coef = {
 		["it_coal"]  = 1,
@@ -597,14 +598,14 @@ function items.it_boiler:OnInit( self )
 		["it_wood1"] = 3,
 		["it_wood"]  = 5
 	}
+	print(self.xdefm_coef.it_coal)
 	self:NextThink( CurTime() + 1)
 end
 	function items.it_boiler:OnThink( self )
+		if CLIENT then return end
 		local fuel = nil -- the item for fuel
 		local coef = 0 -- the higher the faster fuel burns
 		local c_tbl = self.xdefm_coef
-
-		print(tostring(self) .. " is Thinking!!!")
 
 		for i, v in pairs(self.xdefm_T3) do
 			local pre = string.Explode( v, "|" )[1]
