@@ -46,7 +46,8 @@ if CLIENT then local langs = {}
 		[ "it_pshop" ] 		= "Mysterious Portal", [ "dit_pshop" ] 		= "Buy valuable items.",
 		[ "it_bouncy" ] 	= "Bouncy Ball", [ "dit_bouncy" ] 		= "Super bouncy.",
 		[ "it_charcoal" ]   = "Charcoal", [ "dit_charcoal" ] = "Produced from burning coal or wood. Cheaper steel this way!",
-		["it_boiler" ] = "Steam Boiler", [ "dit_boiler" ] = "Turns flameables into charcoal and water into steam.",
+		[ "it_boiler" ] = "Steam Boiler", [ "dit_boiler" ] = "Turns flameables into charcoal and water into steam.",
+		[ "it_pump" ] = "Water Pump", [ "dit_pump" ] = "Pumps water using electricity or a battery",
     }
 	local ln = GetConVar( "gmod_language" ):GetString()  local lg = "en"
 	if ln != nil and istable( langs[ ln ] ) then lg = GetConVar( "gmod_language" ):GetString() end
@@ -594,8 +595,8 @@ function items.it_boiler:OnInit( self )
 	self.xdefm_delay = 120 -- how many iterations with coef it can sustain before removing an item
 	self.xdefm_coef = {
 		["it_coal"]  = 1,
-		["it_wood3"] = 2,
-		["it_wood2"] = 3,
+		["it_wood2"] = 2,
+		["it_wood1"] = 3,
 		["it_wood"]  = 5
 	}
 	self.xdefm_Snd = nil
@@ -639,6 +640,29 @@ end
 		else self.xdefm_delay = delay end
 	end
 
+items.it_pump = {
+	Type = "Structure",
+	Model = "models/props_canal/winch02.mdl",
+	Rarity = 3,
+	Price = 2500,
+	PhysSound = "EpicMetal_Heavy.ImpactHard",
+	CanPhysgun = true,
+	TickRate = 1
+}
 
+	function items.it_pump:OnInit( self )
+		self.xdefm_Enabled = false
+		self.xdefm_HasPower = false
+		self.xdefm_OnBattery = true
+		self.xdefm_Battery = 0
+	end
+
+	function items.it_pump:OnInteract( self, ent, typ )
+		if typ = -1 then
+			local aa, bb xdefm_itemGet( ent )
+			print(aa)
+			--if xdefm_NadAllow(ent:GetOwner(), self) and true then end
+		end
+	end
 
 xdefm_ItemRegisterAll(items)
