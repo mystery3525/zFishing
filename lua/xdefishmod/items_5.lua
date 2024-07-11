@@ -598,6 +598,8 @@ function items.it_boiler:OnInit( self )
 		["it_wood1"] = 3,
 		["it_wood"]  = 5
 	}
+	self.xdefm_Snd = nil
+	self.xdefm_Fuel = nil
 end
 	function items.it_boiler:OnThink( self )
 		if CLIENT then return end
@@ -605,26 +607,32 @@ end
 		local coef = 0 -- the higher the faster fuel burns
 		local c_tbl = self.xdefm_coef
 
-		for i, v in pairs(self.xdefm_T3) do
-			if v ~= "_" then
-				local pre = string.Explode( "|", v )[1]
-				if isnumber(c_tbl[pre]) and c_tbl[pre] > 0 then
-					fuel = i
-					coef = c_tbl[pre]
-					self.xdefm_enabled = true
-					break
+		if isnumber(c_tbl[self.xdefm_Fuel]) and c_tbl[self.xdefm_Fuel] > 0 then -- only checks if fuel slot has been updated or removed
+			for i, v in pairs(self.xdefm_T3) do
+				if v ~= "_" then
+					local pre = string.Explode( "|", v )[1]
+					if isnumber(c_tbl[pre]) and c_tbl[pre] > 0 then
+						fuel = i
+						self.xdefm_Fuel = i
+						coef = c_tbl[pre]
+						self.xdefm_enabled = true
+						self.xdefm_Snd = self:StartLoopingSound("ambient.steam01")
+						break
+					end
 				end
 			end
 		end
 
 		if fuel == nil then 
 			self.xdefm_enabled = false
+			self:StopLoopingSound(self.xdefm_Snd)
 			return 
 		end
 		local delay = self.xdefm_delay - coef
 		if delay <= 0 then 
 			self.xdefm_delay = 120
 			self.xdefm_T3[fuel] = "it_charcoal"
+			self:EmitSound("underground_steamjet")
 			return
 		else self.xdefm_delay = delay end
 	end
