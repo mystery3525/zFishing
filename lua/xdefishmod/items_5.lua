@@ -598,8 +598,6 @@ function items.it_boiler:OnInit( self )
 		["it_wood1"] = 3,
 		["it_wood"]  = 5
 	}
-	print(self.xdefm_coef.it_coal)
-	self:NextThink( CurTime() + 1)
 end
 	function items.it_boiler:OnThink( self )
 		if CLIENT then return end
@@ -608,27 +606,27 @@ end
 		local c_tbl = self.xdefm_coef
 
 		for i, v in pairs(self.xdefm_T3) do
-			local pre = string.Explode( v, "|" )[1]
-			if isnumber(c_tbl[pre]) and c_tbl[pre] > 0 then
-				fuel = i
-				coef = c_tbl[pre]
-				self.xdefm_enabled = true
-				break
+			if v ~= "_" then
+				local pre = string.Explode( "|", v )[1]
+				if isnumber(c_tbl[pre]) and c_tbl[pre] > 0 then
+					fuel = i
+					coef = c_tbl[pre]
+					self.xdefm_enabled = true
+					break
+				end
 			end
 		end
 
-		
 		if fuel == nil then 
 			self.xdefm_enabled = false
 			return 
 		end
-		local delay = self.delay - coef
+		local delay = self.xdefm_delay - coef
 		if delay <= 0 then 
 			self.xdefm_delay = 120
 			self.xdefm_T3[fuel] = "it_charcoal"
 			return
 		else self.xdefm_delay = delay end
-		
 	end
 
 
