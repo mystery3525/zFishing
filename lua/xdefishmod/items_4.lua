@@ -162,6 +162,7 @@ items.it_atm = {
 	TickRate = 1,
 	HelperUse = "xdefm.U2",
 	TickRate = 1,
+	SType = 2,
 	CanPhysgun = true
 	}
 	local tb = {
@@ -250,7 +251,14 @@ items.it_fridge = {
 	function items.it_fridge:OnDamaged( self, dmg ) if self:Health() <= 0 or dmg:GetDamage() <= 0 or self.xdefm_Killed then return false end
 		self:SetHealth( math.max( 0, self:Health() -dmg:GetDamage() ) ) self:EmitSound( "Breakable.Metal" )
 		if self:Health() <= 0 then self.xdefm_Killed = true
-		local lt = {["it_bread2"]=200,["it_apple"]=5,["it_orange"]=5,["it_melon"]=5,["it_gfood"]=100,["it_soda"]=25} for i=1, math.random( 4, 6 ) do xdefm_LootDrop( lt, self ) end
+		local lt = {
+			["it_bread2"]=200,
+			["it_apple"]=5,
+			["it_orange"]=5,
+			["it_melon"]=5,
+			["it_gfood"]=100,
+			["it_soda"]=25
+			} for i=1, math.random( 4, 6 ) do xdefm_LootDrop( lt, self ) end
 		xdefm_BreakEffect( self, 3 ) self:SetNotSolid( true ) SafeRemoveEntityDelayed( self, 0.1 ) end return true
 	end
 	
@@ -264,10 +272,15 @@ items.it_supply = {
 	Price = 2000,
 	PhysSound = "Metal_Box.ImpactHard",
 	TickRate = 0.1,
-	SType = 3
+	SType = 3,
 	CanPhysgun = true
 	}
-	items.it_supply.Shop = { [ "it_ammocan1" ] = { 3000, 25 }, [ "it_ammo" ] = { 1250, 25 }, [ "it_grenade" ] = { 1500, 25 }, [ "it_flashbang" ] = { 1250, 25 } }
+	items.it_supply.Shop = {
+				[ "it_ammocan1" ] = { 3000, 25 },
+				[ "it_ammo" ] = { 1250, 25 },
+				[ "it_grenade" ] = { 1500, 25 },
+				[ "it_flashbang" ] = { 1250, 25 }
+				}
 	function items.it_supply:OnInit( self ) self:SetAutomaticFrameAdvance( true ) self:SetBodygroup( 1, 1 ) self.xdefm_Cool = 0  self.xdefm_Anim = 0 end
 	function items.it_supply:OnReady( self ) self:PhysWake() self:GetPhysicsObject():SetMass( 100 ) end
 	function items.it_supply:OnInteract( self, ent, typ )
@@ -881,6 +894,7 @@ items.it_stove4 = {
 	HelperUse = "xdefm.U4",
 	TickRate = 1,
 	PhysSound = "Metal_Barrel.ImpactHard",
+	SType = 2,
 	CantCook = true,
 	CanPhysgun = true
 	}
@@ -914,6 +928,7 @@ items.it_stove5 = {
 	HelperUse = "xdefm.U4",
 	TickRate = 0.1,
 	PhysSound = "Metal_Barrel.ImpactHard",
+	SType = 2,
 	CantCook = true,
 	CanPhysgun = true
 	}
