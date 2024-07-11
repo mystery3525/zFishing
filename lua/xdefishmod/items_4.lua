@@ -57,7 +57,7 @@ if CLIENT then local langs = {}
 		[ "it_atm" ] 		= "ATM", [ "dit_atm" ] 				= "1% investment increase per minute up to $10,000. Withdraw by pressing Shift+E.",
 		[ "it_refill" ] 	= "Refill Kit", [ "dit_refill" ] 		= "Refills your Health and Armor. Can also revive creatures.",
 		[ "it_fridge" ] 	= "Refrigerator", [ "dit_fridge" ] 		= "Break to open.",
-		[ "it_supply" ] 	= "Supply Crate", [ "dit_supply" ] 		= "Buy some weapons and ammo.",
+		[ "it_supply" ] 	= "Munitions Crate", [ "dit_supply" ] 		= "Buy some weapons and ammo.",
 		[ "it_egg" ] 		= "Egg", [ "dit_egg" ] 				= "Spawns a bird when broken.",
 		[ "cr_knight" ] 	= "Knight", [ "dcr_knight" ] 			= "Don't worry, it's harmless.",
 		[ "it_tungstenbar" ] 	= "Tungsten Ingot", [ "dit_tungstenbar" ] 	= "A bar of Tungsten.",
@@ -265,6 +265,7 @@ items.it_supply = {
 	PhysSound = "Metal_Box.ImpactHard",
 	TickRate = 0.1,
 	SType = 3
+	CanPhysgun = true
 	}
 	items.it_supply.Shop = { [ "it_ammocan1" ] = { 3000, 25 }, [ "it_ammo" ] = { 1250, 25 }, [ "it_grenade" ] = { 1500, 25 }, [ "it_flashbang" ] = { 1250, 25 } }
 	function items.it_supply:OnInit( self ) self:SetAutomaticFrameAdvance( true ) self:SetBodygroup( 1, 1 ) self.xdefm_Cool = 0  self.xdefm_Anim = 0 end
