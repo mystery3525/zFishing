@@ -583,8 +583,8 @@ items.it_boiler = {
 	PhysSound = "EpicMetal_Heavy.ImpactHard",
 	HelperUse = "xdefm.U3",
 	SType = 1,
-	StartSound = "Weapon_PhysCannon.Charge",
-	ExitSound = "Weapon_PhysCannon.Drop",
+	StartSound = "Doors.FullOpen9",
+	ExitSound = "Doors.FullClose10",
 	CanPhysgun = true,
 	TickRate = 1
 }
@@ -594,8 +594,8 @@ function items.it_boiler:OnInit( self )
 	self.xdefm_delay = 120 -- how many iterations with coef it can sustain before removing an item
 	self.xdefm_coef = {
 		["it_coal"]  = 1,
-		["it_wood2"] = 2,
-		["it_wood1"] = 3,
+		["it_wood3"] = 2,
+		["it_wood2"] = 3,
 		["it_wood"]  = 5
 	}
 	self.xdefm_Snd = nil
@@ -607,11 +607,11 @@ end
 		local coef = 0 -- the higher the faster fuel burns
 		local c_tbl = self.xdefm_coef
 
-		if isnumber(c_tbl[self.xdefm_Fuel]) and c_tbl[self.xdefm_Fuel] > 0 then -- only checks if fuel slot has been updated or removed
+		if !isnumber(c_tbl[self.xdefm_Fuel]) then -- only checks if fuel slot has been updated or removed
 			for i, v in pairs(self.xdefm_T3) do
 				if v ~= "_" then
 					local pre = string.Explode( "|", v )[1]
-					if isnumber(c_tbl[pre]) and c_tbl[pre] > 0 then
+					if isnumber(c_tbl[pre]) then
 						fuel = i
 						self.xdefm_Fuel = i
 						coef = c_tbl[pre]
@@ -625,7 +625,9 @@ end
 
 		if fuel == nil then 
 			self.xdefm_enabled = false
-			self:StopLoopingSound(self.xdefm_Snd)
+			if isnumber(self.xdefm_Snd) then
+				self:StopLoopingSound(self.xdefm_Snd)
+			end
 			return 
 		end
 		local delay = self.xdefm_delay - coef
