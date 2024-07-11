@@ -658,6 +658,10 @@ items.it_pump = {
 		self.xdefm_Battery = 0
 	end
 
+	function items.it_pump:OnReady( self ) 
+		self:GetPhysicsObject():SetMass( math.ceil( self:GetPhysicsObject():GetMass()*0.1 ) ) 
+	end
+
 	function items.it_pump:OnUse( self, ply )
 		if xdefm_NadAllow( ply, self) and self.xdefm_InWater then
 
