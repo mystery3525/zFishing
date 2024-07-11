@@ -657,11 +657,15 @@ items.it_pump = {
 		self.xdefm_Battery = 0
 	end
 
-	function items.it_pump:OnInteract( self, ent, typ )
-		if typ = -1 then
-			local aa, bb xdefm_itemGet( ent )
-			print(aa)
-			--if xdefm_NadAllow(ent:GetOwner(), self) and true then end
+	function items.it_pump:OnTouch( self, ent, typ )
+		if self.xdefm_HasPower then return end
+		if typ == -1 and ent:GetClass() == "xdefm_base" and self.xdefm_Battery < 25 then
+			local cls = xdefm_GetClass( ent )
+			if cls == "it_armor" or cls == "it_refill" then
+				ent:Remove()
+				self.xdefm_Battery = 100
+				self:EmitSound( "ambient/energy/zap2.wav" )
+			end
 		end
 	end
 
