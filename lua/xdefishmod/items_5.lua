@@ -585,7 +585,8 @@ items.it_boiler = {
 	SType = 1,
 	StartSound = "Weapon_PhysCannon.Charge",
 	ExitSound = "Weapon_PhysCannon.Drop",
-	CanPhysgun = true
+	CanPhysgun = true,
+	TickRate = 1
 }
 
 function items.it_boiler:OnInit( self )
@@ -598,8 +599,7 @@ function items.it_boiler:OnInit( self )
 	}
 	self:NextThink( CurTime() + 1)
 end
-	function items.it_boiler:Think( self )
-		self:NextThink( CurTime() + 0.3 )
+	function items.it_boiler:OnThink( self )
 		local fuel = nil -- the item for fuel
 		local coef = 0 -- the higher the faster fuel burns
 		local c_tbl = self.xdefm_coef
