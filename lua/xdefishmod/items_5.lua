@@ -658,20 +658,17 @@ items.it_pump = {
 		self.xdefm_Battery = 0
 	end
 
-	function items.it_pump:OnReady( self ) 
-		self:GetPhysicsObject():SetMass( math.ceil( self:GetPhysicsObject():GetMass()*0.1 ) ) 
-	end
-
 	function items.it_pump:OnUse( self, ply )
 		if xdefm_NadAllow( ply, self) and self.xdefm_InWater then
 
-			if self.xdefm_Enabled then self.xdefm_Enabled = false return end
+			if self.xdefm_Enabled then self.xdefm_Enabled = false return false end
 
 			if self.HasPower or self.xdefm_Battery > 0 then
 				self.xdefm_Enabled = true
 				self:EmitSound("Trainyard.sodamachine_dispense")
 			end
 		end
+		return false -- disable normal pickup
 	end
 
 	function items.it_pump:OnTouch( self, ent, typ )
@@ -687,7 +684,7 @@ items.it_pump = {
 	end
 
 	function items.it_pump:OnThink( self )
-		if not math.abs(self:GetAngles()[1]) < 30 and math.abs(self:GetAngles()[3]) < 30 then return end -- if upright
+		if math.abs(self:GetAngles()[1]) > 30 or math.abs(self:GetAngles()[3]) > 30 then return end -- if upright
 		local tr = {
 				start = self:GetPos(),
 				endpos = self:GetPos() - Vector(0, 0, 128),
@@ -698,7 +695,7 @@ items.it_pump = {
 				mask = MASK_WATER
 		}
 
-		local inWater   = self:WaterLevel() > 0 or util.TraceLine(tr).Hit
+		local inWater   = util.TraceLine(tr).Hit
 		local onBattery = !self.xdefm_HasPower
 		self.xdefm_InWater = inWater
 
