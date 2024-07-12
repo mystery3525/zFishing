@@ -595,7 +595,9 @@ items.it_boiler = {
 function items.it_boiler:OnInit( self )
 	if CLIENT then return end
 	self.xdefm_Enabled = false
+	self.xdefm_WaterIn = 5
 	self.xdefm_SteamOut = 20
+	self.xdefm_HasWater = false
 	self.xdefm_delay = 120 -- how many iterations with coef it can sustain before removing an item
 	self.xdefm_coef = {
 		["it_coal"]  = 1,
@@ -628,7 +630,7 @@ end
 			end
 		end
 
-		if fuel == nil then 
+		if fuel == nil or !self.xdefm_HasWater then 
 			self.xdefm_Enabled = false
 			if isnumber(self.xdefm_Snd) then
 				self:StopLoopingSound(self.xdefm_Snd)
@@ -658,6 +660,8 @@ items.it_pump = {
 	function items.it_pump:OnInit( self )
 		self.xdefm_Enabled = false
 		self.xdefm_InWater = false
+		self.xdefm_WaterOut = 10
+		self.xdefm_WaterTo = {}
 		self.xdefm_HasPower = false -- for system power
 		self.xdefm_PowerIn = 5
 		self.xdefm_Battery = 0
@@ -673,6 +677,16 @@ items.it_pump = {
 				self:EmitSound("Trainyard.sodamachine_dispense")
 			end
 		end
+
+		local near = ents.FindInSphere( self:GetPos(), 512)
+		if #near == 0 then return end
+
+		for i, v in pairs(near) do
+			if v:GetClass() == "xdefm_base" and v:GetOwner() == self:GetOwner() and xdefm_GetClass( v ) == "it_boiler" then
+				table.insert(self.xdefm_WaterTo, v)
+			end
+		end
+
 		return false -- disable normal pickup
 	end
 
@@ -694,8 +708,8 @@ items.it_pump = {
 				start = self:GetPos(),
 				endpos = self:GetPos() - Vector(0, 0, 128),
 				filter = function( ent )
-					local pump = self
-					return pump ~= ent
+					local pump = self -- locaize due to filter function being stored where self return nil or other unrelated entities
+					return self ~= ent
 				end,
 				mask = MASK_WATER
 		}
@@ -710,8 +724,11 @@ items.it_pump = {
 
 		if self.xdefm_Enabled then
 			if onBattery then self.xdefm_Battery = self.xdefm_Battery - 0.25 end -- about 400 seconds of runtime
+			local water = self.xdefm_WaterOut
+			for i, v in pairs(self.xdefm_WaterTo) do
+				v.xdefm_WaterIn = true
+			end
 		end
-
 	end
 
 items.it_turbine = {
@@ -791,12 +808,16 @@ items.it_relay = {
 		if #steam["Out"] > 0 then -- no point to run if there is nothing needing steam
 			local supply = 0
 			for i , v in pairs(steam["In"]) do
-				if !isValid(v) then table.Remove(steam["In"], i) else
+				if !v:IsValid() then
+					table.Remove(steam["In"], i) 
+				elseif v.xdefm_Enabled then
 					supply = supply + v.xdefm_SteamOut
 				end
 			end
 			for i , v in pairs(steam["Out"]) do
-				if !isValid(v) then table.Remove(steam["Out"], i) else
+				if !v:IsValid() then 
+					table.Remove(steam["Out"], i) 
+				else
 					v.xdefm_HasSteam = supply > supply
 					supply = supply - v.xdefm_SteamIn
 				end
@@ -808,12 +829,16 @@ items.it_relay = {
 		if #power["Out"] > 0 then -- same here
 			local supply = 0
 			for i , v in pairs(power["In"]) do
-				if !isValid(v) then table.Remove(power["In"], i) else
+				if !v:IsValid() then 
+					table.Remove(power["In"], i)
+				elseif v.xdefm_Enabled then
 					supply = supply + v.xdefm_PowerOut
 				end
 			end
 			for i , v in pairs(power["Out"]) do
-				if !isValid(v) then table.Remove(power["Out"], i) else
+				if !v:IsValid() then 
+					table.Remove(power["Out"], i) 
+				else
 					v.xdefm_HasPower = supply > supply
 					supply = supply - v.xdefm_PowerIn
 				end
