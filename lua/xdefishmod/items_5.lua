@@ -737,7 +737,7 @@ items.it_turbine = {
 
 items.it_relay = {
 	Type = "Structure",
-	Model = "models/props_combine/combinethumper002.mdl",
+	Model = "models/props_combine/masterinterface.mdl",
 	Rarity = 3,
 	Price = 3000,
 	HelperUse = "xdefm.U2",
@@ -750,11 +750,11 @@ items.it_relay = {
 		self.xdefm_Power = { ["In"] = {}, ["Out"] = {}}
 		self.xdefm_CanSteam = false
 		self.xdefm_CanPower = false
-		self:NetThink( CurTime() + 1)
+		self:NextThink( CurTime() + 1)
 	end
 
 	function items.it_relay:OnUse( self, ply )
-		if !xdefm_NadAllow( ply, self ) then return end
+		if !xdefm_NadAllow( ply, self ) then return false end
 
 		local near = ents.FindInSphere( self:GetPos(), 512)
 		if #near == 0 then return end
@@ -762,23 +762,26 @@ items.it_relay = {
 		local steam = { ["In"] = {}, ["Out"] = {}}
 		local power = { ["In"] = {}, ["Out"] = {}}
 		for i, v in pairs(near) do
-			if isnumber(v.xdefm_PowerIn) then
-				table.insert( power["In"], v )
-			end
-			if isnumber(v.xdefm_PowerOut) then
-				table.insert( power["Out"], v )
-			end
+			if v:GetClass() == "xdefm_base" and v:GetOwner() == self:GetOwner() then
+				if isnumber(v.xdefm_PowerOut) then
+					table.insert( power["In"], v )
+				end
+				if isnumber(v.xdefm_PowerIn) then
+					table.insert( power["Out"], v )
+				end
 
-			if isnumber(v.xdefm_SteamIn) then
-				table.insert( steam["In"], v )
-			end
-			if isnumber(v.xdefm_SteamOut) then
-				table.insert( steam["Out"], v )
+				if isnumber(v.xdefm_SteamOut) then
+					table.insert( steam["In"], v )
+				end
+				if isnumber(v.xdefm_SteamIn) then
+					table.insert( steam["Out"], v )
+				end
 			end
 		end
 
 		self.xdefm_Steam = steam
 		self.xdefm_Power = power
+		return false
 	end
 
 	function items.it_relay:OnThink( self )
@@ -788,11 +791,15 @@ items.it_relay = {
 		if #steam["Out"] > 0 then -- no point to run if there is nothing needing steam
 			local supply = 0
 			for i , v in pairs(steam["In"]) do
-				supply = supply + v.xdefm_SteamOut
+				if !isValid(v) then table.Remove(steam["In"], i) else
+					supply = supply + v.xdefm_SteamOut
+				end
 			end
 			for i , v in pairs(steam["Out"]) do
-				v.xdefm_HasSteam = supply > supply
-				supply = supply - v.xdefm_SteamIn
+				if !isValid(v) then table.Remove(steam["Out"], i) else
+					v.xdefm_HasSteam = supply > supply
+					supply = supply - v.xdefm_SteamIn
+				end
 			end
 			self:SetNWFloat( "XDEFM_RDEMS", supply)
 			self.xdefm_CanSteam = supply >= 0
@@ -801,11 +808,15 @@ items.it_relay = {
 		if #power["Out"] > 0 then -- same here
 			local supply = 0
 			for i , v in pairs(power["In"]) do
-				supply = supply + v.xdefm_PowerOut
+				if !isValid(v) then table.Remove(power["In"], i) else
+					supply = supply + v.xdefm_PowerOut
+				end
 			end
 			for i , v in pairs(power["Out"]) do
-				v.xdefm_HasPower = supply > supply
-				supply = supply - v.xdefm_PowerIn
+				if !isValid(v) then table.Remove(power["Out"], i) else
+					v.xdefm_HasPower = supply > supply
+					supply = supply - v.xdefm_PowerIn
+				end
 			end
 			self:SetNWFloat( "XDEFM_RDEMP", supply)
 			self.xdefm_CanPower = supply >= 0
@@ -816,15 +827,17 @@ items.it_relay = {
 		local txt = tostring( math.Round( self:GetNWFloat( "XDEFM_RDEMS" ) ) )
 		local txt2 = tostring( math.Round( self:GetNWFloat( "XDEFM_RDEMP" ) ) )
 		surface.SetFont( "HudHintTextLarge" )  
-		local xx, yy = surface.GetTextSize( txt )
 		
-		cam.Start3D2D(self:LocalToWorld( Vector(19, -25, 46.4) ), self:LocalToWorldAngles( Angle(0, 90, 90)), 0.10)
-			draw.RoundedBox( 0, -xx/2 -8, -yy -150 -8, xx +16, yy +16, Color( 0, 0, 0, 155 ) )
-			draw.TextShadow( { text = txt, pos = { 0, -150 }, font = "HudHintTextLarge",
-			xalign = TEXT_ALIGN_CENTER, yalign = TEXT_ALIGN_CENTER, color = Color( 255, 255, 255 ) }, 1, 255 )
-			draw.TextShadow( { text = txt2, pos = { 0, 150 }, font = "HudHintTextLarge",
-			xalign = TEXT_ALIGN_CENTER, yalign = TEXT_ALIGN_CENTER, color = Color( 255, 255, 255 ) }, 1, 255 )
-		cam.End3D2D()
+		cam.Start3D2D(self:LocalToWorld( Vector(-38, -14, 46.5) ), self:LocalToWorldAngles( Angle(0, 90, 45)), 0.10)
+			draw.RoundedBox( 2, 0, 0, 140, 80, Color( 0, 0, 0, 235 ) )
+
+			draw.TextShadow( { text = "STEAM", pos = { 70, 10 }, font = "HudHintTextLarge", xalign = TEXT_ALIGN_CENTER, yalign = TEXT_ALIGN_CENTER, color = Color( 255, 255, 255 ) }, 1, 255 )
+			draw.TextShadow( { text = txt, pos = { 70, 30 }, font = "HudHintTextLarge", xalign = TEXT_ALIGN_CENTER, yalign = TEXT_ALIGN_CENTER, color = Color( 255, 255, 255 ) }, 1, 255 )
+		
+			draw.TextShadow( { text = "POWER", pos = { 70, 50 }, font = "HudHintTextLarge", xalign = TEXT_ALIGN_CENTER, yalign = TEXT_ALIGN_CENTER, color = Color( 255, 255, 255 ) }, 1, 255 )
+			draw.TextShadow( { text = txt, pos = { 70, 70 }, font = "HudHintTextLarge", xalign = TEXT_ALIGN_CENTER, yalign = TEXT_ALIGN_CENTER, color = Color( 255, 255, 255 ) }, 1, 255 )
+		
+			cam.End3D2D()
 	end
 
 xdefm_ItemRegisterAll(items)
