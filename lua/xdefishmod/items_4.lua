@@ -928,7 +928,7 @@ items.it_stove5 = {
 	HelperUse = "xdefm.U4",
 	TickRate = 0.1,
 	PhysSound = "Metal_Barrel.ImpactHard",
-	SType = 2,
+	SType = 1,
 	CantCook = true,
 	CanPhysgun = true
 	}
