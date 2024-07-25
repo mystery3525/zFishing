@@ -713,6 +713,10 @@ items.it_pump = {
 
 	function items.it_pump:OnUse( self, ply )
 		if xdefm_NadAllow( ply, self) and self.xdefm_InWater then
+			if !self.xdefm_HasPower and self.xdefm_Battery <= 0 then 
+				self:EmitSound("ATV_stall_in_water")
+				return false 
+			end
 
 			if self.xdefm_Enabled then 
 				self.xdefm_Enabled = false 
@@ -782,6 +786,12 @@ items.it_pump = {
 				self.xdefm_Snd = nil
 				self:EmitSound("ATV_stall_in_water")
 			end
+			self.xdefm_Enabled = false
+			for i, v in pairs(self.xdefm_WaterTo) do
+				if !v:IsValid() then table.remove(self.xdefm_WaterTo, i) else
+					v.xdefm_HasWater = false
+				end
+			end
 			return
 		end
 
@@ -803,7 +813,7 @@ items.it_pump = {
 		local enabled = self:GetNWBool( "xdefm_Enabled" ) 
 		local haswat = self:GetNWBool( "xdefm_InWater" )
 		local haspow = self:GetNWBool( "xdefm_HasPower" )
-		local battery = tostring( self:GetNWFloat( "xdefm_Battery" ) )
+		local battery = self:GetNWFloat( "xdefm_Battery" )
 		
 		local enStr = "Offline"
 		local enCol = Color(255, 0, 0)
@@ -827,6 +837,12 @@ items.it_pump = {
 			pwCol = Color(0, 255, 0)
 			batCol = Color( 150, 150, 150)
 		end
+
+		local batStr = tostring(battery) .. " seconds"
+		if battery == 0 then 
+			batStr = "Empty"
+			batCol = Color( 255, 0, 0)
+		end
 		
 
 		cam.Start3D2D(self:LocalToWorld( Vector(-10, 3, 42) ), self:LocalToWorldAngles( Angle(0, -90, 90)), 0.10)
@@ -835,7 +851,7 @@ items.it_pump = {
 			draw.TextShadow( { text = enStr, pos = { 60, 20 }, font = "HudHintTextLarge", xalign = TEXT_ALIGN_CENTER, yalign = TEXT_ALIGN_CENTER, color = enCol }, 1, 255 )
 			draw.TextShadow( { text = waStr, pos = { 60, 40 }, font = "HudHintTextLarge", xalign = TEXT_ALIGN_CENTER, yalign = TEXT_ALIGN_CENTER, color = waCol }, 1, 255 )
 			draw.TextShadow( { text = pwStr, pos = { 60, 60 }, font = "HudHintTextLarge", xalign = TEXT_ALIGN_CENTER, yalign = TEXT_ALIGN_CENTER, color = pwCol }, 1, 255 )
-			draw.TextShadow( { text = battery .. " seconds", pos = { 60, 80 }, font = "HudHintTextLarge", xalign = TEXT_ALIGN_CENTER, yalign = TEXT_ALIGN_CENTER, color = batCol }, 1, 255 )
+			draw.TextShadow( { text = batStr, pos = { 60, 80 }, font = "HudHintTextLarge", xalign = TEXT_ALIGN_CENTER, yalign = TEXT_ALIGN_CENTER, color = batCol }, 1, 255 )
 
 		cam.End3D2D()
 
@@ -1040,6 +1056,11 @@ items.it_relay = {
 		if #power.Out > 0 then -- nothing needs? nothing takes
 			
 			local total = 0
+			local supIn = 0
+			local supOut = 0
+			local batIn = 0
+			local batOut = 0
+
 			for i, v in pairs( power.In ) do
 				if !v:IsValid() then 
 					table.remove(power.In, i)
@@ -1047,6 +1068,7 @@ items.it_relay = {
 					total = total + v.xdefm_PowerOut
 				end
 			end
+			supIn = total
 
 			for i, v in pairs( power.Out ) do
 				if !v:IsValid() then 
@@ -1055,21 +1077,27 @@ items.it_relay = {
 					total = total - v.xdefm_PowerIn
 				end
 			end
+			supOut = math.abs(total - supIn)
 			
 			if total > 0 then
 				for i, v in pairs( power.Store ) do
 					if total <= 0 then break end -- use up all slack
 
-					local maxIn = math.Clamp( v.xdefm_PowerInMax, 0, v.xdefm_BatteryMax - v.xdefm_Battery)
-					local pin = math.Clamp( total, 0, maxIn) -- Powerin, in is taken, makes me mad
+					if !v:IsValid() then 
+						table.remove(power.Store, i)
 
-					total = total - pin
-					v.xdefm_Battery = v.xdefm_Battery + pin
+					elseif v.xdefm_BatteryMax > v.xdefm_Battery then
+						local maxIn = math.Clamp( v.xdefm_PowerInMax, 0, v.xdefm_BatteryMax - v.xdefm_Battery)
+						local pin = math.Clamp( maxIn, 0, total) -- Powerin, in is taken, makes me mad
 
+						total = total - pin
+						v.xdefm_Battery = v.xdefm_Battery + pin
+						batOut = batOut + pin	
+					end
 				end
-			else -- total < 0
+			elseif total < 0 then
 				for i, v in pairs( power.Store ) do
-					if total => 0 then break end -- win condition
+					if total >= 0 then break end -- win condition
 
 					if !v:IsValid() then 
 						table.remove(power.Store, i)
@@ -1077,27 +1105,31 @@ items.it_relay = {
 					elseif v.xdefm_Enabled and v.xdefm_Battery > 0 then
 
 						local maxOut = math.Clamp( v.xdefm_PowerOutMax, 0, v.xdefm_Battery) -- use the last drop
-						local out = math.Clamp( total, 0, maxOut)
+						local out = math.Clamp( maxOut, 0, -total)
 
 						total = total + out
 						v.xdefm_Battery = v.xdefm_Battery - out
+						batIn = batIn + out
 					end
 				end
 			end
-			
 
+			supTot = total -- supply total for dishing out supply without messing with display variables
 			for i, v in pairs( power.Out ) do
 				if v.xdefm_Enabled then
-					if total > 0 then
+					if supTot >= 0 then
 						v.xdefm_HasPower = true
 					else
-						total = total + v.xdefm_powerIn -- reversing negative to power only what didn't make it go negative is a workaround to having more than one variable
+						supTot = supTot + v.xdefm_PowerIn -- reversing negative to power only what didn't make it go negative is a workaround to having more than one variable
+						v.xdefm_HasPower = false
 					end
-				end
+				else v.xdefm_HasPower = false end
 			end
 
 
-			self:SetNWString( "XDEFM_RDEMP", "IN:" .. tostring(supIn) .. " OUT:" .. tostring(supOut) .. "|TOTAL:" .. tostring( supIn - supOut ))
+			self:SetNWString( "XDEFM_RDEMP", "IN:" .. tostring(supIn) .. " OUT:" .. tostring(supOut) .. 
+			"|TOTAL:" .. tostring( total ) ..
+			"|Battery: " .. tostring(batIn - batOut ) )
 		end
 	end
 
@@ -1114,9 +1146,10 @@ items.it_relay = {
 			draw.TextShadow( { text = txt[1], pos = { 80, 50 }, font = "HudHintTextLarge", xalign = TEXT_ALIGN_CENTER, yalign = TEXT_ALIGN_CENTER, color = Color( 255, 255, 255 ) }, 1, 255 )
 			draw.TextShadow( { text = txt[2], pos = { 80, 70 }, font = "HudHintTextLarge", xalign = TEXT_ALIGN_CENTER, yalign = TEXT_ALIGN_CENTER, color = Color( 255, 255, 255 ) }, 1, 255 )
 
-			draw.TextShadow( { text = "POWER", pos = { 220, 20 }, font = "HudHintTextLarge", xalign = TEXT_ALIGN_CENTER, yalign = TEXT_ALIGN_CENTER, color = Color( 255, 255, 255 ) }, 1, 255 )
-			draw.TextShadow( { text = txt2[1], pos = { 220, 50 }, font = "HudHintTextLarge", xalign = TEXT_ALIGN_CENTER, yalign = TEXT_ALIGN_CENTER, color = Color( 255, 255, 255 ) }, 1, 255 )
-			draw.TextShadow( { text = txt2[2], pos = { 220, 70 }, font = "HudHintTextLarge", xalign = TEXT_ALIGN_CENTER, yalign = TEXT_ALIGN_CENTER, color = Color( 255, 255, 255 ) }, 1, 255 )
+			draw.TextShadow( { text = "POWER", pos = { 240, 10 }, font = "HudHintTextLarge", xalign = TEXT_ALIGN_CENTER, yalign = TEXT_ALIGN_CENTER, color = Color( 255, 255, 255 ) }, 1, 255 )
+			draw.TextShadow( { text = txt2[1], pos = { 240, 30 }, font = "HudHintTextLarge", xalign = TEXT_ALIGN_CENTER, yalign = TEXT_ALIGN_CENTER, color = Color( 255, 255, 255 ) }, 1, 255 )
+			draw.TextShadow( { text = txt2[2], pos = { 240, 50 }, font = "HudHintTextLarge", xalign = TEXT_ALIGN_CENTER, yalign = TEXT_ALIGN_CENTER, color = Color( 255, 255, 255 ) }, 1, 255 )
+			draw.TextShadow( { text = txt2[3], pos = { 240, 70 }, font = "HudHintTextLarge", xalign = TEXT_ALIGN_CENTER, yalign = TEXT_ALIGN_CENTER, color = Color( 255, 255, 255 ) }, 1, 255 )
 
 		cam.End3D2D()
 	end
@@ -1134,7 +1167,6 @@ items.it_battery = {
 
 	function items.it_battery:OnInit( self )
 		self.xdefm_Enabled = false
-		self.xdefm_HasPower = false
 		self.xdefm_PowerInMax = 2
 		self.xdefm_PowerOutMax = 10
 		self.xdefm_BatteryMax = 1000
@@ -1152,7 +1184,7 @@ items.it_battery = {
 	end
 
 	function items.it_battery:OnThink( self )
-		self:SetNWFloat( "xdefm_Battery", self.xdefm_Battery)
+		self:SetNWFloat("xdefm_battery", self.xdefm_Battery)
 	end
 
 	function items.it_battery:OnDraw( self ) -- since everything is shared, I might as well be lazy
