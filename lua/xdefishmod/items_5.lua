@@ -594,27 +594,30 @@ items.it_boiler = {
 	TickRate = 1
 }
 
-function items.it_boiler:OnInit( self )
-	if CLIENT then return end
-	self.xdefm_Enabled = false
-	self.xdefm_WaterIn = 5
-	self.xdefm_SteamOut = 20
-	self.xdefm_HasWater = false
-	self.xdefm_delay = 240 -- how many iterations with coef it can sustain before removing an item
-	self.xdefm_coef = {
-		["it_coal"]  = 1,
-		["it_wood2"] = 2,
-		["it_wood1"] = 3,
-		["it_wood"]  = 5
-	}
-	self.xdefm_Snd = nil
-	self.xdefm_Fuel = nil
-end
+	function items.it_boiler:OnInit( self )
+		if CLIENT then return end
+		self.xdefm_Enabled = false
+		self.xdefm_WaterIn = 5
+		self.xdefm_SteamOut = 20
+		self.xdefm_HasWater = false
+		self.xdefm_delay = 240 -- how many iterations with coef it can sustain before removing an item
+		self.xdefm_coef = {
+			["it_coal"]  = 1,
+			["it_wood2"] = 2,
+			["it_wood1"] = 3,
+			["it_wood"]  = 5
+		}
+		self.xdefm_Snd = nil
+		self.xdefm_Fuel = nil
+	end
+
 	function items.it_boiler:OnThink( self )
 		if CLIENT then return end
 		local fuel = nil -- the item for fuel
 		local coef = 0 -- the higher the faster fuel burns
 		local c_tbl = self.xdefm_coef
+
+		self:SetNWBool( "xdefm_HasWater", self.xdefm_HasWater )
 
 		if !isnumber(c_tbl[self.xdefm_Fuel]) then -- only checks if fuel slot has been updated or removed
 			for i, v in pairs(self.xdefm_T3) do
@@ -625,6 +628,7 @@ end
 						self.xdefm_Fuel = i
 						coef = c_tbl[pre]
 						self.xdefm_Enabled = true
+						self:SetNWBool( "xdefm_Enabled", true)
 						self.xdefm_Snd = self:StartLoopingSound("ambient.steam01")
 						break
 					end
@@ -634,18 +638,55 @@ end
 
 		if fuel == nil then 
 			self.xdefm_Enabled = false
+			self:SetNWBool( "xdefm_Enabled", false)
 			if isnumber(self.xdefm_Snd) then
 				self:StopLoopingSound(self.xdefm_Snd)
 			end
 			return 
-		end
+		end -- online only from here on
 		local delay = self.xdefm_delay - coef
+
 		if delay <= 0 then 
 			self.xdefm_delay = 240
 			self.xdefm_T3[fuel] = "it_charcoal"
 			self:EmitSound("underground_steamjet")
 			return
 		else self.xdefm_delay = delay end
+
+		self:SetNWFloat( "xdefm_Fuel", delay / coef)
+
+	end
+
+	function items.it_boiler:OnDraw( self )
+
+		local enabled = self:GetNWBool( "xdefm_Enabled" ) 
+		local haswat = self:GetNWBool( "xdefm_HasWater" )
+		local fuel = tostring( self:GetNWFloat( "xdefm_Fuel" ) ) -- time in seconds for the next fuel to burn
+		
+		local enStr = "Offline"
+		local enCol = Color(255, 0, 0)
+		if enabled then
+			enStr = "Online"
+			enCol = Color(0, 255, 0)
+		end
+
+		local waStr = "No Water"
+		local waCol = Color(255, 0, 0)
+		if enabled then
+			waStr = "Has Water"
+			waCol = Color(0, 255, 0)
+		end
+
+		cam.Start3D2D(self:LocalToWorld( Vector(-6, -48, 24) ), self:LocalToWorldAngles( Angle(0, 0, 90)), 0.10)
+			draw.RoundedBox( 2, 0, 0, 120, 100, Color( 0, 0, 0, 235 ) )
+			
+			draw.TextShadow( { text = enStr, pos = { 60, 20 }, font = "HudHintTextLarge", xalign = TEXT_ALIGN_CENTER, yalign = TEXT_ALIGN_CENTER, color = enCol }, 1, 255 )
+			draw.TextShadow( { text = waStr, pos = { 60, 40 }, font = "HudHintTextLarge", xalign = TEXT_ALIGN_CENTER, yalign = TEXT_ALIGN_CENTER, color = waCol }, 1, 255 )
+			if enabled then
+				draw.TextShadow( { text = fuel .. " seconds", pos = { 60, 70 }, font = "HudHintTextLarge", xalign = TEXT_ALIGN_CENTER, yalign = TEXT_ALIGN_CENTER, color = Color(255, 255, 255) }, 1, 255 )
+			end
+		cam.End3D2D()
+
 	end
 
 items.it_pump = {
@@ -711,7 +752,9 @@ items.it_pump = {
 	end
 
 	function items.it_pump:OnThink( self )
-		if math.abs(self:GetAngles()[1]) > 30 or math.abs(self:GetAngles()[3]) > 30 then return end -- if upright
+		if math.abs(self:GetAngles()[1]) > 30 or math.abs(self:GetAngles()[3]) > 30 then 
+			self.xdefm_Enabled = false
+		end -- if upright
 		local tr = {
 				start = self:GetPos(),
 				endpos = self:GetPos() - Vector(0, 0, 128),
@@ -724,8 +767,14 @@ items.it_pump = {
 
 		local inWater   = util.TraceLine(tr).Hit
 		self.xdefm_InWater = inWater
-		if !self.xdefm_Enabled then return end
 		local onBattery = !self.xdefm_HasPower
+
+		self:SetNWBool( "xdefm_Enabled", self.xdefm_Enabled )
+		self:SetNWBool( "xdefm_InWater", inWater )
+		self:SetNWBool( "xdefm_HasPower", !onBattery )
+		self:SetNWFloat( "xdefm_Battery", self.xdefm_Battery * 4 )
+
+		if !self.xdefm_Enabled then return end
 
 		if !inWater or onBattery and self.xdefm_Battery <= 0 then -- double purpose to not continue and end sound
 			if isnumber(self.xdefm_Snd) then
@@ -747,6 +796,50 @@ items.it_pump = {
 				water = water - v.xdefm_WaterIn
 			end
 		end
+	end
+
+	function items.it_pump:OnDraw( self )
+
+		local enabled = self:GetNWBool( "xdefm_Enabled" ) 
+		local haswat = self:GetNWBool( "xdefm_InWater" )
+		local haspow = self:GetNWBool( "xdefm_HasPower" )
+		local battery = tostring( self:GetNWFloat( "xdefm_Battery" ) )
+		
+		local enStr = "Offline"
+		local enCol = Color(255, 0, 0)
+		if enabled then
+			enStr = "Online"
+			enCol = Color(0, 255, 0)
+		end
+
+		local waStr = "No Water"
+		local waCol = Color(255, 0, 0)
+		if haswat then
+			waStr = "Has Water"
+			waCol = Color(0, 255, 0)
+		end
+
+		local pwStr = "On Battery"
+		local pwCol = Color(255, 0, 0)
+		local batCol = Color(255, 255, 255)
+		if haspow then
+			pwStr = "Has Power"
+			pwCol = Color(0, 255, 0)
+			batCol = Color( 150, 150, 150)
+		end
+		
+
+		cam.Start3D2D(self:LocalToWorld( Vector(-10, 3, 42) ), self:LocalToWorldAngles( Angle(0, -90, 90)), 0.10)
+			draw.RoundedBox( 2, 0, 0, 120, 100, Color( 0, 0, 0, 235 ) )
+			
+			draw.TextShadow( { text = enStr, pos = { 60, 20 }, font = "HudHintTextLarge", xalign = TEXT_ALIGN_CENTER, yalign = TEXT_ALIGN_CENTER, color = enCol }, 1, 255 )
+			draw.TextShadow( { text = waStr, pos = { 60, 40 }, font = "HudHintTextLarge", xalign = TEXT_ALIGN_CENTER, yalign = TEXT_ALIGN_CENTER, color = waCol }, 1, 255 )
+			draw.TextShadow( { text = pwStr, pos = { 60, 60 }, font = "HudHintTextLarge", xalign = TEXT_ALIGN_CENTER, yalign = TEXT_ALIGN_CENTER, color = pwCol }, 1, 255 )
+			draw.TextShadow( { text = battery .. " seconds", pos = { 60, 80 }, font = "HudHintTextLarge", xalign = TEXT_ALIGN_CENTER, yalign = TEXT_ALIGN_CENTER, color = batCol }, 1, 255 )
+
+		cam.End3D2D()
+
+
 	end
 
 items.it_turbine = {
@@ -892,7 +985,7 @@ items.it_relay = {
 		local steam = self.xdefm_Steam
 		local power = self.xdefm_Power
 
-		if #steam["Out"] > 0 then -- same here
+		if #steam["Out"] > 0 then -- nothing needs? nothing takes
 			local supIn = 0
 			for i, v in pairs(steam["In"]) do
 				if !v:IsValid() then table.remove(steam["In"], i) 
@@ -944,57 +1037,35 @@ items.it_relay = {
 			self:SetNWString( "XDEFM_RDEMS", "IN:" .. tostring(supIn) .. " OUT:" .. tostring(supOut) .. "|TOTAL:" .. tostring( supIn - supOut))
 		end
 
-		if #power["Out"] > 0 then -- same here
-			local supIn = 0
-			for i, v in pairs(power["In"]) do
-				if !v:IsValid() then table.remove(power["In"], i) 
-				elseif v.xdefm_Enabled then
-					supIn = supIn + v.xdefm_PowerOut
-				end
-			end
-			supIn = supIn + self.xdefm_PowerDraw
-			local supply = supIn -- math variable
-			local supplyNeg = supIn -- check for lack of supply
-			local supOut = 0
-			for i, v in pairs(power["Out"]) do
+		if #power["Out"] > 0 then -- nothing needs? nothing takes
+			
+			local total = 0
+			for i, v in pairs( power.In ) do
+				if !v:IsValid() then table.remove(power.In, v)
 				
-				if !v:IsValid() then 
-					table.remove(power["Out"], i)
-				else
-					if v.xdefm_Enabled then supplyNeg = supplyNeg - v.xdefm_PowerIn end
-					if v.xdefm_Enabled and supply > v.xdefm_PowerIn then
-						v.xdefm_HasPower = true
-						supply = supply - v.xdefm_PowerIn
-						supOut = supOut + v.xdefm_PowerIn
-					else v.xdefm_HasPower = false end
+				elseif v.xdefm_Enabled then
+					total = total + v.xdefm_PowerOut
 				end
 			end
-			if #power["Store"] > 0 then 
-				local supRef = math.abs(supplyNeg)
-				for i, v in pairs(power["Store"]) do
-					if supplyNeg < 0 and v.xdefm_Enabled then -- make up slack
 
-						local powerMax = v.xdefm_PowerOutMax or 0
-						local powerReq = math.Clamp( math.abs(supplyNeg or 0), 0, powerMax) -- 0 to max charge/fill from this storage
-						
-						v.xdefm_PowerIn  = 0
-						v.xdefm_PowerOut = powerReq
-						v.xdefm_HasPower = false
-
-					elseif supplyNeg > 0 and v.xdefm_BatteryMax ~= v.xdefm_Battery then -- start using extra power to charge/fill
-						local powerMax = v.xdefm_PowerInMax or 0
-						local powerReq = math.Clamp( supplyNeg or 0, 0, powerMax)
-						v.xdefm_HasPower = true
-						v.xdefm_PowerIn = powerReq
-						v.xdefm_PowerOut = 0
-						supplyNeg = supplyNeg - powerReq
-						supOut = supOut + powerReq
-					elseif supplyNeg ~= 0 then
-						v.xdefm_HasPower = false
-					end
+			for i, v in pairs( power.Out ) do
+				if !v:IsValid() then table.remove(power.In, v)
+				
+				elseif v.xdefm_Enabled then
+					total = total - v.xdefm_PowerIn
 				end
-				self.xdefm_PowerDraw = supRef - math.abs(supplyNeg)
 			end
+
+			if total < 0 then 
+				for i, v in pairs( power.Store ) do
+
+					
+
+				end
+			end
+
+
+
 			self:SetNWString( "XDEFM_RDEMP", "IN:" .. tostring(supIn) .. " OUT:" .. tostring(supOut) .. "|TOTAL:" .. tostring( supIn - supOut ))
 		end
 	end
@@ -1052,11 +1123,6 @@ items.it_battery = {
 	end
 
 	function items.it_battery:OnThink( self )
-		if self.xdefm_Enabled and !self.xdefm_HasPower then
-			self.xdefm_Battery = math.Clamp(self.xdefm_Battery - self.xdefm_PowerOut, 0, self.xdefm_BatteryMax)
-		elseif self.xdefm_HasPower then
-			self.xdefm_Battery = math.Clamp(self.xdefm_Battery + self.xdefm_PowerIn, 0, self.xdefm_BatteryMax)
-		end
 		self:SetNWFloat( "xdefm_Battery", self.xdefm_Battery)
 	end
 
