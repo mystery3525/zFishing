@@ -1037,33 +1037,64 @@ items.it_relay = {
 			self:SetNWString( "XDEFM_RDEMS", "IN:" .. tostring(supIn) .. " OUT:" .. tostring(supOut) .. "|TOTAL:" .. tostring( supIn - supOut))
 		end
 
-		if #power["Out"] > 0 then -- nothing needs? nothing takes
+		if #power.Out > 0 then -- nothing needs? nothing takes
 			
 			local total = 0
 			for i, v in pairs( power.In ) do
-				if !v:IsValid() then table.remove(power.In, v)
-				
+				if !v:IsValid() then 
+					table.remove(power.In, i)
 				elseif v.xdefm_Enabled then
 					total = total + v.xdefm_PowerOut
 				end
 			end
 
 			for i, v in pairs( power.Out ) do
-				if !v:IsValid() then table.remove(power.In, v)
-				
+				if !v:IsValid() then 
+					table.remove(power.In, i)
 				elseif v.xdefm_Enabled then
 					total = total - v.xdefm_PowerIn
 				end
 			end
-
-			if total < 0 then 
+			
+			if total > 0 then
 				for i, v in pairs( power.Store ) do
+					if total <= 0 then break end -- use up all slack
 
-					
+					local maxIn = math.Clamp( v.xdefm_PowerInMax, 0, v.xdefm_BatteryMax - v.xdefm_Battery)
+					local pin = math.Clamp( total, 0, maxIn) -- Powerin, in is taken, makes me mad
+
+					total = total - pin
+					v.xdefm_Battery = v.xdefm_Battery + pin
 
 				end
-			end
+			else -- total < 0
+				for i, v in pairs( power.Store ) do
+					if total => 0 then break end -- win condition
 
+					if !v:IsValid() then 
+						table.remove(power.Store, i)
+
+					elseif v.xdefm_Enabled and v.xdefm_Battery > 0 then
+
+						local maxOut = math.Clamp( v.xdefm_PowerOutMax, 0, v.xdefm_Battery) -- use the last drop
+						local out = math.Clamp( total, 0, maxOut)
+
+						total = total + out
+						v.xdefm_Battery = v.xdefm_Battery - out
+					end
+				end
+			end
+			
+
+			for i, v in pairs( power.Out ) do
+				if v.xdefm_Enabled then
+					if total > 0 then
+						v.xdefm_HasPower = true
+					else
+						total = total + v.xdefm_powerIn -- reversing negative to power only what didn't make it go negative is a workaround to having more than one variable
+					end
+				end
+			end
 
 
 			self:SetNWString( "XDEFM_RDEMP", "IN:" .. tostring(supIn) .. " OUT:" .. tostring(supOut) .. "|TOTAL:" .. tostring( supIn - supOut ))
@@ -1107,8 +1138,6 @@ items.it_battery = {
 		self.xdefm_PowerInMax = 2
 		self.xdefm_PowerOutMax = 10
 		self.xdefm_BatteryMax = 1000
-		self.xdefm_PowerIn = 0
-		self.xdefm_PowerOut = 0
 		self.xdefm_Battery = 0
 		self:NextThink( CurTime() + 1)
 	end
@@ -1139,7 +1168,7 @@ items.it_battery = {
 		cam.Start3D2D(self:LocalToWorld( Vector(-14, 6, 12) ), self:LocalToWorldAngles( Angle(0, -90, 90)), 0.10)
 			draw.RoundedBox( 2, 10, 0, 140, 80, Color( 0, 0, 0, 235 ) )
 
-			draw.TextShadow( { text = "Stored", pos = { 80, 20 }, font = "HudHintTextLarge", xalign = TEXT_ALIGN_CENTER, yalign = TEXT_ALIGN_CENTER, color = Color( 255, 255, 255 ) }, 1, 255 )
+			draw.TextShadow( { text = "Battery", pos = { 80, 20 }, font = "HudHintTextLarge", xalign = TEXT_ALIGN_CENTER, yalign = TEXT_ALIGN_CENTER, color = Color( 255, 255, 255 ) }, 1, 255 )
 			draw.TextShadow( { text = enStr, pos = { 80, 40 }, font = "HudHintTextLarge", xalign = TEXT_ALIGN_CENTER, yalign = TEXT_ALIGN_CENTER, color = enCol }, 1, 255 )
 			draw.TextShadow( { text = txt, pos = { 80, 60 }, font = "HudHintTextLarge", xalign = TEXT_ALIGN_CENTER, yalign = TEXT_ALIGN_CENTER, color = Color( 255, 255, 255 ) }, 1, 255 )
 		cam.End3D2D()
