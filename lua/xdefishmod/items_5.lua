@@ -1001,56 +1001,83 @@ items.it_relay = {
 		local steam = self.xdefm_Steam
 		local power = self.xdefm_Power
 
-		if #steam["Out"] > 0 then -- nothing needs? nothing takes
+		if #steam.Out > 0 then -- nothing needs? nothing takes
+			
+			local total = 0
 			local supIn = 0
-			for i, v in pairs(steam["In"]) do
-				if !v:IsValid() then table.remove(steam["In"], i) 
-				elseif v.xdefm_Enabled then
-					supIn = supIn + v.xdefm_SteamOut
-				end
-			end
-			supIn = supIn + self.xdefm_SteamDraw
-			local supply = supIn -- math variable
-			local supplyNeg = supIn -- check for lack of supply
 			local supOut = 0
-			for i, v in pairs(steam["Out"]) do
-				
+			local batIn = 0
+			local batOut = 0
+
+			for i, v in pairs( steam.In ) do
 				if !v:IsValid() then 
-					table.remove(steam["Out"], i)
-				else
-					supplyNeg = supplyNeg - v.xdefm_SteamIn
-					if v.xdefm_Enabled and supply > v.xdefm_SteamIn then
-						v.xdefm_HasSteam = true
-						supply = supply - v.xdefm_SteamIn
-						supOut = supOut + v.xdefm_SteamIn
-					else v.xdefm_HasSteam = false end
+					table.remove(self.xdefm_Steam.In, i)
+				elseif v.xdefm_Enabled then
+					total = total + v.xdefm_SteamOut
 				end
 			end
-			local supRef = math.abs(supplyNeg)
-			if #power["Store"] > 0 then 
-				for i, v in pairs(steam["Store"]) do
-					if supplyNeg < 0 and v.xdefm_Enabled then -- make up slack
+			supIn = total
 
-						local steamMax = v.xdefm_SteamOutMax
-						local steamReq = math.Clamp( math.abs(supplyNeg), 0, steamMax) -- 0 to max charge/fill from this storage
+			for i, v in pairs( steam.Out ) do
+				if !v:IsValid() then 
+					table.remove(self.xdefm_Steam.Out, i)
+				elseif v.xdefm_Enabled then
+					total = total - v.xdefm_SteamIn
+				end
+			end
+			supOut = math.abs(total - supIn)
+			
+			if total > 0 then
+				for i, v in pairs( steam.Store ) do
+					if total <= 0 then break end -- use up all slack
 
-						v.xdefm_SteamOut = steamReq
-						v.xdefm_HasSteam = false
+					if !v:IsValid() then 
+						table.remove(self.xdefm_Steam.Store, i)
 
-					elseif supplyNeg > 0 then -- start using extra steam to charge/fill
-						local steamMax = v.xdefm_SteamInMax
-						local steamReq = math.Clamp(supplyNeg, 0, steamMax)
-						v.xdefm_HasSteam = true
-						v.xdefm_SteamIn = steamReq
-						supplyNeg = supplyNeg - steamReq
-						supOut = supOut + steamReq
-					elseif supplyNeg ~= 0 then
-						v.xdefm_HasSteam = false
+					elseif v.xdefm_BatteryMax > v.xdefm_Battery then
+						local maxIn = math.Clamp( v.xdefm_SteamInMax, 0, v.xdefm_BatteryMax - v.xdefm_Battery)
+						local pin = math.Clamp( maxIn, 0, total) -- Steamin, in is taken, makes me mad
+
+						total = total - pin
+						v.xdefm_Battery = v.xdefm_Battery + pin
+						batOut = batOut + pin	
 					end
 				end
-				self.xdefm_SteamDraw = supRef - math.abs(supplyNeg)
+			elseif total < 0 then
+				for i, v in pairs( steam.Store ) do
+					if total >= 0 then break end -- win condition
+
+					if !v:IsValid() then 
+						table.remove(self.xdefm_Steam.Store, i)
+
+					elseif v.xdefm_Enabled and v.xdefm_Battery > 0 then
+
+						local maxOut = math.Clamp( v.xdefm_SteamOutMax, 0, v.xdefm_Battery) -- use the last drop
+						local out = math.Clamp( maxOut, 0, -total)
+
+						total = total + out
+						v.xdefm_Battery = v.xdefm_Battery - out
+						batIn = batIn + out
+					end
+				end
 			end
-			self:SetNWString( "XDEFM_RDEMS", "IN:" .. tostring(supIn) .. " OUT:" .. tostring(supOut) .. "|TOTAL:" .. tostring( supIn - supOut))
+
+			supTot = total -- supply total for dishing out supply without messing with display variables
+			for i, v in pairs( steam.Out ) do
+				if v.xdefm_Enabled then
+					if supTot >= 0 then
+						v.xdefm_HasSteam = true
+					else
+						supTot = supTot + v.xdefm_SteamIn -- reversing negative to steam only what didn't make it go negative is a workaround to having more than one variable
+						v.xdefm_HasSteam = false
+					end
+				else v.xdefm_HasSteam = false end
+			end
+
+
+			self:SetNWString( "XDEFM_RDEMP", "IN:" .. tostring(supIn) .. " OUT:" .. tostring(supOut) .. 
+			"|TOTAL:" .. tostring( total ) ..
+			"|Battery: " .. tostring(batIn - batOut ) )
 		end
 
 		if #power.Out > 0 then -- nothing needs? nothing takes
@@ -1201,6 +1228,61 @@ items.it_battery = {
 			draw.RoundedBox( 2, 10, 0, 140, 80, Color( 0, 0, 0, 235 ) )
 
 			draw.TextShadow( { text = "Battery", pos = { 80, 20 }, font = "HudHintTextLarge", xalign = TEXT_ALIGN_CENTER, yalign = TEXT_ALIGN_CENTER, color = Color( 255, 255, 255 ) }, 1, 255 )
+			draw.TextShadow( { text = enStr, pos = { 80, 40 }, font = "HudHintTextLarge", xalign = TEXT_ALIGN_CENTER, yalign = TEXT_ALIGN_CENTER, color = enCol }, 1, 255 )
+			draw.TextShadow( { text = txt, pos = { 80, 60 }, font = "HudHintTextLarge", xalign = TEXT_ALIGN_CENTER, yalign = TEXT_ALIGN_CENTER, color = Color( 255, 255, 255 ) }, 1, 255 )
+		cam.End3D2D()
+
+	end
+
+
+
+items.it_flask = {
+	Type = "Structure",
+	Model = "models/props_c17/canister_propane01a.mdl",
+	Rarity = 3,
+	Price = 1000,
+	HelperUse = "xdefm.U4",
+	PhysSound = "EpicMetal_Heavy.ImpactHard",
+	CanPhysgun = true,
+	TickRate = 1
+}
+
+	function items.it_flask:OnInit( self )
+		self.xdefm_Enabled = false
+		self.xdefm_SteamInMax = 2
+		self.xdefm_SteamOutMax = 10
+		self.xdefm_BatteryMax = 1000 -- just gonna keep it the same
+		self.xdefm_Battery = 0
+		self:NextThink( CurTime() + 1)
+	end
+
+	function items.it_flask:OnUse( self, ply )
+		if xdefm_NadAllow( ply, self) then
+			self.xdefm_Enabled = !self.xdefm_Enabled
+			self:SetNWBool( "xdefm_Enabled", self.xdefm_Enabled) 
+			self:EmitSound("Trainyard.sodamachine_dispense")
+		end
+		return false
+	end
+
+	function items.it_flask:OnThink( self )
+		self:SetNWFloat("xdefm_battery", self.xdefm_Battery)
+	end
+
+	function items.it_flask:OnDraw( self ) -- since everything is shared, I might as well be lazy
+		local txt  = tostring( self:GetNWFloat( "xdefm_Battery" ))
+		local enabled = self:GetNWBool( "xdefm_Enabled" ) 
+		local enStr = "Storing"
+		local enCol = Color(255, 0, 0)
+		if enabled then
+			enStr = "Providing"
+			enCol = Color(0, 255, 0)
+		end
+
+		cam.Start3D2D(self:LocalToWorld( Vector(-14, 6, 12) ), self:LocalToWorldAngles( Angle(0, -90, 90)), 0.10)
+			draw.RoundedBox( 2, 10, 0, 140, 80, Color( 0, 0, 0, 235 ) )
+
+			draw.TextShadow( { text = "Steam Flask", pos = { 80, 20 }, font = "HudHintTextLarge", xalign = TEXT_ALIGN_CENTER, yalign = TEXT_ALIGN_CENTER, color = Color( 255, 255, 255 ) }, 1, 255 )
 			draw.TextShadow( { text = enStr, pos = { 80, 40 }, font = "HudHintTextLarge", xalign = TEXT_ALIGN_CENTER, yalign = TEXT_ALIGN_CENTER, color = enCol }, 1, 255 )
 			draw.TextShadow( { text = txt, pos = { 80, 60 }, font = "HudHintTextLarge", xalign = TEXT_ALIGN_CENTER, yalign = TEXT_ALIGN_CENTER, color = Color( 255, 255, 255 ) }, 1, 255 )
 		cam.End3D2D()
