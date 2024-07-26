@@ -51,7 +51,7 @@ if CLIENT then local langs = {}
 		[ "it_turbine" ] = "Steam Turbine", [ "dit_turbine" ] = "Turns steam into electricity.",
 		[ "it_relay" ] = "Power Relay", [ "dit_relay" ] = "Wireless power managemet, because nobody could afford the wires",
 		[ "it_battery" ] = "Battery", [ "dit_battery" ] = "Stores 1kW of power.",
-		[ "it_flask" ]   = "Steam Flask", [ "dit_flask" ] = "Stores 1000 steam."
+		[ "it_flask" ]   = "Steam Flask", [ "dit_flask" ] = "Stores 1000 steam. psi? tons? idk."
     }
 	local ln = GetConVar( "gmod_language" ):GetString()  local lg = "en"
 	if ln != nil and istable( langs[ ln ] ) then lg = GetConVar( "gmod_language" ):GetString() end
@@ -1075,9 +1075,9 @@ items.it_relay = {
 			end
 
 
-			self:SetNWString( "XDEFM_RDEMP", "IN:" .. tostring(supIn) .. " OUT:" .. tostring(supOut) .. 
+			self:SetNWString( "XDEFM_RDEMS", "IN:" .. tostring(supIn) .. " OUT:" .. tostring(supOut) .. 
 			"|TOTAL:" .. tostring( total ) ..
-			"|Battery: " .. tostring(batIn - batOut ) )
+			"|Flask: " .. tostring(batIn - batOut ) )
 		end
 
 		if #power.Out > 0 then -- nothing needs? nothing takes
@@ -1169,9 +1169,10 @@ items.it_relay = {
 			draw.RoundedBox( 2, 10, 0, 140, 80, Color( 0, 0, 0, 235 ) )
 			draw.RoundedBox( 2, 170, 0, 140, 80, Color( 0, 0, 0, 235 ) )
 
-			draw.TextShadow( { text = "STEAM", pos = { 80, 20 }, font = "HudHintTextLarge", xalign = TEXT_ALIGN_CENTER, yalign = TEXT_ALIGN_CENTER, color = Color( 255, 255, 255 ) }, 1, 255 )
-			draw.TextShadow( { text = txt[1], pos = { 80, 50 }, font = "HudHintTextLarge", xalign = TEXT_ALIGN_CENTER, yalign = TEXT_ALIGN_CENTER, color = Color( 255, 255, 255 ) }, 1, 255 )
-			draw.TextShadow( { text = txt[2], pos = { 80, 70 }, font = "HudHintTextLarge", xalign = TEXT_ALIGN_CENTER, yalign = TEXT_ALIGN_CENTER, color = Color( 255, 255, 255 ) }, 1, 255 )
+			draw.TextShadow( { text = "STEAM", pos = { 80, 10 }, font = "HudHintTextLarge", xalign = TEXT_ALIGN_CENTER, yalign = TEXT_ALIGN_CENTER, color = Color( 255, 255, 255 ) }, 1, 255 )
+			draw.TextShadow( { text = txt[1], pos = { 80, 30 }, font = "HudHintTextLarge", xalign = TEXT_ALIGN_CENTER, yalign = TEXT_ALIGN_CENTER, color = Color( 255, 255, 255 ) }, 1, 255 )
+			draw.TextShadow( { text = txt[2], pos = { 80, 50 }, font = "HudHintTextLarge", xalign = TEXT_ALIGN_CENTER, yalign = TEXT_ALIGN_CENTER, color = Color( 255, 255, 255 ) }, 1, 255 )
+			draw.TextShadow( { text = txt[3], pos = { 80, 70 }, font = "HudHintTextLarge", xalign = TEXT_ALIGN_CENTER, yalign = TEXT_ALIGN_CENTER, color = Color( 255, 255, 255 ) }, 1, 255 )
 
 			draw.TextShadow( { text = "POWER", pos = { 240, 10 }, font = "HudHintTextLarge", xalign = TEXT_ALIGN_CENTER, yalign = TEXT_ALIGN_CENTER, color = Color( 255, 255, 255 ) }, 1, 255 )
 			draw.TextShadow( { text = txt2[1], pos = { 240, 30 }, font = "HudHintTextLarge", xalign = TEXT_ALIGN_CENTER, yalign = TEXT_ALIGN_CENTER, color = Color( 255, 255, 255 ) }, 1, 255 )
@@ -1279,13 +1280,13 @@ items.it_flask = {
 			enCol = Color(0, 255, 0)
 		end
 
-		cam.Start3D2D(self:LocalToWorld( Vector(-14, 6, 12) ), self:LocalToWorldAngles( Angle(0, -90, 90)), 0.10)
+		cam.Start3D2D(self:LocalToWorld( Vector(-16, 8, 48) ), self:LocalToWorldAngles( Angle(0, -90, 90)), 0.10)
 			draw.RoundedBox( 2, 10, 0, 140, 80, Color( 0, 0, 0, 235 ) )
 
 			draw.TextShadow( { text = "Steam Flask", pos = { 80, 20 }, font = "HudHintTextLarge", xalign = TEXT_ALIGN_CENTER, yalign = TEXT_ALIGN_CENTER, color = Color( 255, 255, 255 ) }, 1, 255 )
 			draw.TextShadow( { text = enStr, pos = { 80, 40 }, font = "HudHintTextLarge", xalign = TEXT_ALIGN_CENTER, yalign = TEXT_ALIGN_CENTER, color = enCol }, 1, 255 )
 			draw.TextShadow( { text = txt, pos = { 80, 60 }, font = "HudHintTextLarge", xalign = TEXT_ALIGN_CENTER, yalign = TEXT_ALIGN_CENTER, color = Color( 255, 255, 255 ) }, 1, 255 )
 		cam.End3D2D()
-
 	end
+
 xdefm_ItemRegisterAll(items)
