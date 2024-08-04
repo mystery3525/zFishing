@@ -436,8 +436,13 @@ items.re_tool4 = {
 	Price = 1600 
 }
 	items.re_tool4.Crafts = {
-		"it_propane&it_part3&it_stove4&it_boiler",
-		"it_part3&it_storage2&it_storage2&it_storage3"
+		"it_part2&it_propane&it_stove4&it_boiler",
+		"it_part3&it_refill&it_propane&it_relay",
+		"it_part3&it_storage2&it_storage2&it_storage3",
+		"it_part3&it_metal3&it_metal3&it_plastic2&it_turbine",
+		"it_part2&it_metal2&it_metal2&it_pump",
+		"it_part2&it_propane&it_metal2&it_flask",
+		"it_part2&it_refill&it_metal2&it_battery"
 	}
 	
 xdefm_ItemRegisterAll(items)
