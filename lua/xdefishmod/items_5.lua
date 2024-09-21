@@ -51,7 +51,8 @@ if CLIENT then local langs = {}
 		[ "it_turbine" ] = "Steam Turbine", [ "dit_turbine" ] = "Turns steam into electricity.",
 		[ "it_relay" ] = "Power Relay", [ "dit_relay" ] = "Wireless power managemet, because nobody could afford the wires",
 		[ "it_battery" ] = "Battery", [ "dit_battery" ] = "Stores 1kW of power.",
-		[ "it_flask" ]   = "Steam Flask", [ "dit_flask" ] = "Stores 1000 steam. psi? tons? idk."
+		[ "it_flask" ]   = "Steam Flask", [ "dit_flask" ] = "Stores 1000 steam. psi? tons? idk.",
+		[ "it_furnace3" ] = "Electric Furnace", [ "dit_furnace3" ] = "Furnace that runs on electricity."
     }
 	local ln = GetConVar( "gmod_language" ):GetString()  local lg = "en"
 	if ln != nil and istable( langs[ ln ] ) then lg = GetConVar( "gmod_language" ):GetString() end
@@ -1289,4 +1290,96 @@ items.it_flask = {
 		cam.End3D2D()
 	end
 
+items.it_furnace3 = {
+	Type = "Structure",
+	Model = "models/props/cs_militia/furnace01.mdl",
+	StartSound = "Metal_Barrel.ImpactSoft",
+	ExitSound = "Metal_Barrel.ImpactHard",
+	Rarity = 4,
+	Price = 3000,
+	Amount = 12,
+	PhysSound = "EpicMetal.ImpactSoft",
+	HelperUse = "xdefm.U3",
+	SType = 1,
+	CanPhysgun = true,
+	TickRate = 1
+}
+
+	function items.it_furnace3:OnInit( self )
+
+		self.xdefm_HasPower = false
+		self.xdefm_PowerIn = 25
+		self.xdefm_Enabled = false
+		self.xdefm_Selected = nil
+		self.xdefm_SmeltTime = nil
+
+		self.sm_tbl = {
+			["it_scrap"] = {amount = 1, result = "it_steelbar"},
+			["it_ore"]	 = {amount = 1, result = "it_copperbar"},
+			["it_ejunk"] = {amount = 2, result = "it_tungstonbar"},
+			["it_coin"] =  {amount = 2, result = "it_silverbar"},
+			["it_pottery"] = {amount = 2, result = "it_potter1"},
+			["it_potter1"] = {amount = 2, result = "it_potter2"},
+			["it_potter2"] = {amount = 2, result = "it_potter3"},
+			["it_oreblue"] =   {amount = 2, result = "it_gemblue"},
+			["it_orepurple"] = {amount = 2, result = "it_gempurple"},
+			["it_oregreen"] =  {amount = 2, result = "it_gemgreen"},
+			["it_orered"] =    {amount = 2, result = "it_gemred"},
+			["it_orewhite"] =  {amount = 2, result = "it_gemwhite"},
+		}
+	end
+
+	function items.it_furnace3:OnThink( self )
+
+		local slots = {} -- table of all the matching indexes for the items listed
+
+		for i, v in pairs(self.xdefm_T3) do
+			if v ~= "_" then -- non-empty slot
+				local pre = string.Explode( "|", v )[1]
+
+				if istable(self.sm_tbl[pre]) then
+					if not istable(slots[pre]) then slots[pre] = {} end
+					table.insert(slots[pre], i)
+				end
+
+			end
+		end
+
+		self.xdefm_Enabled = table.Count(slots) > 0
+
+		if self.xdefm_Enabled then
+			if not self.xdefm_HasPower then return end
+
+			PrintTable( slots )
+
+			local sel = nil
+			for i, v in pairs(slots) do
+				if table.Count(v) >= self.sm_tbl[i].amount then 
+					sel = i
+					break
+				end
+			end
+			if sel == nil then return end
+			self.xdefm_Selected = sel
+
+			self.xdefm_SmeltTime = self.xdefm_SmeltTime or CurTime() + 3
+			local stime = self.xdefm_SmeltTime
+
+			if stime < CurTime() then
+				self.xdefm_T3[slots[sel][1]] = self.sm_tbl[sel].result
+				
+				if self.sm_tbl[sel].amount > 1 then
+					for i = 2, self.sm_tbl[i].amount do
+						self.xdefm_T3[slots[sel][i]] = "_"
+					end
+				end
+
+				self.xdefm_SmeltTime = nil
+				self.xdefm_Selected = nil
+			end
+		else
+			self.xdefm_Selected = nil
+		end
+
+	end
 xdefm_ItemRegisterAll(items)
