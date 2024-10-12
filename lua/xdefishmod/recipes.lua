@@ -23,6 +23,7 @@ if CLIENT then local langs = {}
 		[ "re_tool1" ] = "Basic Item Recipe", [ "dre_tool1" ] = "Craft basic tools.",
 		[ "re_tool2" ] = "Improved Item Recipe", [ "dre_tool2" ] = "Craft improved tools.",
 		[ "re_tool3" ] = "Advanced Item Recipe", [ "dre_tool3" ] = "Craft advanced tools.",
+		[ "re_tool3" ] = "Industrial Item Recipe", [ "dre_tool3" ] = "Craft steam tools.",
 		[ "re_bait1" ] = "Basic Bait Recipe", [ "dre_bait1" ] = "Craft common and uncommon baits.",
 		[ "re_bait2" ] = "Improved Bait Recipe", [ "dre_bait2" ] = "Craft rare baits.",
 		[ "re_bait3" ] = "Advanced Bait Recipe", [ "dre_bait3" ] = "Craft epic baits.",
@@ -42,10 +43,18 @@ if CLIENT then local langs = {}
 	for holder, text in pairs( langs[ lg ] ) do language.Add( "xdefm."..holder, text ) end
 end
 
-if true then local it = "re_toolbox"
-	local ITEM = { Name = "#xdefm."..it, Type = "Recipe", Model = "models/props_c17/suitcase001a.mdl", Helper = "#xdefm.d"..it, Rarity = 2, Durability = 10,
-    PhysSound = "SolidMetal.ImpactSoft", Price = 1000 }
-    ITEM.Crafts = {
+langs = nil
+local items = {}
+
+items.re_toolbox = { 
+    Type = "Recipe", 
+	Model = "models/props_c17/suitcase001a.mdl", 
+	Rarity = 2,
+    Durability = 10,
+    PhysSound = "SolidMetal.ImpactSoft", 
+	Price = 1000 
+}
+    items.re_toolbox.Crafts = {
 		"it_part&it_stone2&it_stone2&it_stone2&it_furnace1",
 		"it_part&it_propane&it_steelbar&it_stove3",
 		"it_part&it_wood2&it_wood2&it_wood2&it_crafting1",
@@ -56,12 +65,16 @@ if true then local it = "re_toolbox"
 		"it_crate2&it_wood3&it_wood3&it_wood3&it_storage2",
 		"it_part2&it_metal3&it_metal3&it_glass3&it_recycler"
     }
-	xdefm_ItemRegister( it, ITEM )
-end
-if true then local it = "re_basic"
-	local ITEM = { Name = "#xdefm."..it, Type = "Recipe", Model = "models/props_c17/paper01.mdl", Helper = "#xdefm.d"..it, Rarity = 1, Durability = 25,
-    PhysSound = "Cardboard.ImpactSoft", Price = 100 }
-    ITEM.Crafts = {
+	
+items.re_basic = { 
+    Type = "Recipe", 
+	Model = "models/props_c17/paper01.mdl", 
+	Rarity = 1, 
+	Durability = 25,
+    PhysSound = "Cardboard.ImpactSoft", 
+	Price = 100 
+}
+    items.re_basic.Crafts = {
 		"it_wood&it_wood&it_wood&it_wood2",
 		"it_metal&it_metal&it_metal&it_metal2",
 		"it_glass&it_glass&it_glass&it_glass2",
@@ -70,12 +83,16 @@ if true then local it = "re_basic"
 		"it_metal&it_copperbar&it_steelbar&it_part",
 		"it_wood&it_stone&it_ore&it_chemical",
     }
-	xdefm_ItemRegister( it, ITEM )
-end
-if true then local it = "re_tool1"
-	local ITEM = { Name = "#xdefm."..it, Type = "Recipe", Model = "models/props_c17/paper01.mdl", Helper = "#xdefm.d"..it, Rarity = 1, Durability = 10,
-    PhysSound = "Cardboard.ImpactSoft", Price = 150 }
-    ITEM.Crafts = {
+	
+items.re_tool1 = { 
+    Type = "Recipe",
+    Model = "models/props_c17/paper01.mdl", 
+    Rarity = 1,
+    Durability = 10,
+    PhysSound = "Cardboard.ImpactSoft",
+    Price = 150 
+}
+    items.re_tool1.Crafts = {
 		"it_metal2&it_coal&it_propane",
 		"it_wood&it_stone&it_stone&it_campfire",
 		"it_metal2&it_armor&it_stove1",
@@ -88,12 +105,16 @@ if true then local it = "re_tool1"
 		"it_copperbar&it_brick&it_brick&it_furnace",
 		"it_metal2&it_metal2&it_bucket"
     }
-	xdefm_ItemRegister( it, ITEM )
-end
-if true then local it = "re_bait1"
-	local ITEM = { Name = "#xdefm."..it, Type = "Recipe", Model = "models/props_c17/paper01.mdl", Helper = "#xdefm.d"..it, Rarity = 1, Durability = 20,
-    PhysSound = "Cardboard.ImpactSoft", Price = 100 }
-    ITEM.Crafts = {
+	
+items.re_bait1 = { 
+    Type = "Recipe",
+    Model = "models/props_c17/paper01.mdl", 
+    Rarity = 1,
+    Durability = 20,
+    PhysSound = "Cardboard.ImpactSoft",
+    Price = 100 
+}
+    items.re_bait1.Crafts = {
 		"it_paper&it_coal&ba_money",
 		"it_stone&it_wood&it_melon&ba_seed",
 		"it_metal&it_metal&it_metal&ba_wrench",
@@ -106,12 +127,16 @@ if true then local it = "re_bait1"
 		"it_glass2&it_glass2&it_copperbar&ba_lamp",
 		"it_metal2&it_steelbar&ba_pickaxe",
     }
-	xdefm_ItemRegister( it, ITEM )
-end
-if true then local it = "re_furn1"
-	local ITEM = { Name = "#xdefm."..it, Type = "Recipe", Model = "models/props_lab/powerbox02a.mdl", Helper = "#xdefm.d"..it, Rarity = 2, Durability = 20,
-    PhysSound = "Cardboard.ImpactSoft", Price = 600 }
-    ITEM.Crafts = {
+	
+items.re_furn1 = { 
+    Type = "Recipe",
+    Model = "models/props_lab/powerbox02a.mdl", 
+    Rarity = 2,
+    Durability = 20,
+    PhysSound = "Cardboard.ImpactSoft",
+    Price = 600 
+}
+    items.re_furn1.Crafts = {
 		"it_wood&it_wood&it_wood&it_coal",
 		"it_pottery&it_pottery&it_potter1",
 		"it_ore&it_ore&it_coal&it_copperbar",
@@ -119,12 +144,16 @@ if true then local it = "re_furn1"
 		"it_ejunk&it_ejunk&it_coal&it_tungstenbar",
 		"it_coin&it_coin&it_coal&it_silverbar",
    }
-	xdefm_ItemRegister( it, ITEM )
-end
-if true then local it = "re_luck"
-	local ITEM = { Name = "#xdefm."..it, Type = "Recipe", Model = "models/props_c17/playgroundTick-tack-toe_block01a.mdl", Helper = "#xdefm.d"..it, Rarity = 5, Durability = 1,
-    PhysSound = "Cardboard.ImpactSoft", Price = 2500 }
-    ITEM.Crafts = {
+	
+items.re_luck = { 
+    Type = "Recipe",
+    Model = "models/props_c17/playgroundTick-tack-toe_block01a.mdl", 
+    Rarity = 5,
+    Durability = 1,
+    PhysSound = "Cardboard.ImpactSoft",
+    Price = 2500 
+}
+    items.re_luck.Crafts = {
 		"it_junk&it_recipe3",
 		"it_junk&it_cturret",
 		"it_junk&it_exp3",
@@ -132,7 +161,7 @@ if true then local it = "re_luck"
 		"it_junk&it_microwave",
    }
 	local Mat = Material( "sprites/light_glow02_add" ) Mat:SetInt( "$ignorez", 1 )
-	function ITEM:OnDraw( self )
+	function items.re_luck:OnDraw( self )
 		render.SetMaterial( Mat ) local siz = 40 +math.sin( CurTime()*5 )*5
 		render.DrawSprite( self:WorldSpaceCenter(), siz, siz, Color( 255, 255, 55 ) )
 		if !self.Emitter then self.Emitter = ParticleEmitter( self:WorldSpaceCenter() )
@@ -157,12 +186,16 @@ if true then local it = "re_luck"
 			particle:SetLighting( false )
 		end
 	end
-	xdefm_ItemRegister( it, ITEM )
-end
-if true then local it = "re_tool2"
-	local ITEM = { Name = "#xdefm."..it, Type = "Recipe", Model = "models/props_c17/paper01.mdl", Helper = "#xdefm.d"..it, Rarity = 2, Durability = 10,
-    PhysSound = "Cardboard.ImpactSoft", Price = 250 }
-    ITEM.Crafts = {
+	
+items.re_tool2 = { 
+    Type = "Recipe",
+    Model = "models/props_c17/paper01.mdl", 
+    Rarity = 2,
+    Durability = 10,
+    PhysSound = "Cardboard.ImpactSoft",
+    Price = 250 
+}
+    items.re_tool2.Crafts = {
 		"it_part&it_propane&it_steelbar&it_stove3",
 		"it_health&it_metal2&it_chealth",
 		"it_armor&it_metal2&it_carmor",
@@ -177,24 +210,32 @@ if true then local it = "re_tool2"
 		"it_part&it_metal3&it_printer",
 		"it_part&it_propane&it_copperbar&re_furn1|20",
     }
-	xdefm_ItemRegister( it, ITEM )
-end
-if true then local it = "re_bait2"
-	local ITEM = { Name = "#xdefm."..it, Type = "Recipe", Model = "models/props_c17/paper01.mdl", Helper = "#xdefm.d"..it, Rarity = 2, Durability = 20,
-    PhysSound = "Cardboard.ImpactSoft", Price = 350 }
-    ITEM.Crafts = {
+	
+items.re_bait2 = { 
+    Type = "Recipe",
+    Model = "models/props_c17/paper01.mdl", 
+    Rarity = 2,
+    Durability = 20,
+    PhysSound = "Cardboard.ImpactSoft",
+    Price = 350 
+}
+    items.re_bait2.Crafts = {
 		"it_rottenmeat&it_rottenmeat&it_hula&it_bugs&ba_teddy",
 		"it_leadbar&it_metal2&ba_bomb",
 		"ba_fish&ba_fish&ba_fish&ba_fish&ba_meat",
 		"it_steelbar&it_glass3&ba_c4",
 		"it_armor&it_steelbar&it_metal3&ba_drill",
     }
-	xdefm_ItemRegister( it, ITEM )
-end
-if true then local it = "re_tool3"
-	local ITEM = { Name = "#xdefm."..it, Type = "Recipe", Model = "models/props_c17/paper01.mdl", Helper = "#xdefm.d"..it, Rarity = 3, Durability = 10,
-    PhysSound = "Cardboard.ImpactSoft", Price = 800 }
-    ITEM.Crafts = {
+	
+items.re_tool3 = { 
+    Type = "Recipe",
+    Model = "models/props_c17/paper01.mdl", 
+    Rarity = 3,
+    Durability = 10,
+    PhysSound = "Cardboard.ImpactSoft",
+    Price = 800 
+}
+    items.re_tool3.Crafts = {
 		"it_propane&it_part2&it_metal3&it_stove4",
 		"it_metal3&it_part2&it_refill&it_coffee",
 		"it_metal3&it_ammocan1&it_ammocan1&it_ammocan1&it_supply",
@@ -206,22 +247,30 @@ if true then local it = "re_tool3"
 		"it_metal3&it_gemgreen&it_gemred&it_gemwhite&it_pot",
 		"it_rainbowbar&it_gemwhite&it_part2&it_metal3&it_auto",
     }
-	xdefm_ItemRegister( it, ITEM )
-end
-if true then local it = "re_bait3"
-	local ITEM = { Name = "#xdefm."..it, Type = "Recipe", Model = "models/props_c17/paper01.mdl", Helper = "#xdefm.d"..it, Rarity = 3, Durability = 20,
-    PhysSound = "Cardboard.ImpactSoft", Price = 1000 }
-    ITEM.Crafts = {
+	
+items.re_bait3 = { 
+    Type = "Recipe",
+    Model = "models/props_c17/paper01.mdl", 
+    Rarity = 3,
+    Durability = 20,
+    PhysSound = "Cardboard.ImpactSoft",
+    Price = 1000 
+}
+    items.re_bait3.Crafts = {
 		"it_csuper&it_metal3&it_goldbar&ba_combine",
 		"it_glass3&it_plastic2&it_platinumbar&ba_portal",
 		"it_steelbar&it_metal3&it_part2&ba_magnet",
     }
-	xdefm_ItemRegister( it, ITEM )
-end
-if true then local it = "re_spec"
-	local ITEM = { Name = "#xdefm."..it, Type = "Recipe", Model = "models/props_c17/paper01.mdl", Helper = "#xdefm.d"..it, Rarity = 3, Durability = 5,
-    PhysSound = "Cardboard.ImpactSoft", Price = 850 }
-    ITEM.Crafts = {
+	
+items.re_spec = { 
+    Type = "Recipe",
+    Model = "models/props_c17/paper01.mdl", 
+    Rarity = 3,
+    Durability = 5,
+    PhysSound = "Cardboard.ImpactSoft",
+    Price = 850 
+}
+    items.re_spec.Crafts = {
 		"it_cmetal&it_cmetal&it_part2&it_ccore",
 		"it_cmetal&it_cmetal&it_leadbar&it_chopper",
 		"it_cmetal&it_refill&it_radio&it_cscanner",
@@ -232,12 +281,16 @@ if true then local it = "re_spec"
 		"it_pmetal&it_pmetal&it_pcube&it_firearm2&it_pturre1",
 		"it_pmetal&it_pmetal&it_platinumbar&it_plastic2&it_pcore",
     }
-	xdefm_ItemRegister( it, ITEM )
-end
-if true then local it = "re_crate"
-	local ITEM = { Name = "#xdefm."..it, Type = "Recipe", Model = "models/props_c17/paper01.mdl", Helper = "#xdefm.d"..it, Rarity = 2, Durability = 10,
-    PhysSound = "Cardboard.ImpactSoft", Price = 500 }
-    ITEM.Crafts = {
+	
+items.re_crate = { 
+    Type = "Recipe",
+    Model = "models/props_c17/paper01.mdl", 
+    Rarity = 2,
+    Durability = 10,
+    PhysSound = "Cardboard.ImpactSoft",
+    Price = 500 
+}
+    items.re_crate.Crafts = {
 		"it_brick&it_ore&it_ore&it_ore&it_rock",
 		"it_coin&it_coin&it_metal2&it_register",
 		"it_wood2&it_wood2&it_steelbar&it_crate1",
@@ -245,12 +298,16 @@ if true then local it = "re_crate"
 		"it_wood2&it_coal&it_leadbar&it_crate3",
 		"it_metal2&it_part&it_fridge",
     }
-	xdefm_ItemRegister( it, ITEM )
-end
-if true then local it = "re_advance"
-	local ITEM = { Name = "#xdefm."..it, Type = "Recipe", Model = "models/props_c17/paper01.mdl", Helper = "#xdefm.d"..it, Rarity = 2, Durability = 20,
-    PhysSound = "Cardboard.ImpactSoft", Price = 400 }
-    ITEM.Crafts = {
+	
+items.re_advance = { 
+    Type = "Recipe",
+    Model = "models/props_c17/paper01.mdl", 
+    Rarity = 2,
+    Durability = 20,
+    PhysSound = "Cardboard.ImpactSoft",
+    Price = 400 
+}
+    items.re_advance.Crafts = {
 		"it_wood2&it_wood2&it_wood2&it_wood3",
 		"it_brick&it_brick&it_brick&it_brick&it_stone2",
 		"it_metal2&it_metal2&it_copperbar&it_metal3",
@@ -260,12 +317,16 @@ if true then local it = "re_advance"
 		"it_tungstenbar&it_metal2&it_plastic&it_pmetal",
 		"it_steelbar&it_metal2&it_glass3&it_cmetal",
     }
-	xdefm_ItemRegister( it, ITEM )
-end
-if true then local it = "re_exp"
-	local ITEM = { Name = "#xdefm."..it, Type = "Recipe", Model = "models/props_junk/garbage_coffeemug001a_fullsheet.mdl", Helper = "#xdefm.d"..it, Rarity = 3, Durability = 10,
-    PhysSound = "GlassBottle.ImpactSoft", Price = 250 }
-    ITEM.Crafts = {
+	
+items.re_exp = { 
+    Type = "Recipe",
+    Model = "models/props_junk/garbage_coffeemug001a_fullsheet.mdl", 
+    Rarity = 3,
+    Durability = 10,
+    PhysSound = "GlassBottle.ImpactSoft",
+    Price = 250 
+}
+    items.re_exp.Crafts = {
 		"it_paper&it_paper&it_expr",
 		"it_expr&it_expr&it_expr&it_expr&it_exps",
 		"it_expr&it_expr&it_expr&it_exp1",
@@ -273,7 +334,7 @@ if true then local it = "re_exp"
 		"it_exp2&it_exp2&it_exp3",
 		"it_exp3&it_exp3&it_exp4",
    }
-	function ITEM:OnDraw( self )
+	function items.re_exp:OnDraw( self )
 		if !self.Emitter then self.Emitter = ParticleEmitter( self:WorldSpaceCenter() )
 			self:CallOnRemove( "XDEEmitter", function( self ) if self.Emitter then self.Emitter:Finish() end end )
 		end
@@ -297,12 +358,16 @@ if true then local it = "re_exp"
 			particle:SetLighting( false )
 		end
 	end
-	xdefm_ItemRegister( it, ITEM )
-end
-if true then local it = "re_meat"
-	local ITEM = { Name = "#xdefm."..it, Type = "Recipe", Model = "models/weapons/w_knife_ct.mdl", Helper = "#xdefm.d"..it, Rarity = 3, Durability = 10,
-    PhysSound = "SolidMetal.ImpactSoft", Price = 500 }
-    ITEM.Crafts = {
+	
+items.re_meat = { 
+    Type = "Recipe",
+    Model = "models/weapons/w_knife_ct.mdl", 
+    Rarity = 3,
+    Durability = 10,
+    PhysSound = "SolidMetal.ImpactSoft",
+    Price = 500 
+}
+    items.re_meat.Crafts = {
 		"cr_seagull&it_meat",
 		"cr_crow&it_meat",
 		"cr_pigeon&it_meat",
@@ -314,7 +379,7 @@ if true then local it = "re_meat"
 		"it_meat&it_meat&it_bone&cr_seagull|1",
 		"it_meat&it_meat&it_meat&cr_crow|1",
     }
-	function ITEM:OnCollide( self, dat )
+	function items.re_meat:OnCollide( self, dat )
 		if dat.Speed >= 120 and dat.DeltaTime > 0.25 and self:IsPlayerHolding() then local ent = dat.HitEntity
 			if IsValid( ent ) and !ent:IsWorld() and util.IsValidModel( ent:GetModel() ) and ent != self:GetFMod_LU() then
 				local dmg = DamageInfo()  dmg:SetDamagePosition( dat.HitPos ) dmg:SetDamageForce( dat.HitNormal*1000 )
@@ -323,12 +388,16 @@ if true then local it = "re_meat"
 			end
 		end
 	end
-	xdefm_ItemRegister( it, ITEM )
-end
-if true then local it = "re_misc"
-	local ITEM = { Name = "#xdefm."..it, Type = "Recipe", Model = "models/props_c17/paper01.mdl", Helper = "#xdefm.d"..it, Rarity = 2, Durability = 20,
-    PhysSound = "Cardboard.ImpactSoft", Price = 300 }
-    ITEM.Crafts = {
+	
+items.re_misc = { 
+    Type = "Recipe",
+    Model = "models/props_c17/paper01.mdl", 
+    Rarity = 2,
+    Durability = 20,
+    PhysSound = "Cardboard.ImpactSoft",
+    Price = 300 
+}
+    items.re_misc.Crafts = {
 		"it_junk&it_junk&it_junk&it_shoe",
 		"it_metal2&it_coal&it_mine1",
 		"it_wood2&it_hula",
@@ -338,12 +407,16 @@ if true then local it = "re_misc"
 		"it_tungstenbar&it_monitor",
 		"it_plastic&it_metal&it_bouncy",
     }
-	xdefm_ItemRegister( it, ITEM )
-end
-if true then local it = "re_recycle" --17
-	local ITEM = { Name = "#xdefm."..it, Type = "Recipe", Model = "models/props_junk/plasticbucket001a.mdl", Helper = "#xdefm.d"..it, Rarity = 3, Durability = 40,
-    PhysSound = "Plastic_Barrel.ImpactSoft", Price = 500 }
-    ITEM.Crafts = {
+	
+items.re_recycle = { 
+    Type = "Recipe",
+    Model = "models/props_junk/plasticbucket001a.mdl", 
+    Rarity = 3,
+    Durability = 40,
+    PhysSound = "Plastic_Barrel.ImpactSoft",
+    Price = 500 
+}
+    items.re_recycle.Crafts = {
 		"it_wood&it_junk",
 		"it_glass&it_junk",
 		"it_stone&it_junk",
@@ -353,5 +426,23 @@ if true then local it = "re_recycle" --17
 		"it_junk&it_junk&it_junk&it_stone",
 		"it_junk&it_junk&it_junk&it_metal",
     }
-	xdefm_ItemRegister( it, ITEM )
-end
+
+items.re_tool4 = { 
+	Type = "Recipe",
+	Model = "models/props_c17/paper01.mdl", 
+	Rarity = 4,
+	Durability = 10,
+	PhysSound = "Cardboard.ImpactSoft",
+	Price = 1600 
+}
+	items.re_tool4.Crafts = {
+		"it_part2&it_propane&it_stove4&it_boiler",
+		"it_part3&it_refill&it_propane&it_relay",
+		"it_part3&it_storage2&it_storage2&it_storage3",
+		"it_part3&it_metal3&it_metal3&it_plastic2&it_turbine",
+		"it_part2&it_metal2&it_metal2&it_pump",
+		"it_part2&it_propane&it_metal2&it_flask",
+		"it_part2&it_refill&it_metal2&it_battery"
+	}
+	
+xdefm_ItemRegisterAll(items)
