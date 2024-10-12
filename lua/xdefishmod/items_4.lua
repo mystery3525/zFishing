@@ -57,7 +57,7 @@ if CLIENT then local langs = {}
 		[ "it_atm" ] 		= "ATM", [ "dit_atm" ] 				= "1% investment increase per minute up to $10,000. Withdraw by pressing Shift+E.",
 		[ "it_refill" ] 	= "Refill Kit", [ "dit_refill" ] 		= "Refills your Health and Armor. Can also revive creatures.",
 		[ "it_fridge" ] 	= "Refrigerator", [ "dit_fridge" ] 		= "Break to open.",
-		[ "it_supply" ] 	= "Supply Crate", [ "dit_supply" ] 		= "Buy some weapons and ammo.",
+		[ "it_supply" ] 	= "Munitions Crate", [ "dit_supply" ] 		= "Buy some weapons and ammo.",
 		[ "it_egg" ] 		= "Egg", [ "dit_egg" ] 				= "Spawns a bird when broken.",
 		[ "cr_knight" ] 	= "Knight", [ "dcr_knight" ] 			= "Don't worry, it's harmless.",
 		[ "it_tungstenbar" ] 	= "Tungsten Ingot", [ "dit_tungstenbar" ] 	= "A bar of Tungsten.",
@@ -72,13 +72,13 @@ if CLIENT then local langs = {}
 		[ "it_printer" ] 	= "Printer", [ "dit_printer" ] 			= "Insert 1 Bottle of Chemicals and 1 Paper Roll to craft a Newspaper.",
 		[ "it_server" ] 	= "Research Server", [ "dit_server" ] 		= "Generates 1 XP every 20 seconds, up to 300.",
 		[ "it_miner" ] 		= "FishCoin Miner", [ "dit_miner" ] 		= "Generates $1 every 2 seconds, up to $10,000.",
-		[ "it_tesla" ] 		= "Tesla Tower", [ "dit_tesla" ] 		= "Insert Batteries to attack birds.",
+		[ "it_tesla" ] 		= "Tesla Tower", [ "dit_tesla" ] 		= "Kills birds instantly within range. Charge with 3 Armor or Refill Kits for up to 15 birds.",
 		[ "it_cooler" ] 	= "Water Cooler", [ "dit_cooler" ] 		= "Buy some Bottled Water.",
 		[ "it_ejunk" ] 		= "E-Junk", [ "dit_ejunk" ] 			= "Discarded electronics.",
 		[ "it_jumppad" ] 	= "Jump Pad", [ "dit_jumppad" ] 		= "Launches you when stepped on.",
 		[ "it_flower" ] 	= "Flower", [ "dit_flower" ] 			= "Pwetty flower.",
 		[ "it_stove4" ] 	= "Deluxe Stove", [ "dit_stove4" ] 		= "Increases item's value by cooking them. Has 3 fire modes.",
-		[ "it_stove5" ] 	= "Technology Stove", [ "dit_stove5" ] 		= "Increases item's value by cooking them. Can detect baking degree and shut down automatically.",
+		[ "it_stove5" ] 	= "Technology Stove", [ "dit_stove5" ] 		= "Increases item's value by cooking them. Detects baking degree and shuts down automatically.",
 		[ "it_microwave" ] 	= "Microwave", [ "dit_microwave" ] 		= "Slow but safe.",
 		[ "it_metal2" ] 	= "Metal Sheet", [ "dit_metal2" ] 		= "A sheet of metal.",
 		[ "it_wood2" ] 		= "Wooden Board", [ "dit_wood2" ] 		= "A wooden board.",
@@ -162,6 +162,7 @@ items.it_atm = {
 	TickRate = 1,
 	HelperUse = "xdefm.U2",
 	TickRate = 1,
+	SType = 2,
 	CanPhysgun = true
 	}
 	local tb = {
@@ -250,7 +251,14 @@ items.it_fridge = {
 	function items.it_fridge:OnDamaged( self, dmg ) if self:Health() <= 0 or dmg:GetDamage() <= 0 or self.xdefm_Killed then return false end
 		self:SetHealth( math.max( 0, self:Health() -dmg:GetDamage() ) ) self:EmitSound( "Breakable.Metal" )
 		if self:Health() <= 0 then self.xdefm_Killed = true
-		local lt = {["it_bread2"]=200,["it_apple"]=5,["it_orange"]=5,["it_melon"]=5,["it_gfood"]=100,["it_soda"]=25} for i=1, math.random( 4, 6 ) do xdefm_LootDrop( lt, self ) end
+		local lt = {
+			["it_bread2"]=200,
+			["it_apple"]=5,
+			["it_orange"]=5,
+			["it_melon"]=5,
+			["it_gfood"]=100,
+			["it_soda"]=25
+			} for i=1, math.random( 4, 6 ) do xdefm_LootDrop( lt, self ) end
 		xdefm_BreakEffect( self, 3 ) self:SetNotSolid( true ) SafeRemoveEntityDelayed( self, 0.1 ) end return true
 	end
 	
@@ -264,9 +272,15 @@ items.it_supply = {
 	Price = 2000,
 	PhysSound = "Metal_Box.ImpactHard",
 	TickRate = 0.1,
-	SType = 3
+	SType = 3,
+	CanPhysgun = true
 	}
-	items.it_supply.Shop = { [ "it_ammocan1" ] = { 3000, 25 }, [ "it_ammo" ] = { 1250, 25 }, [ "it_grenade" ] = { 1500, 25 }, [ "it_flashbang" ] = { 1250, 25 } }
+	items.it_supply.Shop = {
+				[ "it_ammocan1" ] = { 3000, 25 },
+				[ "it_ammo" ] = { 1250, 25 },
+				[ "it_grenade" ] = { 1500, 25 },
+				[ "it_flashbang" ] = { 1250, 25 }
+				}
 	function items.it_supply:OnInit( self ) self:SetAutomaticFrameAdvance( true ) self:SetBodygroup( 1, 1 ) self.xdefm_Cool = 0  self.xdefm_Anim = 0 end
 	function items.it_supply:OnReady( self ) self:PhysWake() self:GetPhysicsObject():SetMass( 100 ) end
 	function items.it_supply:OnInteract( self, ent, typ )
@@ -777,7 +791,7 @@ items.it_tesla = {
 			self.xdefm_Cool = CurTime() +0.1  local cls = xdefm_GetClass( ent )
 			if ( cls == "it_armor" or cls == "it_refill" ) and !ent.xdefm_Trashed then
 				self:EmitSound( "Weapon_PhysCannon.Charge" ) ent.xdefm_Trashed = true  ent:Remove()
-				self.xdefm_Charge = self.xdefm_Charge +3
+				self.xdefm_Charge = self.xdefm_Charge +5
 				if self.xdefm_Charge >= 1 then self:SetColor( Color( 155, 255, 255 ) ) end
 			end
 		end
@@ -880,6 +894,7 @@ items.it_stove4 = {
 	HelperUse = "xdefm.U4",
 	TickRate = 1,
 	PhysSound = "Metal_Barrel.ImpactHard",
+	SType = 2,
 	CantCook = true,
 	CanPhysgun = true
 	}
@@ -913,6 +928,7 @@ items.it_stove5 = {
 	HelperUse = "xdefm.U4",
 	TickRate = 0.1,
 	PhysSound = "Metal_Barrel.ImpactHard",
+	SType = 1,
 	CantCook = true,
 	CanPhysgun = true
 	}
