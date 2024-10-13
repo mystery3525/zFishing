@@ -23,7 +23,8 @@ if CLIENT then local langs = {}
 		[ "re_tool1" ] = "Basic Item Recipe", [ "dre_tool1" ] = "Craft basic tools.",
 		[ "re_tool2" ] = "Improved Item Recipe", [ "dre_tool2" ] = "Craft improved tools.",
 		[ "re_tool3" ] = "Advanced Item Recipe", [ "dre_tool3" ] = "Craft advanced tools.",
-		[ "re_tool3" ] = "Industrial Item Recipe", [ "dre_tool3" ] = "Craft steam tools.",
+		[ "re_tool3" ] = "Legendary Item Recipe", [ "dre_tool3" ] = "Craft legendary tools.",
+		[ "re_tool4" ] = "Industrial Item Recipe", [ "dre_tool3" ] = "Craft electric tools.",
 		[ "re_bait1" ] = "Basic Bait Recipe", [ "dre_bait1" ] = "Craft common and uncommon baits.",
 		[ "re_bait2" ] = "Improved Bait Recipe", [ "dre_bait2" ] = "Craft rare baits.",
 		[ "re_bait3" ] = "Advanced Bait Recipe", [ "dre_bait3" ] = "Craft epic baits.",
@@ -436,13 +437,16 @@ items.re_tool4 = {
 	Price = 1600 
 }
 	items.re_tool4.Crafts = {
+		"it_metal3&it_silverbar&it_part2&it_part3",
 		"it_part2&it_propane&it_stove4&it_boiler",
 		"it_part3&it_refill&it_propane&it_relay",
 		"it_part3&it_storage2&it_storage2&it_storage3",
 		"it_part3&it_metal3&it_metal3&it_plastic2&it_turbine",
 		"it_part2&it_metal2&it_metal2&it_pump",
 		"it_part2&it_propane&it_metal2&it_flask",
-		"it_part2&it_refill&it_metal2&it_battery"
+		"it_part2&it_refill&it_metal2&it_battery",
+		"it_part3&it_furnace2&it_furnace3",
+		"it_furnace3&it_furnace2"
 	}
 	
 xdefm_ItemRegisterAll(items)

@@ -1341,7 +1341,6 @@ items.it_furnace3 = {
 					if not istable(slots[pre]) then slots[pre] = {} end
 					table.insert(slots[pre], i)
 				end
-
 			end
 		end
 
@@ -1349,8 +1348,6 @@ items.it_furnace3 = {
 
 		if self.xdefm_Enabled then
 			if not self.xdefm_HasPower then return end
-
-			PrintTable( slots )
 
 			local sel = nil
 			for i, v in pairs(slots) do
@@ -1367,18 +1364,17 @@ items.it_furnace3 = {
 
 			if stime < CurTime() then
 				self.xdefm_T3[slots[sel][1]] = self.sm_tbl[sel].result
-				
 				if self.sm_tbl[sel].amount > 1 then
-					for i = 2, self.sm_tbl[i].amount do
+					for i = 2, self.sm_tbl[sel].amount do
 						self.xdefm_T3[slots[sel][i]] = "_"
 					end
 				end
 
-				self.xdefm_SmeltTime = nil
-				self.xdefm_Selected = nil
+				self.xdefm_SmeltTime = CurTime() + 3
 			end
 		else
 			self.xdefm_Selected = nil
+			self.xdefm_SmeltTime = nil
 		end
 
 	end
