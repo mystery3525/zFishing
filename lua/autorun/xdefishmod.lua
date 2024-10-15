@@ -1529,7 +1529,7 @@ if SERVER then --服务端
 		ent:SetFMod_OW( own )
 		ent.Owner = own
 		local hk = hook.Run( "XDEFM_ItemSpawn", ent, nam, own )
-		if isbool( hk ) and hk == false then
+		if isbool( hk ) and !hk then
 			ent:Remove()
 			return
 		end
