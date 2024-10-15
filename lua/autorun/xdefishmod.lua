@@ -1523,7 +1523,6 @@ if SERVER then --服务端
 			if FPP then
 				ent:SetCreator(own)
 			end
-			ent:SetOwner(own)
 		end
 		ent:SetNWEntity( "Owner", own )
 		ent:SetFMod_OW( own )
