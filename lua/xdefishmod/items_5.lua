@@ -1325,7 +1325,7 @@ items.it_furnace3 = {
 			["it_orepurple"] = {amount = 2, result = "it_gempurple"},
 			["it_oregreen"] =  {amount = 2, result = "it_gemgreen"},
 			["it_orered"] =    {amount = 2, result = "it_gemred"},
-			["it_orewhite"] =  {amount = 2, result = "it_gemwhite"},
+			["it_orewhite"] =  {amount = 2, result = "it_gemwhite"}
 		}
 	end
 
