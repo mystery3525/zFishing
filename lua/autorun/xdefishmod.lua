@@ -1520,15 +1520,12 @@ if SERVER then --服务端
 			if NADMOD then
 				NADMOD.PlayerMakePropOwner( own, ent )
 			end
-			if FPP then
-				ent:SetCreator(own)
-			end
 		end
 		ent:SetNWEntity( "Owner", own )
 		ent:SetFMod_OW( own )
 		ent.Owner = own
 		local hk = hook.Run( "XDEFM_ItemSpawn", ent, nam, own )
-		if isbool( hk ) and !hk then
+		if isbool( hk ) and hk == false then
 			ent:Remove()
 			return
 		end
@@ -4525,12 +4522,7 @@ if true then -- xdefm_dummy
 	function ENT:TurnToItem()
 		local ite = xdefm_ItemSpawn( self:GetFMod_DT(), self:GetPos(), self:GetAngles(), own, self:GetModel() )
 		if IsValid( ite ) then ite:SetFMod_OW( self:GetFMod_OW() ) ite:SetFMod_OI( self:GetFMod_OI() )
-			if NADMOD and self:GetFMod_OW():IsPlayer() then 
-				NADMOD.PlayerMakePropOwner( self:GetFMod_OW(), ite ) 
-			end
-			if FPP and self:GetFMod_OW():IsPlayer() then 
-				ite:SetCreator(self:GetFMod_OW())
-			end
+			if NADMOD and self:GetFMod_OW():IsPlayer() then NADMOD.PlayerMakePropOwner( self:GetFMod_OW(), ent ) end
 			ite:SetNWEntity( "Owner", self:GetFMod_OW() )  ite.Owner = self:GetFMod_OW()
 			self:Remove() return ite end self:Remove()
 	end

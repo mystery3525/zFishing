@@ -49,8 +49,7 @@ local quests = {
         "it_camera",
         "it_expr&it_expr&it_expr",
         "it_egg&it_egg",
-        "cr_crow",
-        "it_charcoal&it_charcoal&it_charcoal"
+        "cr_crow"
     },
 
     [30] = {
