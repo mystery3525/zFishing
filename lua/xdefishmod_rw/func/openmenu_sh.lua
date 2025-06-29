@@ -1,3 +1,4 @@
+local Zom = Material( "vgui/zoom" )
 function xdefm_OpenMenu( ply, typ, tab )
     if !isnumber( typ ) and ( tab != nil and !istable( tab ) ) then return end
     if SERVER and IsValid( ply ) and ply:IsPlayer() and !ply:IsBot() then

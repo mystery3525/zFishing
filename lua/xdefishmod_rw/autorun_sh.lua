@@ -1,4 +1,3 @@
-local Zom = Material( "vgui/zoom" )
 function xdefm_AddShop( nam, lvl, prc )
     if !isstring( nam ) then return end
     lvl = isnumber( lvl ) and math.max( 0, math.Round( lvl ) ) or 0
